@@ -1,0 +1,34 @@
+{
+  "name": "compromisos-site",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "^1.4.0",
+    "bootstrap": "^3.2.0",
+    "angular-animate": "^1.4.0",
+    "angular-cookies": "^1.4.0",
+    "angular-resource": "^1.4.0",
+    "angular-route": "^1.4.0",
+    "angular-sanitize": "^1.4.0",
+    "angular-touch": "^1.4.0",
+    "c3-angular": "^1.2.0",
+    "BAstrap": "https://github.com/gcba/BAstrap.git#b97e3c7d2d56c12c53864240514f8e87099a7c42"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.4.0"
+  },
+  "appPath": "app",
+  "moduleName": "compromisosSiteApp",
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    },
+    "BAstrap": {
+      "main": [
+        "bastrap3/bastrap.css"
+      ]
+    }
+  }
+}
