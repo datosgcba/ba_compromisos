@@ -38,4 +38,13 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .service('UrlService', function () {
+      this.urls = {
+        'home': 'http://palamago.com.ar/api/?source_format=csv&source=https://goo.gl/NZ8vyv'
+      };
+      this.getUrl = function(page) {
+          return this.urls[page];
+      };
   });
+

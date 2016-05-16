@@ -11,7 +11,8 @@
     "angular-sanitize": "^1.4.0",
     "angular-touch": "^1.4.0",
     "c3-angular": "^1.2.0",
-    "BAstrap": "https://github.com/gcba/BAstrap.git#b97e3c7d2d56c12c53864240514f8e87099a7c42"
+    "BAstrap": "https://github.com/gcba/BAstrap.git#b97e3c7d2d56c12c53864240514f8e87099a7c42",
+    "pym.js": "^0.4.5"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"
