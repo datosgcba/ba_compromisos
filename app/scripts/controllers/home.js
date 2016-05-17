@@ -132,7 +132,63 @@ angular.module('compromisosSiteApp')
     }
 
 
-    function renderDateChart(){
+    function renderMenuChart(){
+
+      var itemSize = 100,
+          gap = 15,
+          w = $(window).width(),
+          h = 300,
+          delay = 500;
+
+      var data = angular.copy($scope.data);
+
+      if(!$scope.charts.menu_chart){
+        $scope.charts.menu_chart = {};
+        $scope.charts.menu_chart.svg = d3.select("#menu_chart")
+          .append("svg")
+          .attr("width", w)
+          .attr("height", h)
+          .attr("class", "menu_chart");
+
+        $scope.charts.menu_chart.items_group = $scope.charts.menu_chart.svg.append('g').classed('items-container',true);
+        $scope.charts.menu_chart.labels_group = $scope.charts.menu_chart.svg.append('g').classed('labels-container',true);
+      }
+      
+      //Chart elements
+      var chart = $scope.charts.menu_chart;
+
+      createCompromisos($scope.data);
+
+      function createCompromisos(list){
+
+        $scope.charts.menu_chart.items_group
+          .selectAll("g.compromiso.item")
+          .data(data)
+          .enter()
+          .append('g')
+          .classed('compromiso-item',true)
+          .each(function(d, i) {
+              d3.select(this)
+                .selectAll('text.compromiso-label')
+                .data([d])
+                .enter()
+                .append('text')
+                .classed('compromiso-label',true)
+                .text(function(dd){
+                  return dd.titulo;
+                });
+          })
+          .transition()
+          .duration(delay)
+          .attr("transform", function(d,i) { 
+            var x = 0, y=(i+1)*gap;
+            return "translate(" + x +"," + y + ")"; }); 
+
+          }
+
+      function renderCompromisoList(position,max,list){
+
+      }
 
     };
 
