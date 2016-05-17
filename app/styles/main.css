@@ -11,3 +11,7 @@ html {
 .upper{
 	text-transform: uppercase;
 }
+
+.compromiso-label{
+	cursor: pointer;
+}

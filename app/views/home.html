@@ -51,20 +51,10 @@
 <div ng-cloak ng-hide="loading">
 
 	<div class="row">
-		<div class="col-sm-12">
-	  		<p class="text-center">Chart de menú</p>
-	  	</div>
+	  	<div id="menu_chart"></div>
 	</div>
-
 	<hr/>
 
-	<div class="row">
-		<div class="col-sm-12">
-	  		<p ng-repeat="(k,v) in data" >
-	  			<a href="" ng-click="showDetail(v)">
-	  			{{v.numero}}. {{v.titulo}}</a></p>
-	  	</div>
-	</div>
 	<div class="row" ng-cloak ng-show="currentCompromise">
 		<div class"col-sm-12">
 			
@@ -96,3 +86,4 @@
 
 
 </div>
+<hr/>
