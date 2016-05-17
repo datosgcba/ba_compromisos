@@ -33,6 +33,18 @@ angular.module('compromisosSiteApp')
 
     };
 
+
+    $scope.showDetail= function(c){
+      c.porcentaje =  Math.round(Math.floor(Math.random() * 99) + 2);
+
+      $scope.currentCompromise = c;
+
+    };
+
+    $scope.getWidth = function(){
+
+      return {'width':random+'%'};
+    };
     function renderDateChart(){
       $scope.charts.date_chart = c3.generate({
           bindto: '#date_chart',
@@ -53,7 +65,7 @@ angular.module('compromisosSiteApp')
               }
           }
       });
-    };
+    }
 
     function renderStateChart(){
       $scope.charts.state_chart = c3.generate({
@@ -75,7 +87,7 @@ angular.module('compromisosSiteApp')
               }
           }
       });
-    };
+    }
 
     function renderCategoryChart(){
       var diameter = $('#category_chart').parent().width(), //max size of the bubbles

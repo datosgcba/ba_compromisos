@@ -28,19 +28,19 @@
 <div class="row">
 	<div class="col-sm-4">
 		<div id="date_chart">
-			<p class="text-center" ng-show="loading">Cargando...</p>
+			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
 		</div>
   		<p class="text-center">Ordenar por fecha de finalización</p>
   	</div>
 	<div class="col-sm-4">
 		<div id="state_chart">
-			<p class="text-center" ng-show="loading">Cargando...</p>
+			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
 		</div>
   		<p class="text-center">Ordenar por estado del compromiso</p>
   	</div>
 	<div class="col-sm-4">
 		<div id="category_chart">
-			<p class="text-center" ng-show="loading">Cargando...</p>
+			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
 		</div>
   		<p class="text-center">Ordenar por estado del compromiso</p>
   	</div>
@@ -48,7 +48,7 @@
 
 <hr/>
 <p class="text-center" ng-show="loading">Cargando...</p>
-<div ng-hide="loading">
+<div ng-cloak ng-hide="loading">
 
 	<div class="row">
 		<div class="col-sm-12">
@@ -60,8 +60,39 @@
 
 	<div class="row">
 		<div class="col-sm-12">
-	  		<p ng-repeat="(k,v) in data">{{v.numero}}. {{v.titulo}}</p>
+	  		<p ng-repeat="(k,v) in data" >
+	  			<a href="" ng-click="showDetail(v)">
+	  			{{v.numero}}. {{v.titulo}}</a></p>
 	  	</div>
 	</div>
+	<div class="row" ng-cloak ng-show="currentCompromise">
+		<div class"col-sm-12">
+			
+			<h2><small>{{currentCompromise.categoria}}</small></h2>
+			
+			<h2>{{currentCompromise.titulo}}</h2>
+
+			<h5>{{currentCompromise.cumplimiento}}</h5>
+			<p> {{currentCompromise.desc}}</p>
+			<button type="button" class="btn btn-xs btn-violet upper" >Ver mas sobre el compromiso </button>
+
+			<p class="upper"><strong> Estado del Compromiso</strong></p>
+			<p> Como lo medimos:<strong>Cantidad de plazas</strong> </p> 
+			<p> Tiempo Faltante:<strong>18 meses y 12 dias </strong> </p> 
+			<div class="">
+				<div class="progress">
+				  <div class="progress-bar progress-bar-violet"
+				  	role="progressbar" 
+				  		ng-style="{ 'width': currentCompromise.porcentaje + '%' }">
+				    <span class="sr-only">{{currentCompromise.porcentaje}}% </span>
+				  </div>
+				</div>
+			</div>
+			<p>Finalizacion:<strong> {{currentCompromise.cumplimiento}} </strong> </p> 
+
+
+		</div>
+	</div>
+
 
 </div>
