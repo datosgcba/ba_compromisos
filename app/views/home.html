@@ -23,23 +23,32 @@
 
 <hr/>
 
-<p ng-show="loading">Cargando...</p>
 
+
+<div class="row">
+	<div class="col-sm-4">
+		<div id="date_chart">
+			<p class="text-center" ng-show="loading">Cargando...</p>
+		</div>
+  		<p class="text-center">Ordenar por fecha de finalización</p>
+  	</div>
+	<div class="col-sm-4">
+		<div id="state_chart">
+			<p class="text-center" ng-show="loading">Cargando...</p>
+		</div>
+  		<p class="text-center">Ordenar por estado del compromiso</p>
+  	</div>
+	<div class="col-sm-4">
+		<div id="category_chart">
+			<p class="text-center" ng-show="loading">Cargando...</p>
+		</div>
+  		<p class="text-center">Ordenar por estado del compromiso</p>
+  	</div>
+</div>
+
+<hr/>
+<p class="text-center" ng-show="loading">Cargando...</p>
 <div ng-hide="loading">
-
-	<div class="row">
-		<div class="col-sm-4">
-	  		<p class="text-center">Stacked bar chart</p>
-	  	</div>
-		<div class="col-sm-4">
-	  		<p class="text-center">Bar Chart</p>
-	  	</div>
-		<div class="col-sm-4">
-	  		<p class="text-center">Bubble chart</p>
-	  	</div>
-	</div>
-
-	<hr/>
 
 	<div class="row">
 		<div class="col-sm-12">
