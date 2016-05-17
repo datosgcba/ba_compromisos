@@ -132,4 +132,9 @@ angular.module('compromisosSiteApp')
     }
 
 
+    function renderDateChart(){
+
+    };
+
+
   });
