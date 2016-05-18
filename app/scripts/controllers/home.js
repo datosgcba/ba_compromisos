@@ -38,15 +38,10 @@ angular.module('compromisosSiteApp')
       c.porcentaje =  Math.round(Math.floor(Math.random() * 99) + 2);
       $scope.$apply(function(){
         $scope.currentCompromise = c;  
-      })
-      
-
+      });
     };
 
-    $scope.getWidth = function(){
-
-      return {'width':random+'%'};
-    };
+    
     function renderDateChart(){
       $scope.charts.date_chart = c3.generate({
           bindto: '#date_chart',
@@ -86,7 +81,7 @@ angular.module('compromisosSiteApp')
               groups: [
                   ['data1', 'data2']
               ]
-          },
+          }, 
           axis: {
             x: {show:false},
             y: {show:false}
@@ -115,13 +110,14 @@ angular.module('compromisosSiteApp')
           .attr("class", "bubble");
 
       var data = [
-        {Fruit:'Banana','Amount':15},
-        {Fruit:'Apple','Amount':30},
-        {Fruit:'Pear','Amount':5}
+        {Fruit:'Banana',Amount:15},
+        {Fruit:'Apple',Amount:30},
+        {Fruit:'Pear',Amount:5}
       ];
 
       //convert numerical values from strings to numbers
-      data = data.map(function(d){ d.value = +d["Amount"]; return d; });
+      data = data.map(function(d){ 
+        d.value = +d.Amount; return d; });
 
       //bubbles needs very specific format, convert data to this.
       var nodes = bubble.nodes({children:data}).filter(function(d) { return !d.children; });
@@ -145,7 +141,7 @@ angular.module('compromisosSiteApp')
           .attr("x", function(d){ return d.x; })
           .attr("y", function(d){ return d.y + 5; })
           .attr("text-anchor", "middle")
-          .text(function(d){ return d["Fruit"]; })
+          .text(function(d){ return d.Fruit; })
           .style({
               "fill":"white", 
               "font-family":"Helvetica Neue, Helvetica, Arial, san-serif",
@@ -156,7 +152,7 @@ angular.module('compromisosSiteApp')
 
     function renderMenuChart(){
 
-      var itemSize = 100,
+      var //itemSize = 100,
           gap = 15,
           w = $(window).width(),
           h = 300,
@@ -177,11 +173,11 @@ angular.module('compromisosSiteApp')
       }
       
       //Chart elements
-      var chart = $scope.charts.menu_chart;
+      //var chart = $scope.charts.menu_chart;
 
-      createCompromisos($scope.data);
+     
 
-      function createCompromisos(list){
+      function createCompromisos( ){
 
         $scope.charts.menu_chart.items_group
           .selectAll("g.compromiso.item")
@@ -189,7 +185,7 @@ angular.module('compromisosSiteApp')
           .enter()
           .append('g')
           .classed('compromiso-item',true)
-          .each(function(d, i) {
+          .each(function(d) {
               d3.select(this)
                 .selectAll('text.compromiso-label')
                 .data([d])
@@ -211,11 +207,12 @@ angular.module('compromisosSiteApp')
 
           }
 
-      function renderCompromisoList(position,max,list){
+      // function renderCompromisoList(position,max,list){
 
-      }
+      // }
+       createCompromisos($scope.data);
 
-    };
+    }
 
 
   });
