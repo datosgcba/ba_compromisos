@@ -10,6 +10,8 @@
 angular.module('compromisosSiteApp')
   .controller('HomeCtrl', function ($scope,$timeout,$http,UrlService) {
 
+    var pymChild = new pym.Child();
+
     $scope.data = [];
     $scope.loading = true;
     $scope.charts = {};
@@ -21,7 +23,6 @@ angular.module('compromisosSiteApp')
       $scope.data = data;
       $scope.loading = false;
       $scope.renderCharts();
-      console.log(data);
     });
 
     $scope.renderCharts = function(){
@@ -152,10 +153,10 @@ angular.module('compromisosSiteApp')
 
     function renderMenuChart(){
 
-      var //itemSize = 100,
-          gap = 15,
+      var itemSize = 150,
+          gap = 5,
           w = $(window).width(),
-          h = 300,
+          h = 500,
           delay = 500;
 
       var data = angular.copy($scope.data);
@@ -171,46 +172,159 @@ angular.module('compromisosSiteApp')
         $scope.charts.menu_chart.items_group = $scope.charts.menu_chart.svg.append('g').classed('items-container',true);
         $scope.charts.menu_chart.labels_group = $scope.charts.menu_chart.svg.append('g').classed('labels-container',true);
       }
-      
-      //Chart elements
-      //var chart = $scope.charts.menu_chart;
 
-     
+      function updateSvgSize(){
+
+        $scope.charts.menu_chart.svg
+          .transition()
+          .duration(delay)
+          .attr("width", w)
+          .attr("height", h);
+
+        //send update to frame
+        pymChild.sendHeight();
+
+      }
+
+      function positionHome(){
+        w = $(window).width();
+
+        var xLimit = Math.floor(w/itemSize),
+            xCount = 0,
+            yCount = 0,
+            xOffset = (w-(xLimit*itemSize))/2;
+
+        h = Math.ceil(($scope.data.length/xLimit))*itemSize;
+
+        updateSvgSize();
+
+        $scope.charts.menu_chart.items_group
+          .selectAll("g.compromiso-item")
+          .transition()
+          .duration(delay)
+          .attr("transform", function(d,i) {
+            var x = xCount*itemSize+xOffset;
+            var y = yCount*itemSize;
+            if(xCount<xLimit-1){
+              xCount++;
+            } else {
+              xCount = 0;
+              yCount++;
+            }
+            return "translate(" + x +"," + y + ")"; 
+          });
+      }
 
       function createCompromisos( ){
 
+        var defaults = {
+          "width": itemSize,
+          "height": itemSize/3,
+        };
+
+        d3plus.textwrap()
+          .config(defaults);
+
         $scope.charts.menu_chart.items_group
-          .selectAll("g.compromiso.item")
+          .selectAll("g.compromiso-item")
           .data(data)
           .enter()
           .append('g')
           .classed('compromiso-item',true)
           .each(function(d) {
-              d3.select(this)
-                .selectAll('text.compromiso-label')
-                .data([d])
-                .enter()
+
+              var group = d3.select(this);
+
+              //frame
+              group
+                .append('rect')
+                .classed('compromiso-frame',true)
+                .attr('x',0)
+                .attr('y',0)
+                .attr('height',itemSize)
+                .attr('width',itemSize)
+                .attr('fill','white');
+
+              //text
+              group
+                .append('rect')
+                .classed('compromiso-label-shape',true)
+                .classed('shape',true)
+                .attr('x',0)
+                .attr('y',itemSize/3*2)
+                .attr('height',itemSize/3)
+                .attr('width',itemSize)
+                .attr('fill','none');
+
+              group
                 .append('text')
                 .classed('compromiso-label',true)
-                .on("click", function(dd){
-                  showDetail(dd);
-                })
-                .text(function(dd){
-                  return dd.titulo;
+                .classed('wrap',true)
+                .attr('id','c'+d.numero)
+                .attr('opacity',0)
+                .text(function(){
+                  return d.titulo;
                 });
+
+              group
+                .append("svg:image")
+                .attr('x',itemSize/2-25)
+                .attr('y',itemSize/3-25)
+                .attr('width', 50)
+                .attr('height', 50)
+                .attr("xlink:href","images/building.svg");
+
+              //rect frame
+              group
+                .append('rect')
+                .classed('compromiso-action',true)
+                .attr('x',gap)
+                .attr('y',gap)
+                .attr('height',itemSize-gap*2)
+                .attr('width',itemSize-gap*2)
+                .attr('stroke','#ccc')
+                .attr('stroke-width','1')
+                .attr('fill','transparent')
+                .on("click", function(dd){
+                  showDetail(d);
+                });
+
           })
           .transition()
-          .duration(delay)
-          .attr("transform", function(d,i) { 
-            var x = 0, y=(i+1)*gap;
-            return "translate(" + x +"," + y + ")"; }); 
+          .duration(0)
+          .attr("transform", function(d,i) {
+              var x = w/2-itemSize/2;
+              var y = h/2-itemSize/2;
+              return "translate(" + x +"," + y + ")"; 
+          })
+          .each("end", function(d){
+            var t = d3.select('text#c'+d.numero);
+            d3plus.textwrap()
+              .container(t)
+              .shape('square')
+              .align('center')
+              .valign('top')
+              .padding(3)
+              .draw();
 
-          }
+            t.transition().attr('opacity',1);
+          }); 
 
-      // function renderCompromisoList(position,max,list){
+        };
 
-      // }
-       createCompromisos($scope.data);
+        createCompromisos();
+
+        setTimeout(function(){
+          positionHome();
+        },1000);
+
+        var id;
+        $(window).resize(function() {
+            clearTimeout(id);
+            id = setTimeout(function(){ 
+              positionHome();
+            }, 500);
+        });
 
     }
 
