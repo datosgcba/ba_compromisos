@@ -6,7 +6,7 @@ html {
 }
 
 .btn-violet, .progress-bar-violet{
-	background:#7f3e98;
+	background-color:#7f3e98;
 }
 .upper{
 	text-transform: uppercase;
@@ -14,4 +14,17 @@ html {
 
 .compromiso-label{
 	cursor: pointer;
+}
+
+.compromiso-detail{
+	background-color:#fafafa;
+}
+.compromiso-detail img{
+	max-width: 100%;
+}
+
+.compromiso-detail .progress-bar span{
+	color: #FFFFFF;
+    float: right;
+    padding-right: 10px;
 }

@@ -56,10 +56,14 @@ angular.module('compromisosSiteApp')
                   ['data2', 130, 100, -100, 200, -150, 50],
                   ['data3', -230, 200, 200, -300, 250, 250]
               ],
-              type: 'bar',
+              type: 'bar', 
               groups: [
                   ['data1', 'data2']
               ]
+          },
+          axis: {
+            x: {show:false},
+            y: {show:false}
           },
           grid: {
               y: {
@@ -82,6 +86,10 @@ angular.module('compromisosSiteApp')
               groups: [
                   ['data1', 'data2']
               ]
+          },
+          axis: {
+            x: {show:false},
+            y: {show:false}
           },
           grid: {
               y: {

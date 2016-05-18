@@ -55,17 +55,22 @@
 	</div>
 	<hr/>
 
-	<div class="row" ng-cloak ng-show="currentCompromise">
-		<div class="col-sm-12">
-			
-			<h2><small>{{currentCompromise.categoria}}</small></h2>
-			
-			<h2>{{currentCompromise.titulo}}</h2>
+	<!-- <div class="row" ng-cloak ng-show="currentCompromise"> -->
+	<div class="row compromiso-detail" >
+	
+			<div class="col-sm-3"> 
+				<img src="http://wizardofodds.com/blog/images/buenos-aires/IMG_0471-med.jpg">
+			</div>
+			<div class="col-sm-6"> 
+				<h2><small>{{currentCompromise.categoria}}</small></h2>
+				
+				<h2>{{currentCompromise.numero}}.{{currentCompromise.titulo}}</h2>
 
-			<h5>{{currentCompromise.cumplimiento}}</h5>
-			<p> {{currentCompromise.desc}}</p>
-			<button type="button" class="btn btn-xs btn-violet upper" >Ver mas sobre el compromiso </button>
-
+				<h5>{{currentCompromise.cumplimiento}}</h5>
+				<p> {{currentCompromise.desc}}</p>
+				<button type="button" class="btn btn-xs btn-violet upper" >Ver mas sobre el compromiso </button>
+			</div>
+			<div class="col-sm-3"> 
 			<p class="upper"><strong> Estado del Compromiso</strong></p>
 			<p> Como lo medimos:<strong>Cantidad de plazas</strong> </p> 
 			<p> Tiempo Faltante:<strong>18 meses y 12 dias </strong> </p> 
@@ -74,13 +79,16 @@
 				  <div class="progress-bar progress-bar-violet"
 				  	role="progressbar" 
 				  		ng-style="{ 'width': currentCompromise.porcentaje + '%' }">
-				    <span class="sr-only">{{currentCompromise.porcentaje}}% </span>
+				    <span>{{currentCompromise.porcentaje}}% </span>
 				  </div>
 				</div>
 			</div>
-			<p>Finalizacion:<strong> {{currentCompromise.cumplimiento}} </strong> </p> 
+			<p>Finalizacion:<strong> {{currentCompromise.FechaFinalizacion}} </strong> </p> 
 
 
+			</div>
+
+			
 		</div>
 	</div>
 
