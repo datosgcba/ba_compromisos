@@ -38,3 +38,7 @@ html {
 .compromiso-action:hover{
 	stroke:#ccc;
 }
+
+.label-group{
+	fill:#000;
+}

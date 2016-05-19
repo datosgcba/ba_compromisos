@@ -46,7 +46,6 @@ angular.module('compromisosSiteApp')
       console.log($scope.finishedPercentageGroup);
 
     };
-
     
     var groups=[];
     groups.push({from:0,to:25});
@@ -66,8 +65,16 @@ angular.module('compromisosSiteApp')
       }
       d.percentageGroup = group;
       return group;
-      
-      
+    }
+
+    function getCategorySlug(cat){
+      var list = {
+        'Protección e integración social': 'social',
+        'Convivencia': 'convivencia',
+        'Movilidad': 'movilidad',
+        'Ciudad inteligente y sustentable': 'smart'
+      }
+      return list[cat];
     }
 
     $scope.renderCharts = function(){
@@ -264,59 +271,31 @@ angular.module('compromisosSiteApp')
             yCount = 0,
             xOffset = (w-(xLimit*itemSize))/2;
 
-        h = Math.ceil(($scope.data.length/xLimit))*itemSize;
+        wLabel = 0;
+
+        var rows = sortItems($scope.charts.menu_chart.items_group.selectAll("g.compromiso-item"),0);
+
+        h = rows*itemSize;
 
         updateSvgSize();
 
-        $scope.charts.menu_chart.labels_group
-          .select('.label-frame')
-          .attr('opacity',0)
-          .attr('width',0)
-          .attr('height',h);
+        updateLabels([]);
 
-        $scope.charts.menu_chart.items_group
-          .selectAll("g.compromiso-item")
-          .transition()
-          .duration(delay)
-          .attr("transform", function(d,i) {
-            var x = xCount*itemSize+xOffset;
-            var y = yCount*itemSize;
-            if(xCount<xLimit-1){
-              xCount++;
-            } else {
-              xCount = 0;
-              yCount++;
-            }
-            return "translate(" + x +"," + y + ")";
-          });
       }
 
-      function groupByDate(){
-        w = $(window).width();
-        wLabel = w/3;
+      function sortItems($items,startingY){
 
         var xLimit = Math.floor((w-wLabel)/itemSize),
             xCount = 0,
             yCount = 0,
             xOffset = ((w-wLabel)-(xLimit*itemSize))/2;
 
-        h = Math.ceil(($scope.data.length/xLimit))*itemSize;
-
-        updateSvgSize();
-
-        $scope.charts.menu_chart.labels_group
-          .select('.label-frame')
-          .attr('opacity',1)
-          .attr('width',wLabel)
-          .attr('height',h);
-
-        $scope.charts.menu_chart.items_group
-          .selectAll("g.compromiso-item")
+        $items
           .transition()
           .duration(delay)
           .attr("transform", function(d,i) {
             var x = xCount*itemSize+xOffset+wLabel;
-            var y = yCount*itemSize;
+            var y = yCount*itemSize+startingY;
             if(xCount<xLimit-1){
               xCount++;
             } else {
@@ -325,6 +304,92 @@ angular.module('compromisosSiteApp')
             }
             return "translate(" + x +"," + y + ")";
           });
+
+        return yCount+1;
+      }
+
+      function groupByState(){
+
+        var rows = 0;
+        wLabel = w/3;
+        var labels = [];
+
+        angular.forEach($scope.finishedPercentageGroup, function(group){
+          labels.push({title:groups[group.key].from+'% - '+groups[group.key].to+'%',rows:rows});
+          rows += sortItems($scope.charts.menu_chart.items_group.selectAll("g.avance-"+group.key),rows*itemSize);
+        });
+
+        h = rows*itemSize;
+
+        updateSvgSize();
+        updateLabels(labels);
+
+      }
+
+      function groupByCategory(){
+
+        var rows = 0;
+        wLabel = w/3;
+        var labels = [];
+
+        angular.forEach($scope.categoriesGroup, function(group){
+          labels.push({title:group.key,rows:rows});
+          rows += sortItems($scope.charts.menu_chart.items_group.selectAll("g.categoria-"+getCategorySlug(group.key)),rows*itemSize);
+        });
+
+        h = rows*itemSize;
+
+        updateSvgSize();
+        updateLabels(labels);
+
+      }
+
+      function groupByDate(){
+
+        var rows = 0;
+        wLabel = w/3;
+        var labels = [];
+        angular.forEach($scope.finishedYearsGroup, function(group){
+          labels.push({title:group.key,rows:rows});
+          rows += sortItems($scope.charts.menu_chart.items_group.selectAll("g.cumplimiento-"+group.key),rows*itemSize);
+        });
+
+        h = rows*itemSize;
+
+        updateSvgSize();
+        updateLabels(labels);
+
+      }
+
+      function updateLabels(data){
+
+        var texts = $scope.charts.menu_chart.labels_group
+          .selectAll('.label-group')
+          .data(data);
+
+        texts
+          .enter()
+          .append('text')
+          .classed('label-group',true)
+          .attr('text-anchor','end')
+          .attr('x',wLabel)
+          .attr('opacity',0);
+        
+        texts
+          .classed('label-group',true)
+          .text(function(d){
+            return d.title;
+          })
+          .attr('opacity',1)
+          .attr('y',function(d){
+            return d.rows*itemSize+itemSize/2;
+          });
+
+        texts.exit()
+          .attr('opacity',0)
+          .remove();
+
+        console.log(data);
       }
 
       function createCompromisos( ){
@@ -337,20 +402,18 @@ angular.module('compromisosSiteApp')
         d3plus.textwrap()
           .config(defaults);
 
-        $scope.charts.menu_chart.labels_group
-          .append('rect')
-          .classed('label-frame',true)
-          .attr('x',0)
-          .attr('y',0)
-          .attr('height',h)
-          .attr('width',0)
-          .attr('fill','red');
-
         $scope.charts.menu_chart.items_group
           .selectAll("g.compromiso-item")
           .data(data)
           .enter()
           .append('g')
+          .attr("class", function(d) {
+            var classes = [];
+            classes.push('cumplimiento-'+d.cumplimiento1);
+            classes.push('categoria-'+getCategorySlug(d.categoria));
+            classes.push('avance-'+getPercentageGroup(d));
+            return classes.join(' ');
+          })
           .classed('compromiso-item',true)
           .each(function(d) {
 
@@ -443,6 +506,12 @@ angular.module('compromisosSiteApp')
                 break;
                 case 'date':
                   groupByDate();
+                break;
+                case 'category':
+                  groupByCategory();
+                break;
+                case 'state':
+                  groupByState();
                 break;
               }
             }
