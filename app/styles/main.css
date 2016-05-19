@@ -28,3 +28,13 @@ html {
     float: right;
     padding-right: 10px;
 }
+
+.compromiso-action{
+	stroke:#fff;
+	stroke-width:1;
+	cursor: pointer;
+}
+
+.compromiso-action:hover{
+	stroke:#ccc;
+}

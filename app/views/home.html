@@ -24,7 +24,6 @@
 <hr/>
 
 
-
 <div class="row">
 	<div class="col-sm-4">
 		<div id="date_chart">
@@ -49,6 +48,11 @@
 <hr/>
 <p class="text-center" ng-show="loading">Cargando...</p>
 <div ng-cloak ng-hide="loading">
+	
+	<a ng-click="groupMenu('home')">Home</a>
+	<a ng-click="groupMenu('date')">Fecha</a>
+	<a ng-click="groupMenu('state')">Estado</a>
+	<a ng-click="groupMenu('category')">Categoría</a>
 
 	<div class="row">
 	  	<div id="menu_chart"></div>

@@ -16,6 +16,8 @@ angular.module('compromisosSiteApp')
     $scope.loading = true;
     $scope.charts = {};
 
+    $scope.selectedGroup = 'home';
+
     var url = UrlService.getUrl('home') + '&callback=JSON_CALLBACK';
 
     $http.jsonp(url)
@@ -99,65 +101,90 @@ angular.module('compromisosSiteApp')
       var diameter = $('#category_chart').parent().width(), //max size of the bubbles
         color    = d3.scale.category20b(); //color category
 
-      var bubble = d3.layout.pack()
+      var bubbleLayout = d3.layout.pack()
           .sort(null)
           .size([diameter, diameter])
           .padding(1.5);
-
-      var svg = d3.select("#category_chart")
-          .append("svg")
-          .attr("width", diameter)
-          .attr("height", diameter)
-          .attr("class", "bubble");
 
       var data = [
         {Fruit:'Banana',Amount:15},
         {Fruit:'Apple',Amount:30},
         {Fruit:'Pear',Amount:5}
       ];
-
       //convert numerical values from strings to numbers
       data = data.map(function(d){ 
-        d.value = +d.Amount; return d; });
+        d.value = +d.Amount; return d; 
+      });
 
       //bubbles needs very specific format, convert data to this.
-      var nodes = bubble.nodes({children:data}).filter(function(d) { return !d.children; });
+      var nodes = bubbleLayout.nodes({children:data}).filter(function(d) { return !d.children; });
 
       //setup the chart
-      var bubbles = svg.append("g")
-          .attr("transform", "translate(0,0)")
-          .selectAll(".bubble")
-          .data(nodes)
-          .enter();
+      if(!$scope.charts.category_chart){
+        $scope.charts.category_chart = {};
+        $scope.charts.category_chart.svg = d3.select("#category_chart")
+          .append("svg")
+          .attr("class", "bubble-container");
+      }
 
-      //create the bubbles
-      bubbles.append("circle")
+      //Select
+      $scope.charts.category_chart.bubbles = $scope.charts.category_chart.svg
+        .selectAll("circle.bubble")
+        .data(nodes);
+      
+      $scope.charts.category_chart.texts = $scope.charts.category_chart.svg
+        .selectAll("text.bubble-text")
+        .data(nodes);
+
+      //Enter  
+      $scope.charts.category_chart.bubbles
+        .enter()
+        .append("circle")
+        .attr("class", "bubble")
+        .style("fill", function(d) { return color(d.value); });
+
+      $scope.charts.category_chart.texts
+        .enter()
+        .append("text")
+        .attr("text-anchor", "middle")
+        .attr("class", "bubble-text")
+        .text(function(d){ return d.Fruit; })
+        .style({
+            "fill":"white", 
+            "font-family":"Helvetica Neue, Helvetica, Arial, san-serif",
+            "font-size": "12px"
+        });
+
+      //Update
+      $scope.charts.category_chart.svg 
+          .attr("width", diameter)
+          .attr("height", diameter);
+
+      $scope.charts.category_chart.bubbles
           .attr("r", function(d){ return d.r; })
           .attr("cx", function(d){ return d.x; })
-          .attr("cy", function(d){ return d.y; })
-          .style("fill", function(d) { return color(d.value); });
+          .attr("cy", function(d){ return d.y; });
 
-      //format the text for each bubble
-      bubbles.append("text")
+      $scope.charts.category_chart.texts
           .attr("x", function(d){ return d.x; })
-          .attr("y", function(d){ return d.y + 5; })
-          .attr("text-anchor", "middle")
-          .text(function(d){ return d.Fruit; })
-          .style({
-              "fill":"white", 
-              "font-family":"Helvetica Neue, Helvetica, Arial, san-serif",
-              "font-size": "12px"
-          });
+          .attr("y", function(d){ return d.y + 5; });
+
     }
 
 
+    //Render & interact menu chart
+    $scope.groupMenu = function(type){
+      $scope.selectedGroup = type;
+      $scope.charts.menu_chart.api.group($scope.selectedGroup);
+    }
     function renderMenuChart(){
 
       var itemSize = 150,
           gap = 5,
           w = $(window).width(),
           h = 500,
-          delay = 500;
+          delay = 500,
+          wLabel = w/3;
 
       var data = angular.copy($scope.data);
 
@@ -198,6 +225,12 @@ angular.module('compromisosSiteApp')
 
         updateSvgSize();
 
+        $scope.charts.menu_chart.labels_group
+          .select('.label-frame')
+          .attr('opacity',0)
+          .attr('width',0)
+          .attr('height',h);
+
         $scope.charts.menu_chart.items_group
           .selectAll("g.compromiso-item")
           .transition()
@@ -211,7 +244,43 @@ angular.module('compromisosSiteApp')
               xCount = 0;
               yCount++;
             }
-            return "translate(" + x +"," + y + ")"; 
+            return "translate(" + x +"," + y + ")";
+          });
+      }
+
+      function groupByDate(){
+        w = $(window).width();
+        wLabel = w/3;
+
+        var xLimit = Math.floor((w-wLabel)/itemSize),
+            xCount = 0,
+            yCount = 0,
+            xOffset = ((w-wLabel)-(xLimit*itemSize))/2;
+
+        h = Math.ceil(($scope.data.length/xLimit))*itemSize;
+
+        updateSvgSize();
+
+        $scope.charts.menu_chart.labels_group
+          .select('.label-frame')
+          .attr('opacity',1)
+          .attr('width',wLabel)
+          .attr('height',h);
+
+        $scope.charts.menu_chart.items_group
+          .selectAll("g.compromiso-item")
+          .transition()
+          .duration(delay)
+          .attr("transform", function(d,i) {
+            var x = xCount*itemSize+xOffset+wLabel;
+            var y = yCount*itemSize;
+            if(xCount<xLimit-1){
+              xCount++;
+            } else {
+              xCount = 0;
+              yCount++;
+            }
+            return "translate(" + x +"," + y + ")";
           });
       }
 
@@ -224,6 +293,15 @@ angular.module('compromisosSiteApp')
 
         d3plus.textwrap()
           .config(defaults);
+
+        $scope.charts.menu_chart.labels_group
+          .append('rect')
+          .classed('label-frame',true)
+          .attr('x',0)
+          .attr('y',0)
+          .attr('height',h)
+          .attr('width',0)
+          .attr('fill','red');
 
         $scope.charts.menu_chart.items_group
           .selectAll("g.compromiso-item")
@@ -250,10 +328,10 @@ angular.module('compromisosSiteApp')
                 .append('rect')
                 .classed('compromiso-label-shape',true)
                 .classed('shape',true)
-                .attr('x',0)
-                .attr('y',itemSize/3*2)
-                .attr('height',itemSize/3)
-                .attr('width',itemSize)
+                .attr('x',gap)
+                .attr('y',itemSize/2)
+                .attr('height',(itemSize/2)-gap)
+                .attr('width',itemSize-gap*2)
                 .attr('fill','none');
 
               group
@@ -282,8 +360,6 @@ angular.module('compromisosSiteApp')
                 .attr('y',gap)
                 .attr('height',itemSize-gap*2)
                 .attr('width',itemSize-gap*2)
-                .attr('stroke','#ccc')
-                .attr('stroke-width','1')
                 .attr('fill','transparent')
                 .on("click", function(dd){
                   showDetail(d);
@@ -312,21 +388,46 @@ angular.module('compromisosSiteApp')
 
         };
 
-        createCompromisos();
+        function init(){
+          //start
+          createCompromisos();
 
-        setTimeout(function(){
-          positionHome();
-        },1000);
+          $scope.charts.menu_chart.api = {
+            group: function(group){
+              switch(group){
+                case 'home':
+                  positionHome();
+                break;
+                case 'date':
+                  groupByDate();
+                break;
+              }
+            }
+          };
 
-        var id;
-        $(window).resize(function() {
-            clearTimeout(id);
-            id = setTimeout(function(){ 
-              positionHome();
-            }, 500);
-        });
+          setTimeout(function(){
+            $scope.charts.menu_chart.api.group($scope.selectedGroup);
+          },1000);
+          
+        }
+
+        //render menu chart
+        init();
 
     }
+
+
+    //General responsive callback
+    var id;
+    $(window).resize(function() {
+        clearTimeout(id);
+        id = setTimeout(function(){ 
+          if($scope.charts.menu_chart){
+            $scope.charts.menu_chart.api.group($scope.selectedGroup);
+          }
+          renderCategoryChart();
+        }, 500);
+    });
 
 
   });
