@@ -44,7 +44,7 @@ angular
         //Datos Prod CSV
         //'home': 'http://palamago.com.ar/api/?source_format=csv&source=https://goo.gl/NZ8vyv'
         // Datos Ejemplo CSV
-        'home': 'http://palamago.com.ar/api/?source_format=csv&source=https://goo.gl/2Mgc1v'
+        'home': 'http://palamago.com.ar/api/?source_format=csv&source=https://goo.gl/Cid4QS'
       };
       this.getUrl = function(page) {
           return this.urls[page];

@@ -22,8 +22,51 @@ angular.module('compromisosSiteApp')
     .success(function(data){
       $scope.data = data;
       $scope.loading = false;
+      $scope.groupData();
       $scope.renderCharts();
     });
+
+    $scope.groupData= function(){
+      $scope.categoriesGroup = d3.nest()
+        .key(function(d) { return d.categoria; })
+        .entries($scope.data);
+
+      $scope.finishedYearsGroup = d3.nest()
+        .key(function(d) { return d.cumplimiento1; })
+        .entries($scope.data);
+
+      $scope.finishedPercentageGroup = d3.nest()
+        .key(function(d) { return getPercentageGroup(d);})
+        .entries($scope.data);    
+ 
+      console.log($scope.categoriesGroup);
+      console.log($scope.finishedYearsGroup);
+      console.log($scope.finishedPercentageGroup);
+
+    };
+
+    
+    var groups=[];
+    groups.push({from:0,to:25});
+    groups.push({from:25,to:50});
+    groups.push({from:50,to:75});
+    groups.push({from:75,to:100});
+
+    function getPercentageGroup(d){
+      var group = 0;
+      for (var i = 0; i < groups.length; i++) {
+        var g = groups[i];
+        var p = parseInt(d.porcentaje_completado);
+        if (p >= g.from &&  p < g.to){
+          group= i;
+          break;
+        }
+      }
+      d.percentageGroup = group;
+      return group;
+      
+      
+    }
 
     $scope.renderCharts = function(){
 
@@ -310,7 +353,7 @@ angular.module('compromisosSiteApp')
             t.transition().attr('opacity',1);
           }); 
 
-        };
+        }
 
         createCompromisos();
 
