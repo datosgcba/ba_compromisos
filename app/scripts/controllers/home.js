@@ -298,7 +298,8 @@ angular.module('compromisosSiteApp')
             var y = yCount*itemSize+startingY;
             if(xCount<xLimit-1){
               xCount++;
-            } else {
+
+            } else if($items[0].length!=i+1) {
               xCount = 0;
               yCount++;
             }
@@ -310,6 +311,7 @@ angular.module('compromisosSiteApp')
 
       function groupByState(){
 
+        w = $(window).width();
         var rows = 0;
         wLabel = w/3;
         var labels = [];
@@ -328,6 +330,7 @@ angular.module('compromisosSiteApp')
 
       function groupByCategory(){
 
+        w = $(window).width();
         var rows = 0;
         wLabel = w/3;
         var labels = [];
@@ -346,6 +349,7 @@ angular.module('compromisosSiteApp')
 
       function groupByDate(){
 
+        w = $(window).width();
         var rows = 0;
         wLabel = w/3;
         var labels = [];
@@ -372,7 +376,6 @@ angular.module('compromisosSiteApp')
           .append('text')
           .classed('label-group',true)
           .attr('text-anchor','end')
-          .attr('x',wLabel)
           .attr('opacity',0);
         
         texts
@@ -380,7 +383,10 @@ angular.module('compromisosSiteApp')
           .text(function(d){
             return d.title;
           })
+          .transition()
+          .delay(delay)
           .attr('opacity',1)
+          .attr('x',wLabel)
           .attr('y',function(d){
             return d.rows*itemSize+itemSize/2;
           });
@@ -389,7 +395,6 @@ angular.module('compromisosSiteApp')
           .attr('opacity',0)
           .remove();
 
-        console.log(data);
       }
 
       function createCompromisos( ){
