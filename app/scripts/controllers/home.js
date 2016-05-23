@@ -96,26 +96,31 @@ angular.module('compromisosSiteApp')
 
     
     function renderDateChart(){
-
+      //Get Years
+      //Group by years by category count, if there is nothing, then 0.
 
       $scope.charts.date_chart = c3.generate({
           bindto: '#date_chart',
           data: {
+              x : 'x',
               columns: [
-                  ['2016', 10, 20, 30],
-                  ['2017', 20, 30, 50, 34],
-                  ['2018', 30, 40, 90, 30],
-                  ['2018', 40, 50, 30, 30]
+                      ['x', '2016','2017','2018','2019'],
+                      ['c1', 90, 0, 140, 200],
+                      ['c2', 1, 22, 33, 44, 55],
+                      ['c3', 1, 22, 33, 44, 55],
+                      ['c4', 1, 22, 33, 44, 55]
               ],
-              type: 'bar', 
-              groups: [
-                   ['2016', '2017', '2018']
-              ]
+              type: 'bar',
+               groups: [
+                  ['c1', 'c2', 'c3', 'c4']
+              ],
           },
           axis: {
-            x: {show:false},
-            y: {show:false}
-          },
+                x: {
+                    type: 'category'
+                },
+                y: {show:false},
+            },
           grid: {
               y: {
                   lines: [{value:0}]
@@ -125,25 +130,38 @@ angular.module('compromisosSiteApp')
     }
 
     function renderStateChart(){
+      //Get States
+      //Group by Status by category count, 
+      //if there is nothing, then 0.
+
       $scope.charts.state_chart = c3.generate({
           bindto: '#state_chart',
           data: {
+              x : 'x',
               columns: [
-                  ['0', -30, 200, 200, 400],
-                  ['25', 130, 100, -100, 200],
-                  ['50', -230, 200, 200, -300],
-                  ['75', 130, 33, 22, 300],
-                  ['100', -30, 2, 4, -100],
+                      ['x', '0','30','50','75','100'],
+                      ['c1', 90, 100, 140, 200,22],
+                      ['c2', 1, 22, 33, 44, 55,11],
+                      ['c3', 1, 22, 33, 44, 55,40],
+                      ['c4', 1, 22, 33, 44, 55,100]
               ],
               type: 'bar',
-              groups: [
-                  ['0', '25', '50','75','100']
-              ]
-          }, 
-          axis: {
-            x: {show:false},
-            y: {show:false}
+               groups: [
+                  ['c1', 'c2', 'c3', 'c4']
+              ],
           },
+          axis: {
+                x: {
+                    type: 'category'
+                },
+                y: {
+                    max: 400,
+                    min: -400,
+                    show:false,
+                    // Range includes padding, set 0 if no padding needed
+                    padding: {top:0, bottom:0}
+                }
+            },
           grid: {
               y: {
                   lines: [{value:0}]
