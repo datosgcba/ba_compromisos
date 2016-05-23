@@ -96,17 +96,20 @@ angular.module('compromisosSiteApp')
 
     
     function renderDateChart(){
+
+
       $scope.charts.date_chart = c3.generate({
           bindto: '#date_chart',
           data: {
               columns: [
-                  ['data1', -30, 200, 200, 400, -150, 250],
-                  ['data2', 130, 100, -100, 200, -150, 50],
-                  ['data3', -230, 200, 200, -300, 250, 250]
+                  ['2016', 10, 20, 30],
+                  ['2017', 20, 30, 50, 34],
+                  ['2018', 30, 40, 90, 30],
+                  ['2018', 40, 50, 30, 30]
               ],
               type: 'bar', 
               groups: [
-                  ['data1', 'data2']
+                   ['2016', '2017', '2018']
               ]
           },
           axis: {
@@ -126,13 +129,15 @@ angular.module('compromisosSiteApp')
           bindto: '#state_chart',
           data: {
               columns: [
-                  ['data1', -30, 200, 200, 400, -150, 250],
-                  ['data2', 130, 100, -100, 200, -150, 50],
-                  ['data3', -230, 200, 200, -300, 250, 250]
+                  ['0', -30, 200, 200, 400],
+                  ['25', 130, 100, -100, 200],
+                  ['50', -230, 200, 200, -300],
+                  ['75', 130, 33, 22, 300],
+                  ['100', -30, 2, 4, -100],
               ],
               type: 'bar',
               groups: [
-                  ['data1', 'data2']
+                  ['0', '25', '50','75','100']
               ]
           }, 
           axis: {
@@ -146,80 +151,71 @@ angular.module('compromisosSiteApp')
           }
       });
     }
-
     function renderCategoryChart(){
-      var diameter = $('#category_chart').parent().width(), //max size of the bubbles
-        color    = d3.scale.category20b(); //color category
+       var diameter = $('#category_chart').parent().width(), //max size of the bubbles
+       color    = d3.scale.category20b(), //color category
 
-      var bubbleLayout = d3.layout.pack()
+        format = d3.format(",d");
+
+        var pack = d3.layout.pack()
           .sort(null)
-          .size([diameter, diameter])
-          .padding(1.5);
+          .padding(1.5)
+          .size([diameter/1.25, diameter])
+          .value(function(d) { return parseInt(d.porcentaje_completado); });
 
-      var data = [
-        {Fruit:'Banana',Amount:15},
-        {Fruit:'Apple',Amount:30},
-        {Fruit:'Pear',Amount:5}
-      ];
-      //convert numerical values from strings to numbers
-      data = data.map(function(d){ 
-        d.value = +d.Amount; return d; 
-      });
-
-      //bubbles needs very specific format, convert data to this.
-      var nodes = bubbleLayout.nodes({children:data}).filter(function(d) { return !d.children; });
-
-      //setup the chart
+        //setup the chart
       if(!$scope.charts.category_chart){
         $scope.charts.category_chart = {};
-        $scope.charts.category_chart.svg = d3.select("#category_chart")
+        $scope.charts.category_chart.svg = 
+        d3.select("#category_chart")
           .append("svg")
           .attr("class", "bubble-container");
       }
+          var svg= $scope.charts.category_chart.svg;
+          var data = 
+              { 
+                name:"categories",
+                children:[],
+              };
 
-      //Select
-      $scope.charts.category_chart.bubbles = $scope.charts.category_chart.svg
-        .selectAll("circle.bubble")
-        .data(nodes);
-      
-      $scope.charts.category_chart.texts = $scope.charts.category_chart.svg
-        .selectAll("text.bubble-text")
-        .data(nodes);
+          for (var i = 0; i <  $scope.categoriesGroup.length; i++) {
+             var c = $scope.categoriesGroup[i];
+             data.children.push(
+             {
+              name: c.key,
+              children : c.values, 
+             });
+          };
+    
+    
+          var node = svg.datum(data).selectAll(".node")
+              .data(pack.nodes)
+            .enter().append("g")
+              .attr("class", function(d) { return d.children ? "node" : "leaf node"; })
+              .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
-      //Enter  
-      $scope.charts.category_chart.bubbles
-        .enter()
-        .append("circle")
-        .attr("class", "bubble")
-        .style("fill", function(d) { return color(d.value); });
+          node.append("title")
+              .text(function(d) { return d.name + (d.children ? "" : ": " + parseInt(d.porcentaje_completado)); });
 
-      $scope.charts.category_chart.texts
-        .enter()
-        .append("text")
-        .attr("text-anchor", "middle")
-        .attr("class", "bubble-text")
-        .text(function(d){ return d.Fruit; })
-        .style({
-            "fill":"white", 
-            "font-family":"Helvetica Neue, Helvetica, Arial, san-serif",
-            "font-size": "12px"
-        });
+          node.append("circle")
+              .style("fill", function(d) { return color(d.value); })
+              .attr("r", function(d) { return d.r; });
 
-      //Update
-      $scope.charts.category_chart.svg 
-          .attr("width", diameter)
-          .attr("height", diameter);
+          node.filter(function(d) { return !d.children; }).append("text")
+              .attr("dy", ".3em")
+              .style({
+                  "text-anchor": "middle",
+                  "fill":"white", 
+                  "font-family":"Helvetica Neue, Helvetica, Arial, san-serif",
+                  "font-size": "12px"})
+              .text(function(d) { return d.titulo.substring(0, d.r / 3); });
+       
 
-      $scope.charts.category_chart.bubbles
-          .attr("r", function(d){ return d.r; })
-          .attr("cx", function(d){ return d.x; })
-          .attr("cy", function(d){ return d.y; });
+        d3.select(self.frameElement).style("height", diameter + "px");
 
-      $scope.charts.category_chart.texts
-          .attr("x", function(d){ return d.x; })
-          .attr("y", function(d){ return d.y + 5; });
 
     }
+    
 
 
     //Render & interact menu chart
@@ -504,6 +500,22 @@ angular.module('compromisosSiteApp')
           createCompromisos();
 
           $scope.charts.menu_chart.api = {
+            // highlight: function(group,highlight){
+            //   switch(group){
+            //     // case 'home':
+            //     //   positionHome();
+            //     // break;
+            //     // case 'date':
+            //     //   showDate();
+            //     // break;
+            //     case 'category':
+            //       showCategory();
+            //     break;
+            //     // case 'state':
+            //     //   showState();
+            //     // break;
+            //   }
+            // },
             group: function(group){
               switch(group){
                 case 'home':

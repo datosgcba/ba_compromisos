@@ -39,6 +39,34 @@ html {
 	stroke:#ccc;
 }
 
-.label-group{
+
+
+.bubble-container {
+  fill: #ff7f0e;
+  fill-opacity: 1;
+  width: 100%;
+  max-height: 320px;
+  height: 320px;
+}
+
+.bubble-container text {
+  font: 10px sans-serif;
+}
+
+.bubble-container .label-group{
 	fill:#000;
+}
+
+.bubble-container circle {
+  fill: rgb(31, 119, 180);
+  fill-opacity: .25;
+  stroke: rgb(31, 119, 180);
+  stroke-width: 1px;
+}
+
+
+
+.bubble-container .leaf circle {
+  fill: #ff7f0e;
+  fill-opacity: 1;
 }
