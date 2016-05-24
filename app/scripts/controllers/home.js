@@ -614,6 +614,10 @@ angular.module('compromisosSiteApp')
                 .on("mouseout",function(dd){
                   unhoverTitle();
                   unhoverCompromisoItem();
+                  var $sel = $('.c-option-selected');
+                  if($sel.size()){
+                    selectCompromisoItem($sel.data('slug'));
+                  }
                 })
                 .on("click", function(dd){
                   showDetail(d);
@@ -647,22 +651,6 @@ angular.module('compromisosSiteApp')
           createCompromisos();
 
           $scope.charts.menu_chart.api = {
-            // highlight: function(group,highlight){
-            //   switch(group){
-            //     // case 'home':
-            //     //   positionHome();
-            //     // break;
-            //     // case 'date':
-            //     //   showDate();
-            //     // break;
-            //     case 'category':
-            //       showCategory();
-            //     break;
-            //     // case 'state':
-            //     //   showState();
-            //     // break;
-            //   }
-            // },
             group: function(group){
               switch(group){
                 case 'home':
@@ -748,10 +736,22 @@ angular.module('compromisosSiteApp')
         selectCompromisoItem(slug);
       })
       .mouseout(function(){
+        var $sel = $('.c-option-selected');
+        if($sel.size()){
+          selectCompromisoItem($sel.data('slug'));
+        }else{
+          unhoverCompromisoItem();
+        }
         unhoverTitle();
       })
       .click(function(){
-        selectTitle($(this).data('slug'));
+        if($(this).hasClass('c-option-selected')){
+          deselectTitle();
+        } else {
+          var slug = $(this).data('slug');
+          selectTitle(slug);
+          selectCompromisoItem(slug);
+        }
       });
     }
 
