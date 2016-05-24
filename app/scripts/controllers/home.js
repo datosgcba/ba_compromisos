@@ -97,7 +97,10 @@ angular.module('compromisosSiteApp')
     
     function renderDateChart(){
       //Get Years
-      //Group by years by category count, if there is nothing, then 0.
+      
+      //Group by years by category count, 
+
+      //if there is nothing, then 0.
 
       $scope.charts.date_chart = c3.generate({
           bindto: '#date_chart',
@@ -131,7 +134,9 @@ angular.module('compromisosSiteApp')
 
     function renderStateChart(){
       //Get States
+      
       //Group by Status by category count, 
+      
       //if there is nothing, then 0.
 
       $scope.charts.state_chart = c3.generate({

@@ -26,19 +26,19 @@
 
 <div class="row">
 	<div class="col-sm-4">
-		<div id="date_chart">
+		<div id="date_chart" ng-click="groupMenu('date')">
 			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
 		</div>
   		<p class="text-center">Ordenar por fecha de finalización</p>
   	</div>
 	<div class="col-sm-4">
-		<div id="state_chart">
+		<div id="state_chart" ng-click="groupMenu('state')">
 			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
 		</div>
   		<p class="text-center">Ordenar por estado del compromiso</p>
   	</div>
 	<div class="col-sm-4">
-		<div id="category_chart">
+		<div id="category_chart" ng-click="groupMenu('category')">
 			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
 		</div>
   		<p class="text-center">Ordenar por estado del compromiso</p>
@@ -48,11 +48,6 @@
 <hr/>
 <p class="text-center" ng-show="loading">Cargando...</p>
 <div ng-cloak ng-hide="loading">
-	
-	<a href="javascript:;" ng-click="groupMenu('home')">Home</a>
-	<a href="javascript:;" ng-click="groupMenu('date')">Fecha</a>
-	<a href="javascript:;" ng-click="groupMenu('state')">Estado</a>
-	<a href="javascript:;" ng-click="groupMenu('category')">Categoría</a>
 
 	<div class="row">
 	  	<div id="menu_chart"></div>
