@@ -13,6 +13,8 @@ html {
 	text-transform: uppercase;
 }
 
+
+//compromiso
 .compromiso-label{
 	cursor: pointer;
 }
@@ -36,11 +38,41 @@ html {
 	cursor: pointer;
 }
 
+.compromiso-icon svg{
+  width: 50px;
+  height: 50px;
+}
+
 .compromiso-action:hover{
 	stroke:#ccc;
 }
 
+.categoria-smart .compromiso-label,
+.categoria-smart .compromiso-icon{
+  fill: #7c4194;
+}
 
+.categoria-convivencia .compromiso-label,
+.categoria-convivencia .compromiso-icon{
+  fill: #3abaaf;
+}
+
+.categoria-movilidad .compromiso-label,
+.categoria-movilidad .compromiso-icon{
+  fill: #f58b45;
+}
+
+.categoria-social .compromiso-label,
+.categoria-social .compromiso-icon{
+  fill: #fccf2b;
+}
+
+.categoria-unselected .compromiso-label,
+.categoria-unselected .compromiso-icon{
+  fill: #444;
+}
+
+//bubble
 
 .bubble-container {
   fill: #ff7f0e;
@@ -65,9 +97,68 @@ html {
   stroke-width: 1px;
 }
 
-
-
 .bubble-container .leaf circle {
   fill: #ff7f0e;
   fill-opacity: 1;
 }
+
+/*Menú de arriba*/
+.c-option{
+  border-top:5px solid;
+  min-height: 100px;
+  cursor:pointer;
+}
+
+.c-option.c-option-short h3{
+  padding-top: 15px;
+}
+
+.c-option h3{
+  margin-bottom: 20px;
+}
+
+.c-option-hover{
+  border-top:15px solid;
+}
+
+.c-option-hover h3{
+  margin-top: 10px;
+}
+
+.c-option-selected.c-color-smart{
+  background-color: #7c4194;
+}
+
+.c-option-selected.c-color-convivencia{
+  background-color: #3abaaf;
+}
+
+.c-option-selected.c-color-movilidad{
+  background-color: #f58b45;
+}
+
+.c-option-selected.c-color-social{
+  background-color: #fccf2b;
+}
+
+.c-option-selected h3{
+  color: white;
+}
+
+.c-color-smart{
+  border-color: #7c4194;
+}
+.c-color-convivencia{
+  border-color: #3abaaf;
+}
+.c-color-movilidad{
+  border-color: #f58b45;
+}
+.c-color-social{
+  border-color: #fccf2b;
+}
+.c-color-disabled{
+
+}
+
+
