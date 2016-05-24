@@ -106,7 +106,10 @@ angular.module('compromisosSiteApp')
       renderStateChart();
       renderCategoryChart();
       renderMenuChart();
-      pymChild.sendHeight();
+      setTimeout(function(){
+        pymChild.sendHeight();
+      },200);
+      
     };
 
 
@@ -121,25 +124,47 @@ angular.module('compromisosSiteApp')
     
     function renderDateChart(){
       //Get Years
-      
+      var mainColumns= ['x'].concat($scope.availableYears);
       //Group by years by category count, 
+      angular.forEach($scope.categoriesGroup,function(c){
+        c.years = d3.nest()
+          .key(function(d) { return d.cumplimiento1; })
+          .rollup(function(leaves) { return leaves.length; })
+          .entries(c.values);
+      });
 
-      //if there is nothing, then 0.
+      var seriesColumns = [];
+      seriesColumns.push(mainColumns);
+      
+        angular.forEach($scope.categoriesGroup,function(c){
+          var series = [];
+          series.push(c.key)
+          angular.forEach($scope.availableYears,function(y){
+            //sorry no break :-( for each;
+            var count = 0;
+            for (var i = 0; i < c.years.length; i++) {
+              var yearGroup = c.years[i];
+              if (y === yearGroup.key){
+                count = yearGroup.values;
+                break;
+              }
+            }
+            series.push(count);
+          });
+          seriesColumns.push(series);
+        });
+        
+      
+      
 
       $scope.charts.date_chart = c3.generate({
           bindto: '#date_chart',
           data: {
               x : 'x',
-              columns: [
-                      ['x', '2016','2017','2018','2019'],
-                      ['c1', 90, 0, 140, 200],
-                      ['c2', 1, 22, 33, 44, 55],
-                      ['c3', 1, 22, 33, 44, 55],
-                      ['c4', 1, 22, 33, 44, 55]
-              ],
+              columns: seriesColumns,
               type: 'bar',
                groups: [
-                  ['c1', 'c2', 'c3', 'c4']
+                  $scope.availableCategories
               ],
           },
           axis: {
@@ -602,6 +627,7 @@ angular.module('compromisosSiteApp')
             $scope.charts.menu_chart.api.group($scope.selectedGroup);
           }
           renderCategoryChart();
+          pymChild.sendHeight();
         }, 500);
     });
 

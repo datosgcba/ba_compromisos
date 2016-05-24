@@ -9,5 +9,6 @@
  */
 angular.module('compromisosSiteApp')
   .controller('MainCtrl', function () {
-
+  	  var pymChild = new pym.Child();
+  	  pymChild.sendHeight();
   });
