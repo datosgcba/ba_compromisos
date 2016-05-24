@@ -173,6 +173,9 @@ angular.module('compromisosSiteApp')
                   $scope.availableCategories
               ],
           },
+          legend: {
+              show: false
+          },
           axis: {
                 x: {
                     type: 'category'
@@ -230,6 +233,9 @@ angular.module('compromisosSiteApp')
                  $scope.availableCategories
               ],
           },
+          legend: {
+              show: false
+          },
           axis: {
                 x: {
                     type: 'category'
@@ -257,9 +263,10 @@ angular.module('compromisosSiteApp')
 
         var pack = d3.layout.pack()
           .sort(null)
-          .padding(1.5)
-          .size([diameter/1.25, diameter])
-          .value(function(d) { return parseInt(d.porcentaje_completado); });
+          .size([diameter, diameter])
+          .value(function(d) { 
+            return parseInt(d.porcentaje_completado); 
+          });
 
         //setup the chart
       if(!$scope.charts.category_chart){
@@ -267,7 +274,9 @@ angular.module('compromisosSiteApp')
         $scope.charts.category_chart.svg = 
         d3.select("#category_chart")
           .append("svg")
-          .attr("class", "bubble-container");
+          .attr("class", "bubble-container")
+          .attr("width", diameter)
+          .attr("height", diameter);
       }
           var svg= $scope.charts.category_chart.svg;
           var data = 
@@ -289,8 +298,10 @@ angular.module('compromisosSiteApp')
           var node = svg.datum(data).selectAll(".node")
               .data(pack.nodes)
             .enter().append("g")
-              .attr("class", function(d) { return d.children ? "node" : "leaf node"; })
-              .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+              .attr("class", function(d) 
+                { return d.children ? "node" : "leaf node"; })
+              .attr("transform", function(d) 
+                { return "translate(" + d.x + "," + d.y + ")"; });
 
           node.append("title")
               .text(function(d) { return d.name + (d.children ? "" : ": " + parseInt(d.porcentaje_completado)); });

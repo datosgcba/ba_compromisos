@@ -72,14 +72,23 @@ html {
   fill: #444;
 }
 
+//date chart
+#date_chart{
+    cursor: pointer;
+}
+//state chart
+#state_chart{
+  cursor: pointer;
+}
 //bubble
 
-.bubble-container {
+.bubble-container, #category_chart {
   fill: #ff7f0e;
   fill-opacity: 1;
   width: 100%;
   max-height: 320px;
   height: 320px;
+  cursor: pointer;
 }
 
 .bubble-container text {
@@ -160,5 +169,6 @@ html {
 .c-color-disabled{
 
 }
+
 
 
