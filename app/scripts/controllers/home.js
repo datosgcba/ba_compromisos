@@ -33,9 +33,32 @@ angular.module('compromisosSiteApp')
         .key(function(d) { return d.categoria; })
         .entries($scope.data);
 
+      $scope.availableCategories = [];
+        angular.forEach($scope.categoriesGroup, function(g){
+           $scope.availableCategories.push(g.key);
+        });
+      angular.forEach($scope.categoriesGroup, function(g){
+    
+          g.finishedYearsGroup = d3.nest()
+          .key(function(d) { return d.cumplimiento1; })
+          .rollup(function(leaves) { return leaves.length; })
+          .entries(g.values);
+      });
+
       $scope.finishedYearsGroup = d3.nest()
         .key(function(d) { return d.cumplimiento1; })
         .entries($scope.data);
+
+      angular.forEach($scope.finishedYearsGroup, function(g){
+         g.categoryGroup = d3.nest()
+          .key(function(d) { return d.categoria; })
+          .rollup(function(leaves) { return leaves.length; })
+          .entries(g.values);
+      });
+      $scope.availableYears = [];
+      angular.forEach($scope.finishedYearsGroup, function(g){
+         $scope.availableYears.push(g.key);
+      });
 
       $scope.finishedPercentageGroup = d3.nest()
         .key(function(d) { return getPercentageGroup(d);})
@@ -83,12 +106,13 @@ angular.module('compromisosSiteApp')
       renderStateChart();
       renderCategoryChart();
       renderMenuChart();
-
+      pymChild.sendHeight();
     };
 
 
     var showDetail= function(c){
-      c.porcentaje =  Math.round(Math.floor(Math.random() * 99) + 2);
+      c.porcentaje =  
+      Math.round(Math.floor(Math.random() * 99) + 2);
       $scope.$apply(function(){
         $scope.currentCompromise = c;  
       });
@@ -144,11 +168,11 @@ angular.module('compromisosSiteApp')
           data: {
               x : 'x',
               columns: [
-                      ['x', '0','30','50','75','100'],
-                      ['c1', 90, 100, 140, 200,22],
-                      ['c2', 1, 22, 33, 44, 55,11],
-                      ['c3', 1, 22, 33, 44, 55,40],
-                      ['c4', 1, 22, 33, 44, 55,100]
+                      ['x', '0%','30%','50%','75%','100%'],
+                      ['c1', 1, 1, 2, 4, 2],
+                      ['c2', 1, 1, 2, 5, 3],
+                      ['c3', 1, 1, 0, 2, 2],
+                      ['c4', 1, 1, 3, 2, 1]
               ],
               type: 'bar',
                groups: [
@@ -160,8 +184,8 @@ angular.module('compromisosSiteApp')
                     type: 'category'
                 },
                 y: {
-                    max: 400,
-                    min: -400,
+                    max: 10,
+                    
                     show:false,
                     // Range includes padding, set 0 if no padding needed
                     padding: {top:0, bottom:0}
