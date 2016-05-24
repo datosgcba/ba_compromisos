@@ -16,13 +16,18 @@ angular.module('compromisosSiteApp')
     $scope.loading = true;
     $scope.charts = {};
 
+    $scope.iconsSvg = {};
+
     $scope.selectedGroup = 'home';
 
     var url = UrlService.getUrl('home') + '&callback=JSON_CALLBACK';
 
     $http.jsonp(url)
     .success(function(data){
-      $scope.data = data;
+      $scope.data = data.map(function(c){
+        c.slug = getCategorySlug(c.categoria);
+        return c;
+      });
       $scope.loading = false;
       $scope.groupData();
       $scope.renderCharts();
@@ -94,7 +99,7 @@ angular.module('compromisosSiteApp')
       var list = {
         'Protección e integración social': 'social',
         'Convivencia': 'convivencia',
-        'Movilidad': 'movilidad',
+        'Hábitat y movilidad': 'movilidad',
         'Ciudad inteligente y sustentable': 'smart'
       }
       return list[cat];
@@ -102,6 +107,7 @@ angular.module('compromisosSiteApp')
 
     $scope.renderCharts = function(){
 
+      bindEvents();
       renderDateChart();
       renderStateChart();
       renderCategoryChart();
@@ -483,11 +489,15 @@ angular.module('compromisosSiteApp')
           .attr("class", function(d) {
             var classes = [];
             classes.push('cumplimiento-'+d.cumplimiento1);
-            classes.push('categoria-'+getCategorySlug(d.categoria));
+            classes.push('categoria-'+d.slug);
+            classes.push('categoria-unselected');
             classes.push('avance-'+getPercentageGroup(d));
             return classes.join(' ');
           })
           .classed('compromiso-item',true)
+          .attr('id',function(d){
+            return 'c'+d.numero;
+          })
           .each(function(d) {
 
               var group = d3.select(this);
@@ -517,19 +527,45 @@ angular.module('compromisosSiteApp')
                 .append('text')
                 .classed('compromiso-label',true)
                 .classed('wrap',true)
-                .attr('id','c'+d.numero)
+                .attr('id','c'+d.numero+'-text')
                 .attr('opacity',0)
                 .text(function(){
                   return d.titulo;
                 });
 
+              //load image
               group
-                .append("svg:image")
-                .attr('x',itemSize/2-25)
-                .attr('y',itemSize/3-25)
-                .attr('width', 50)
-                .attr('height', 50)
-                .attr("xlink:href","images/building.svg");
+                .append("g")
+                .classed('compromiso-icon',true)
+                .attr('id',function(d){
+                  return 'c'+d.numero+'-icon'
+                })
+                .attr("transform", function(d,i) {
+                    var x = itemSize/2-25;
+                    var y = itemSize/3-25;
+                    return "translate(" + x +"," + y + ")"; 
+                })
+                .each(function(d){
+    
+                  var icon = 'images/building.svg';
+                  var iconG = this;
+/*                  if($scope.iconsSvg[icon]){
+                    console.log('cache');
+                    iconG.append($scope.iconsSvg[icon]);
+                  }else{*/
+                    d3.xml(icon, "image/svg+xml", function(error, xml) {
+                      var importedNode = document.importNode(xml.documentElement, true);
+                      importedNode = $(importedNode)
+                        .attr('width', 50)
+                        .attr('height', 50)
+                        .get(0);
+                      $scope.iconsSvg[icon] = importedNode;
+                      iconG.appendChild($scope.iconsSvg[icon].cloneNode(true));
+                    });
+                  /*}*/
+
+                });
+
 
               //rect frame
               group
@@ -540,6 +576,14 @@ angular.module('compromisosSiteApp')
                 .attr('height',itemSize-gap*2)
                 .attr('width',itemSize-gap*2)
                 .attr('fill','transparent')
+                .on("mouseover",function(dd){
+                  hoverTitle(dd.slug);
+                  hoverCompromisoItem(dd.numero);
+                })
+                .on("mouseout",function(dd){
+                  unhoverTitle();
+                  unhoverCompromisoItem();
+                })
                 .on("click", function(dd){
                   showDetail(d);
                 });
@@ -553,7 +597,7 @@ angular.module('compromisosSiteApp')
               return "translate(" + x +"," + y + ")"; 
           })
           .each("end", function(d){
-            var t = d3.select('text#c'+d.numero);
+            var t = d3.select('text#c'+d.numero+'-text');
             d3plus.textwrap()
               .container(t)
               .shape('square')
@@ -563,7 +607,7 @@ angular.module('compromisosSiteApp')
               .draw();
 
             t.transition().attr('opacity',1);
-          }); 
+          });
 
         }
 
@@ -630,6 +674,55 @@ angular.module('compromisosSiteApp')
           pymChild.sendHeight();
         }, 500);
     });
+
+    //events
+    function hoverCompromisoItem(id){
+      $('.compromiso-item').addClass('categoria-unselected');
+      $('.compromiso-item#c'+id).removeClass('categoria-unselected');
+    }
+
+    function unhoverCompromisoItem(){
+      $('.compromiso-item').addClass('categoria-unselected');
+    }
+
+    function selectCompromisoItem(slug){
+      $('.compromiso-item').addClass('categoria-unselected');
+      $('.compromiso-item.categoria-'+slug).removeClass('categoria-unselected');
+    };
+
+    function hoverTitle(slug){
+      $('.c-option').removeClass('c-option-hover');
+      $('.c-option[data-slug="'+slug+'"]').addClass('c-option-hover');
+    };
+
+    function unhoverTitle(){
+      $('.c-option').removeClass('c-option-hover');
+    };
+
+    function selectTitle(slug){
+      $('.c-option').removeClass('c-option-selected');
+      $('.c-option[data-slug="'+slug+'"]').addClass('c-option-selected');
+    };
+
+    function deselectTitle(){
+      $('.c-option').removeClass('c-option-selected');
+    };
+
+    function bindEvents(){
+      // Hover title
+      $('.c-option')
+      .mouseover(function(){
+        var slug = $(this).data('slug')
+        hoverTitle(slug);
+        selectCompromisoItem(slug);
+      })
+      .mouseout(function(){
+        unhoverTitle();
+      })
+      .click(function(){
+        selectTitle($(this).data('slug'));
+      });
+    }
 
 
   });
