@@ -188,26 +188,46 @@ angular.module('compromisosSiteApp')
     }
 
     function renderStateChart(){
-      //Get States
+      //Get Years
+      var mainColumns= ['x', '0%-25%','25%-50%','50%-75%','75%-100%']
+      //Group by years by category count, 
+      angular.forEach($scope.categoriesGroup,function(c){
+        c.percentages = d3.nest()
+          .key(function(d) { return d.percentageGroup; })
+          .rollup(function(leaves) { return leaves.length; })
+          .entries(c.values);
+      });
+
+      var seriesColumns = [];
+      seriesColumns.push(mainColumns);
       
-      //Group by Status by category count, 
-      
-      //if there is nothing, then 0.
+        angular.forEach($scope.categoriesGroup,function(c){
+          var series = [];
+          series.push(c.key)
+          angular.forEach(groups ,function(y,k){
+            //sorry no break :-( for each;
+            var count = 0;
+            for (var i = 0; i < c.percentages.length; i++) {
+              var percentageGroup = c.percentages[i];
+              if (k === parseInt(percentageGroup.key)){
+                count = percentageGroup.values;
+                break;
+              }
+            }
+            series.push(count);
+          });
+          seriesColumns.push(series);
+        });
+        
 
       $scope.charts.state_chart = c3.generate({
           bindto: '#state_chart',
           data: {
               x : 'x',
-              columns: [
-                      ['x', '0%','30%','50%','75%','100%'],
-                      ['c1', 1, 1, 2, 4, 2],
-                      ['c2', 1, 1, 2, 5, 3],
-                      ['c3', 1, 1, 0, 2, 2],
-                      ['c4', 1, 1, 3, 2, 1]
-              ],
+              columns: seriesColumns,
               type: 'bar',
                groups: [
-                  ['c1', 'c2', 'c3', 'c4']
+                 $scope.availableCategories
               ],
           },
           axis: {
