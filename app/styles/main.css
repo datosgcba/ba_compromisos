@@ -80,6 +80,11 @@ html {
 #state_chart{
   cursor: pointer;
 }
+
+#menu_chart .label-group{
+  fill: #a6a9ad;
+  font-size: 30px;
+}
 //bubble
 
 .bubble-container, #category_chart {
@@ -170,5 +175,13 @@ html {
 
 }
 
+/*Axis*/
+.c3-axis.c3-axis-x path.domain,
+.c3-axis.c3-axis-x .tick line{
+  stroke-width:0;
+}
 
-
+.c3-axis.c3-axis-x .tick text{
+  font-size: 12px;
+  color: #444;
+}

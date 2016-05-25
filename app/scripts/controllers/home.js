@@ -35,6 +35,10 @@ angular.module('compromisosSiteApp')
 
     $scope.groupData= function(){
       $scope.categoriesGroup = d3.nest()
+        .key(function(d) { return d.slug; })
+        .entries($scope.data);
+
+      $scope.categoriesGroupText = d3.nest()
         .key(function(d) { return d.categoria; })
         .entries($scope.data);
 
@@ -56,7 +60,7 @@ angular.module('compromisosSiteApp')
 
       angular.forEach($scope.finishedYearsGroup, function(g){
          g.categoryGroup = d3.nest()
-          .key(function(d) { return d.categoria; })
+          .key(function(d) { return getCategorySlug(d.categoria); })
           .rollup(function(leaves) { return leaves.length; })
           .entries(g.values);
       });
@@ -95,14 +99,21 @@ angular.module('compromisosSiteApp')
       return group;
     }
 
+    $scope.colorsByCategory = {
+      'social':"#fccf2b",
+      'convivencia':"#3abaaf",
+      'movilidad':"#f58b45",
+      'smart':"#7c4194"
+    };
+
     function getCategorySlug(cat){
       var list = {
-        'Protección e integración social': 'social',
-        'Convivencia': 'convivencia',
-        'Hábitat y movilidad': 'movilidad',
-        'Ciudad inteligente y sustentable': 'smart'
+        'protección e integración social': 'social',
+        'convivencia': 'convivencia',
+        'hábitat y movilidad': 'movilidad',
+        'ciudad inteligente y sustentable': 'smart'
       }
-      return list[cat];
+      return list[cat.toLowerCase()];
     }
 
     $scope.renderCharts = function(){
@@ -160,18 +171,22 @@ angular.module('compromisosSiteApp')
           seriesColumns.push(series);
         });
         
-      
-      
-
       $scope.charts.date_chart = c3.generate({
           bindto: '#date_chart',
           data: {
               x : 'x',
               columns: seriesColumns,
               type: 'bar',
-               groups: [
+              groups: [
                   $scope.availableCategories
               ],
+              colors: angular.copy($scope.colorsByCategory)
+          },
+          padding: {
+              top: 20,
+              right: 20,
+              bottom: 20,
+              left: 20,
           },
           legend: {
               show: false
@@ -232,6 +247,13 @@ angular.module('compromisosSiteApp')
                groups: [
                  $scope.availableCategories
               ],
+              colors: angular.copy($scope.colorsByCategory)
+          },
+          padding: {
+              top: 20,
+              right: 20,
+              bottom: 20,
+              left: 20,
           },
           legend: {
               show: false
@@ -255,6 +277,27 @@ angular.module('compromisosSiteApp')
           }
       });
     }
+
+    function defaultChartColors(){
+      changeChartColors($scope.colorsByCategory);
+    }
+
+    function changeChartColors(colors){
+      $scope.charts.state_chart.data.colors(colors);
+      $scope.charts.date_chart.data.colors(colors);
+    }
+
+    function selectCategoryChart(slug){
+      var colors = {
+        'social':"#e6e6e6",
+        'convivencia':"#e6e6e6",
+        'movilidad':"#e6e6e6",
+        'smart':"#e6e6e6"
+      };
+      colors[slug] = $scope.colorsByCategory[slug];
+      changeChartColors(colors);
+    }
+
     function renderCategoryChart(){
        var diameter = $('#category_chart').parent().width(), //max size of the bubbles
        color    = d3.scale.category20b(), //color category
@@ -324,8 +367,6 @@ angular.module('compromisosSiteApp')
 
 
     }
-    
-
 
     //Render & interact menu chart
     $scope.groupMenu = function(type){
@@ -440,7 +481,7 @@ angular.module('compromisosSiteApp')
         wLabel = w/3;
         var labels = [];
 
-        angular.forEach($scope.categoriesGroup, function(group){
+        angular.forEach($scope.categoriesGroupText, function(group){
           labels.push({title:group.key,rows:rows});
           rows += sortItems($scope.charts.menu_chart.items_group.selectAll("g.categoria-"+getCategorySlug(group.key)),rows*itemSize);
         });
@@ -480,7 +521,7 @@ angular.module('compromisosSiteApp')
           .enter()
           .append('text')
           .classed('label-group',true)
-          .attr('text-anchor','end')
+          .attr('text-anchor','start')
           .attr('opacity',0);
         
         texts
@@ -491,7 +532,7 @@ angular.module('compromisosSiteApp')
           .transition()
           .delay(delay)
           .attr('opacity',1)
-          .attr('x',wLabel)
+          .attr('x',0)
           .attr('y',function(d){
             return d.rows*itemSize+itemSize/2;
           });
@@ -734,23 +775,28 @@ angular.module('compromisosSiteApp')
         var slug = $(this).data('slug')
         hoverTitle(slug);
         selectCompromisoItem(slug);
+        selectCategoryChart(slug);
       })
       .mouseout(function(){
         var $sel = $('.c-option-selected');
         if($sel.size()){
           selectCompromisoItem($sel.data('slug'));
+          selectCategoryChart($sel.data('slug'));
         }else{
           unhoverCompromisoItem();
+          defaultChartColors();
         }
         unhoverTitle();
       })
       .click(function(){
         if($(this).hasClass('c-option-selected')){
           deselectTitle();
+          defaultChartColors();
         } else {
           var slug = $(this).data('slug');
           selectTitle(slug);
           selectCompromisoItem(slug);
+          selectCategoryChart(slug);
         }
       });
     }
