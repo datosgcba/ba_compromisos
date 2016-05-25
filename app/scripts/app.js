@@ -15,8 +15,7 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch',
-    'gridshore.c3js.chart'
+    'ngTouch'
   ])
   .config(function ($routeProvider) {
     $routeProvider

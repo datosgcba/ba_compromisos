@@ -1,39 +1,20 @@
+<h2 class="text-center">{{data.numero}}. {{data.titulo}}</h2>
 <div class="row">
-	<div class="col-md-12">
-      <h1>Compromiso 01</h1>
+
+  <div ng-if="data.detalle_1" class="col-md-6 text-center">
+  	<image-full image="data.detalle_1"></image-full>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-6">
-	<p>
-		<c3chart bindto-id="gauge-plot1-chart">
-		  <chart-column column-id="Data 1"
-		              column-values="70"
-		              column-type="gauge"/>
-		  <chart-gauge min="50"
-		            max="75"
-		            units=" hours"
-		            width="39"/>
-		</c3chart>
-	</p>
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+  <div ng-if="data.detalle_2" class="col-md-6 text-center">
+  	<image-full image="data.detalle_2"></image-full>
   </div>
-  <div class="col-md-6">
-	<c3chart bindto-id="chart6">
-	  <chart-legend show-legend="true" legend-position="right"/>
-	  <chart-colors color-pattern="#1f77b4,#ffbb78,#2ca02c,#ff7f0e"/>
-	  <chart-tooltip show-tooltip="true" group-tooltip="false"/>
-	 
-	  <chart-column column-id="data 1"
-	            column-name="Data 1"
-	            column-color="red"
-	          column-values="30,200,100,400,150,250"
-	          column-type="spline"/>
-	  <chart-column column-id="data 2"
-	            column-name="Data 2"
-	            column-color="green"
-	                column-values="50,20,10,40,15,25"
-	                column-type="line"/>
-	</c3chart>
+
+  <div ng-if="data.detalle_3" class="col-md-6 text-center">
+  	<image-full image="data.detalle_3"></image-full>
   </div>
+
+  <div ng-if="data.detalle_4" class="col-md-6 text-center">
+  	<image-full image="data.detalle_4"></image-full>
+  </div>
+
 </div>
