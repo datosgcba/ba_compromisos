@@ -48,27 +48,27 @@ html {
 }
 
 .categoria-smart .compromiso-label,
-.categoria-smart .compromiso-icon{
+.categoria-smart .compromiso-icon .st0{
   fill: #7c4194;
 }
 
 .categoria-convivencia .compromiso-label,
-.categoria-convivencia .compromiso-icon{
+.categoria-convivencia .compromiso-icon .st0{
   fill: #3abaaf;
 }
 
 .categoria-movilidad .compromiso-label,
-.categoria-movilidad .compromiso-icon{
+.categoria-movilidad .compromiso-icon .st0{
   fill: #f58b45;
 }
 
 .categoria-social .compromiso-label,
-.categoria-social .compromiso-icon{
+.categoria-social .compromiso-icon .st0{
   fill: #fccf2b;
 }
 
 .categoria-unselected .compromiso-label,
-.categoria-unselected .compromiso-icon{
+.categoria-unselected .compromiso-icon .st0{
   fill: #444;
 }
 

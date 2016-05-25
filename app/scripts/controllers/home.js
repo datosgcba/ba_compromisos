@@ -619,7 +619,7 @@ angular.module('compromisosSiteApp')
                 })
                 .each(function(d){
     
-                  var icon = 'images/building.svg';
+                  var icon = 'images/iconos/GCBA-compromisos-icons-'+d.icono+'.svg';
                   var iconG = this;
 /*                  if($scope.iconsSvg[icon]){
                     console.log('cache');
