@@ -39,14 +39,18 @@ angular
       });
   })
   .service('UrlService', function () {
+      this.baseUrl = 'http://palamago.com.ar/api/';
       this.urls = {
         //Datos Prod CSV
         //'home': 'http://palamago.com.ar/api/?source_format=csv&source=https://goo.gl/NZ8vyv'
         // Datos Ejemplo CSV
-        'home': 'http://palamago.com.ar/api/?source_format=csv&source=https://goo.gl/Cid4QS'
+        'home': this.baseUrl + '?source_format=csv&source=https://goo.gl/Cid4QS'
       };
-      this.getUrl = function(page) {
-          return this.urls[page];
+      this.getUrlByPage = function(page) {
+          return this.urls[page] + '&callback=JSON_CALLBACK';
+      };
+      this.getUrlByCsv = function(csv) {
+          return this.baseUrl + '?source_format=csv&source='+csv+ '&callback=JSON_CALLBACK'
       };
   });
 

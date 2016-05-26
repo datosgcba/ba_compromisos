@@ -1,20 +1,24 @@
-<h2 class="text-center">{{data.numero}}. {{data.titulo}}</h2>
-<div class="row">
+<p class="text-center" ng-show="loading">Cargando...</p>
 
-  <div ng-if="data.detalle_1" class="col-md-6 text-center">
-  	<image-full image="data.detalle_1"></image-full>
+<div ng-hide="loading">
+  <h2 class="text-center">{{data.numero}}. {{data.titulo}}</h2>
+  <div class="row">
+
+    <div ng-if="data.detalle_1" class="col-md-6 text-center">
+    	<smart-content url="data.detalle_1" template=""></smart-content>
+    </div>
+
+    <div ng-if="data.detalle_2" class="col-md-6 text-center">
+    	<smart-content url="data.detalle_2"></smart-content>
+    </div>
+
+    <div ng-if="data.detalle_3" class="col-md-6 text-center">
+      <smart-content url="data.detalle_3" data-callback="prepareData" config-callback="completeConfig"></smart-content>
+    </div>
+
+    <div ng-if="data.detalle_4" class="col-md-6 text-center">
+    	<smart-content url="data.detalle_4"></smart-content>
+    </div>
+
   </div>
-
-  <div ng-if="data.detalle_2" class="col-md-6 text-center">
-  	<image-full image="data.detalle_2"></image-full>
-  </div>
-
-  <div ng-if="data.detalle_3" class="col-md-6 text-center">
-  	<image-full image="data.detalle_3"></image-full>
-  </div>
-
-  <div ng-if="data.detalle_4" class="col-md-6 text-center">
-  	<image-full image="data.detalle_4"></image-full>
-  </div>
-
 </div>

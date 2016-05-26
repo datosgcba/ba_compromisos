@@ -20,7 +20,7 @@ angular.module('compromisosSiteApp')
 
     $scope.selectedGroup = 'home';
 
-    var url = UrlService.getUrl('home') + '&callback=JSON_CALLBACK';
+    var url = UrlService.getUrlByPage('home');
 
     $http.jsonp(url)
     .success(function(data){
