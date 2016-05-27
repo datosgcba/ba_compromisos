@@ -11,7 +11,8 @@ angular.module('compromisosSiteApp')
   .controller('HomeCtrl', function ($scope,$timeout,$http,UrlService) {
 
     var pymChild = new pym.Child();
-
+    setTimeout(function(){pymChild.sendHeight()},5000);
+    $scope.pymChild = pymChild;
     $scope.data = [];
     $scope.loading = true;
     $scope.charts = {};
@@ -123,9 +124,7 @@ angular.module('compromisosSiteApp')
       renderStateChart();
       renderCategoryChart();
       renderMenuChart();
-      setTimeout(function(){
-        pymChild.sendHeight();
-      },200);
+      
       
     };
 
@@ -422,7 +421,7 @@ angular.module('compromisosSiteApp')
           .attr("height", h);
 
         //send update to frame
-        pymChild.sendHeight();
+        
 
       }
 
@@ -748,7 +747,7 @@ angular.module('compromisosSiteApp')
             $scope.charts.menu_chart.api.group($scope.selectedGroup);
           }
           renderCategoryChart();
-          pymChild.sendHeight();
+          
         }, 500);
     });
 
