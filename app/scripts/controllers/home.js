@@ -173,6 +173,7 @@ angular.module('compromisosSiteApp')
         
       $scope.charts.date_chart = c3.generate({
           bindto: '#date_chart',
+
           data: {
               x : 'x',
               columns: seriesColumns,
@@ -181,6 +182,10 @@ angular.module('compromisosSiteApp')
                   $scope.availableCategories
               ],
               colors: angular.copy($scope.colorsByCategory)
+          },
+          size: {
+              width: 300,
+              height: 220,
           },
           padding: {
               top: 20,
@@ -249,6 +254,10 @@ angular.module('compromisosSiteApp')
               ],
               colors: angular.copy($scope.colorsByCategory)
           },
+          size: {
+              width: 300,
+              height: 220,
+          },
           padding: {
               top: 20,
               right: 20,
@@ -299,7 +308,7 @@ angular.module('compromisosSiteApp')
     }
 
     function renderCategoryChart(){
-       var diameter = $('#category_chart').parent().width(), //max size of the bubbles
+       var diameter = 220,//$('#category_chart').width(), //max size of the bubbles
        color    = d3.scale.category20b(), //color category
 
         format = d3.format(",d");
@@ -318,8 +327,8 @@ angular.module('compromisosSiteApp')
         d3.select("#category_chart")
           .append("svg")
           .attr("class", "bubble-container")
-          .attr("width", diameter)
-          .attr("height", diameter);
+          .attr("width", 300)
+          .attr("height", 220);
       }
           var svg= $scope.charts.category_chart.svg;
           var data = 
@@ -342,7 +351,11 @@ angular.module('compromisosSiteApp')
               .data(pack.nodes)
             .enter().append("g")
               .attr("class", function(d) 
-                { return d.children ? "node" : "leaf node"; })
+                { 
+                  var what =  d.children ? "node" : "leaf node"; 
+                  var who = d.slug ? d.slug  : d.name;
+                  return what + " " + who;
+              })
               .attr("transform", function(d) 
                 { return "translate(" + d.x + "," + d.y + ")"; });
 
@@ -350,17 +363,21 @@ angular.module('compromisosSiteApp')
               .text(function(d) { return d.name + (d.children ? "" : ": " + parseInt(d.porcentaje_completado)); });
 
           node.append("circle")
-              .style("fill", function(d) { return color(d.value); })
-              .attr("r", function(d) { return d.r; });
+              .attr("r", function(d) { return d.r; })
+              .filter(function(d) { return d.name !== "categories"; })
+              .style("fill", function(d) 
+                { 
+                  return $scope.colorsByCategory[d.slug];
+                })
 
-          node.filter(function(d) { return !d.children; }).append("text")
-              .attr("dy", ".3em")
-              .style({
-                  "text-anchor": "middle",
-                  "fill":"white", 
-                  "font-family":"Helvetica Neue, Helvetica, Arial, san-serif",
-                  "font-size": "12px"})
-              .text(function(d) { return d.titulo.substring(0, d.r / 3); });
+          // node.filter(function(d) { return !d.children; }).append("text")
+          //     .attr("dy", ".3em")
+          //     .style({
+          //         "text-anchor": "middle",
+          //         "fill":"white", 
+          //         "font-family":"Helvetica Neue, Helvetica, Arial, san-serif",
+          //         "font-size": "12px"})
+          //     .text(function(d) { return d.titulo.substring(0, d.r / 3); });
        
 
         d3.select(self.frameElement).style("height", diameter + "px");
