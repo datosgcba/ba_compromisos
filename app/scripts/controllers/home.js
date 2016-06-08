@@ -10,9 +10,8 @@
 angular.module('compromisosSiteApp')
   .controller('HomeCtrl', function ($scope,$timeout,$http,UrlService) {
 
-    var pymChild = new pym.Child();
-    setTimeout(function(){pymChild.sendHeight()},5000);
-    $scope.pymChild = pymChild;
+    var pymChild = new pym.Child({ polling: 1000 });
+
     $scope.data = [];
     $scope.loading = true;
     $scope.charts = {};
@@ -379,7 +378,7 @@ angular.module('compromisosSiteApp')
           //     .text(function(d) { return d.titulo.substring(0, d.r / 3); });
        
 
-        d3.select(self.frameElement).style("height", diameter + "px");
+        //d3.select(self.frameElement).style("height", diameter + "px");
 
 
     }
@@ -737,7 +736,6 @@ angular.module('compromisosSiteApp')
 
     }
 
-
     //General responsive callback
     var id;
     $(window).resize(function() {
@@ -746,7 +744,9 @@ angular.module('compromisosSiteApp')
           if($scope.charts.menu_chart){
             $scope.charts.menu_chart.api.group($scope.selectedGroup);
           }
-          renderCategoryChart();
+          if($scope.charts.category_chart){
+            renderCategoryChart();
+          }
           
         }, 500);
     });

@@ -11,8 +11,10 @@ angular.module('compromisosSiteApp')
   .controller('Compromiso01Ctrl', function (UrlService, $scope, $http) {
 
   	var url = UrlService.getUrlByPage('home');
-      var pymChild = new pym.Child();
-      setTimeout(function(){pymChild.sendHeight()},2000);
+    var pymChild = new pym.Child({ polling: 1000 });
+
+    //para ir a otra url en el padre  
+    //pymChild.navigateParentTo('https://github.com/nprapps/pym.js');
 
     $scope.loading = true;
 
@@ -20,7 +22,6 @@ angular.module('compromisosSiteApp')
     .success(function(data){
       $scope.data = _.find(data, function(d){ return parseInt(d.numero) === 1; });
       $scope.loading = false;
-      pymChild.sendHeight();
     });
 
     $scope.completeConfig = function(config){

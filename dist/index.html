@@ -1,9 +1,21 @@
-<!doctype html> <html> <head> <meta charset="utf-8"> <title></title> <meta name="description" content=""> <meta name="viewport" content="width=device-width"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel="stylesheet" href="styles/vendor.14c86195.css"> <link rel="stylesheet" href="styles/main.14bd5d33.css"> </head> <body ng-app="compromisosSiteApp"> <!--[if lte IE 8]>
+<!doctype html> <html> <head> <meta charset="utf-8"> <title></title> <meta name="description" content=""> <meta name="viewport" content="width=device-width"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel="stylesheet" href="styles/vendor.14c86195.css"> <link rel="stylesheet" href="styles/main.6f19d6d6.css"> <style type="text/css">textarea{resize: none;}
+        html{background-color: #fff;}</style> </head> <body> <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]--> <!-- CONTENIDO --> <div class="container-fluid"> <div ng-view=""></div> </div> <!-- FIN DE CONTENIDO --> <!-- Google Analytics: change UA-XXXXX-X to be your site's ID --> <script>!function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');</script> <script src="scripts/vendor.8db4189e.js"></script> <script src="scripts/scripts.6200d63f.js"></script> </body> </html>
+    <![endif]--> <!-- CONTENIDO --> <div class="container"> <div class="row"> <div class="col-md-12"> <h1>¡Hola, Buenos Aires!</h1> <p>Esta es la página de prueba para visualizar los compromisos de GCBA</p> <a class="btn btn-primary" href="#home">Home</a> <a class="btn btn-primary" href="#c01">Compromiso 01</a> </div> <div class="col-md-12"> </div> </div> <div class="row row-preview"> <div class="col-md-12"> <h3>Código para embeber de <span class="selected"></span>:</h3> <textarea class="form-control" id="embed"></textarea> <textarea style="display:none" id="template"><div data-pym-src="{{URL}}"></div><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pym/0.4.5/pym.min.js"></script></textarea> </div> </div> <div class="row row-preview"> <div class="col-md-12"> <h3>Ejemplo de iframe con <span class="selected"></span>:</h3> <hr> <div id="pym-container"></div> </div> </div> </div> <script src="scripts/vendor.a13ff62e.js"></script> <script>var pymParent;
+        var $container,$selected,$rows,$textarea;
+        $(document).ready(function(){
+            var embed = $('#template').val();
+            $container = $('#pym-container');
+            $selected = $('.selected');
+            $rows = $('.row-preview');
+            $textarea = $('#embed');
+            $rows.hide();
+            $('a.btn-primary').on('click',function(){
+                $rows.show();
+                $container.empty();
+                $selected.html($(this).html());
+                var url = 'app.html'+$(this).attr('href');
+                $textarea.val(embed.replace('{{URL}}',url));
+                pymParent = new pym.Parent('pym-container', url, {});
+            });
+        });</script> </body> </html>
