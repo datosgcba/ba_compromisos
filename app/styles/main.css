@@ -82,7 +82,7 @@ html {
   cursor: pointer;
 }
 
-#menu_chart .label-group{
+#menu_chart .label-group-text{
   fill: #a6a9ad;
   font-size: 30px;
 }
@@ -188,4 +188,107 @@ div#category_chart {
 .c3-axis.c3-axis-x .tick text{
   font-size: 12px;
   color: #444;
+}
+
+.hidden-desktop{
+  display: none;
+}
+.display-desktop{
+  display: block;
+}
+.hidden-device{
+  display: block;
+}
+.display-device{
+  display: none;
+}
+
+/*==========  Non-Mobile First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+  .hidden-desktop{
+    display: none;
+  }
+  .display-desktop{
+    display: block;
+  }
+  .hidden-device{
+    display: block;
+  }
+  .display-device{
+    display: none;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+  .hidden-desktop{
+    display: none;
+  }
+  .display-desktop{
+    display: block;
+  }
+  .hidden-device{
+    display: block;
+  }
+  .display-device{
+    display: none;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+  .hidden-desktop{
+    display: block;
+  }
+  .display-desktop{
+    display: none;
+  }
+  .hidden-device{
+    display: none;
+  }
+  .display-device{
+    display: block;
+  }
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 480px) {
+  .hidden-desktop{
+    display: block;
+  }
+  .display-desktop{
+    display: none;
+  }
+  .hidden-device{
+    display: none;
+  }
+  .display-device{
+    display: block;
+  }
+}
+
+/* Custom, iPhone Retina */ 
+@media only screen and (max-width : 320px) {
+  .hidden-desktop{
+    display: block;
+  }
+  .display-desktop{
+    display: none;
+  }
+  .hidden-device{
+    display: none;
+  }
+  .display-device{
+    display: block;
+  }
+}
+
+
+.display{
+  display: block;
+}
+.hidden {
+  display: none;
 }

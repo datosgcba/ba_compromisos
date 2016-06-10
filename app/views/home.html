@@ -13,23 +13,42 @@
   	</div>
 </div>
 
+<div class="row hidden-desktop">
+	<div class="well">
+		<h4>Agrupar compromisos</h4>
+	  	<select ng-change="onChangeGroup()" ng-model="selectedGroup" class="form-control">
+	  		<option value="home">Inicial</option>
+	  		<option value="date">Fecha</option>
+	  		<option value="category">Categoría</option>
+	  		<option value="state">Estado</option>
+	  	</select>
+	</div>
+</div>
+
 <hr/>
 
 
 <div class="row">
-	<div class="col-sm-4">
+	<div class="col-sm-3 hidden-device" ng-class="{'display':(selectedGroup=='home')}">
+		<div id="home_chart" ng-click="groupMenu('home')">
+			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
+			<p>CHART HOME</p>
+		</div>
+  		<p class="text-center">Ordenar Default</p>
+  	</div>
+	<div class="col-sm-3 hidden-device" ng-class="{'display':(selectedGroup=='date')}">
 		<div id="date_chart" ng-click="groupMenu('date')">
 			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
 		</div>
   		<p class="text-center">Ordenar por fecha de finalización</p>
   	</div>
-	<div class="col-sm-4">
+	<div class="col-sm-3 hidden-device" ng-class="{'display':(selectedGroup=='state')}">
 		<div id="state_chart" ng-click="groupMenu('state')">
 			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
 		</div>
   		<p class="text-center">Ordenar por estado del compromiso</p>
   	</div>
-	<div class="col-sm-4">
+	<div class="col-sm-3 hidden-device" ng-class="{'display':(selectedGroup=='category')}">
 		<div id="category_chart" ng-click="groupMenu('category')">
 			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
 		</div>

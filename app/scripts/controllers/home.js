@@ -384,6 +384,9 @@ angular.module('compromisosSiteApp')
     }
 
     //Render & interact menu chart
+    $scope.onChangeGroup = function(){
+      $scope.groupMenu($scope.selectedGroup);
+    }
     $scope.groupMenu = function(type){
       $scope.selectedGroup = type;
       $scope.charts.menu_chart.api.group($scope.selectedGroup);
@@ -395,6 +398,7 @@ angular.module('compromisosSiteApp')
           w = $(window).width(),
           h = 500,
           delay = 500,
+          smallDevice = (w<768),
           wLabel = w/3;
 
       var data = angular.copy($scope.data);
@@ -426,6 +430,7 @@ angular.module('compromisosSiteApp')
 
       function positionHome(){
         w = $(window).width();
+        smallDevice = (w<768);
 
         var xLimit = Math.floor(w/itemSize),
             xCount = 0,
@@ -444,7 +449,11 @@ angular.module('compromisosSiteApp')
 
       }
 
-      function sortItems($items,startingY){
+      function sortItems($items,startingY,labels){
+
+        startingY += (smallDevice && labels)?itemSize:0;
+
+        wLabel = (smallDevice)?0:wLabel;
 
         var xLimit = Math.floor((w-wLabel)/itemSize),
             xCount = 0,
@@ -467,19 +476,20 @@ angular.module('compromisosSiteApp')
             return "translate(" + x +"," + y + ")";
           });
 
-        return yCount+1;
+        return yCount+1+((smallDevice && labels)?1:0);
       }
 
       function groupByState(){
 
         w = $(window).width();
+        smallDevice = (w<768);
         var rows = 0;
         wLabel = w/3;
         var labels = [];
 
         angular.forEach($scope.finishedPercentageGroup, function(group){
           labels.push({title:groups[group.key].from+'% - '+groups[group.key].to+'%',rows:rows});
-          rows += sortItems($scope.charts.menu_chart.items_group.selectAll("g.avance-"+group.key),rows*itemSize);
+          rows += sortItems($scope.charts.menu_chart.items_group.selectAll("g.avance-"+group.key),rows*itemSize,true);
         });
 
         h = rows*itemSize;
@@ -492,13 +502,14 @@ angular.module('compromisosSiteApp')
       function groupByCategory(){
 
         w = $(window).width();
+        smallDevice = (w<768);
         var rows = 0;
         wLabel = w/3;
         var labels = [];
 
         angular.forEach($scope.categoriesGroupText, function(group){
           labels.push({title:group.key,rows:rows});
-          rows += sortItems($scope.charts.menu_chart.items_group.selectAll("g.categoria-"+getCategorySlug(group.key)),rows*itemSize);
+          rows += sortItems($scope.charts.menu_chart.items_group.selectAll("g.categoria-"+getCategorySlug(group.key)),rows*itemSize,true);
         });
 
         h = rows*itemSize;
@@ -511,12 +522,13 @@ angular.module('compromisosSiteApp')
       function groupByDate(){
 
         w = $(window).width();
+        smallDevice = (w<768);
         var rows = 0;
         wLabel = w/3;
         var labels = [];
         angular.forEach($scope.finishedYearsGroup, function(group){
           labels.push({title:group.key,rows:rows});
-          rows += sortItems($scope.charts.menu_chart.items_group.selectAll("g.cumplimiento-"+group.key),rows*itemSize);
+          rows += sortItems($scope.charts.menu_chart.items_group.selectAll("g.cumplimiento-"+group.key),rows*itemSize,true);
         });
 
         h = rows*itemSize;
@@ -528,33 +540,55 @@ angular.module('compromisosSiteApp')
 
       function updateLabels(data){
 
+        $scope.charts.menu_chart.labels_group.selectAll("*").remove();
+
         var texts = $scope.charts.menu_chart.labels_group
           .selectAll('.label-group')
           .data(data);
 
         texts
           .enter()
-          .append('text')
+          .append('g')
           .classed('label-group',true)
-          .attr('text-anchor','start')
-          .attr('opacity',0);
-        
-        texts
-          .classed('label-group',true)
-          .text(function(d){
-            return d.title;
-          })
-          .transition()
-          .delay(delay)
-          .attr('opacity',1)
-          .attr('x',0)
-          .attr('y',function(d){
-            return d.rows*itemSize+itemSize/2;
-          });
+          .each(function(d,i){
+              var group = d3.select(this);
 
-        texts.exit()
-          .attr('opacity',0)
-          .remove();
+              //frame
+              group
+                .append('rect')
+                .classed('label-group-shape',true)
+                .classed('shape',true)
+                .attr('height',itemSize)
+                .attr('width',(smallDevice)?w:w/3)
+                .attr('fill','none');
+
+              group
+                .append('text')
+                .classed('label-group-text',true)
+                .classed('wrap',true)
+//                .attr('x',gap)
+//                .attr('y',itemSize/4)
+                .attr('text-anchor','start')
+                .attr('opacity',1)
+                .text(function(d){
+                  return d.title;
+                });
+
+              group
+                .attr("transform",function(){
+                  return "translate("+0+','+d.rows*itemSize+")"
+                });
+
+              var t = group.select("text");
+              d3plus.textwrap()
+                .container(t)
+                .shape('square')
+                .align((smallDevice)?'center':'left')
+                .valign('middle')
+                .padding(3)
+                .draw();
+
+          });
 
       }
 
