@@ -73,9 +73,9 @@ angular.module('compromisosSiteApp')
         .key(function(d) { return getPercentageGroup(d);})
         .entries($scope.data);    
  
-      console.log($scope.categoriesGroup);
+      /*console.log($scope.categoriesGroup);
       console.log($scope.finishedYearsGroup);
-      console.log($scope.finishedPercentageGroup);
+      console.log($scope.finishedPercentageGroup);*/
 
     };
     
@@ -128,15 +128,28 @@ angular.module('compromisosSiteApp')
     };
 
 
-    var showDetail= function(c){
-      c.porcentaje =  
-      Math.round(Math.floor(Math.random() * 99) + 2);
+    function showDetail(c,localEvent,mouseEvent){
+      c.porcentaje = Math.round(Math.floor(Math.random() * 99) + 2);
       $scope.$apply(function(){
         $scope.currentCompromise = c;  
       });
-    };
 
+      var popupH = parseInt( d3.select('#compromiso-detail').style('height').replace('px','') );
+      var docH = parseInt( $(window).height() );
+      var yOffset = parseInt ( mouseEvent.clientY );
+
+      d3.select('#compromiso-detail').style('top',mouseEvent.clientY+'px');
+      var filler = yOffset + popupH - docH;
+      if(filler>0){
+        d3.select('#filler').style('height',filler+'px');
+      }
+    };
     
+    $scope.closeDetail = function(){
+      $scope.currentCompromise = null;
+      d3.select('#filler').style('height','0px');
+    }
+
     function renderDateChart(){
       //Get Years
       var mainColumns= ['x'].concat($scope.availableYears);
@@ -719,8 +732,8 @@ angular.module('compromisosSiteApp')
                     selectCompromisoItem($sel.data('slug'));
                   }
                 })
-                .on("click", function(dd){
-                  showDetail(d);
+                .on("click", function(dd,event){
+                  showDetail(d,d3.mouse(this),d3.event);
                 });
 
           })
