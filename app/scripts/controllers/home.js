@@ -384,6 +384,16 @@ angular.module('compromisosSiteApp')
     }
 
     //Render & interact menu chart
+    $scope.onChangeCategory = function(){
+      if($scope.selectedCategory!=''){
+        selectTitle($scope.selectedCategory);
+        selectCompromisoItem($scope.selectedCategory);
+        selectCategoryChart($scope.selectedCategory);
+      } else {
+        deselectTitle();
+        defaultChartColors();
+      }
+    }
     $scope.onChangeGroup = function(){
       $scope.groupMenu($scope.selectedGroup);
     }
@@ -583,7 +593,7 @@ angular.module('compromisosSiteApp')
               d3plus.textwrap()
                 .container(t)
                 .shape('square')
-                .align((smallDevice)?'center':'left')
+                .align('left')
                 .valign('middle')
                 .padding(3)
                 .draw();
@@ -822,31 +832,42 @@ angular.module('compromisosSiteApp')
       // Hover title
       $('.c-option')
       .mouseover(function(){
-        var slug = $(this).data('slug')
-        hoverTitle(slug);
-        selectCompromisoItem(slug);
-        selectCategoryChart(slug);
-      })
-      .mouseout(function(){
-        var $sel = $('.c-option-selected');
-        if($sel.size()){
-          selectCompromisoItem($sel.data('slug'));
-          selectCategoryChart($sel.data('slug'));
-        }else{
-          unhoverCompromisoItem();
-          defaultChartColors();
-        }
-        unhoverTitle();
-      })
-      .click(function(){
-        if($(this).hasClass('c-option-selected')){
-          deselectTitle();
-          defaultChartColors();
-        } else {
-          var slug = $(this).data('slug');
-          selectTitle(slug);
+        var slug = $(this).data('slug');
+        if(slug){
+          hoverTitle(slug);
           selectCompromisoItem(slug);
           selectCategoryChart(slug);
+        }
+      })
+      .mouseout(function(){
+        var slug = $(this).data('slug');
+        if(slug){
+          var $sel = $('.c-option-selected');
+          if($sel.size()){
+            selectCompromisoItem($sel.data('slug'));
+            selectCategoryChart($sel.data('slug'));
+          }else{
+            unhoverCompromisoItem();
+            defaultChartColors();
+          }
+          unhoverTitle();
+        }
+      })
+      .click(function(){
+        var slug = $(this).data('slug');
+        if(slug){
+          if($(this).hasClass('c-option-selected')){
+            deselectTitle();
+            defaultChartColors();
+          } else {
+            var slug = $(this).data('slug');
+            selectTitle(slug);
+            selectCompromisoItem(slug);
+            selectCategoryChart(slug);
+            $scope.$apply(function(){
+              $scope.selectedCategory = slug;
+            });
+          }
         }
       });
     }

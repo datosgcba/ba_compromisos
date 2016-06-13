@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row hidden-device">
 	<div class="col-sm-3 c-option c-color-smart" data-slug="smart">
   		<h3 class="text-center">Ciudad inteligente y sustentable</h3>
   	</div>
@@ -14,19 +14,35 @@
 </div>
 
 <div class="row hidden-desktop">
-	<div class="well">
-		<h4>Agrupar compromisos</h4>
+	<div class="col-xs-3 c-option c-color-smart"></div>
+	<div class="col-xs-3 c-option c-color-convivencia"></div>
+	<div class="col-xs-3 c-option c-color-movilidad"></div>
+	<div class="col-xs-3 c-option c-color-social"></div>
+</div>
+
+
+<div class="row hidden-desktop select-container">
+	<div class="col-xs-12">
+	  	<select ng-change="onChangeCategory()" ng-model="selectedCategory" class="form-control">
+	  		<option value="">Elegir categoría</option>
+	  		<option value="smart">Ciudad inteligente y sustentable</option>
+	  		<option value="convivencia">Convivencia</option>
+	  		<option value="movilidad">Hábitat y movilidad</option>
+	  		<option value="social">Protección e integración social</option>
+	  	</select>
+  	</div>
+  	<hr>
+	<div class="col-xs-12">
 	  	<select ng-change="onChangeGroup()" ng-model="selectedGroup" class="form-control">
-	  		<option value="home">Inicial</option>
-	  		<option value="date">Fecha</option>
-	  		<option value="category">Categoría</option>
-	  		<option value="state">Estado</option>
+	  		<option value="home">Ordenar por nombre</option>
+	  		<option value="date">Ordenar por fecha fin</option>
+	  		<option value="state">Ordenar por estado</option>
+	  		<option value="category">Ordenar por categoría</option>
 	  	</select>
 	</div>
 </div>
 
-<hr/>
-
+<hr>
 
 <div class="row">
 	<div class="col-sm-3 hidden-device" ng-class="{'display':(selectedGroup=='home')}">
@@ -35,6 +51,7 @@
 		<div id="home_chart">
 			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
 		</div>
+		<small class="text-center">Vista general de los compromisos</small>
   	</div>
 	<div class="col-sm-3 hidden-device" ng-class="{'display':(selectedGroup=='date')}">
 		<a class="group-btn" ng-click="groupMenu('date')"></a>
@@ -42,6 +59,7 @@
 		<div id="date_chart">
 			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
 		</div>
+		<small class="text-center">Cantidad de compromisos por año de finalización</small>
   	</div>
 	<div class="col-sm-3 hidden-device" ng-class="{'display':(selectedGroup=='state')}">
 		<a class="group-btn" ng-click="groupMenu('state')"></a>
@@ -49,6 +67,7 @@
 		<div id="state_chart" ng-click="groupMenu('state')">
 			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
 		</div>
+		<small class="text-center">Cantidad de compromisos por estado de progreso</small>
   	</div>
 	<div class="col-sm-3 hidden-device" ng-class="{'display':(selectedGroup=='category')}">
 		<a class="group-btn" ng-click="groupMenu('category')"></a>
@@ -56,6 +75,7 @@
 		<div id="category_chart" ng-click="groupMenu('category')">
 			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
 		</div>
+		<small class="text-center">Cantidad de compromisos por categoría de pertenencia</small>
   	</div>
 </div>
 

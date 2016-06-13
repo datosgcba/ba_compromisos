@@ -210,6 +210,10 @@ div#category_chart {
   background-position: 0px -2px;
 }
 
+.select-container{
+  margin: 10px 0px;
+}
+
 /*Axis*/
 .c3-axis.c3-axis-x path.domain,
 .c3-axis.c3-axis-x .tick line{
@@ -283,6 +287,9 @@ div#category_chart {
   .display-device{
     display: block;
   }
+  .c-option{
+    min-height: auto;
+  }
 }
 
 /* Extra Small Devices, Phones */ 
@@ -299,6 +306,9 @@ div#category_chart {
   .display-device{
     display: block;
   }
+  .c-option{
+    min-height: auto;
+  }
 }
 
 /* Custom, iPhone Retina */ 
@@ -314,6 +324,9 @@ div#category_chart {
   }
   .display-device{
     display: block;
+  }
+  .c-option{
+    min-height: auto;
   }
 }
 
