@@ -30,29 +30,32 @@
 
 <div class="row">
 	<div class="col-sm-3 hidden-device" ng-class="{'display':(selectedGroup=='home')}">
-		<div id="home_chart" ng-click="groupMenu('home')">
+		<a class="group-btn" ng-click="groupMenu('home')"></a>
+		<p class="btn-checkbox" ng-class="{'selected':(selectedGroup=='home')}">Ordenar por nombre</p>
+		<div id="home_chart">
 			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
-			<p>CHART HOME</p>
 		</div>
-  		<p class="text-center">Ordenar Default</p>
   	</div>
 	<div class="col-sm-3 hidden-device" ng-class="{'display':(selectedGroup=='date')}">
-		<div id="date_chart" ng-click="groupMenu('date')">
+		<a class="group-btn" ng-click="groupMenu('date')"></a>
+  		<p class="btn-checkbox" ng-class="{'selected':(selectedGroup=='date')}">Ordenar por fecha de fin</p>
+		<div id="date_chart">
 			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
 		</div>
-  		<p class="text-center">Ordenar por fecha de finalización</p>
   	</div>
 	<div class="col-sm-3 hidden-device" ng-class="{'display':(selectedGroup=='state')}">
+		<a class="group-btn" ng-click="groupMenu('state')"></a>
+  		<p class="btn-checkbox" ng-class="{'selected':(selectedGroup=='state')}">Ordenar por estado</p>
 		<div id="state_chart" ng-click="groupMenu('state')">
 			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
 		</div>
-  		<p class="text-center">Ordenar por estado del compromiso</p>
   	</div>
 	<div class="col-sm-3 hidden-device" ng-class="{'display':(selectedGroup=='category')}">
+		<a class="group-btn" ng-click="groupMenu('category')"></a>
+  		<p class="btn-checkbox" ng-class="{'selected':(selectedGroup=='category')}">Ordenar por categoría</p>
 		<div id="category_chart" ng-click="groupMenu('category')">
 			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
 		</div>
-  		<p class="text-center">Ordenar por estado del compromiso</p>
   	</div>
 </div>
 

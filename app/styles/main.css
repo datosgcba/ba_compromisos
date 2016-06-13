@@ -179,6 +179,37 @@ div#category_chart {
 
 }
 
+/*groups*/
+.group-btn{
+  background-color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.display .group-btn{
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.btn-checkbox{
+  padding-left: 33px;
+  height: 24px;
+  background-image: url('../images/checkbox.png');
+  background-repeat: no-repeat;
+  background-position: 0px -26px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.btn-checkbox.selected {
+  background-position: 0px -2px;
+}
+
 /*Axis*/
 .c3-axis.c3-axis-x path.domain,
 .c3-axis.c3-axis-x .tick line{
@@ -202,6 +233,7 @@ div#category_chart {
 .display-device{
   display: none;
 }
+
 
 /*==========  Non-Mobile First Method  ==========*/
 
