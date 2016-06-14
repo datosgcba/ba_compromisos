@@ -20,7 +20,7 @@ angular.module('compromisosSiteApp')
 
     $http.jsonp(url)
     .success(function(data){
-      $scope.data = _.find(data, function(d){ return parseInt(d.numero) === 1; });
+      $scope.currentCompromise = $scope.data = _.find(data, function(d){ return parseInt(d.numero) === 1; });
       $scope.loading = false;
       console.log(data);
     });
