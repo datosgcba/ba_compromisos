@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ngYoutubeEmbed'
   ])
   .config(function ($routeProvider) {
     $routeProvider
