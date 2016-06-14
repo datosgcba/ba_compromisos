@@ -17,7 +17,11 @@ angular.module('compromisosSiteApp')
 
             $scope.id = 'content-' + Math.floor((Math.random()*10000));
 
-            //do things
+            //is Yotube?
+            function isYoutube(url) {
+                return(url.match(/\b\w*(youtu)\w*\b/) != null);
+            };
+            //is image?
             function isImage(url) {
                 return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
             };
@@ -26,7 +30,10 @@ angular.module('compromisosSiteApp')
                 if($scope.template){
                     return $scope.template;
                 }
-                if(isImage($scope.url)){
+                if(isYoutube($scope.url)){
+                    $scope.loading = false;
+                    return "views/directives/youtubePlayer.html";
+                }else if(isImage($scope.url)){
                     $scope.loading = false;
                     return "views/directives/imageFull.html";
                 }else{
