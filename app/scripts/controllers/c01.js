@@ -22,6 +22,7 @@ angular.module('compromisosSiteApp')
     .success(function(data){
       $scope.data = _.find(data, function(d){ return parseInt(d.numero) === 1; });
       $scope.loading = false;
+      console.log(data);
     });
 
     $scope.completeConfig = function(config){
