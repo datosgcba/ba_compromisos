@@ -20,14 +20,14 @@ html {
 	cursor: pointer;
 }
 
-.compromiso-detail{
-	background-color:#fafafa;
+#compromiso-detail{
+
 }
-.compromiso-detail img{
+#compromiso-detail img{
 	max-width: 100%;
 }
 
-.compromiso-detail .progress-bar span{
+#compromiso-detail .progress-bar span{
 	color: #FFFFFF;
     float: right;
     padding-right: 10px;
@@ -238,6 +238,9 @@ div#category_chart {
   display: none;
 }
 
+#filler{
+  
+}
 
 /*==========  Non-Mobile First Method  ==========*/
 
@@ -289,6 +292,12 @@ div#category_chart {
   }
   .c-option{
     min-height: auto;
+  }
+  #compromiso-detail{
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    width: 100%;
   }
 }
 
