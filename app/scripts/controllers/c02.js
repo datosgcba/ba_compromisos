@@ -8,7 +8,7 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('Compromiso01Ctrl', function (UrlService, $scope, $http,SlugColorService,LoadSVGService) {
+  .controller('Compromiso02Ctrl', function (UrlService, $scope, $http,SlugColorService,LoadSVGService) {
 
   	var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({ polling: 1000 });
@@ -20,7 +20,7 @@ angular.module('compromisosSiteApp')
 
     $http.jsonp(url)
     .success(function(data){
-      $scope.currentCompromise = $scope.data = _.find(data, function(d){ return parseInt(d.numero) === 1; });
+      $scope.currentCompromise = $scope.data = _.find(data, function(d){ return parseInt(d.numero) === 2; });
       $scope.currentCompromise.slug = SlugColorService.getCategorySlug($scope.currentCompromise.categoria);
       $scope.currentCompromise.porcentaje_completado = parseInt($scope.currentCompromise.porcentaje_completado);
       $scope.loading = false;
@@ -38,6 +38,7 @@ angular.module('compromisosSiteApp')
 
 
     $scope.completeConfig = function(config){
+      console.log('pasa complete config');
       return angular.merge(config,{
         data:{
           keys: {

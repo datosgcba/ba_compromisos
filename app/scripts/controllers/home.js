@@ -8,15 +8,13 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('HomeCtrl', function ($scope,$timeout,$http,UrlService) {
+  .controller('HomeCtrl', function ($scope,$timeout,$http,UrlService,SlugColorService,LoadSVGService) {
 
     var pymChild = new pym.Child({ polling: 1000 });
 
     $scope.data = [];
     $scope.loading = true;
     $scope.charts = {};
-
-    $scope.iconsSvg = {};
 
     $scope.selectedGroup = 'home';
 
@@ -25,7 +23,7 @@ angular.module('compromisosSiteApp')
     $http.jsonp(url)
     .success(function(data){
       $scope.data = data.map(function(c){
-        c.slug = getCategorySlug(c.categoria);
+        c.slug = SlugColorService.getCategorySlug(c.categoria);
         return c;
       });
       $scope.loading = false;
@@ -60,7 +58,7 @@ angular.module('compromisosSiteApp')
 
       angular.forEach($scope.finishedYearsGroup, function(g){
          g.categoryGroup = d3.nest()
-          .key(function(d) { return getCategorySlug(d.categoria); })
+          .key(function(d) { return SlugColorService.getCategorySlug(d.categoria); })
           .rollup(function(leaves) { return leaves.length; })
           .entries(g.values);
       });
@@ -106,16 +104,6 @@ angular.module('compromisosSiteApp')
       'smart':"#7c4194"
     };
 
-    function getCategorySlug(cat){
-      var list = {
-        'protección e integración social': 'social',
-        'convivencia': 'convivencia',
-        'hábitat y movilidad': 'movilidad',
-        'ciudad inteligente y sustentable': 'smart'
-      }
-      return list[cat.toLowerCase()];
-    }
-
     $scope.renderCharts = function(){
 
       bindEvents();
@@ -129,7 +117,6 @@ angular.module('compromisosSiteApp')
 
 
     function showDetail(c,localEvent,mouseEvent){
-      c.porcentaje = Math.round(Math.floor(Math.random() * 99) + 2);
       $scope.$apply(function(){
         $scope.currentCompromise = c;  
       });
@@ -532,7 +519,7 @@ angular.module('compromisosSiteApp')
 
         angular.forEach($scope.categoriesGroupText, function(group){
           labels.push({title:group.key,rows:rows});
-          rows += sortItems($scope.charts.menu_chart.items_group.selectAll("g.categoria-"+getCategorySlug(group.key)),rows*itemSize,true);
+          rows += sortItems($scope.charts.menu_chart.items_group.selectAll("g.categoria-"+SlugColorService.getCategorySlug(group.key)),rows*itemSize,true);
         });
 
         h = rows*itemSize;
@@ -691,22 +678,14 @@ angular.module('compromisosSiteApp')
                 })
                 .each(function(d){
     
-                  var icon = 'images/iconos/GCBA-compromisos-icons-'+d.icono+'.svg';
                   var iconG = this;
-/*                  if($scope.iconsSvg[icon]){
-                    console.log('cache');
-                    iconG.append($scope.iconsSvg[icon]);
-                  }else{*/
-                    d3.xml(icon, "image/svg+xml", function(error, xml) {
-                      var importedNode = document.importNode(xml.documentElement, true);
-                      importedNode = $(importedNode)
+                  LoadSVGService.loadIcon(d.icono,function(iconLoaded){
+                    $(iconLoaded)
                         .attr('width', 50)
                         .attr('height', 50)
                         .get(0);
-                      $scope.iconsSvg[icon] = importedNode;
-                      iconG.appendChild($scope.iconsSvg[icon].cloneNode(true));
-                    });
-                  /*}*/
+                    iconG.appendChild(iconLoaded.cloneNode(true));
+                  });
 
                 });
 

@@ -89,8 +89,35 @@
 	<hr/>
 
 
-		<div ng-include="'views/includes/detail.html'" 
-			id="compromiso-detail" class="row well" ng-cloak ng-show="currentCompromise">
+		<div id="compromiso-detail" class="row well" ng-cloak ng-show="currentCompromise">
+			<a class="hidden-desktop" ng-click="closeDetail()">Cerrar</a> 
+			<div class="col-sm-3"> 
+				<img ng-src="{{currentCompromise.imagen}}">
+			</div>
+			<div class="col-sm-6"> 
+				<h2><small>{{currentCompromise.categoria}}</small></h2>
+				
+				<h2>{{currentCompromise.numero}}.{{currentCompromise.titulo}}</h2>
+
+				<h5>{{currentCompromise.cumplimiento}}</h5>
+				<p> {{currentCompromise.desc}}</p>
+				<button type="button" class="btn btn-xs upper bg-color-{{currentCompromise.slug}}" >Ver mas sobre el compromiso </button>
+			</div>
+			<div class="col-sm-3"> 
+				<p class="upper"><strong>Estado del Compromiso</strong></p>
+				<p> Como lo medimos:<strong>Lorem</strong> </p> 
+				<p> Tiempo Faltante:<strong>xx meses y xx dias </strong> </p> 
+				<div class="progress">
+				  <div class="progress-bar bg-color-{{currentCompromise.slug}}"
+				  	role="progressbar" 
+				  		ng-style="{ 'width': currentCompromise.porcentaje_completado + '%' }">
+				    <span class="progressbar-w" ng-hide="currentCompromise.porcentaje_completado<50">{{currentCompromise.porcentaje_completado}}% </span>
+				  </div>
+				  <div class="progress-w" ng-show="currentCompromise.porcentaje_completado<50" ng-style="{ 'width': (100 - currentCompromise.porcentaje_completado) + '%' }">{{currentCompromise.porcentaje_completado}}% </div>
+				</div>
+				<p>Finalizacion:<strong> {{currentCompromise.FechaFinalizacion}} </strong> </p>
+				<a class="hidden-desktop" ng-click="closeDetail()">Cerrar</a> 
+			</div>
 		</div>
 	
 

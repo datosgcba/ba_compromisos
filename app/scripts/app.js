@@ -25,14 +25,32 @@ angular
         controller: 'HomeCtrl',
         controllerAs: 'home'
       })
-      .when('/c01', {
-        templateUrl: 'views/c01.html',
-        controller: 'Compromiso01Ctrl',
-        controllerAs: 'c01'
-      })
+      .when('/c01', {templateUrl: 'views/c01.html',controller: 'Compromiso01Ctrl',controllerAs: 'c01'})
+      .when('/c02', {templateUrl: 'views/c02.html',controller: 'Compromiso02Ctrl',controllerAs: 'c02'})
+      .when('/c03', {templateUrl: 'views/c03.html',controller: 'Compromiso03Ctrl',controllerAs: 'c03'})
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .service('SlugColorService', function () {
+      this.list = {
+          'protección e integración social': 'social',
+          'convivencia': 'convivencia',
+          'hábitat y movilidad': 'movilidad',
+          'ciudad inteligente y sustentable': 'smart'
+        };
+
+      this.getCategorySlug = function(cat){
+        return this.list[cat.toLowerCase()];
+      };
+  })
+  .service('LoadSVGService', function () {
+    this.loadIcon = function(icon,cb){    
+      var icon = 'images/iconos/GCBA-compromisos-icons-'+icon+'.svg';
+      d3.xml(icon, "image/svg+xml", function(error, xml) {
+        cb(document.importNode(xml.documentElement, true));
+      });
+    }
   })
   .service('UrlService', function () {
       this.baseUrl = 'http://palamago.com.ar/api/';

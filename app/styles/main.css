@@ -7,15 +7,69 @@ html {
     display: none;
 }
 
-.btn-violet, .progress-bar-violet{
-	background-color:#7f3e98;
-}
 .upper{
 	text-transform: uppercase;
 }
 
+.progress{
+  border-radius: 0px;
+  background-image: none;
+  background-color: #ccc;
+  text-align: center;
+  box-shadow: none;
+}
 
-//compromiso
+.progress .progress-w{
+    text-align: center;
+    position: relative;
+    color: #fff;
+    font-family: "OpenSansBold", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.progress .progressbar-w{
+  color: #fff;
+}
+
+.progress-bar{
+  background-image: none;
+  position: relative;
+}
+
+/*compromiso interna*/
+#compromiso-interna {
+  background-color: #efefef;
+  border-top-width: 1px;
+  border-top-style: solid;
+  margin-bottom: 40px;
+  padding: 10px;
+}
+#compromiso-interna img{
+  max-width: 100%;
+}
+
+#compromiso-interna .compromiso-icon svg {
+
+}
+
+#compromiso-interna h4{
+
+}
+
+#compromiso-interna p{
+  color:#222;
+}
+
+#compromiso-interna p span.label-header{
+  color:#888;
+  margin-right: 3px;
+}
+
+
+
+/*compromiso home*/
 .compromiso-label{
 	cursor: pointer;
 }
@@ -39,7 +93,7 @@ html {
 	cursor: pointer;
 }
 
-.compromiso-icon svg{
+#menu_chart .compromiso-icon svg{
   width: 50px;
   height: 50px;
 }
@@ -143,19 +197,39 @@ div#category_chart {
   margin-top: 10px;
 }
 
-.c-option-selected.c-color-smart{
+.f-color-smart{
+  color: #7c4194;
+}
+
+.f-color-convivencia{
+  color: #3abaaf;
+}
+
+.f-color-movilidad{
+  color: #f58b45;
+}
+
+.f-color-social{
+  color: #fccf2b;
+}
+
+.c-option-selected.c-color-smart,
+.bg-color-smart{
   background-color: #7c4194;
 }
 
-.c-option-selected.c-color-convivencia{
+.c-option-selected.c-color-convivencia,
+.bg-color-convivencia{
   background-color: #3abaaf;
 }
 
-.c-option-selected.c-color-movilidad{
+.c-option-selected.c-color-movilidad,
+.bg-color-movilidad{
   background-color: #f58b45;
 }
 
-.c-option-selected.c-color-social{
+.c-option-selected.c-color-social,
+.bg-color-social{
   background-color: #fccf2b;
 }
 

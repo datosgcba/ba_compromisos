@@ -51,7 +51,6 @@ angular.module('compromisosSiteApp')
 
                 var url = UrlService.getUrlByCsv($scope.url);
 
-                console.log('renderChart');
                 $scope.chartConfigDefaults.bindto = '#'+$scope.id;
                 
                 $http.jsonp(url)
@@ -67,7 +66,7 @@ angular.module('compromisosSiteApp')
                     }
 
                     $timeout(function() {
-                        console.log(JSON.stringify($scope.chartConfigDefaults));
+                        //console.log(JSON.stringify($scope.chartConfigDefaults));
                         c3.generate($scope.chartConfigDefaults);
                         $scope.loading = false;
                     },500)
