@@ -36,7 +36,7 @@ module.exports = function(config) {
       'bower_components/d3plus/d3plus.full.js',
       'bower_components/c3/c3.js',
       'bower_components/lodash/lodash.js',
-      'bower_components/ng-youtube-embed/src/ng-youtube-embed.js',
+      'bower_components/ng-youtube-embed/build/ng-youtube-embed.min.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

@@ -11,6 +11,7 @@ angular.module('compromisosSiteApp')
   .controller('HomeCtrl', function ($scope,$timeout,$http,UrlService,SlugColorService,LoadSVGService) {
 
     var pymChild = new pym.Child({ polling: 1000 });
+    pymChild.sendHeight();
 
     $scope.data = [];
     $scope.loading = true;
@@ -66,6 +67,7 @@ angular.module('compromisosSiteApp')
       angular.forEach($scope.finishedYearsGroup, function(g){
          $scope.availableYears.push(g.key);
       });
+      $scope.availableYears = $scope.availableYears.sort();
 
       $scope.finishedPercentageGroup = d3.nest()
         .key(function(d) { return getPercentageGroup(d);})
@@ -130,12 +132,12 @@ angular.module('compromisosSiteApp')
       if(filler>0){
         d3.select('#filler').style('height',filler+'px');
       }
-    };
+    }
     
     $scope.closeDetail = function(){
       $scope.currentCompromise = null;
       d3.select('#filler').style('height','0px');
-    }
+    };
 
     function renderDateChart(){
       //Get Years
@@ -151,24 +153,28 @@ angular.module('compromisosSiteApp')
       var seriesColumns = [];
       seriesColumns.push(mainColumns);
       
-        angular.forEach($scope.categoriesGroup,function(c){
-          var series = [];
-          series.push(c.key)
-          angular.forEach($scope.availableYears,function(y){
-            //sorry no break :-( for each;
-            var count = 0;
-            for (var i = 0; i < c.years.length; i++) {
-              var yearGroup = c.years[i];
-              if (y === yearGroup.key){
-                count = yearGroup.values;
-                break;
-              }
+      angular.forEach($scope.categoriesGroup,function(c){
+        var series = [];
+        series.push(c.key);
+        angular.forEach($scope.availableYears,function(y){
+          //sorry no break :-( for each;
+          var count = 0;
+          for (var i = 0; i < c.years.length; i++) {
+            var yearGroup = c.years[i];
+            if (y === yearGroup.key){
+              count = yearGroup.values;
+              break;
             }
-            series.push(count);
-          });
-          seriesColumns.push(series);
+          }
+          series.push(count);
         });
-        
+        seriesColumns.push(series);
+      });
+      
+      //lines
+      var max = d3.max($scope.finishedYearsGroup,function(d){return  d.values.length;});
+      var lines = d3.range(0,max+1).map(function(e){return {value:e};});
+
       $scope.charts.date_chart = c3.generate({
           bindto: '#date_chart',
 
@@ -182,7 +188,6 @@ angular.module('compromisosSiteApp')
               colors: angular.copy($scope.colorsByCategory)
           },
           size: {
-              width: 300,
               height: 220,
           },
           padding: {
@@ -202,7 +207,7 @@ angular.module('compromisosSiteApp')
             },
           grid: {
               y: {
-                  lines: [{value:0}]
+                  lines: lines
               }
           }
       });
@@ -210,7 +215,7 @@ angular.module('compromisosSiteApp')
 
     function renderStateChart(){
       //Get Years
-      var mainColumns= ['x', '0%-25%','25%-50%','50%-75%','75%-100%']
+      var mainColumns= ['x', '0%-25%','25%-50%','50%-75%','75%-100%'];
       //Group by years by category count, 
       angular.forEach($scope.categoriesGroup,function(c){
         c.percentages = d3.nest()
@@ -224,7 +229,7 @@ angular.module('compromisosSiteApp')
       
         angular.forEach($scope.categoriesGroup,function(c){
           var series = [];
-          series.push(c.key)
+          series.push(c.key);
           angular.forEach(groups ,function(y,k){
             //sorry no break :-( for each;
             var count = 0;
@@ -239,7 +244,10 @@ angular.module('compromisosSiteApp')
           });
           seriesColumns.push(series);
         });
-        
+      
+      //lines
+      var max = d3.max($scope.finishedPercentageGroup,function(d){return  d.values.length;});
+      var lines = d3.range(0,max+1).map(function(e){return {value:e};});
 
       $scope.charts.state_chart = c3.generate({
           bindto: '#state_chart',
@@ -253,7 +261,6 @@ angular.module('compromisosSiteApp')
               colors: angular.copy($scope.colorsByCategory)
           },
           size: {
-              width: 300,
               height: 220,
           },
           padding: {
@@ -279,7 +286,7 @@ angular.module('compromisosSiteApp')
             },
           grid: {
               y: {
-                  lines: [{value:0}]
+                  lines: lines
               }
           }
       });
@@ -306,10 +313,7 @@ angular.module('compromisosSiteApp')
     }
 
     function renderCategoryChart(){
-       var diameter = 220,//$('#category_chart').width(), //max size of the bubbles
-       color    = d3.scale.category20b(), //color category
-
-        format = d3.format(",d");
+       var diameter = 220;//$('#category_chart').width(), //max size of the bubbles
 
         var pack = d3.layout.pack()
           .sort(null)
@@ -342,7 +346,7 @@ angular.module('compromisosSiteApp')
               name: c.key,
               children : c.values, 
              });
-          };
+          }
     
     
           var node = svg.datum(data).selectAll(".node")
@@ -366,7 +370,7 @@ angular.module('compromisosSiteApp')
               .style("fill", function(d) 
                 { 
                   return $scope.colorsByCategory[d.slug];
-                })
+                });
 
           // node.filter(function(d) { return !d.children; }).append("text")
           //     .attr("dy", ".3em")
@@ -385,7 +389,7 @@ angular.module('compromisosSiteApp')
 
     //Render & interact menu chart
     $scope.onChangeCategory = function(){
-      if($scope.selectedCategory!=''){
+      if($scope.selectedCategory!==''){
         selectTitle($scope.selectedCategory);
         selectCompromisoItem($scope.selectedCategory);
         selectCategoryChart($scope.selectedCategory);
@@ -393,14 +397,14 @@ angular.module('compromisosSiteApp')
         deselectTitle();
         defaultChartColors();
       }
-    }
+    };
     $scope.onChangeGroup = function(){
       $scope.groupMenu($scope.selectedGroup);
-    }
+    };
     $scope.groupMenu = function(type){
       $scope.selectedGroup = type;
       $scope.charts.menu_chart.api.group($scope.selectedGroup);
-    }
+    };
     function renderMenuChart(){
 
       var itemSize = 150,
@@ -442,11 +446,6 @@ angular.module('compromisosSiteApp')
         w = $(window).width();
         smallDevice = (w<768);
 
-        var xLimit = Math.floor(w/itemSize),
-            xCount = 0,
-            yCount = 0,
-            xOffset = (w-(xLimit*itemSize))/2;
-
         wLabel = 0;
 
         var rows = sortItems($scope.charts.menu_chart.items_group.selectAll("g.compromiso-item"),0);
@@ -479,7 +478,7 @@ angular.module('compromisosSiteApp')
             if(xCount<xLimit-1){
               xCount++;
 
-            } else if($items[0].length!=i+1) {
+            } else if($items[0].length!==i+1) {
               xCount = 0;
               yCount++;
             }
@@ -560,7 +559,7 @@ angular.module('compromisosSiteApp')
           .enter()
           .append('g')
           .classed('label-group',true)
-          .each(function(d,i){
+          .each(function(d){
               var group = d3.select(this);
 
               //frame
@@ -586,7 +585,7 @@ angular.module('compromisosSiteApp')
 
               group
                 .attr("transform",function(){
-                  return "translate("+0+','+d.rows*itemSize+")"
+                  return "translate("+0+','+d.rows*itemSize+")";
                 });
 
               var t = group.select("text");
@@ -669,9 +668,9 @@ angular.module('compromisosSiteApp')
                 .append("g")
                 .classed('compromiso-icon',true)
                 .attr('id',function(d){
-                  return 'c'+d.numero+'-icon'
+                  return 'c'+d.numero+'-icon';
                 })
-                .attr("transform", function(d,i) {
+                .attr("transform", function() {
                     var x = itemSize/2-25;
                     var y = itemSize/3-25;
                     return "translate(" + x +"," + y + ")"; 
@@ -703,7 +702,7 @@ angular.module('compromisosSiteApp')
                   hoverTitle(dd.slug);
                   hoverCompromisoItem(dd.numero);
                 })
-                .on("mouseout",function(dd){
+                .on("mouseout",function(){
                   unhoverTitle();
                   unhoverCompromisoItem();
                   var $sel = $('.c-option-selected');
@@ -711,14 +710,14 @@ angular.module('compromisosSiteApp')
                     selectCompromisoItem($sel.data('slug'));
                   }
                 })
-                .on("click", function(dd,event){
+                .on("click", function(){
                   showDetail(d,d3.mouse(this),d3.event);
                 });
 
           })
           .transition()
           .duration(0)
-          .attr("transform", function(d,i) {
+          .attr("transform", function() {
               var x = w/2-itemSize/2;
               var y = h/2-itemSize/2;
               return "translate(" + x +"," + y + ")"; 
@@ -800,25 +799,25 @@ angular.module('compromisosSiteApp')
     function selectCompromisoItem(slug){
       $('.compromiso-item').addClass('categoria-unselected');
       $('.compromiso-item.categoria-'+slug).removeClass('categoria-unselected');
-    };
+    }
 
     function hoverTitle(slug){
       $('.c-option').removeClass('c-option-hover');
       $('.c-option[data-slug="'+slug+'"]').addClass('c-option-hover');
-    };
+    }
 
     function unhoverTitle(){
       $('.c-option').removeClass('c-option-hover');
-    };
+    }
 
     function selectTitle(slug){
       $('.c-option').removeClass('c-option-selected');
       $('.c-option[data-slug="'+slug+'"]').addClass('c-option-selected');
-    };
+    }
 
     function deselectTitle(){
       $('.c-option').removeClass('c-option-selected');
-    };
+    }
 
     function bindEvents(){
       // Hover title
@@ -852,7 +851,6 @@ angular.module('compromisosSiteApp')
             deselectTitle();
             defaultChartColors();
           } else {
-            var slug = $(this).data('slug');
             selectTitle(slug);
             selectCompromisoItem(slug);
             selectCategoryChart(slug);

@@ -299,6 +299,11 @@ div#category_chart {
   color: #444;
 }
 
+.c3-ygrid-lines line{
+  stroke-width:4px;
+  stroke:#FFF;
+}
+
 .hidden-desktop{
   display: none;
 }

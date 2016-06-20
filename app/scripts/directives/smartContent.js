@@ -19,12 +19,12 @@ angular.module('compromisosSiteApp')
 
             //is Yotube?
             function isYoutube(url) {
-                return(url.match(/\b\w*(youtu)\w*\b/) != null);
-            };
+                return(url.match(/\b\w*(youtu)\w*\b/) !== null);
+            }
             //is image?
             function isImage(url) {
-                return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
-            };
+                return(url.match(/\.(jpeg|jpg|gif|png)$/) !== null);
+            }
             //function used on the ng-include to resolve the template
             $scope.getTemplateUrl = function() {
                 if($scope.template){
@@ -69,10 +69,10 @@ angular.module('compromisosSiteApp')
                         //console.log(JSON.stringify($scope.chartConfigDefaults));
                         c3.generate($scope.chartConfigDefaults);
                         $scope.loading = false;
-                    },500)
+                    },500);
                 });
 
-            }
+            };
         }, 
         template: '<ng-include src="getTemplateUrl()"/>'
     };

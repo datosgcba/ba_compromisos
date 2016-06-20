@@ -12,6 +12,8 @@ angular.module('compromisosSiteApp')
 
   	var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({ polling: 1000 });
+    pymChild.sendHeight();
+    var _ = window._;
 
     //para ir a otra url en el padre  
     //pymChild.navigateParentTo('https://github.com/nprapps/pym.js');
@@ -55,11 +57,11 @@ angular.module('compromisosSiteApp')
           }
         }
       });
-    }
+    };
 
     $scope.prepareData = function(data){
       return data;
-    }
+    };
 
   	
   });

@@ -45,12 +45,12 @@ angular
       };
   })
   .service('LoadSVGService', function () {
-    this.loadIcon = function(icon,cb){    
-      var icon = 'images/iconos/GCBA-compromisos-icons-'+icon+'.svg';
+    this.loadIcon = function(name,cb){    
+      var icon = 'images/iconos/GCBA-compromisos-icons-'+name+'.svg';
       d3.xml(icon, "image/svg+xml", function(error, xml) {
         cb(document.importNode(xml.documentElement, true));
       });
-    }
+    };
   })
   .service('UrlService', function () {
       this.baseUrl = 'http://palamago.com.ar/api/';
@@ -64,7 +64,7 @@ angular
           return this.urls[page] + '&callback=JSON_CALLBACK';
       };
       this.getUrlByCsv = function(csv) {
-          return this.baseUrl + '?source_format=csv&source='+csv+ '&callback=JSON_CALLBACK'
+          return this.baseUrl + '?source_format=csv&source='+csv+ '&callback=JSON_CALLBACK';
       };
   });
 
