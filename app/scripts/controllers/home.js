@@ -372,7 +372,12 @@ angular.module('compromisosSiteApp')
     }
 
     function renderCategoryChart(){
-       var diameter = 220;//$('#category_chart').width(), //max size of the bubbles
+        var diameter = 220;
+        var pad = ($('#category_chart').width()-diameter) / 2;
+        if($('#category_chart').width()<diameter){
+          diameter = $('#category_chart').width(); //max size of the bubbles
+          pad = 0;
+        }
 
         var pack = d3.layout.pack()
           .sort(null)
@@ -382,17 +387,22 @@ angular.module('compromisosSiteApp')
           });
 
         //setup the chart
-      if(!$scope.charts.category_chart){
-        $scope.charts.category_chart = {};
-        $scope.charts.category_chart.svg = 
-        d3.select("#category_chart")
-          .append("svg")
-          .attr("class", "bubble-container")
-          .attr("width", 300)
-          .attr("height", 220);
-      }
-          var svg= $scope.charts.category_chart.svg;
-          var data = 
+        if(!$scope.charts.category_chart){
+          
+          $scope.charts.category_chart = {};
+          
+          $scope.charts.category_chart.svg = 
+            d3.select("#category_chart")
+              .append("svg")
+              .attr("class", "bubble-container")
+              .attr("width", $('#category_chart').width())
+              .attr("height", diameter);
+
+          $scope.charts.category_chart.mainGroup = $scope.charts.category_chart.svg
+            .append('g')
+            .classed('main',true);
+
+          $scope.charts.category_chart.data = 
               { 
                 name:"categories",
                 children:[],
@@ -400,48 +410,62 @@ angular.module('compromisosSiteApp')
 
           for (var i = 0; i <  $scope.categoriesGroup.length; i++) {
              var c = $scope.categoriesGroup[i];
-             data.children.push(
+             $scope.charts.category_chart.data.children.push(
              {
               name: c.key,
               children : c.values, 
              });
           }
-    
-    
-          var node = svg.datum(data).selectAll(".node")
-              .data(pack.nodes)
-            .enter().append("g")
-              .attr("class", function(d) 
-                { 
-                  var what =  d.children ? "node" : "leaf node"; 
-                  var who = d.slug ? d.slug  : d.name;
-                  return what + " " + who;
-              })
-              .attr("transform", function(d) 
-                { return "translate(" + d.x + "," + d.y + ")"; });
+            
+        }
 
-          node.append("title")
-              .text(function(d) { return d.name + (d.children ? "" : ": " + parseInt(d.porcentaje_completado)); });
+        $scope.charts.category_chart.svg.attr("width", $('#category_chart').width());
+  
+        $scope.charts.category_chart.mainGroup.attr("transform", function() 
+              { return "translate(" + pad + ",0)"; });
 
-          node.append("circle")
-              .attr("r", function(d) { return d.r; })
-              .filter(function(d) { return d.name !== "categories"; })
-              .style("fill", function(d) 
-                { 
-                  return $scope.colorsByCategory[d.slug];
-                });
+        var nodes = $scope.charts.category_chart.mainGroup
+            .datum($scope.charts.category_chart.data)
+            .selectAll(".node")
+            .data(pack.nodes);
 
-          // node.filter(function(d) { return !d.children; }).append("text")
-          //     .attr("dy", ".3em")
-          //     .style({
-          //         "text-anchor": "middle",
-          //         "fill":"white", 
-          //         "font-family":"Helvetica Neue, Helvetica, Arial, san-serif",
-          //         "font-size": "12px"})
-          //     .text(function(d) { return d.titulo.substring(0, d.r / 3); });
-       
+        nodes.enter()
+            .append("g")
+            .attr("class", function(d) 
+              { 
+                var what =  d.children ? "node" : "leaf node"; 
+                var who = d.slug ? d.slug  : d.name;
+                return what + " " + who;
+            })
+            .each(function(){
+              d3.select(this).append("circle")
+                .filter(function(d) { return d.name !== "categories"; })
+                .style("fill", function(d) 
+                  { 
+                    return $scope.colorsByCategory[d.slug];
+                  });
+            });
+            
+        nodes.attr("transform", function(d) 
+              { return "translate(" + d.x + "," + d.y + ")"; });
 
-        //d3.select(self.frameElement).style("height", diameter + "px");
+        nodes.selectAll('circle')
+            .attr("r", function(d) { return d.r; });
+
+        /*node.append("title")
+            .text(function(d) { return d.name + (d.children ? "" : ": " + parseInt(d.porcentaje_completado)); });*/
+
+        // node.filter(function(d) { return !d.children; }).append("text")
+        //     .attr("dy", ".3em")
+        //     .style({
+        //         "text-anchor": "middle",
+        //         "fill":"white", 
+        //         "font-family":"Helvetica Neue, Helvetica, Arial, san-serif",
+        //         "font-size": "12px"})
+        //     .text(function(d) { return d.titulo.substring(0, d.r / 3); });
+     
+
+      //d3.select(self.frameElement).style("height", diameter + "px");
 
 
     }
