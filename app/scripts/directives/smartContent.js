@@ -7,6 +7,9 @@ angular.module('compromisosSiteApp')
         replace: true,
         scope: {
           url: '=url',
+          title: '=title',
+          nota: '=nota',
+          fuente: '=fuente',
           dataCallback: '=dataCallback',
           configCallback: '=configCallback',
           template: '=template'
@@ -44,6 +47,12 @@ angular.module('compromisosSiteApp')
             $scope.chartConfigDefaults = {
                 data:{                
                     json: []
+                },
+                padding: {
+                  top: 0,
+                  right: 50,
+                  bottom: 0,
+                  left: 50,
                 }
             };
 
@@ -66,9 +75,9 @@ angular.module('compromisosSiteApp')
                     }
 
                     $timeout(function() {
-                        //console.log(JSON.stringify($scope.chartConfigDefaults));
                         c3.generate($scope.chartConfigDefaults);
                         $scope.loading = false;
+                        $('[data-toggle="popover"]').popover();
                     },500);
                 });
 

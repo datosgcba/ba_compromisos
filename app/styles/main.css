@@ -67,6 +67,15 @@ html {
   margin-right: 3px;
 }
 
+.detalle-frame{
+  border: 1px solid #999;
+  padding: 10px;
+}
+
+.detalle-frame p{
+  font-weight: bold;
+}
+
 /*compromiso home*/
 .compromiso-label{
 	cursor: pointer;
