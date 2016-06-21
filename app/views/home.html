@@ -104,7 +104,7 @@
 
 				<h5>{{currentCompromise.cumplimiento}}</h5>
 				<p> {{currentCompromise.desc}}</p>
-				<button type="button" class="btn btn-xs upper bg-color-{{currentCompromise.slug}}  hidden-device" >Ver mas sobre el compromiso &#187; </button>
+				<button ng-click="redirectParent(currentCompromise.url_interna)" type="button" class="btn btn-xs upper bg-color-{{currentCompromise.slug}}  hidden-device" >Ver mas sobre el compromiso &#187; </button>
 			</div>
 			<div class="col-sm-3"> 
 				<p class="upper"><strong>Estado del Compromiso</strong></p>
@@ -122,7 +122,7 @@
 				<div class="col-md-4 center-block">
 
 
-				<button  id="singlebutton" name="singlebutton" type="button" class="btn btn-xs upper bg-color-{{currentCompromise.slug}}  hidden-desktop center-block" >Ver mas sobre el compromiso &#187; </button>
+				<button ng-click="redirectParent(currentCompromise.url_interna)" id="singlebutton" name="singlebutton" type="button" class="btn btn-xs upper bg-color-{{currentCompromise.slug}}  hidden-desktop center-block" >Ver mas sobre el compromiso &#187; </button>
 			</div>
 				<a class="hidden-desktop" ng-click="closeDetail()">Cerrar</a> 
 			</div>

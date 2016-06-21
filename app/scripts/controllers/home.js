@@ -10,8 +10,8 @@
 angular.module('compromisosSiteApp')
   .controller('HomeCtrl', function ($scope,$timeout,$http,UrlService,SlugColorService,LoadSVGService) {
 
-    var pymChild = new pym.Child({ polling: 1000 });
-    pymChild.sendHeight();
+    $scope.pymChild = new pym.Child({ polling: 1000 });
+    $scope.pymChild.sendHeight();
 
     $scope.data = [];
     $scope.loading = true;
@@ -134,6 +134,10 @@ angular.module('compromisosSiteApp')
         d3.select('#filler').style('height',filler+'px');
       }
     }
+
+    $scope.redirectParent = function(url){
+      $scope.pymChild.navigateParentTo(url);
+    };
     
     $scope.closeDetail = function(){
       $scope.currentCompromise = null;
