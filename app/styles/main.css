@@ -77,6 +77,15 @@ html {
 #compromiso-detail{
 
 }
+#compromiso-detail h1, 
+#compromiso-detail .h1, 
+#compromiso-detail h2, 
+#compromiso-detail .h2, 
+#compromiso-detail h3, 
+#compromiso-detail .h3{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
 #compromiso-detail img{
 	max-width: 100%;
 }
@@ -216,6 +225,7 @@ div#category_chart {
 .c-option-selected.c-color-smart,
 .bg-color-smart{
   background-color: #7c4194;
+  color: white;
 }
 
 .c-option-selected.c-color-convivencia,
@@ -239,6 +249,7 @@ div#category_chart {
 
 .c-color-smart{
   border-color: #7c4194;
+  color: white;
 }
 .c-color-convivencia{
   border-color: #3abaaf;
@@ -378,6 +389,7 @@ div#category_chart {
     top: 0;
     width: 100%;
   }
+
 }
 
 /* Extra Small Devices, Phones */ 
