@@ -109,6 +109,7 @@ angular.module('compromisosSiteApp')
     $scope.renderCharts = function(){
 
       bindEvents();
+      renderHomeChart();
       renderDateChart();
       renderStateChart();
       renderCategoryChart();
@@ -213,50 +214,25 @@ angular.module('compromisosSiteApp')
       });
     }
 
-    function renderStateChart(){
-      //Get Years
-      var mainColumns= ['x', '0%-25%','25%-50%','50%-75%','75%-100%'];
-      //Group by years by category count, 
-      angular.forEach($scope.categoriesGroup,function(c){
-        c.percentages = d3.nest()
-          .key(function(d) { return d.percentageGroup; })
-          .rollup(function(leaves) { return leaves.length; })
-          .entries(c.values);
+    function renderHomeChart(){
+      
+      var columns = [];
+
+      angular.forEach($scope.availableCategories,function(e){
+        columns.push([e,1,1,1,1,1]);
       });
 
-      var seriesColumns = [];
-      seriesColumns.push(mainColumns);
-      
-        angular.forEach($scope.categoriesGroup,function(c){
-          var series = [];
-          series.push(c.key);
-          angular.forEach(groups ,function(y,k){
-            //sorry no break :-( for each;
-            var count = 0;
-            for (var i = 0; i < c.percentages.length; i++) {
-              var percentageGroup = c.percentages[i];
-              if (k === parseInt(percentageGroup.key)){
-                count = percentageGroup.values;
-                break;
-              }
-            }
-            series.push(count);
-          });
-          seriesColumns.push(series);
-        });
-      
       //lines
-      var max = d3.max($scope.finishedPercentageGroup,function(d){return  d.values.length;});
+      var max = 4;
       var lines = d3.range(0,max+1).map(function(e){return {value:e};});
 
-      $scope.charts.state_chart = c3.generate({
-          bindto: '#state_chart',
+      $scope.charts.home_chart = c3.generate({
+          bindto: '#home_chart',
           data: {
-              x : 'x',
-              columns: seriesColumns,
+              columns: columns,
               type: 'bar',
-               groups: [
-                 $scope.availableCategories
+              groups: [
+                  $scope.availableCategories
               ],
               colors: angular.copy($scope.colorsByCategory)
           },
@@ -264,24 +240,23 @@ angular.module('compromisosSiteApp')
               height: 220,
           },
           padding: {
-              top: 20,
-              right: 20,
-              bottom: 20,
-              left: 20,
+              top: 30,
+              right: 30,
+              bottom: 30,
+              left: 30,
           },
           legend: {
               show: false
           },
           axis: {
                 x: {
-                    type: 'category'
+                    type: 'category',
+                    show: false
                 },
                 y: {
-                    max: 10,
-                    
                     show:false,
                     // Range includes padding, set 0 if no padding needed
-                    padding: {top:0, bottom:0}
+                    padding: {top:0, bottom:1}
                 }
             },
           grid: {
@@ -292,6 +267,85 @@ angular.module('compromisosSiteApp')
       });
     }
 
+    function renderStateChart(){
+          //Get Years
+          var mainColumns= ['x', '0-25%','25-50%','50-75%','75-100%'];
+          //Group by years by category count, 
+          angular.forEach($scope.categoriesGroup,function(c){
+            c.percentages = d3.nest()
+              .key(function(d) { return d.percentageGroup; })
+              .rollup(function(leaves) { return leaves.length; })
+              .entries(c.values);
+          });
+
+          var seriesColumns = [];
+          seriesColumns.push(mainColumns);
+          
+            angular.forEach($scope.categoriesGroup,function(c){
+              var series = [];
+              series.push(c.key);
+              angular.forEach(groups ,function(y,k){
+                //sorry no break :-( for each;
+                var count = 0;
+                for (var i = 0; i < c.percentages.length; i++) {
+                  var percentageGroup = c.percentages[i];
+                  if (k === parseInt(percentageGroup.key)){
+                    count = percentageGroup.values;
+                    break;
+                  }
+                }
+                series.push(count);
+              });
+              seriesColumns.push(series);
+            });
+          
+          //lines
+          var max = d3.max($scope.finishedPercentageGroup,function(d){return  d.values.length;});
+          var lines = d3.range(0,max+1).map(function(e){return {value:e};});
+
+          $scope.charts.state_chart = c3.generate({
+              bindto: '#state_chart',
+              data: {
+                  x : 'x',
+                  columns: seriesColumns,
+                  type: 'bar',
+                   groups: [
+                     $scope.availableCategories
+                  ],
+                  colors: angular.copy($scope.colorsByCategory)
+              },
+              size: {
+                  height: 220,
+              },
+              padding: {
+                  top: 20,
+                  right: 20,
+                  bottom: 20,
+                  left: 20,
+              },
+              legend: {
+                  show: false
+              },
+              axis: {
+                    x: {
+                        type: 'category'
+                    },
+                    y: {
+                        max: 10,
+                        
+                        show:false,
+                        // Range includes padding, set 0 if no padding needed
+                        padding: {top:0, bottom:0}
+                    }
+                },
+              grid: {
+                  y: {
+                      lines: lines
+                  }
+              }
+          });
+    }
+
     function defaultChartColors(){
       changeChartColors($scope.colorsByCategory);
     }
@@ -299,6 +353,11 @@ angular.module('compromisosSiteApp')
     function changeChartColors(colors){
       $scope.charts.state_chart.data.colors(colors);
       $scope.charts.date_chart.data.colors(colors);
+      $scope.charts.home_chart.data.colors(colors);
+
+      angular.forEach(colors,function(e,k){
+        d3.selectAll('.leaf.'+k+' circle').style('fill',e);
+      });
     }
 
     function selectCategoryChart(slug){
