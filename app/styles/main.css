@@ -67,8 +67,6 @@ html {
   margin-right: 3px;
 }
 
-
-
 /*compromiso home*/
 .compromiso-label{
 	cursor: pointer;
@@ -92,8 +90,8 @@ html {
 
 #compromiso-detail .progress-bar span{
 	color: #FFFFFF;
-    float: right;
-    padding-right: 10px;
+  float: right;
+  padding-right: 10px;
 }
 
 .compromiso-action{
@@ -172,15 +170,16 @@ div#category_chart {
 }
 
 .bubble-container circle {
-  fill: rgb(31, 119, 180);
-  fill-opacity: .25;
-  stroke: rgb(31, 119, 180);
+  stroke: #ccc;
   stroke-width: 1px;
+  fill: #fff;
 }
 
 .bubble-container .leaf circle {
   fill: #ff7f0e;
   fill-opacity: 1;
+  stroke-width: 0px;
+
 }
 
 /*Menú de arriba*/
@@ -311,7 +310,7 @@ div#category_chart {
 }
 
 .c3-ygrid-lines line{
-  stroke-width:4px;
+  stroke-width:5px;
   stroke:#FFF;
 }
 
