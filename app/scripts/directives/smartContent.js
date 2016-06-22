@@ -10,7 +10,7 @@ angular.module('compromisosSiteApp')
           title: '=title',
           nota: '=nota',
           fuente: '=fuente',
-          dataCallback: '=dataCallback',
+          prepareCallback: '=prepareCallback',
           configCallback: '=configCallback',
           template: '=template'
         },
@@ -64,8 +64,8 @@ angular.module('compromisosSiteApp')
                 
                 $http.jsonp(url)
                 .success(function(data){
-                    if($scope.dataCallback){
-                        $scope.chartConfigDefaults.data.json = $scope.dataCallback(data);
+                    if($scope.prepareCallback){
+                        $scope.chartConfigDefaults.data.json = $scope.prepareCallback(data);
                     } else {
                         $scope.chartConfigDefaults.data.json = data;
                     }
