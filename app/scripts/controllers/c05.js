@@ -46,7 +46,7 @@ angular.module('compromisosSiteApp')
           }
         },
         size: {
-            height: 400,
+            height: 300,
         },
         padding: {
             top: 0,
@@ -77,35 +77,26 @@ angular.module('compromisosSiteApp')
 
     $scope.completeConfig2 = function(config){
       return angular.merge(config,{
-        data:{
-          type: 'pie',
-          keys: {
-              value: ['hectareas']
-          },
-          colors:['#ff9900']
-        },
-        size: {
-            height: 300,
-        },
-        padding: {
-            top: 0,
-            right: 20,
-            bottom: 10,
-            left: 20,
-        },
-        legend: {
-            show: false
-        }
+        valueField: 'hectareas'
       });
     };
 
     $scope.prepareData2 = function(data){
-      var transformed = {};
+
+      var transformed = { 
+                        name:"total",
+                        children:[]
+                      };
+
       _.each(data,function(d){
-        transformed[d.tipo] = [d.hectareas];
+        transformed.children.push({
+          name: d.tipo,
+          value: parseInt(d.hectareas),
+          children : []
+        });
       });
-      console.log('data2',transformed);
-      return [transformed];
+
+      return transformed;
     };
 
     $scope.completeConfig3 = function(config){
@@ -144,7 +135,6 @@ angular.module('compromisosSiteApp')
     };
 
     $scope.prepareData3 = function(data){
-      console.log('data3',data);
       return data;
     };
 
