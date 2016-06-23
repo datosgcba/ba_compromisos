@@ -31,10 +31,6 @@ angular.module('compromisosSiteApp')
       $scope.loading = false;
       LoadSVGService.loadIcon($scope.currentCompromise.icono,function(iconLoaded){
         treeIcon = iconLoaded;
-        /*$(iconLoaded)
-            .attr('width', 50)
-            .attr('height', 50)
-            .get(0);*/
         $('#icon-svg-container').html(iconLoaded.cloneNode(true));
       });
     });
@@ -87,7 +83,7 @@ angular.module('compromisosSiteApp')
             .append('rect')
             .classed('vertical-bar-bg',true)
             .attr('height',h)
-            .attr('fill','red');
+            .attr('fill','#FFF');
 
           //icon
           var icon = $(treeIcon)
@@ -104,13 +100,28 @@ angular.module('compromisosSiteApp')
           group
             .append("rect")
             .classed('vertical-bar-fill',true)
-            .attr('fill','grey');
+            .attr('fill','#ccc');
 
           group
             .append("rect")
             .classed('vertical-bar-value',true)
             .datum(d)
-            .attr('fill','green');
+            .attr('fill',$scope.currentCompromise.color);
+
+          group
+            .datum({ix:i})
+            .append('rect')
+            .classed('vertical-bar-event',true)
+            .classed('handy',true)
+            .attr('height',h)
+            .attr('fill','transparent')
+            .on("mouseover",function(){
+            })
+            .on("mouseout",function(){
+            })
+            .on("click", function(d){
+                console.log(chart1Data[d.ix]);
+            });
 
         });
 
@@ -121,6 +132,9 @@ angular.module('compromisosSiteApp')
 
 
       chart1.bars.selectAll('rect.vertical-bar-bg')
+        .attr('width',barW);
+
+      chart1.bars.selectAll('rect.vertical-bar-event')
         .attr('width',barW);
 
       chart1.bars.selectAll('g.vertical-bar-icon svg')

@@ -444,3 +444,7 @@ div#category_chart {
 .hidden {
   display: none;
 }
+
+.handy{
+  cursor:pointer;
+}
