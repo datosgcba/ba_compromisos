@@ -143,12 +143,12 @@ angular.module('compromisosSiteApp')
         .attr('x',pad)
         .attr('width',barW-pad*2);
 
-
     };
 
     //detalle 2
 
     $scope.prepareData2 = function(data){
+
       var transformed = { 
                         name:"total",
                         children:[]
@@ -220,7 +220,6 @@ angular.module('compromisosSiteApp')
     $scope.chartReady3 = function(chart){
 
     };
-
 
     var id;
     $(window).resize(function() {
