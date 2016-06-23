@@ -36,50 +36,12 @@ angular.module('compromisosSiteApp')
       });
     });
 
-    $scope.completeConfig1 = function(config){
-      return angular.merge(config,{
-        data:{
-          type: 'pie',
-          keys: {
-              value: ['hectareas']
-          }
-        },
-        size: {
-            height: 300,
-        },
-        padding: {
-            top: 0,
-            right: 20,
-            bottom: 10,
-            left: 20,
-        },
-        axis: {
-          rotated:true,
-          x: {
-              type: 'category',
-              show:false
-          },
-          y: {
-              show:false
-          }
-        },
-        legend: {
-            show: false
-        }
-      });
+    //detalle 1
+    $scope.dataLoaded = function(id,data){
+      console.log(id,data);
     };
 
-    $scope.prepareData1 = function(data){
-      console.log('data1',data);
-      return data;
-    };
-
-    $scope.completeConfig2 = function(config){
-      return angular.merge(config,{
-        valueField: 'hectareas',
-        color: $scope.currentCompromise.color
-      });
-    };
+    //detalle 2
 
     $scope.prepareData2 = function(data){
 
@@ -97,6 +59,23 @@ angular.module('compromisosSiteApp')
       });
 
       return transformed;
+    };
+
+    $scope.completeConfig2 = function(config){
+      return angular.merge(config,{
+        valueField: 'hectareas',
+        color: $scope.currentCompromise.color
+      });
+    };
+
+    $scope.chartReady2 = function(chart){
+
+    };
+
+    //detalle 3
+
+    $scope.prepareData3 = function(data){
+      return data;
     };
 
     $scope.completeConfig3 = function(config){
@@ -134,8 +113,8 @@ angular.module('compromisosSiteApp')
       });
     };
 
-    $scope.prepareData3 = function(data){
-      return data;
+    $scope.chartReady3 = function(chart){
+
     };
 
   	

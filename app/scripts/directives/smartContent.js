@@ -12,6 +12,8 @@ angular.module('compromisosSiteApp')
           fuente: '=fuente',
           prepareCallback: '=prepareCallback',
           configCallback: '=configCallback',
+          readyCallback: '=readyCallback',
+          simpleLoadCallback: '=simpleLoadCallback',
           template: '=template'
         },
         controller: function($scope, $timeout, UrlService, $http) {
@@ -53,6 +55,11 @@ angular.module('compromisosSiteApp')
                   right: 50,
                   bottom: 0,
                   left: 50,
+                },
+                onrendered: function () {
+                  if($scope.readyCallback){
+                    $scope.readyCallback($scope.chart);
+                  }
                 }
             };
 
@@ -81,15 +88,15 @@ angular.module('compromisosSiteApp')
 
                     $timeout(function() {
                         $scope.chart=false;
-                        creeateBubbleChart();
+                        createBubbleChart();
                         $scope.bindFinalEvents();
                     },500);
                 });
 
             };
 
-            function creeateBubbleChart(){
-                $scope.resizeFunction = creeateBubbleChart;
+            function createBubbleChart(){
+                $scope.resizeFunction = createBubbleChart;
                 var diameter = 300;
                 var pad = ($('#'+$scope.id).width()-diameter) / 2;
 
@@ -164,6 +171,10 @@ angular.module('compromisosSiteApp')
                 nodes.selectAll('circle')
                     .attr("r", function(d) { return d.r; });
 
+                if($scope.readyCallback){
+                  $scope.readyCallback($scope.chart);
+                }
+
             }
 
             $scope.renderChart = function(){
@@ -189,6 +200,17 @@ angular.module('compromisosSiteApp')
                     },500);
                 });
 
+            };
+
+            $scope.simpleLoad = function(){
+              var url = UrlService.getUrlByCsv($scope.url);
+              $http.jsonp(url)
+              .success(function(data){
+                if($scope.simpleLoadCallback){
+                  $scope.simpleLoadCallback($scope.id,data);
+                  $scope.bindFinalEvents();
+                }
+              });
             };
 
             $scope.bindFinalEvents = function(){
