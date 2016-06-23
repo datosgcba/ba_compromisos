@@ -20,16 +20,30 @@
     <hr/>
 
     <div ng-if="data.detalle_2" class="col-md-6 text-center">
-      <smart-content url="data.detalle_2"></smart-content>
+       <smart-content 
+        url="data.detalle_2"
+        prepare-callback="prepareData2"
+        config-callback="completeConfig2"
+        ready-callback="chartReady2"
+        title="data.detalle_2_nombre"
+        nota="data.detalle_2_nota"
+        fuente="data.detalle_2_fuente"
+        ></smart-content>
     </div>
 
-    <div ng-if="data.detalle_3" class="col-md-6 text-center">
-    	<smart-content url="data.detalle_3" template=""></smart-content>
+    <div ng-if="data.detalle_3" class="col-md-6 text-center bar-chart-{{currentCompromise.slug}}">
+       <smart-content 
+        url="data.detalle_3"
+        prepare-callback="prepareData3"
+        config-callback="completeConfig3"
+        ready-callback="chartReady3"
+        title="data.detalle_3_nombre"
+        nota="data.detalle_3_nota"
+        fuente="data.detalle_3_fuente"
+        ></smart-content>
     </div>
 
-    <div ng-if="data.detalle_4" class="col-md-6 text-center">
-      <smart-content url="data.detalle_4"></smart-content>
-    </div>
+   
 
   </div>
   <hr/>
