@@ -26,17 +26,10 @@ angular.module('compromisosSiteApp')
       $scope.currentCompromise.porcentaje_completado = parseInt($scope.currentCompromise.porcentaje_completado);
       $scope.loading = false;
       LoadSVGService.loadIcon($scope.currentCompromise.icono,function(iconLoaded){
-        /*$(iconLoaded)
-            .attr('width', 50)
-            .attr('height', 50)
-            .get(0);*/
         $('#icon-svg-container').html(iconLoaded.cloneNode(true));
       });
       console.log($scope.currentCompromise);
     });
-
-    $scope.youtubeLink = 'https://www.youtube.com/watch?v=AoZ98-TwqM4';
-
 
     $scope.completeConfig = function(config){
       return angular.merge(config,{

@@ -28,6 +28,7 @@ angular
       .when('/c01', {templateUrl: 'views/c01.html',controller: 'Compromiso01Ctrl',controllerAs: 'c01'})
       .when('/c02', {templateUrl: 'views/c02.html',controller: 'Compromiso02Ctrl',controllerAs: 'c02'})
       .when('/c03', {templateUrl: 'views/c03.html',controller: 'Compromiso03Ctrl',controllerAs: 'c03'})
+      .when('/c05', {templateUrl: 'views/c05.html',controller: 'Compromiso05Ctrl',controllerAs: 'c05'})
       .otherwise({
         redirectTo: '/'
       });
@@ -40,8 +41,24 @@ angular
           'ciudad inteligente y sustentable': 'smart'
         };
 
+      this.colorsBySlug = {
+        'social':"#fccf2b",
+        'convivencia':"#3abaaf",
+        'movilidad':"#f58b45",
+        'smart':"#7c4194"
+      };
+
       this.getCategorySlug = function(cat){
         return this.list[cat.toLowerCase()];
+      };
+
+      this.getColorBySlug = function(slug){
+        if(slug){
+          return this.colorsBySlug[slug.toLowerCase()];
+        }
+        else{
+          return this.colorsBySlug;
+        }
       };
   })
   .service('LoadSVGService', function () {

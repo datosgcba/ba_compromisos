@@ -7,19 +7,28 @@
   <div class="row">
     
     <div ng-if="data.detalle_1" class="col-md-6 text-center">
-    	<smart-content url="data.detalle_1" template=""></smart-content>
+      <smart-content url="data.detalle_1" template=""></smart-content>
     </div>
 
     <div ng-if="data.detalle_2" class="col-md-6 text-center">
-    	<smart-content url="data.detalle_2"></smart-content>
+      <smart-content url="data.detalle_2"></smart-content>
     </div>
 
     <div ng-if="data.detalle_3" class="col-md-6 text-center">
-      <smart-content url="data.detalle_3" data-callback="prepareData" config-callback="completeConfig"></smart-content>
+      <smart-content 
+        url="data.detalle_3" 
+        prepare-callback="prepareData" 
+        config-callback="completeConfig" 
+        title="data.detalle_3_nombre"
+        nota="data.detalle_3_nota"
+        fuente="data.detalle_3_fuente"
+        ></smart-content>
     </div>
+    
     <div ng-if="data.detalle_4" class="col-md-6 text-center">
       <smart-content url="data.detalle_4"></smart-content>
     </div>
 
   </div>
+  <hr/>
 </div>

@@ -67,7 +67,14 @@ html {
   margin-right: 3px;
 }
 
+.detalle-frame{
+  border: 1px solid #999;
+  padding: 10px;
+}
 
+.detalle-frame p{
+  font-weight: bold;
+}
 
 /*compromiso home*/
 .compromiso-label{
@@ -77,14 +84,23 @@ html {
 #compromiso-detail{
 
 }
+#compromiso-detail h1, 
+#compromiso-detail .h1, 
+#compromiso-detail h2, 
+#compromiso-detail .h2, 
+#compromiso-detail h3, 
+#compromiso-detail .h3{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
 #compromiso-detail img{
 	max-width: 100%;
 }
 
 #compromiso-detail .progress-bar span{
 	color: #FFFFFF;
-    float: right;
-    padding-right: 10px;
+  float: right;
+  padding-right: 10px;
 }
 
 .compromiso-action{
@@ -163,15 +179,16 @@ div#category_chart {
 }
 
 .bubble-container circle {
-  fill: rgb(31, 119, 180);
-  fill-opacity: .25;
-  stroke: rgb(31, 119, 180);
+  stroke: #ccc;
   stroke-width: 1px;
+  fill: #fff;
 }
 
 .bubble-container .leaf circle {
   fill: #ff7f0e;
   fill-opacity: 1;
+  stroke-width: 0px;
+
 }
 
 /*Menú de arriba*/
@@ -216,6 +233,7 @@ div#category_chart {
 .c-option-selected.c-color-smart,
 .bg-color-smart{
   background-color: #7c4194;
+  color: white;
 }
 
 .c-option-selected.c-color-convivencia,
@@ -300,7 +318,7 @@ div#category_chart {
 }
 
 .c3-ygrid-lines line{
-  stroke-width:4px;
+  stroke-width:5px;
   stroke:#FFF;
 }
 
@@ -378,6 +396,7 @@ div#category_chart {
     top: 0;
     width: 100%;
   }
+
 }
 
 /* Extra Small Devices, Phones */ 

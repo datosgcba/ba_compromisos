@@ -90,23 +90,26 @@
 
 
 		<div id="compromiso-detail" class="row well" ng-cloak ng-show="currentCompromise">
-			<a class="hidden-desktop" ng-click="closeDetail()">Cerrar</a> 
-			<div class="col-sm-3"> 
+			
+			<div class="col-sm-3 hidden-device"> 
 				<img ng-src="{{currentCompromise.imagen}}">
 			</div>
+			
 			<div class="col-sm-6"> 
-				<h2><small>{{currentCompromise.categoria}}</small></h2>
-				
+					<div class="row">
+						  <div class="col-xs-10 col-sm-12"><h2><small>{{currentCompromise.categoria}}</small></h2></div>
+						  <div class="col-xs-2 hidden-desktop"><a class="" ng-click="closeDetail()">(x)</a> </div>
+						</div>			
 				<h2>{{currentCompromise.numero}}.{{currentCompromise.titulo}}</h2>
 
 				<h5>{{currentCompromise.cumplimiento}}</h5>
 				<p> {{currentCompromise.desc}}</p>
-				<button type="button" class="btn btn-xs upper bg-color-{{currentCompromise.slug}}" >Ver mas sobre el compromiso </button>
+				<button ng-click="redirectParent(currentCompromise.url_interna)" type="button" class="btn btn-xs upper bg-color-{{currentCompromise.slug}}  hidden-device" >Ver mas sobre el compromiso &#187; </button>
 			</div>
 			<div class="col-sm-3"> 
 				<p class="upper"><strong>Estado del Compromiso</strong></p>
-				<p> Como lo medimos:<strong>Lorem</strong> </p> 
-				<p> Tiempo Faltante:<strong>xx meses y xx dias </strong> </p> 
+				<p> Como lo medimos:<strong>{{currentCompromise.porcentaje_completado}}</strong> </p> 
+				<p> Tiempo Faltante:<strong>{{currentCompromise.porcentaje_completado}} </strong> </p> 
 				<div class="progress">
 				  <div class="progress-bar bg-color-{{currentCompromise.slug}}"
 				  	role="progressbar" 
@@ -116,6 +119,11 @@
 				  <div class="progress-w" ng-show="currentCompromise.porcentaje_completado<50" ng-style="{ 'width': (100 - currentCompromise.porcentaje_completado) + '%' }">{{currentCompromise.porcentaje_completado}}% </div>
 				</div>
 				<p>Finalizacion:<strong> {{currentCompromise.FechaFinalizacion}} </strong> </p>
+				<div class="col-md-4 center-block">
+
+
+				<button ng-click="redirectParent(currentCompromise.url_interna)" id="singlebutton" name="singlebutton" type="button" class="btn btn-xs upper bg-color-{{currentCompromise.slug}}  hidden-desktop center-block" >Ver mas sobre el compromiso &#187; </button>
+			</div>
 				<a class="hidden-desktop" ng-click="closeDetail()">Cerrar</a> 
 			</div>
 		</div>
