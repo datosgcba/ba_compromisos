@@ -119,35 +119,45 @@ html {
 }
 
 .categoria-smart .compromiso-label,
-.categoria-smart .compromiso-icon .st0{
+.categoria-smart .fill-color,
+.categoria-smart .st0{
   fill: #7c4194;
 }
 
 .categoria-convivencia .compromiso-label,
-.categoria-convivencia .compromiso-icon .st0{
+.categoria-convivencia .fill-color,
+.categoria-convivencia .st0{
   fill: #3abaaf;
 }
 
 .categoria-movilidad .compromiso-label,
-.categoria-movilidad .compromiso-icon .st0{
+.categoria-movilidad .fill-color,
+.categoria-movilidad .st0{
   fill: #f58b45;
 }
 
 .categoria-social .compromiso-label,
-.categoria-social .compromiso-icon .st0{
+.categoria-social .fill-color,
+.categoria-social .st0{
   fill: #fccf2b;
 }
 
 .categoria-unselected .compromiso-label,
-.categoria-unselected .compromiso-icon .st0{
+.categoria-unselected .fill-color,
+.categoria-unselected .st0{
   fill: #444;
 }
 
-//date chart
+.vertical-bar-bg{
+  fill: #FFF;
+}
+.categoria-selected .vertical-bar-bg{
+  fill:#efefef;
+}
+
 #date_chart{
     cursor: pointer;
 }
-//state chart
 #state_chart{
   cursor: pointer;
 }
@@ -180,7 +190,7 @@ div#category_chart {
 
 .bubble-container circle {
   stroke: #ccc;
-  stroke-width: 1px;
+  stroke-width: 0px;
   fill: #fff;
 }
 
@@ -337,6 +347,13 @@ div#category_chart {
 
 #filler{
   
+}
+
+.vertical-bar-event{
+
+}
+.vertical-bar-event:hover{
+  stroke:#ccc;
 }
 
 /*==========  Non-Mobile First Method  ==========*/

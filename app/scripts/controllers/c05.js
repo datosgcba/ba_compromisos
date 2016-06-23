@@ -43,15 +43,14 @@ angular.module('compromisosSiteApp')
       chart1Data = data;
       setTimeout(function(){
         createCustomChart1();
-      },500);
+      },1000);
     };
 
     function createCustomChart1(){
-      console.log(chart1Data);
       var w = $('#'+chart1Id).width();
       var h = 300;
       var barW = w/chart1Data.length;
-      var pad = 10;
+      var pad = barW*0.1;
 
       var yScale = d3.scale.linear()
           .domain([0,100])
@@ -62,6 +61,10 @@ angular.module('compromisosSiteApp')
         chart1.svg = d3.select('#'+chart1Id)
           .append('svg')
           .classed('vertical-bar-svg',true);
+
+        chart1.detail = d3.select('#'+chart1Id)
+          .append('div')
+          .attr('id','vertical-bar-detail');
 
         chart1.main = chart1.svg.append('g')
           .classed('vertical-bar-g-main',true);
@@ -74,7 +77,12 @@ angular.module('compromisosSiteApp')
 
       chart1.bars.enter()
         .append('g')
+        .attr('id',function(d,i){
+          return 'vertical-bar-g-'+i;
+        })
         .classed('vertical-bar-g',true)
+        .classed('categoria-'+$scope.currentCompromise.slug,true)
+        .classed('categoria-unselected',true)
         .each(function(d,i){
           var group = d3.select(this);
           //bg
@@ -82,8 +90,7 @@ angular.module('compromisosSiteApp')
             .datum({ix:i})
             .append('rect')
             .classed('vertical-bar-bg',true)
-            .attr('height',h)
-            .attr('fill','#FFF');
+            .attr('height',h);
 
           //icon
           var icon = $(treeIcon)
@@ -105,22 +112,37 @@ angular.module('compromisosSiteApp')
           group
             .append("rect")
             .classed('vertical-bar-value',true)
+            .classed('fill-color',true)
             .datum(d)
             .attr('fill',$scope.currentCompromise.color);
+
+          group
+            .append('text')
+            .classed('vertical-bar-text',true)
+            .attr('text-anchor','middle')
+            .text(function(){
+              return (d.avance)?d.avance+'%':'0%';
+            });
 
           group
             .datum({ix:i})
             .append('rect')
             .classed('vertical-bar-event',true)
             .classed('handy',true)
-            .attr('height',h)
+            .attr('x',1)
+            .attr('y',1)
+            .attr('height',h-2)
+            .attr('stroke','#fff')
+            .attr('stroke-width',2)
             .attr('fill','transparent')
             .on("mouseover",function(){
             })
             .on("mouseout",function(){
             })
             .on("click", function(d){
-                console.log(chart1Data[d.ix]);
+                chart1.detail.html(JSON.stringify(chart1Data[d.ix]));
+                d3.selectAll('.vertical-bar-g').classed('categoria-unselected',true).classed('categoria-selected',false);
+                d3.selectAll('.vertical-bar-g#vertical-bar-g-'+d.ix).classed('categoria-unselected',false).classed('categoria-selected',true);
             });
 
         });
@@ -130,12 +152,15 @@ angular.module('compromisosSiteApp')
             return 'translate('+i*barW+',0)'
             });
 
+      chart1.bars.selectAll('text.vertical-bar-text')
+        .attr('x',barW/2)
+        .attr('y',h-(barW/4)+pad/2);
 
       chart1.bars.selectAll('rect.vertical-bar-bg')
         .attr('width',barW);
 
       chart1.bars.selectAll('rect.vertical-bar-event')
-        .attr('width',barW);
+        .attr('width',barW-2);
 
       chart1.bars.selectAll('g.vertical-bar-icon svg')
         .attr('width', barW)
