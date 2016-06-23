@@ -41,8 +41,24 @@ angular
           'ciudad inteligente y sustentable': 'smart'
         };
 
+      this.colorsBySlug = {
+        'social':"#fccf2b",
+        'convivencia':"#3abaaf",
+        'movilidad':"#f58b45",
+        'smart':"#7c4194"
+      };
+
       this.getCategorySlug = function(cat){
         return this.list[cat.toLowerCase()];
+      };
+
+      this.getColorBySlug = function(slug){
+        if(slug){
+          return this.colorsBySlug[slug.toLowerCase()];
+        }
+        else{
+          return this.colorsBySlug;
+        }
       };
   })
   .service('LoadSVGService', function () {

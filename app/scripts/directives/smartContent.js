@@ -57,7 +57,8 @@ angular.module('compromisosSiteApp')
             };
 
             $scope.bubbleConfigDefaults = {
-                valueField:'value'
+                valueField:'value',
+                color:'red'
             };
 
             $scope.renderBubble = function(){
@@ -144,7 +145,7 @@ angular.module('compromisosSiteApp')
                         .filter(function(d) { return d.name !== "total"; })
                         .style("fill", function() 
                           { 
-                            return 'red';
+                            return $scope.config.color;
                           });
                     
                       d3.select(this).append("text")

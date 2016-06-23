@@ -24,6 +24,7 @@ angular.module('compromisosSiteApp')
     .success(function(data){
       $scope.currentCompromise = $scope.data = _.find(data, function(d){ return parseInt(d.numero) === 5; });
       $scope.currentCompromise.slug = SlugColorService.getCategorySlug($scope.currentCompromise.categoria);
+      $scope.currentCompromise.color = SlugColorService.getColorBySlug($scope.currentCompromise.slug);
       $scope.currentCompromise.porcentaje_completado = parseInt($scope.currentCompromise.porcentaje_completado);
       $scope.loading = false;
       LoadSVGService.loadIcon($scope.currentCompromise.icono,function(iconLoaded){
@@ -34,8 +35,6 @@ angular.module('compromisosSiteApp')
         $('#icon-svg-container').html(iconLoaded.cloneNode(true));
       });
     });
-
-    $scope.youtubeLink = 'https://www.youtube.com/watch?v=AoZ98-TwqM4';
 
     $scope.completeConfig1 = function(config){
       return angular.merge(config,{
@@ -77,7 +76,8 @@ angular.module('compromisosSiteApp')
 
     $scope.completeConfig2 = function(config){
       return angular.merge(config,{
-        valueField: 'hectareas'
+        valueField: 'hectareas',
+        color: $scope.currentCompromise.color
       });
     };
 
@@ -107,7 +107,7 @@ angular.module('compromisosSiteApp')
               value: ['metros_habitante'],
               x:'ciudad'
           },
-          colors:['#ff9900']
+          colors: {'metros_habitante':$scope.currentCompromise.color}
         },
         size: {
             height: 300,

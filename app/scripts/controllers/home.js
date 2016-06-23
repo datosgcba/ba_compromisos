@@ -99,13 +99,6 @@ angular.module('compromisosSiteApp')
       return group;
     }
 
-    $scope.colorsByCategory = {
-      'social':"#fccf2b",
-      'convivencia':"#3abaaf",
-      'movilidad':"#f58b45",
-      'smart':"#7c4194"
-    };
-
     $scope.renderCharts = function(){
 
       bindEvents();
@@ -190,7 +183,7 @@ angular.module('compromisosSiteApp')
               groups: [
                   $scope.availableCategories
               ],
-              colors: angular.copy($scope.colorsByCategory)
+              colors: angular.copy(SlugColorService.getColorBySlug())
           },
           size: {
               height: 220,
@@ -238,7 +231,7 @@ angular.module('compromisosSiteApp')
               groups: [
                   $scope.availableCategories
               ],
-              colors: angular.copy($scope.colorsByCategory)
+              colors: angular.copy(SlugColorService.getColorBySlug())
           },
           size: {
               height: 220,
@@ -316,7 +309,7 @@ angular.module('compromisosSiteApp')
                    groups: [
                      $scope.availableCategories
                   ],
-                  colors: angular.copy($scope.colorsByCategory)
+                  colors: angular.copy(SlugColorService.getColorBySlug())
               },
               size: {
                   height: 220,
@@ -351,7 +344,7 @@ angular.module('compromisosSiteApp')
     }
 
     function defaultChartColors(){
-      changeChartColors($scope.colorsByCategory);
+      changeChartColors(SlugColorService.getColorBySlug());
     }
 
     function changeChartColors(colors){
@@ -371,7 +364,7 @@ angular.module('compromisosSiteApp')
         'movilidad':"#e6e6e6",
         'smart':"#e6e6e6"
       };
-      colors[slug] = $scope.colorsByCategory[slug];
+      colors[slug] = SlugColorService.getColorBySlug(slug);
       changeChartColors(colors);
     }
 
@@ -446,7 +439,7 @@ angular.module('compromisosSiteApp')
                 .filter(function(d) { return d.name !== "categories"; })
                 .style("fill", function(d) 
                   { 
-                    return $scope.colorsByCategory[d.slug];
+                    return SlugColorService.getColorBySlug(d.slug);
                   });
             });
             
