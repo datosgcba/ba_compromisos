@@ -25,6 +25,8 @@ angular.module('compromisosSiteApp')
       $scope.currentCompromise = $scope.data = _.find(data, function(d){ return parseInt(d.numero) === 3; });
       $scope.currentCompromise.slug = SlugColorService.getCategorySlug($scope.currentCompromise.categoria);
       $scope.currentCompromise.porcentaje_completado = parseInt($scope.currentCompromise.porcentaje_completado);
+      $scope.currentCompromise.color = SlugColorService.getColorBySlug($scope.currentCompromise.slug);
+      $scope.currentCompromise.secondColor = '#bdbec2';
       $scope.loading = false;
       LoadSVGService.loadIcon($scope.currentCompromise.icono,function(iconLoaded){
         /*$(iconLoaded)
@@ -54,7 +56,8 @@ angular.module('compromisosSiteApp')
               value: ['adultos_incluidos_acumulado','meta_acumulado'],
               x: 'mes'
           },
-          colors: {'meta_acumulado':$scope.currentCompromise.color}
+          colors: {'meta_acumulado':$scope.currentCompromise.secondColor,
+                    'adultos_incluidos_acumulado': $scope.currentCompromise.color}
         },
         size: {
             height: 300,
@@ -95,7 +98,9 @@ angular.module('compromisosSiteApp')
               value: ['uso_computadora','uso_internet'],
               x:'edad'
           },
-          colors: {'uso_computadora':$scope.currentCompromise.color}
+          colors: {
+            'uso_computadora':$scope.currentCompromise.color,
+            'uso_internet':$scope.currentCompromise.secondColor}
         },
         size: {
             height: 300,
@@ -139,7 +144,9 @@ angular.module('compromisosSiteApp')
               value: ['poblacion_mayor_o_igual_65'],
               x:'provincia'
           },
-          colors: {'poblacion_mayor_o_igual_65':$scope.currentCompromise.color}
+          colors: 
+          {'poblacion_mayor_o_igual_65':
+          $scope.currentCompromise.color}
         },
         size: {
             height: 300,
@@ -148,13 +155,13 @@ angular.module('compromisosSiteApp')
             top: 0,
             right: 20,
             bottom: 10,
-            left: 20,
+            left: 100,
         },
         axis: {
           rotated:true,
           x: {
               type: 'category',
-              show:false
+              show:true
           },
           y: {
               show:false
