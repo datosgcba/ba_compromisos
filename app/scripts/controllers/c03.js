@@ -40,9 +40,6 @@ angular.module('compromisosSiteApp')
 
 
     $scope.prepareData = function(data){
-      // ['x', '2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06'],
-      //  ['data1', 30, 200, 100, 400, 150, 250],
-      //  ['data2', 130, 340, 200, 500, 250, 350]
       return data;
     };
 
@@ -51,18 +48,13 @@ angular.module('compromisosSiteApp')
         data:{
           types: {
             adultos_incluidos_acumulado: 'area',
-            meta_acumulado: 'area-spline'
+            meta_acumulado: 'area'
           },
           keys: {
               value: ['adultos_incluidos_acumulado','meta_acumulado'],
-              // x:'mes'
+              x: 'mes'
           },
-          //,
-          // keys: {
-          //     value: ['poblacion_mayor_o_igual_65'],
-          //     x:'provincia'
-          // },
-          // colors: {'poblacion_mayor_o_igual_65':$scope.currentCompromise.color}
+          colors: {'meta_acumulado':$scope.currentCompromise.color}
         },
         size: {
             height: 300,
@@ -74,17 +66,16 @@ angular.module('compromisosSiteApp')
             left: 20,
         },
         axis: {
-          // rotated:false,
-          // x: {
-          //     type: 'category',
-          //     show:false
-          // },
-          // y: {
-          //     show:false
-          // }
+          x: {
+              type: 'category',
+              show:false
+          },
+          y: {
+              show:false
+          }
         },
         legend: {
-            // show: false
+            show: false
         }
       });
     };
@@ -101,10 +92,10 @@ angular.module('compromisosSiteApp')
         data:{
           type: 'bar',
           keys: {
-              value: ['poblacion_mayor_o_igual_65'],
-              x:'provincia'
+              value: ['uso_computadora','uso_internet'],
+              x:'edad'
           },
-          colors: {'poblacion_mayor_o_igual_65':$scope.currentCompromise.color}
+          colors: {'uso_computadora':$scope.currentCompromise.color}
         },
         size: {
             height: 300,
@@ -116,7 +107,6 @@ angular.module('compromisosSiteApp')
             left: 20,
         },
         axis: {
-          rotated:true,
           x: {
               type: 'category',
               show:false
@@ -126,7 +116,7 @@ angular.module('compromisosSiteApp')
           }
         },
         legend: {
-            show: false
+            // show: false
         }
       });
     };
