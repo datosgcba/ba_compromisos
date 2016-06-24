@@ -357,6 +357,10 @@ div#category_chart {
   stroke:#ccc;
 }
 
+.custom-c3-text{
+    fill:#fff;
+}
+
 /*==========  Non-Mobile First Method  ==========*/
 
 /* Large Devices, Wide Screens */

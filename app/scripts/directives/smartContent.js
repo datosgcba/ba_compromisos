@@ -58,7 +58,7 @@ angular.module('compromisosSiteApp')
                 },
                 onrendered: function () {
                   if($scope.readyCallback){
-                    $scope.readyCallback($scope.chart);
+                    $scope.readyCallback($scope.chart,$scope.id);
                   }
                 }
             };
@@ -172,7 +172,7 @@ angular.module('compromisosSiteApp')
                     .attr("r", function(d) { return d.r; });
 
                 if($scope.readyCallback){
-                  $scope.readyCallback($scope.chart);
+                  $scope.readyCallback($scope.chart,$scope.id);
                 }
 
             }

@@ -20,7 +20,7 @@ angular.module('compromisosSiteApp')
 
     $scope.loading = true;
 
-    var treeIcon;
+    var treeIcon,data3;
 
     $http.jsonp(url)
     .success(function(data){
@@ -224,6 +224,7 @@ angular.module('compromisosSiteApp')
     //detalle 3
 
     $scope.prepareData3 = function(data){
+      data3 = data;
       return data;
     };
 
@@ -258,12 +259,31 @@ angular.module('compromisosSiteApp')
         },
         legend: {
             show: false
+        },
+        bar: {
+            width: {
+                ratio: 0.8 // this makes bar width 50% of length between ticks
+            }
+            // or
+            //width: 100 // this makes bar width 100px
         }
       });
     };
 
-    $scope.chartReady3 = function(chart){
-
+    $scope.chartReady3 = function(chart,id){
+      var container = d3.select('.c3-texts');
+      d3.selectAll('#'+id+' .c3-event-rect').each(function(d){
+        var dato = data3[d.index];
+        var bar = d3.select(this);
+        var offset = parseInt(bar.attr('height')/2);
+        container
+          .append('text')
+          .attr('alignment-baseline','middle')
+          .classed('custom-c3-text',true)
+          .attr('x',parseInt(bar.attr('x'))+10)
+          .attr('y',parseInt(bar.attr('y'))+offset)
+          .text(dato.ciudad+': '+dato.metros_habitante+'mts2');
+      });
     };
 
     var id;
