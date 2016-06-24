@@ -100,7 +100,7 @@ angular.module('compromisosSiteApp')
           group
             .append("g")
             .classed('vertical-bar-icon',true)
-            .each(function(d){
+            .each(function(){
                 this.appendChild(icon.cloneNode(true));
             });
 
@@ -149,7 +149,7 @@ angular.module('compromisosSiteApp')
 
       chart1.bars
         .attr('transform', function(d,i){
-            return 'translate('+i*barW+',0)'
+            return 'translate('+i*barW+',0)';
             });
 
       chart1.bars.selectAll('text.vertical-bar-text')
@@ -182,7 +182,7 @@ angular.module('compromisosSiteApp')
         .attr('x',pad)
         .attr('width',barW-pad*2);
 
-    };
+    }
 
     //detalle 2
 

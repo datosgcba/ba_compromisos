@@ -70,6 +70,7 @@ html {
 .detalle-frame{
   border: 1px solid #999;
   padding: 10px;
+  margin-bottom: 25px;
 }
 
 .detalle-frame p{
