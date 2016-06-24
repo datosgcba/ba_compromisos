@@ -8,7 +8,7 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('Compromiso05Ctrl', function (UrlService, $scope, $http,SlugColorService,LoadSVGService) {
+  .controller('Compromiso05Ctrl', function (UrlService,$compile,$templateRequest, $scope, $http,SlugColorService,LoadSVGService, $sce) {
 
   	var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({ polling: 1000 });
@@ -140,9 +140,15 @@ angular.module('compromisosSiteApp')
             .on("mouseout",function(){
             })
             .on("click", function(d){
-                chart1.detail.html(JSON.stringify(chart1Data[d.ix]));
+                $scope.selectedPlaza = chart1Data[d.ix];
                 d3.selectAll('.vertical-bar-g').classed('categoria-unselected',true).classed('categoria-selected',false);
                 d3.selectAll('.vertical-bar-g#vertical-bar-g-'+d.ix).classed('categoria-unselected',false).classed('categoria-selected',true);
+                var templateUrl = $sce.getTrustedResourceUrl('views/includes/c05/plazaDetail.html');
+                $templateRequest(templateUrl).then(function(template) {
+                    $compile($('#vertical-bar-detail').html(template).contents())($scope);
+                }, function() {
+                    // An error has occurred
+                });
             });
 
         });
