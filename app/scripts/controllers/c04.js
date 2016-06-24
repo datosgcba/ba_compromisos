@@ -52,6 +52,9 @@ angular.module('compromisosSiteApp')
               value: ['muertes'],
               x: 'anio'
           },
+          names:{
+            'muertes': 'Medición'
+          },
           colors: {'muertes': $scope.currentCompromise.color}
         },
         size: {
@@ -61,11 +64,11 @@ angular.module('compromisosSiteApp')
             top: 0,
             right: 20,
             bottom: 10,
-            left: 20,
+            left: 40,
         },
         axis: {
           x: {
-              type: 'category',
+   
               show:true
           },
           y: {
@@ -92,6 +95,9 @@ angular.module('compromisosSiteApp')
               value: ['lesionados'],
               x: 'anio'
           },
+          names:{
+            'lesionados': 'Medición'
+          },
           colors: {'lesionados': $scope.currentCompromise.color}
         },
         size: {
@@ -101,11 +107,11 @@ angular.module('compromisosSiteApp')
             top: 0,
             right: 20,
             bottom: 10,
-            left: 20,
+            left: 40,
         },
         axis: {
           x: {
-              type: 'category',
+             
               show:true
           },
           y: {
@@ -136,6 +142,7 @@ angular.module('compromisosSiteApp')
               value: ['poblacion_mayor_o_igual_65'],
               x:'provincia'
           },
+          
           colors: 
           {'poblacion_mayor_o_igual_65':
           $scope.currentCompromise.color}
@@ -196,7 +203,7 @@ angular.module('compromisosSiteApp')
             top: 0,
             right: 20,
             bottom: 10,
-            left: 100,
+            left: 40,
         },
         axis: {
           rotated:true,
