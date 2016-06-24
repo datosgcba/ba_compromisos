@@ -329,6 +329,13 @@ div#category_chart {
 }
 
 .c3-ygrid-lines line{
+  stroke-dasharray: 5, 5;
+}
+
+#home_chart .c3-ygrid-lines line,
+#date_chart .c3-ygrid-lines line,
+#state_chart .c3-ygrid-lines line{
+  stroke-dasharray:none;
   stroke-width:5px;
   stroke:#FFF;
 }

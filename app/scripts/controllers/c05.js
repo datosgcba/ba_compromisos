@@ -264,8 +264,13 @@ angular.module('compromisosSiteApp')
             width: {
                 ratio: 0.8 // this makes bar width 50% of length between ticks
             }
-            // or
-            //width: 100 // this makes bar width 100px
+        },
+        grid: {
+            y: {
+                lines: [
+                    {value: 9, text: 'Mínimo recomendado por la OMS: 9m²', position: 'middle'},
+                ]
+            }
         }
       });
     };
@@ -282,7 +287,7 @@ angular.module('compromisosSiteApp')
           .classed('custom-c3-text',true)
           .attr('x',parseInt(bar.attr('x'))+10)
           .attr('y',parseInt(bar.attr('y'))+offset)
-          .text(dato.ciudad+': '+dato.metros_habitante+'mts2');
+          .text(dato.ciudad+': '+dato.metros_habitante+' m²');
       });
     };
 
