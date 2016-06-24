@@ -143,7 +143,7 @@ angular.module('compromisosSiteApp')
                 $scope.selectedPlaza = chart1Data[d.ix];
                 d3.selectAll('.vertical-bar-g').classed('categoria-unselected',true).classed('categoria-selected',false);
                 d3.selectAll('.vertical-bar-g#vertical-bar-g-'+d.ix).classed('categoria-unselected',false).classed('categoria-selected',true);
-                var templateUrl = $sce.getTrustedResourceUrl('views/includes/c05/plazaDetail.html');
+                var templateUrl = $sce.getTrustedResourceUrl('views/includes/plazaDetail.html');
                 $templateRequest(templateUrl).then(function(template) {
                     $compile($('#vertical-bar-detail').html(template).contents())($scope);
                 }, function() {
