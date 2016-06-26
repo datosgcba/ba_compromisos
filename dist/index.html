@@ -14,7 +14,7 @@
                 $rows.show();
                 $container.empty();
                 $selected.html($(this).html());
-                var url = 'app.html'+$(this).attr('href');
+                var url = location.origin + location.pathname+'app.html'+$(this).attr('href');
                 $textarea.val(embed.replace('{{URL}}',url));
                 pymParent = new pym.Parent('pym-container', url, {});
             });
