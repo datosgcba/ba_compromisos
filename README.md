@@ -8,7 +8,7 @@ Dashboard de progreso de Compromisos de Gobierno.
 [Node Js Oficial](http://nodejs.org)
 
 
-##Instalar http-server
+###Instalar http-server
 `npm install http-server -g`
 
 ###Ir a Directorio DIST y ejecutar servidor
@@ -17,6 +17,6 @@ Dashboard de progreso de Compromisos de Gobierno.
 
 `http-server ./`
 
-### Abrir navegador 
+###Abrir navegador 
 
 Dirección: `http://localhost:8080`
