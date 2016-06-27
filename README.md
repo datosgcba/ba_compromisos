@@ -17,4 +17,6 @@ Dashboard de progreso de Compromisos de Gobierno.
 
 `http-server ./`
 
-### Abrir navegador en `http://localhost:8080`
+### Abrir navegador 
+
+Dirección: `http://localhost:8080`
