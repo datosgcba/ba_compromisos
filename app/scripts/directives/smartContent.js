@@ -7,7 +7,7 @@ angular.module('compromisosSiteApp')
         replace: true,
         scope: {
           url: '=url',
-          title: '=title',
+          title: '=titulo',
           nota: '=nota',
           fuente: '=fuente',
           prepareCallback: '=prepareCallback',
@@ -57,9 +57,9 @@ angular.module('compromisosSiteApp')
                   left: 50,
                 },
                 onrendered: function () {
-                  if($scope.readyCallback){
+                  /*if($scope.readyCallback){
                     $scope.readyCallback($scope.chart,$scope.id);
-                  }
+                  }*/
                 }
             };
 
@@ -197,6 +197,9 @@ angular.module('compromisosSiteApp')
                     $timeout(function() {
                         $scope.chart = c3.generate($scope.chartConfigDefaults);
                         $scope.bindFinalEvents();
+                        if($scope.readyCallback){
+                          $scope.readyCallback($scope.chart,$scope.id);
+                        }
                     },500);
                 });
 

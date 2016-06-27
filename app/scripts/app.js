@@ -30,6 +30,7 @@ angular
       .when('/c03', {templateUrl: 'views/c03.html',controller: 'Compromiso03Ctrl',controllerAs: 'c03'})
       .when('/c04', {templateUrl: 'views/c04.html',controller: 'Compromiso04Ctrl',controllerAs: 'c04'})
       .when('/c05', {templateUrl: 'views/c05.html',controller: 'Compromiso05Ctrl',controllerAs: 'c05'})
+      .when('/c07', {templateUrl: 'views/c07.html',controller: 'Compromiso07Ctrl',controllerAs: 'c07'})
       .otherwise({
         redirectTo: '/'
       });
