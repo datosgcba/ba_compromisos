@@ -31,7 +31,7 @@ angular.module('compromisosSiteApp')
             .attr('width', 50)
             .attr('height', 50)
             .get(0);*/
-        $('#icon-svg-container').html(iconLoaded.cloneNode(true));
+        $('.icon-svg-container').html(iconLoaded.cloneNode(true));
       });
       console.log($scope.currentCompromise);
     });
