@@ -38,7 +38,7 @@ angular.module('compromisosSiteApp')
               if(url.match(/\b\w*(youtu\.be)\w*\b/) !== null){
                 return url.split('/')[3];
               }
-            };
+            }
 
             //function used on the ng-include to resolve the template
             $scope.getTemplateUrl = function() {

@@ -14,8 +14,7 @@
     "pym.js": "^0.4.5",
     "d3plus": "^1.9.3",
     "c3": "^0.4.11",
-    "lodash": "^4.13.1",
-    "ng-youtube-embed": "~0.2.4"
+    "lodash": "^4.13.1"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"
