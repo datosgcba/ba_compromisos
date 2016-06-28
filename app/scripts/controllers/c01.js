@@ -45,7 +45,6 @@ angular.module('compromisosSiteApp')
       return angular.merge(config,{
         data:{
           types: {
-            
             meta: 'area',
             baches_resueltos: 'line',
           },
@@ -68,7 +67,7 @@ angular.module('compromisosSiteApp')
         axis: {
           x: {
               type: 'category',
-              show:false
+              show:true
           },
           y: {
               show:false
@@ -113,7 +112,7 @@ angular.module('compromisosSiteApp')
         axis: {
           x: {
               type: 'category',
-              show:false
+              show:true
           },
           y: {
               show:false

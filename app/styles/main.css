@@ -74,7 +74,7 @@ html {
 }
 
 .detalle-frame p{
-  font-weight: bold;
+ font-size: 12.586667px;
 }
 
 /*compromiso home*/
@@ -320,6 +320,12 @@ div#category_chart {
   margin: 10px 0px;
 }
 
+
+.c3 svg {
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
+}
+
+   
 /*Axis*/
 .c3-axis.c3-axis-x path.domain,
 .c3-axis.c3-axis-x .tick line{
