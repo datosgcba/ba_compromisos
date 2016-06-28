@@ -66,7 +66,7 @@ angular.module('compromisosSiteApp')
             top: 0,
             right: 20,
             bottom: 10,
-            left: 20,
+            left: 80,
         },
         axis: {
           x: {
@@ -74,7 +74,7 @@ angular.module('compromisosSiteApp')
               show:false
           },
           y: {
-              show:false
+              show:true
           }
         },
         legend: {
@@ -109,7 +109,7 @@ angular.module('compromisosSiteApp')
             top: 0,
             right: 20,
             bottom: 10,
-            left: 20,
+            left: 80,
         },
         axis: {
           x: {
@@ -117,11 +117,11 @@ angular.module('compromisosSiteApp')
               show:false
           },
           y: {
-              show:false
+              show:true
           }
         },
         legend: {
-            // show: false
+            show: true
         }
       });
     };
@@ -164,11 +164,11 @@ angular.module('compromisosSiteApp')
               show:true
           },
           y: {
-              show:false
+              show:true
           }
         },
         legend: {
-            show: false
+            show: true
         }
       });
     };

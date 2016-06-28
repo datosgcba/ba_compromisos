@@ -72,9 +72,12 @@ html {
   padding: 10px;
   margin-bottom: 25px;
 }
-
+.detalle-frame .c3-axis-y .domain {
+   display: none;
+}
 .detalle-frame p{
- font-size: 12.586667px;
+  font-size: 14pt;
+  font-weight: 600;
 }
 
 /*compromiso home*/
@@ -143,7 +146,7 @@ html {
 .categoria-social .compromiso-label,
 .categoria-social .fill-color,
 .categoria-social .st0{
-  fill: #fccf2b;
+  fill: #c15180;
 }
 
 .categoria-unselected .compromiso-label,
@@ -262,7 +265,7 @@ div#category_chart {
 
 .c-option-selected.c-color-social,
 .bg-color-social{
-  background-color: #fccf2b;
+  background-color: #c15180;
 }
 
 .c-option-selected h3{
@@ -323,8 +326,12 @@ div#category_chart {
 
 .c3 svg {
   font-family: "OpenSans", Helvetica, Arial, sans-serif;
+
 }
 
+.detalle-frame .c3 svg{
+  text-transform: uppercase;
+}
    
 /*Axis*/
 .c3-axis.c3-axis-x path.domain,

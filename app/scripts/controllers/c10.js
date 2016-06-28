@@ -169,7 +169,7 @@ angular.module('compromisosSiteApp')
             top: 0,
             right: 40,
             bottom: 10,
-            left: 60,
+            left: 30,
         },
         axis: {
           x: {

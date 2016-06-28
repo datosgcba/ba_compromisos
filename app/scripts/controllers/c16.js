@@ -51,14 +51,16 @@ angular.module('compromisosSiteApp')
           types: {
             meta_mensual: 'area',
             meta_acumulada: 'area',
-            medicion_real : 'area'
+            medicion_real : 'line'
           },
           keys: {
               value: ['meta_mensual','meta_acumulada', 'medicion_real'],
               x: 'mes'
           },
-          colors: {'meta_acumulado':$scope.currentCompromise.secondColor,
-                    'adultos_incluidos_acumulado': $scope.currentCompromise.color}
+          colors: {
+                'meta_mensual':$scope.currentCompromise.secondColor,
+                'meta_acumulada':'#ccc',
+                'medicion_real': $scope.currentCompromise.color}
         },
         size: {
             height: 300,
@@ -67,7 +69,7 @@ angular.module('compromisosSiteApp')
             top: 0,
             right: 20,
             bottom: 10,
-            left: 20,
+            left: 40,
         },
         axis: {
           x: {
@@ -75,7 +77,8 @@ angular.module('compromisosSiteApp')
               show:true
           },
           y: {
-              show:false
+            show:true,
+            min: -1,
           }
         },
         legend: {
@@ -122,7 +125,7 @@ angular.module('compromisosSiteApp')
               show:true
           },
           y: {
-              show:false
+              show:true
           }
         },
         legend: {
