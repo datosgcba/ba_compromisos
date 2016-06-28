@@ -1,12 +1,23 @@
-<ng-youtube-embed 
-    url="url" 
-    autoplay="fals"
-    color="white"
-    disablekb="true"
-    end="20"
-    width="100%"
-    height="350px"
-    rel="false"
-    theme="light"
-    >
-</ng-youtube-embed>
+<div class="detalle-frame">
+    <p class="text-left" ng-if="title">{{title}}
+        <i ng-if="nota || fuente" class="pull-right glyphicon glyphicon-info-sign" data-container="body" title="{{nota}}" data-toggle="popover" data-placement="bottom" data-content="Fuente: {{fuente}}">
+        </i>
+    </p>
+    <span ng-show="loading">Cargando...</span>
+    <a class="yt-switch" href="javascript:;" ng-click="ytSwitch=true;" ng-hide="ytSwitch" ng-style="{'background-image':'url('+ytThumbnail+')'}">
+        <img class="img-responsive" src="images/play.png"/>
+    </a>
+    <ng-youtube-embed 
+        ng-if="ytSwitch"
+        url="url"
+        autoplay="true"
+        color="white"
+        disablekb="true"
+        width="100%"
+        height="300px"
+        rel="false"
+        theme="light"
+        modestbranding="1"
+        >
+    </ng-youtube-embed>
+</div>

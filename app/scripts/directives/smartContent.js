@@ -30,10 +30,23 @@ angular.module('compromisosSiteApp')
             function isImage(url) {
                 return(url.match(/\.(jpeg|jpg|gif|png)$/) !== null);
             }
+
+            function getVideoId(url) {
+              if(url.match(/\b\w*(youtube)\w*\b/) !== null){
+                return $.urlParam(url,'v');
+              }
+              if(url.match(/\b\w*(youtu\.be)\w*\b/) !== null){
+                return url.split('/')[3];
+              }
+            };
+
             //function used on the ng-include to resolve the template
             $scope.getTemplateUrl = function() {
                 if(isYoutube($scope.url)){
                     $scope.loading = false;
+                    $scope.ytSwitch = false;
+                    var ytId = getVideoId($scope.url);
+                    $scope.ytThumbnail = "http://img.youtube.com/vi/{{VIDEO_ID}}/maxresdefault.jpg".replace("{{VIDEO_ID}}",ytId);
                     return "views/directives/youtubePlayer.html";
                 }else if(isImage($scope.url)){
                     $scope.loading = false;

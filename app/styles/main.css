@@ -368,6 +368,17 @@ div#category_chart {
     fill:#fff;
 }
 
+.yt-switch{
+  background-position: center center;
+  min-height: 300px;
+  background-size: cover;
+  display: block;
+}
+
+.yt-switch img{
+
+}
+
 /*==========  Non-Mobile First Method  ==========*/
 
 /* Large Devices, Wide Screens */

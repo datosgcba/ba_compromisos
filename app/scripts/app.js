@@ -1,5 +1,13 @@
 'use strict';
-
+$.urlParam = function(url,name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(url);
+    if (results==null){
+       return null;
+    }
+    else{
+       return results[1] || 0;
+    }
+}
 /**
  * @ngdoc overview
  * @name compromisosSiteApp
