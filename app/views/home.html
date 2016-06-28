@@ -31,8 +31,7 @@
 	  		<option value="social">Protección e integración social</option>
 	  	</select>
   	</div>
-  	<hr>
-	<div class="col-xs-12">
+  	<div class="col-xs-12">
 	  	<select ng-change="onChangeGroup()" ng-model="selectedGroup" class="form-control">
 	  		<option value="home">Ordenar por nombre</option>
 	  		<option value="date">Ordenar por fecha fin</option>
@@ -42,7 +41,6 @@
 	</div>
 </div>
 
-<hr>
 
 <div class="row">
 	<div class="col-sm-3 hidden-device" ng-class="{'display':(selectedGroup=='home')}">
@@ -79,15 +77,14 @@
   	</div>
 </div>
 
-<hr/>
+
 <p class="text-center" ng-show="loading">Cargando...</p>
 <div ng-cloak ng-hide="loading">
 
 	<div class="row">
 	  	<div id="menu_chart"></div>
 	</div>
-	<hr/>
-
+	
 
 		<div id="compromiso-detail" class="row well" ng-cloak ng-show="currentCompromise">
 			
@@ -129,4 +126,4 @@
 		<div id="filler"></div>
 
 </div>
-<hr/>
+

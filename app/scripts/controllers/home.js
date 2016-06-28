@@ -116,12 +116,18 @@ angular.module('compromisosSiteApp')
       $scope.$apply(function(){
         $scope.currentCompromise = c;  
       });
-
+      console.log(localEvent);
       var popupH = parseInt( d3.select('#compromiso-detail').style('height').replace('px','') );
       var docH = parseInt( $(window).height() );
       var yOffset = parseInt ( mouseEvent.clientY );
-
-      d3.select('#compromiso-detail').style('top',mouseEvent.clientY+'px');
+      var eTop = $('#menu_chart').offset().top; //get the offset top of the element
+      var finalTop = eTop - $(window).scrollTop(); //position of the ele w.r.t window
+      var mouseOffset = Math.floor((mouseEvent.clientY-eTop) / 150) * 150;
+      
+      console.log(eTop, mouseEvent.clientY, mouseOffset);
+      var pos = mouseOffset + eTop + 145;
+      d3.select('#compromiso-detail')
+        .style('top',pos+'px');
       var filler = yOffset + popupH - docH;
       if(filler>0){
         d3.select('#filler').style('height',filler+'px');
