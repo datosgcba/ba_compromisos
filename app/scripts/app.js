@@ -54,7 +54,7 @@ angular
         };
 
       this.colorsBySlug = {
-        'social':"#fccf2b",
+        'social':"#c15180",
         'convivencia':"#3abaaf",
         'movilidad':"#f58b45",
         'smart':"#7c4194"
