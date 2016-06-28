@@ -1,0 +1,15 @@
+<div class="icons-container-{{orientacion}}">
+	<div>
+		<div ng-if="orientacion=='rows'">
+			<div ng-repeat="q in qty" id="icon-chart-svg-{{q}}" class="icon-chart-svg-container">
+				<div class="icon-chart-svg-container-icon"></div>
+			</div>
+		</div>
+		<div ng-if="orientacion=='cols'">
+			<div ng-repeat="(key,v) in cols" class="icon-chart-svg-container">
+				<div ng-repeat="(key2,v2) in v.items" class="icon-chart-svg-container-icon"></div>
+				<br class="clear">
+			</div>
+		</div>
+	</div>
+</div>

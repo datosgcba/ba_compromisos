@@ -8,7 +8,7 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('Compromiso01Ctrl', function (UrlService, $scope, $http,SlugColorService,LoadSVGService) {
+  .controller('Compromiso01Ctrl', function (UrlService, $scope, $http,SlugColorService,LoadSVGService,$sce,$templateRequest,$compile) {
 
   	var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({ polling: 1000 });
@@ -37,8 +37,7 @@ angular.module('compromisosSiteApp')
 
     //1
     $scope.prepareData1 = function(data){
-      console.log(1,data);
-      return data;
+     return data;
     };
 
     $scope.completeConfig1 = function(config){
@@ -82,7 +81,6 @@ angular.module('compromisosSiteApp')
 
     //2
     $scope.prepareData2 = function(data){
-      console.log(2,data);
       return data;
     };
 
@@ -126,28 +124,13 @@ angular.module('compromisosSiteApp')
 
 
     //3
-    $scope.completeConfig3 = function(config){
-      return angular.merge(config,{
-        data:{
-          keys: {
-              value: ['baches'],
-              x:'ano'
-          }
-        },
-        axis: {
-          x: {
-              label: 'Año'
-          },
-          y: {
-              label: 'Baches arreglados'
-          }
-        }
+    $scope.dataLoaded3 = function(id,data){
+      var templateUrl = $sce.getTrustedResourceUrl('views/includes/autitos.html');
+      $templateRequest(templateUrl).then(function(template) {
+          $compile($('#'+id).html(template).contents())($scope);
       });
-    };
-
-    $scope.prepareData3 = function(data){
+      console.log(3,id,data);
       return data;
     };
-
   	
   });

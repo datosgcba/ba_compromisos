@@ -373,6 +373,7 @@ div#category_chart {
     fill:#fff;
 }
 
+/*YouTube*/
 .yt-switch{
   background-position: center center;
   min-height: 300px;
@@ -382,6 +383,35 @@ div#category_chart {
 
 .yt-switch img{
 
+}
+
+/*icon chart*/
+.icon-chart-svg-container-icon{
+  width: 100%;
+}
+
+.icons-container-rows{
+  text-align: left;
+}
+.icons-container-cols{
+  overflow: hidden;
+}
+
+.icons-container-rows .icon-chart-svg-container{
+  width: 10%;
+  display: inline-block;
+}
+
+.icons-container-cols .icon-chart-svg-container{
+  width: 10%;
+  float: left;
+  position: relative;
+  display: block;
+
+}
+
+.clear {
+  clear: both;
 }
 
 /*==========  Non-Mobile First Method  ==========*/
