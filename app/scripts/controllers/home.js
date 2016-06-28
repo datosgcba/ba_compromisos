@@ -48,13 +48,13 @@ angular.module('compromisosSiteApp')
       angular.forEach($scope.categoriesGroup, function(g){
     
           g.finishedYearsGroup = d3.nest()
-          .key(function(d) { return d.cumplimiento1; })
+          .key(function(d) { return d.cumplimiento; })
           .rollup(function(leaves) { return leaves.length; })
           .entries(g.values);
       });
 
       $scope.finishedYearsGroup = d3.nest()
-        .key(function(d) { return d.cumplimiento1; })
+        .key(function(d) { return d.cumplimiento; })
         .entries($scope.data);
 
       angular.forEach($scope.finishedYearsGroup, function(g){
@@ -143,7 +143,7 @@ angular.module('compromisosSiteApp')
       //Group by years by category count, 
       angular.forEach($scope.categoriesGroup,function(c){
         c.years = d3.nest()
-          .key(function(d) { return d.cumplimiento1; })
+          .key(function(d) { return d.cumplimiento; })
           .rollup(function(leaves) { return leaves.length; })
           .entries(c.values);
       });
@@ -698,7 +698,7 @@ angular.module('compromisosSiteApp')
           .append('g')
           .attr("class", function(d) {
             var classes = [];
-            classes.push('cumplimiento-'+d.cumplimiento1);
+            classes.push('cumplimiento-'+d.cumplimiento);
             classes.push('categoria-'+d.slug);
             classes.push('categoria-unselected');
             classes.push('avance-'+getPercentageGroup(d));
