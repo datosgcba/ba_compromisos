@@ -33,7 +33,7 @@ angular.module('compromisosSiteApp')
       console.log($scope.currentCompromise);
     });
 
-    var colorMeta = '#ccc';
+    var colorMeta = '#bdbec2';
 
     //1
     $scope.prepareData1 = function(data){
@@ -45,11 +45,12 @@ angular.module('compromisosSiteApp')
       return angular.merge(config,{
         data:{
           types: {
+            
+            meta: 'area',
             baches_resueltos: 'line',
-            meta: 'area'
           },
           keys: {
-              value: ['baches_resueltos','meta'],
+              value: ['meta','baches_resueltos'],
               x:'mes'
           },
           colors: {'meta':colorMeta,

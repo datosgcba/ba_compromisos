@@ -49,8 +49,8 @@ angular.module('compromisosSiteApp')
       return angular.merge(config,{
         data:{
           types: {
-            adultos_incluidos_acumulado: 'area',
-            meta_acumulado: 'area'
+            meta_acumulado: 'area',
+            adultos_incluidos_acumulado: 'line'
           },
           keys: {
               value: ['adultos_incluidos_acumulado','meta_acumulado'],
@@ -78,7 +78,7 @@ angular.module('compromisosSiteApp')
           }
         },
         legend: {
-            show: false
+            show: true
         }
       });
     };
