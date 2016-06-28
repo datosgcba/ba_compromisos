@@ -2,7 +2,7 @@
 
 Dashboard de progreso de Compromisos de Gobierno.
 
-## ¿Cómo ejecutar el proyecto?
+## ¿Cómo ejecutar el proyecto localmente?
  
 ###Instalar NodeJS
 [Node Js Oficial](http://nodejs.org)
@@ -20,3 +20,7 @@ Dashboard de progreso de Compromisos de Gobierno.
 ###Abrir navegador 
 
 Dirección: `http://localhost:8080`
+
+## Instalar en producción
+* Hacer clone / pull del proyecto
+* Apuntar la configuración del web server a la carpera /dist

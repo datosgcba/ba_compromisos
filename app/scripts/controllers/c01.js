@@ -125,6 +125,21 @@ angular.module('compromisosSiteApp')
 
     //3
     $scope.dataLoaded3 = function(id,data){
+
+      $scope.autosConfig = {
+        icono:'subte',
+        orientacion: 'cols',
+        base:{
+          cantidad: 100,
+          color: '#cccccc'
+        },
+        opciones:[ 
+          {
+            color: $scope.currentCompromise.color,
+            cantidad:Math.round(parseInt(data[1].cantidad)*100/parseInt(data[0].cantidad))
+          }
+        ]
+      };
       var templateUrl = $sce.getTrustedResourceUrl('views/includes/autitos.html');
       $templateRequest(templateUrl).then(function(template) {
           $compile($('#'+id).html(template).contents())($scope);
