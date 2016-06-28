@@ -125,26 +125,34 @@ angular.module('compromisosSiteApp')
       $scope.dataConfig = {
         keys: {
               value: 
-              [
-              '1996_1997',
-              '1997_1998',
-              '1998_1999', 
-              '1999_2000',
-              '2000_2001', 
-              '2001_2002', 
-              '2002_2003', 
-              '2003_2004', 
-              '2004_2005', 
-              '2005_2006',
-              '2006_2007',
-              '2007_2008', 
-              '2008_2009', 
-              '2009_2010', 
-              '2010_2011', 
-              '2011_2012',
-              '2012_2013',
-              '2013_2014'],
-              x: 'provincia'
+              [ 'Total País', 
+                'Buenos Aires',  
+                'Catamarca',
+                'Chaco' ,
+                'Chubut',  
+                'Ciudad de Buenos Aires',  
+                'Córdoba',  
+                'Corrientes',  
+                'Entre Ríos',  
+                'Formosa',  
+                'Jujuy',  
+                'La Pampa',  
+                'La Rioja',  
+                'Mendoza',  
+                'Misiones',  
+                'Neuquén',  
+                'Río Negro',  
+                'Salta',  
+                'San Juan',  
+                'San Luis',  
+                'Santa Cruz',  
+                'Santa Fe',  
+                'Santiago del Estero',  
+                'Tierra del Fuego',  
+                'Tucumán',  
+                'Promedio',  
+                'Provincias CV'],
+              x: 'anio'
           },
           type: 'spline'
 
@@ -165,7 +173,6 @@ angular.module('compromisosSiteApp')
         },
         axis: {
           x: {
-              type: 'timeseries',
               show:true
           },
           y: {
@@ -173,7 +180,7 @@ angular.module('compromisosSiteApp')
           }
         },
         legend: {
-            show: true
+            show: false
         }
       });
     };
