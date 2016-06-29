@@ -367,9 +367,9 @@ angular.module('compromisosSiteApp')
     function selectCategoryChart(slug){
       var colors = {
         'social':"#e6e6e6",
-        'convivencia':"#e6e6e6",
-        'movilidad':"#e6e6e6",
-        'smart':"#e6e6e6"
+        'disfrute':"#e6e6e6",
+        'creatividad':"#e6e6e6",
+        'humana':"#e6e6e6"
       };
       colors[slug] = SlugColorService.getColorBySlug(slug);
       changeChartColors(colors);

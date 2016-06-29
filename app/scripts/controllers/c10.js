@@ -15,10 +15,7 @@ angular.module('compromisosSiteApp')
     pymChild.sendHeight();
     var _ = window._;
 
-    var chart3;
-
-    //para ir a otra url en el padre  
-    //pymChild.navigateParentTo('https://github.com/nprapps/pym.js');
+    var chart2;
 
     $scope.loading = true;
 
@@ -30,10 +27,6 @@ angular.module('compromisosSiteApp')
       $scope.currentCompromise.secondColor = '#bdbec2';
       $scope.loading = false;
       LoadSVGService.loadIcon($scope.currentCompromise.icono,function(iconLoaded){
-        /*$(iconLoaded)
-            .attr('width', 50)
-            .attr('height', 50)
-            .get(0);*/
         $('.icon-svg-container').html(iconLoaded.cloneNode(true));
       });
     });
@@ -57,7 +50,7 @@ angular.module('compromisosSiteApp')
           },
           colors: {
             'estudiantes_abandonan': $scope.currentCompromise.color,
-          'variacion_interanual': $scope.currentCompromise.secondColor,
+            'variacion_interanual': $scope.currentCompromise.secondColor,
             }
         },
         size: {
@@ -84,77 +77,42 @@ angular.module('compromisosSiteApp')
       });
     };
 
-    $scope.chartReady1 = function(chart){
+    $scope.chartReady1 = function(){
 
     };
-  
 
     //detalle 2
     $scope.prepareData2 = function(data){
-      // _.each(data,function(d){
-      //   d.mes_date = d.mes+'-01';
-      //   d.linea_a = parseInt(d.linea_a);
-      //   d.linea_b = parseInt(d.linea_b);
-      //   d.linea_c = parseInt(d.linea_c);
-      //   d.linea_d = parseInt(d.linea_d);
-      //   d.linea_e = parseInt(d.linea_e);
-      //   d.linea_h = parseInt(d.linea_h);
-      //   d.anio = parseInt(d.anio);
-      // });
-      // $scope.data3 = data;
-      // $scope.selectedYear = 2015;
-      // $scope.selectOptions = _.map(_.groupBy(data, 'anio'),function(v,k){return parseInt(k); });
-      // return $scope.getFilteredData();
+      $scope.labels = _.keys(data[0]);
+      _.remove($scope.labels, function (d) {
+        return _.indexOf(['anio','CV'], d) !== -1;
+      });
+      $scope.origLabels = angular.copy($scope.labels);
+      $scope.colors = {};
+      $scope.labels.forEach(function(d){
+        $scope.colors[d] = "#e6e6e6";
+      });
+      $scope.selectedProv = $scope.labels[0];
       return data;
     };
 
-    // $scope.changeOption = function(){
-    //   chart2.load(
-    //     angular.merge($scope.dataConfig,{
-    //       json: $scope.getFilteredData()
-    //     })
-    //   );
-    // };
-
-    // $scope.getFilteredData = function(){
-    //   return _.filter($scope.data2, {'anio':$scope.selectedYear});
-    // };
+    $scope.selectedColorPalette = function(){
+      var colors = angular.copy($scope.colors);
+      if($scope.selectedProv){
+        colors[$scope.selectedProv] = $scope.currentCompromise.color;
+      }
+      return colors;
+    };
 
     $scope.completeConfig2 = function(config){
+      $scope.selectOptions = $scope.origLabels;
       $scope.dataConfig = {
         keys: {
-              value: 
-              [ 'Total País', 
-                'Buenos Aires',  
-                'Catamarca',
-                'Chaco' ,
-                'Chubut',  
-                'Ciudad de Buenos Aires',  
-                'Córdoba',  
-                'Corrientes',  
-                'Entre Ríos',  
-                'Formosa',  
-                'Jujuy',  
-                'La Pampa',  
-                'La Rioja',  
-                'Mendoza',  
-                'Misiones',  
-                'Neuquén',  
-                'Río Negro',  
-                'Salta',  
-                'San Juan',  
-                'San Luis',  
-                'Santa Cruz',  
-                'Santa Fe',  
-                'Santiago del Estero',  
-                'Tierra del Fuego',  
-                'Tucumán',  
-                'Promedio',  
-                'Provincias CV'],
+              value: $scope.selectOptions,
               x: 'anio'
           },
-          type: 'spline'
-
+          type: 'spline',
+          colors: $scope.selectedColorPalette()
         };
       return angular.merge(config,{ 
         data:$scope.dataConfig,
@@ -185,14 +143,35 @@ angular.module('compromisosSiteApp')
     };
 
     $scope.chartReady2 = function(chart,id){
-      // chart3 = chart;
-      // $( "<div id='selector-container'></div>" ).insertBefore( "#"+id );
-      // var templateUrl = $sce.getTrustedResourceUrl('views/includes/selector.html');
-      // $templateRequest(templateUrl).then(function(template) {
-      //     $compile($('#selector-container').html(template).contents())($scope);
-      // }, function() {
-      //     // An error has occurred
-      // });
+      $scope.classesLabels = {};
+      $scope.labels.forEach(function(e,i){
+        $scope.classesLabels[$scope.origLabels[i]] = e.replace(/[\s?!@#$%^&*()_=+,.<>'":;\[\]\/|~`{}\\]/g, '-');
+      });
+
+      var slug = $scope.classesLabels[$scope.selectedProv];
+      $('.c3-lines path').css('stroke-width','1px');
+      $('.c3-lines-'+slug+' path').css('stroke-width','5px');
+
+      chart2 = chart;
+
+      $( "<div id='selector-container'></div>" ).insertAfter( "#"+id );
+      var templateUrl = $sce.getTrustedResourceUrl('views/includes/selectorProvincias.html');
+      $templateRequest(templateUrl).then(function(template) {
+        $compile($('#selector-container').html(template).contents())($scope);
+      }, function() {
+        // An error has occurred
+      });
+    };
+
+    $scope.changeOption = function(){
+      chart2.load(
+        angular.merge($scope.dataConfig,{
+          colors: $scope.selectedColorPalette()
+        })
+      );
+      var slug = $scope.classesLabels[$scope.selectedProv];
+      $('.c3-lines path').css('stroke-width','1px');
+      $('.c3-lines-'+slug+' path').css('stroke-width','5px');
     };
 
     var id;
