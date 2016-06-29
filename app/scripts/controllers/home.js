@@ -24,7 +24,8 @@ angular.module('compromisosSiteApp')
     $http.jsonp(url)
     .success(function(data){
       $scope.data = data.map(function(c){
-        c.slug = SlugColorService.getCategorySlug(c.categoria);
+        c.slug = c.slug.trim();
+        c.categoria = c.categoria.trim();
         return c;
       });
       $scope.loading = false;
@@ -59,7 +60,7 @@ angular.module('compromisosSiteApp')
 
       angular.forEach($scope.finishedYearsGroup, function(g){
          g.categoryGroup = d3.nest()
-          .key(function(d) { return SlugColorService.getCategorySlug(d.categoria); })
+          .key(function(d) { return d.slug; })
           .rollup(function(leaves) { return leaves.length; })
           .entries(g.values);
       });
@@ -604,7 +605,7 @@ angular.module('compromisosSiteApp')
 
         angular.forEach($scope.categoriesGroupText, function(group){
           labels.push({title:group.key,rows:rows});
-          rows += sortItems($scope.charts.menu_chart.items_group.selectAll("g.categoria-"+SlugColorService.getCategorySlug(group.key)),rows*itemSize,true);
+          rows += sortItems($scope.charts.menu_chart.items_group.selectAll("g.categoria-"+group.values[0].slug),rows*itemSize,true);
         });
 
         h = rows*itemSize;

@@ -57,13 +57,9 @@ angular
 
       this.colorsBySlug = {
         'social':"#c15180",
-        'convivencia':"#3abaaf",
-        'movilidad':"#f58b45",
-        'smart':"#7c4194"
-      };
-
-      this.getCategorySlug = function(cat){
-        return this.list[cat.toLowerCase()];
+        'disfrute':"#3abaaf",
+        'humana':"#f58b45",
+        'creatividad':"#7c4194"
       };
 
       this.getColorBySlug = function(slug){

@@ -25,7 +25,6 @@ angular.module('compromisosSiteApp')
     $http.jsonp(url)
     .success(function(data){
       $scope.currentCompromise = $scope.data = _.find(data, function(d){ return parseInt(d.numero) === 7; });
-      $scope.currentCompromise.slug = SlugColorService.getCategorySlug($scope.currentCompromise.categoria);
       $scope.currentCompromise.porcentaje_completado = parseInt($scope.currentCompromise.porcentaje_completado);
       $scope.currentCompromise.porcentaje_completado_2 = parseInt($scope.currentCompromise.cumplimiento_2_porcentaje_completado);
       $scope.currentCompromise.color = SlugColorService.getColorBySlug($scope.currentCompromise.slug);
