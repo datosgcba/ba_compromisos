@@ -37,6 +37,17 @@ angular.module('compromisosSiteApp')
             });
 
             function addOpciones(){
+              
+              $('.icons-chart-base')
+                .css('color',$scope.base.color)
+                .css('border-color',$scope.base.color);
+
+              $('.icons-chart-option').each(function(e){
+                var color = $(this).data('color');
+                $(this).css('color',color);
+                //$(this).find('.icon-chart-svg-container-icon .st0').css('fill',color);
+              });
+
               $('.icon-chart-svg-container-icon .st0').css('fill',$scope.base.color);
               var pointer=0;
               angular.forEach($scope.opciones,function(e){

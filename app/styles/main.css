@@ -417,6 +417,15 @@ div#category_chart {
 
 }
 
+.icons-chart-option .icon-chart-svg-container-icon{
+  width: 5%;
+  display: inline-block;
+}
+
+.icons-chart-base{
+  border-bottom: 1px solid black;
+}
+
 .clear {
   clear: both;
 }

@@ -129,11 +129,13 @@ angular.module('compromisosSiteApp')
         icono:'subte',
         orientacion: 'cols',
         base:{
-          cantidad: 100,
-          color: '#cccccc'
+          titulo: data[0].detalle,
+          color: '#cccccc',
+          cantidad: 100
         },
         opciones:[ 
           {
+            titulo: data[1].detalle,
             color: $scope.currentCompromise.color,
             cantidad:Math.round(parseInt(data[1].cantidad)*100/parseInt(data[0].cantidad))
           }
