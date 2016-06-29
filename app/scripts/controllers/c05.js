@@ -253,7 +253,7 @@ angular.module('compromisosSiteApp')
               show:false
           },
           y: {
-              show:false
+              show:true
           }
         },
         legend: {
@@ -264,13 +264,7 @@ angular.module('compromisosSiteApp')
                 ratio: 0.8 // this makes bar width 50% of length between ticks
             }
         },
-        grid: {
-            y: {
-                lines: [
-                    {value: 9, text: 'Mínimo recomendado por la OMS: 9m²', position: 'middle'},
-                ]
-            }
-        }
+        
       });
     };
 

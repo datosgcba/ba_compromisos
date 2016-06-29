@@ -43,6 +43,8 @@ angular
       .when('/c09', {templateUrl: 'views/c09.html',controller: 'Compromiso09Ctrl',controllerAs: 'c09'})  
       .when('/c10', {templateUrl: 'views/c10.html',controller: 'Compromiso10Ctrl',controllerAs: 'c10'})  
       .when('/c12', {templateUrl: 'views/c12.html',controller: 'Compromiso12Ctrl',controllerAs: 'c12'})  
+      .when('/c13', {templateUrl: 'views/c13.html',controller: 'Compromiso13Ctrl',controllerAs: 'c13'})  
+      .when('/c14', {templateUrl: 'views/c14.html',controller: 'Compromiso14Ctrl',controllerAs: 'c14'})  
       .when('/c16', {templateUrl: 'views/c16.html',controller: 'Compromiso16Ctrl',controllerAs: 'c16'})  
       .otherwise({
         redirectTo: '/'
