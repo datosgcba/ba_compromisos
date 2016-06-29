@@ -15,9 +15,6 @@ angular.module('compromisosSiteApp')
     pymChild.sendHeight();
     var _ = window._;
 
-    //para ir a otra url en el padre  
-    //pymChild.navigateParentTo('https://github.com/nprapps/pym.js');
-
     $scope.loading = true;
 
     var treeIcon,data3;
@@ -45,10 +42,18 @@ angular.module('compromisosSiteApp')
         'chart-escuelas-2': parts[1]
       };
 
-      $( "#"+id ).append("<div id='chart-escuelas-1'></div>");
-      $( "#"+id ).append("<div id='chart-escuelas-2'></div>");
+      $( "#"+id ).append(
 
-      console.log(data);
+        "<div class='row'>"+
+          "<div class='col-md-10'>"+
+            "<div id='chart-escuelas-1'></div>"+
+            "<div id='chart-escuelas-2'></div>"+
+          "</div>"+
+          "<div id='vertical-bar-detail' class='col-md-2'>"+
+          "</div>"+
+        "</div>"
+        );
+
       setTimeout(function(){
         createCustomChart('chart-escuelas-1');
         createCustomChart('chart-escuelas-2');
@@ -71,10 +76,6 @@ angular.module('compromisosSiteApp')
           .append('svg')
           .classed('vertical-bar-svg',true);
 
-        chart[id].detail = d3.select('#'+id)
-          .append('div')
-          .attr('id','vertical-bar-detail');
-
         chart[id].main = chart[id].svg.append('g')
           .classed('vertical-bar-g-main',true);
       }
@@ -87,7 +88,7 @@ angular.module('compromisosSiteApp')
       chart[id].bars.enter()
         .append('g')
         .attr('id',function(d,i){
-          return 'vertical-bar-g-'+i;
+          return 'vertical-bar-g-'+d.escuela;
         })
         .classed('vertical-bar-g',true)
         .classed('categoria-'+$scope.currentCompromise.slug,true)
@@ -96,7 +97,7 @@ angular.module('compromisosSiteApp')
           var group = d3.select(this);
           //bg
           group
-            .datum({ix:i})
+            .datum({ix:d.escuela})
             .append('rect')
             .classed('vertical-bar-bg',true)
             .attr('height',h);
@@ -134,7 +135,7 @@ angular.module('compromisosSiteApp')
             });
 
           group
-            .datum({ix:i})
+            .datum({ix:d.escuela})
             .append('rect')
             .classed('vertical-bar-event',true)
             .classed('handy',true)
@@ -148,11 +149,13 @@ angular.module('compromisosSiteApp')
             })
             .on("mouseout",function(){
             })
-            .on("click", function(d){
-                $scope.selectedPlaza = chartData[id][d.ix];
+            .on("click", function(d,i){
+                $scope.selectedEscuela = _.find(chartData[id],function(e){
+                  return e.escuela == d.ix;
+                });
                 d3.selectAll('.vertical-bar-g').classed('categoria-unselected',true).classed('categoria-selected',false);
                 d3.selectAll('.vertical-bar-g#vertical-bar-g-'+d.ix).classed('categoria-unselected',false).classed('categoria-selected',true);
-                var templateUrl = $sce.getTrustedResourceUrl('views/includes/plazaDetail.html');
+                var templateUrl = $sce.getTrustedResourceUrl('views/includes/escuelaDetail.html');
                 $templateRequest(templateUrl).then(function(template) {
                     $compile($('#vertical-bar-detail').html(template).contents())($scope);
                 }, function() {
