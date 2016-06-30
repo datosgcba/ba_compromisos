@@ -192,21 +192,22 @@ angular.module('compromisosSiteApp')
 
     //detalle 2
     $scope.dataLoaded2 = function(id,data){
-      chart2Id = id;
+
+      $scope.bubbleId = id;
+      $scope.bubbleConfig = {
+        color: $scope.currentCompromise.color
+      };
 
       var total = d3.sum(data,function(d){return parseInt(d.hectareas)});
 
-      chart2Data = { 
+      $scope.bubbleData = { 
                     name:"total",
                     children:[]
                   };
 
-      chart2Config = {
-        color: $scope.currentCompromise.color
-      };
 
       _.each(data,function(d){
-        chart2Data.children.push({
+        $scope.bubbleData.children.push({
           name: d.tipo,
           data: Math.round((parseInt(d.hectareas)*100)/total) + '%',
           value: parseInt(d.hectareas),
@@ -214,88 +215,10 @@ angular.module('compromisosSiteApp')
         });
       });
 
-
-      setTimeout(function(){
-        createCustomChart2();
-      },1000);
-    };
-
-    function createCustomChart2() {
-      var diameter = 300;
-      var pad = ($('#'+chart2Id).width()-diameter) / 2;
-
-      if($('#'+chart2Id).width()<diameter){
-        diameter = $('#'+chart2Id).width();
-        pad = 0;
-      }
-
-      var pack = d3.layout.pack()
-        .sort(null)
-        .size([diameter, diameter])
-        .value(function(d) { 
-          return parseInt(d.value); 
-        });
-
-      //setup the chart
-      if(!chart2){
-        
-        chart2 = {};
-        
-        chart2.svg = 
-          d3.select("#"+chart2Id)
-            .append("svg")
-            .attr("class", "bubble-container")
-            .attr("width", $('#'+chart2Id).width())
-            .attr("height", diameter);
-
-        chart2.mainGroup = chart2.svg
-          .append('g')
-          .classed('main',true);
-          
-      }
-
-      chart2.svg.attr("width", $('#'+chart2Id).width());
-
-      chart2.mainGroup.attr("transform", function() 
-            { return "translate(" + pad + ",0)"; });
-
-      var nodes = chart2.mainGroup
-          .datum(chart2Data)
-          .selectAll(".node")
-          .data(pack.nodes);
-
-      nodes.enter()
-          .append("g")
-          .attr("class", function(d) 
-            { 
-              var what =  d.children ? "node" : "leaf node";
-              return what;
-          })
-          .each(function(){
-            d3.select(this).append("circle")
-              .filter(function(d) { return d.name !== "total"; })
-              .style("fill", function() 
-                { 
-                  return chart2Config.color;
-                });
-          
-            d3.select(this).append("text")
-              .attr("dy", "0em")
-              .classed('bubble-chart-text-title',true)
-              .text(function(d) { return d.name; });
-
-            d3.select(this).append("text")
-              .attr("dy", "1em")
-              .classed('bubble-chart-text-subtitle',true)
-              .text(function(d) { return d.data; });
-          });
-          
-      nodes.attr("transform", function(d) 
-            { return "translate(" + d.x + "," + d.y + ")"; });
-
-      nodes.selectAll('circle')
-          .attr("r", function(d) { return d.r; });
-
+      var templateUrl = $sce.getTrustedResourceUrl('views/includes/bubble.html');
+      $templateRequest(templateUrl).then(function(template) {
+          $compile($('#'+id).html(template).contents())($scope);
+      });
 
     };
 
@@ -369,9 +292,6 @@ angular.module('compromisosSiteApp')
         id = setTimeout(function(){
           if(chart1){
             createCustomChart1();
-          }
-          if(chart2){
-            createCustomChart2();
           }
         }, 500);
     });
