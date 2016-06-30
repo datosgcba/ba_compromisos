@@ -11,7 +11,7 @@
         url="data.detalle_1"
         prepare-callback="prepareData1"
         config-callback="completeConfig1"
-        ready-callback="chartReady3"
+        ready-callback="chartReady1"
         titulo="data.detalle_1_nombre"
         nota="data.detalle_1_nota"
         fuente="data.detalle_1_fuente"
@@ -21,11 +21,12 @@
     <div ng-if="data.detalle_2" class="col-md-6 text-center">
        <smart-content 
         url="data.detalle_2"
+        prepare-callback="prepareData2"
+        config-callback="completeConfig2"
+        ready-callback="chartReady2"
         titulo="data.detalle_2_nombre"
         nota="data.detalle_2_nota"
         fuente="data.detalle_2_fuente"
-        simple-load-callback="dataLoaded2"
-        template="'views/directives/customChart.html'"
         ></smart-content>
     </div>
 

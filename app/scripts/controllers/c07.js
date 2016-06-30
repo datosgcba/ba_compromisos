@@ -95,7 +95,7 @@ angular.module('compromisosSiteApp')
               type: 'timeseries',
               show:true,
               tick: {
-                  format: '%Y-%m'
+                  format: '%m-%Y'
               }
           },
           y: {
@@ -188,7 +188,9 @@ angular.module('compromisosSiteApp')
           x: {
               type: 'timeseries',
               show:true,
-              
+              tick: {
+                  format: '%m-%Y'
+              }
           },
           y: {
               show:true,

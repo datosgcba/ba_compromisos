@@ -8,7 +8,7 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('Compromiso20Ctrl', function (UrlService,$compile,$templateRequest, $scope, $http,SlugColorService,LoadSVGService, $sce,FormatService) {
+  .controller('Compromiso20Ctrl', function (UrlService,$compile,$templateRequest, $scope, $http,SlugColorService,LoadSVGService, $sce) {
 
   	var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({ polling: 1000 });
@@ -43,7 +43,6 @@ angular.module('compromisosSiteApp')
       data.map(function(d){
         return d.mes += '-01';
       })
-      console.log(1,data);
       return data;
     };
 
@@ -78,7 +77,7 @@ angular.module('compromisosSiteApp')
               type: 'timeseries',
               show:true,
               tick: {
-                format: FormatService.month
+                  format: '%m-%Y'
               }
           },
           y: {
@@ -99,29 +98,68 @@ angular.module('compromisosSiteApp')
 
     //Detalle 2
 
-    $scope.dataLoaded2 = function(id,data){
-      console.log(2,data);
-
-      setTimeout(function(){
-        //createCustomChart1();
-      },1000);
+    $scope.prepareData2 = function(data){
+      return data;
     };
 
-    function createCustomChart2(){
+    $scope.completeConfig2 = function(config){
+      return angular.merge(config,{
+        data:{
+          type: 'bar',
+          keys: {
+              value: ['proyectos','obras'],
+              x:'estado'
+          },
+          colors: {
+            'cantidad_iniciativas':$scope.currentCompromise.color,
+            'meta_acumulado':'#ccc'
+          },
+          groups: [
+              ['proyectos','obras']
+          ]
+        },
+        point: {
+            show: false
+        },
+        size: {
+            height: 300,
+        },
+        padding: {
+            top: 0,
+            right: 20,
+            bottom: 10,
+            left: 30,
+        },
+        axis: {
+          rotated:false,
+          x: {
+              type: 'category',
+              show:true
+          },
+          y: {
+              show:true
+          }
+        },
+        legend: {
+            show: true
+        }
+        
+      });
+    };
 
-    }
+    $scope.chartReady2 = function(chart,id){
+      //do nothing
+    };
 
     //Detalle 4
     
     $scope.dataLoaded4 = function(id,data){
-      console.log(4,data);
-
-      /*$scope.bubbleId = id;
+      $scope.bubbleId = id;
       $scope.bubbleConfig = {
         color: $scope.currentCompromise.color
       };
 
-      var total = d3.sum(data,function(d){return parseInt(d.hectareas)});
+      var total = d3.sum(data,function(d){return parseInt(d.cantidad_proyectos)});
 
       $scope.bubbleData = { 
                     name:"total",
@@ -131,9 +169,9 @@ angular.module('compromisosSiteApp')
 
       _.each(data,function(d){
         $scope.bubbleData.children.push({
-          name: d.tipo,
-          data: Math.round((parseInt(d.hectareas)*100)/total) + '%',
-          value: parseInt(d.hectareas),
+          name: d.area,
+          data: Math.round((parseInt(d.cantidad_proyectos)*100)/total) + '%',
+          value: parseInt(d.cantidad_proyectos),
           children : []
         });
       });
@@ -141,7 +179,7 @@ angular.module('compromisosSiteApp')
       var templateUrl = $sce.getTrustedResourceUrl('views/includes/bubble.html');
       $templateRequest(templateUrl).then(function(template) {
           $compile($('#'+id).html(template).contents())($scope);
-      });*/
+      });
 
     };
   	

@@ -75,11 +75,6 @@ angular
         }
       };
   })
-  .service('FormatService', function () {
-    this.month = function(date){
-      return _.padStart((date.getMonth()+1), 2, '0') + '-' + date.getFullYear();
-    };
-  })
   .service('LoadSVGService', function () {
     this.loadIcon = function(name,cb){    
       var icon = 'images/iconos/GCBA-compromisos-icons-'+name+'.svg';
