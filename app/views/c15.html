@@ -1,0 +1,34 @@
+<p class="text-center" ng-show="loading">Cargando...</p>
+
+<div ng-hide="loading">
+
+  <div ng-include="'views/includes/detail.html'" ng-cloak ng-show="currentCompromise"></div>
+
+  <div class="row">
+    
+   
+    
+    <div ng-if="data.detalle_2" class="col-md-6 text-center">
+       <smart-content 
+        url="data.detalle_2"
+        prepare-callback="prepareData2"
+        config-callback="completeConfig2"
+        ready-callback="chartReady2"
+        titulo="data.detalle_2_nombre"
+        nota="data.detalle_2_nota"
+        fuente="data.detalle_2_fuente"
+        ></smart-content>
+    </div>
+</div>
+ <div class="row">
+    <div ng-if="data.detalle_3" class="col-md-6 text-center">
+      <smart-content url="data.detalle_3"></smart-content>
+    </div>
+
+ 
+
+
+  </div>
+
+
+</div>
