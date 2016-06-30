@@ -24,13 +24,11 @@
     <div ng-if="data.detalle_2" class="col-md-6 text-center">
        <smart-content 
         url="data.detalle_2"
-        prepare-callback="prepareData2"
-        config-callback="completeConfig2"
-        ready-callback="chartReady2"
         titulo="data.detalle_2_nombre"
         nota="data.detalle_2_nota"
         fuente="data.detalle_2_fuente"
-        template="'views/directives/bubbleChart.html'"
+        simple-load-callback="dataLoaded2"
+        template="'views/directives/customChart.html'"
         ></smart-content>
     </div>
 

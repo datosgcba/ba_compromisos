@@ -125,9 +125,9 @@ html {
 	stroke:#ccc;
 }
 
-.categoria-humana .compromiso-label,
-.categoria-humana .fill-color,
-.categoria-humana .st0{
+.categoria-creatividad .compromiso-label,
+.categoria-creatividad .fill-color,
+.categoria-creatividad .st0{
   fill: #7c4194;
 }
 
@@ -137,9 +137,9 @@ html {
   fill: #3abaaf;
 }
 
-.categoria-creatividad .compromiso-label,
-.categoria-creatividad .fill-color,
-.categoria-creatividad .st0{
+.categoria-humana .compromiso-label,
+.categoria-humana .fill-color,
+.categoria-humana .st0{
   fill: #f58b45;
 }
 
@@ -208,6 +208,20 @@ div#category_chart {
 
 }
 
+.bubble-chart-text-title{            
+  text-anchor: middle;
+  fill: white;
+  font-size: 12px;
+}
+
+
+.bubble-chart-text-subtitle{            
+  text-anchor: middle;
+  fill: white;
+  font-size: 10px;
+}
+
+
 /*Menú de arriba*/
 .c-option{
   border-top:5px solid;
@@ -231,7 +245,7 @@ div#category_chart {
   margin-top: 10px;
 }
 
-.f-color-humana{
+.f-color-creatividad{
   color: #7c4194;
 }
 
@@ -239,7 +253,7 @@ div#category_chart {
   color: #3abaaf;
 }
 
-.f-color-creatividad{
+.f-color-humana{
   color: #f58b45;
 }
 
@@ -247,8 +261,8 @@ div#category_chart {
   color: #c15180;
 }
 
-.c-option-selected.c-color-humana,
-.bg-color-humana{
+.c-option-selected.c-color-creatividad,
+.bg-color-creatividad{
   background-color: #7c4194;
   color: white;
 }
@@ -258,8 +272,8 @@ div#category_chart {
   background-color: #3abaaf;
 }
 
-.c-option-selected.c-color-creatividad,
-.bg-color-creatividad{
+.c-option-selected.c-color-humana,
+.bg-color-humana{
   background-color: #f58b45;
 }
 
@@ -272,13 +286,13 @@ div#category_chart {
   color: white;
 }
 
-.c-color-humana{
+.c-color-creatividad{
   border-color: #7c4194;
 }
 .c-color-disfrute{
   border-color: #3abaaf;
 }
-.c-color-creatividad{
+.c-color-humana{
   border-color: #f58b45;
 }
 .c-color-social{
