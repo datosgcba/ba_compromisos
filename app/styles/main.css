@@ -75,9 +75,18 @@ html {
 .detalle-frame .c3-axis-y .domain {
    display: none;
 }
-.detalle-frame p{
+
+.detalle-frame-icon {
+  position: absolute;
+  top: 12px;
+  right: 28px;
+  font-size: 15pt;
+}
+
+.detalle-frame .detalle-frame-title {
   font-size: 14pt;
   font-weight: 600;
+  padding-right: 28px;
 }
 
 /*compromiso home*/
