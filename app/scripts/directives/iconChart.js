@@ -7,22 +7,25 @@ angular.module('compromisosSiteApp')
         replace: true,
         scope: {
           icono: '=icono',
+          items: '=items',
           orientacion: '=orientacion',
           base: '=base',
           opciones: '=opciones'
         },
         controller: function($scope, $http, LoadSVGService) {
 
-            $scope.qty = d3.range(0,parseInt($scope.base.cantidad));
-            $scope.range10 = d3.range(0,10);
+            $scope.items = ($scope.items)?parseInt($scope.items):10;
 
-            var cols = Math.floor(parseInt($scope.base.cantidad)/10);
-            var resto = parseInt($scope.base.cantidad)%10;
+            $scope.qty = d3.range(0,parseInt($scope.base.cantidad));
+            $scope.range10 = d3.range(0,$scope.items);
+
+            var cols = Math.floor(parseInt($scope.base.cantidad)/$scope.items);
+            var resto = parseInt($scope.base.cantidad)%$scope.items;
             var idAcum = 0;
             $scope.cols = $scope.range10.map(function(i){
               var items = [];
               if(i<cols){
-                items = d3.range(idAcum,idAcum+10);
+                items = d3.range(idAcum,idAcum+$scope.items);
                 idAcum+=10;
               }
               if(i==cols){
