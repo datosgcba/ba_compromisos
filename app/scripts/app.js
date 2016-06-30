@@ -44,9 +44,10 @@ angular
       .when('/c10', {templateUrl: 'views/c10.html',controller: 'Compromiso10Ctrl',controllerAs: 'c10'})  
       .when('/c12', {templateUrl: 'views/c12.html',controller: 'Compromiso12Ctrl',controllerAs: 'c12'})  
       .when('/c13', {templateUrl: 'views/c13.html',controller: 'Compromiso13Ctrl',controllerAs: 'c13'})  
-      .when('/c15', {templateUrl: 'views/c15.html',controller: 'Compromiso15Ctrl',controllerAs: 'c15'})  
       .when('/c14', {templateUrl: 'views/c14.html',controller: 'Compromiso14Ctrl',controllerAs: 'c14'})  
+      .when('/c15', {templateUrl: 'views/c15.html',controller: 'Compromiso15Ctrl',controllerAs: 'c15'})  
       .when('/c16', {templateUrl: 'views/c16.html',controller: 'Compromiso16Ctrl',controllerAs: 'c16'})  
+      .when('/c17', {templateUrl: 'views/c17.html',controller: 'Compromiso17Ctrl',controllerAs: 'c17'})  
       .when('/c18', {templateUrl: 'views/c18.html',controller: 'Compromiso18Ctrl',controllerAs: 'c18'})  
       .when('/c20', {templateUrl: 'views/c20.html',controller: 'Compromiso20Ctrl',controllerAs: 'c20'})  
       .otherwise({
