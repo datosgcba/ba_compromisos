@@ -46,6 +46,7 @@ angular
       .when('/c13', {templateUrl: 'views/c13.html',controller: 'Compromiso13Ctrl',controllerAs: 'c13'})  
       .when('/c14', {templateUrl: 'views/c14.html',controller: 'Compromiso14Ctrl',controllerAs: 'c14'})  
       .when('/c16', {templateUrl: 'views/c16.html',controller: 'Compromiso16Ctrl',controllerAs: 'c16'})  
+      .when('/c20', {templateUrl: 'views/c20.html',controller: 'Compromiso20Ctrl',controllerAs: 'c20'})  
       .otherwise({
         redirectTo: '/'
       });
@@ -73,6 +74,11 @@ angular
           return this.colorsBySlug;
         }
       };
+  })
+  .service('FormatService', function () {
+    this.month = function(date){
+      return _.padStart((date.getMonth()+1), 2, '0') + '-' + date.getFullYear();
+    };
   })
   .service('LoadSVGService', function () {
     this.loadIcon = function(name,cb){    
