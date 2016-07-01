@@ -104,7 +104,6 @@ angular.module('compromisosSiteApp')
     $scope.renderCharts = function(){
 
       bindEvents();
-      renderHomeChart();
       renderDateChart();
       renderStateChart();
       renderCategoryChart();
@@ -193,14 +192,17 @@ angular.module('compromisosSiteApp')
               ],
               colors: angular.copy(SlugColorService.getColorBySlug())
           },
+          bar: {
+            width: 45
+          },
           size: {
-              height: 220,
+              height: 150,
           },
           padding: {
-              top: 20,
-              right: 20,
-              bottom: 20,
-              left: 20,
+              top: 0,
+              right:0,
+              bottom:0,
+              left: 0,
           },
           legend: {
               show: false
@@ -242,7 +244,7 @@ angular.module('compromisosSiteApp')
               colors: angular.copy(SlugColorService.getColorBySlug())
           },
           size: {
-              height: 220,
+              height: 150,
           },
           padding: {
               top: 30,
@@ -319,14 +321,17 @@ angular.module('compromisosSiteApp')
                   ],
                   colors: angular.copy(SlugColorService.getColorBySlug())
               },
+              bar: {
+                width: 45
+              },
               size: {
-                  height: 220,
+                  height: 150,
               },
               padding: {
-                  top: 20,
-                  right: 20,
-                  bottom: 20,
-                  left: 20,
+                  top: 0,
+                  right:0,
+                  bottom:0,
+                  left: 0,
               },
               legend: {
                   show: false
@@ -377,7 +382,7 @@ angular.module('compromisosSiteApp')
     }
 
     function renderCategoryChart(){
-        var diameter = 220;
+        var diameter = 150;
         var pad = ($('#category_chart').width()-diameter) / 2;
         if($('#category_chart').width()<diameter){
           diameter = $('#category_chart').width(); //max size of the bubbles

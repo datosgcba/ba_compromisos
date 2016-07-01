@@ -47,9 +47,13 @@
 		<a class="group-btn" ng-click="groupMenu('home')"></a>
 		<p class="btn-checkbox hidden-device" ng-class="{'selected':(selectedGroup=='home')}">Ordenar por nombre</p>
 		<div id="home_chart">
+			<h1 class="text-center specialHead" ng-cloak ng-hide="loading"> A &raquo; Z </h1>
+			
+			<p class="text-center" ng-cloak ng-hide="loading">{{data.length}} compromisos</p>
 			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
+			
 		</div>
-		<small class="text-center">Vista general de los compromisos</small>
+		<p class="sub text-center">Vista general de los compromisos</p>
   	</div>
 	<div class="col-sm-3 hidden-device" ng-class="{'display':(selectedGroup=='date')}">
 		<a class="group-btn" ng-click="groupMenu('date')"></a>
@@ -57,7 +61,7 @@
 		<div id="date_chart">
 			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
 		</div>
-		<small class="text-center">Cantidad de compromisos por año de finalización</small>
+		<p class="sub text-center">Cantidad de compromisos por año de finalización</p>
   	</div>
 	<div class="col-sm-3 hidden-device" ng-class="{'display':(selectedGroup=='state')}">
 		<a class="group-btn" ng-click="groupMenu('state')"></a>
@@ -65,7 +69,7 @@
 		<div id="state_chart" ng-click="groupMenu('state')">
 			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
 		</div>
-		<small class="text-center">Cantidad de compromisos por estado de progreso</small>
+		<p class="sub text-center">Cantidad de compromisos por estado de progreso</p>
   	</div>
 	<div class="col-sm-3 hidden-device" ng-class="{'display':(selectedGroup=='category')}">
 		<a class="group-btn" ng-click="groupMenu('category')"></a>
@@ -73,7 +77,7 @@
 		<div id="category_chart" ng-click="groupMenu('category')">
 			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
 		</div>
-		<small class="text-center">Cantidad de compromisos por categoría de pertenencia</small>
+		<p class="sub text-center">Cantidad de compromisos por categoría de pertenencia</p>
   	</div>
 </div>
 

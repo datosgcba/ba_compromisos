@@ -556,3 +556,13 @@ div#category_chart {
 .handy{
   cursor:pointer;
 }
+
+p.sub{
+  font-size: 85%;
+}
+
+#home_chart{
+  height: 150px;
+  vertical-align: middle;
+
+}
