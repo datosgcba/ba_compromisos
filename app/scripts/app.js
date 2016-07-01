@@ -38,6 +38,7 @@ angular
       .when('/c03', {templateUrl: 'views/c03.html',controller: 'Compromiso03Ctrl',controllerAs: 'c03'})
       .when('/c04', {templateUrl: 'views/c04.html',controller: 'Compromiso04Ctrl',controllerAs: 'c04'})
       .when('/c05', {templateUrl: 'views/c05.html',controller: 'Compromiso05Ctrl',controllerAs: 'c05'})
+      .when('/c06', {templateUrl: 'views/c06.html',controller: 'Compromiso06Ctrl',controllerAs: 'c06'})
       .when('/c07', {templateUrl: 'views/c07.html',controller: 'Compromiso07Ctrl',controllerAs: 'c07'})
       .when('/c08', {templateUrl: 'views/c08.html',controller: 'Compromiso08Ctrl',controllerAs: 'c08'})  
       .when('/c09', {templateUrl: 'views/c09.html',controller: 'Compromiso09Ctrl',controllerAs: 'c09'})  
