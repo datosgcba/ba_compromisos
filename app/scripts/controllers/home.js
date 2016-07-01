@@ -24,6 +24,7 @@ angular.module('compromisosSiteApp')
     $http.jsonp(url)
     .success(function(data){
       $scope.data = data.map(function(c){
+        console.log(c);
         c.slug = c.slug.trim();
         c.categoria = c.categoria.trim();
         return c;

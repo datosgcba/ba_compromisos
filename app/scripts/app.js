@@ -83,7 +83,7 @@ angular
     };
   })
   .service('UrlService', function () {
-      this.baseUrl = 'http://palamago.com.ar/api/';
+      this.baseUrl = 'http://api.topranking.link/';
       this.urls = {
         //Datos Prod CSV
         //'home': 'http://palamago.com.ar/api/?source_format=csv&source=https://goo.gl/NZ8vyv'

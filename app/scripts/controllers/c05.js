@@ -15,9 +15,6 @@ angular.module('compromisosSiteApp')
     pymChild.sendHeight();
     var _ = window._;
 
-    //para ir a otra url en el padre  
-    //pymChild.navigateParentTo('https://github.com/nprapps/pym.js');
-
     $scope.loading = true;
 
     var treeIcon,data3;
