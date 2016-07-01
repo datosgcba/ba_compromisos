@@ -8,17 +8,12 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('Compromiso09Ctrl', function (UrlService, $scope, $http,SlugColorService,LoadSVGService,$sce,$compile,$templateRequest) {
+  .controller('Compromiso09Ctrl', function (UrlService, $scope, $http,SlugColorService,LoadSVGService) {
 
   	var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({ polling: 1000 });
     pymChild.sendHeight();
     var _ = window._;
-
-    var chart3;
-
-    //para ir a otra url en el padre  
-    //pymChild.navigateParentTo('https://github.com/nprapps/pym.js');
 
     $scope.loading = true;
 
@@ -30,10 +25,6 @@ angular.module('compromisosSiteApp')
       $scope.currentCompromise.secondColor = '#bdbec2';
       $scope.loading = false;
       LoadSVGService.loadIcon($scope.currentCompromise.icono,function(iconLoaded){
-        /*$(iconLoaded)
-            .attr('width', 50)
-            .attr('height', 50)
-            .get(0);*/
         $('.icon-svg-container').html(iconLoaded.cloneNode(true));
       });
     });

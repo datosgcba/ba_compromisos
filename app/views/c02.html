@@ -7,29 +7,45 @@
   <div class="row">
     
     <div ng-if="data.detalle_1" class="col-md-6 text-center">
-    	<smart-content url="data.detalle_1" template=""></smart-content>
+       <smart-content 
+        url="data.detalle_1"
+        prepare-callback="prepareData1"
+        config-callback="completeConfig1"
+        ready-callback="chartReady1"
+        titulo="data.detalle_1_nombre"
+        nota="data.detalle_1_nota"
+        fuente="data.detalle_1_fuente"
+        ></smart-content>
     </div>
-
+  
     <div ng-if="data.detalle_2" class="col-md-6 text-center">
-    	<smart-content url="data.detalle_2"></smart-content>
-    </div>
-
-    <div ng-if="data.detalle_3" class="col-md-6 text-center">
-      <smart-content 
-        url="data.detalle_3" 
-        prepare-callback="prepareData" 
-        config-callback="completeConfig" 
-        titulo="data.detalle_3_nombre"
-        nota="data.detalle_3_nota"
-        fuente="data.detalle_3_fuente"
+       <smart-content 
+        url="data.detalle_2"
+        prepare-callback="prepareData2"
+        config-callback="completeConfig2"
+        ready-callback="chartReady2"
+        titulo="data.detalle_2_nombre"
+        nota="data.detalle_2_nota"
+        fuente="data.detalle_2_fuente"
         ></smart-content>
     </div>
 
-    <div ng-if="data.detalle_4" class="col-md-6 text-center">
-      <smart-content url="data.detalle_4"></smart-content>
+  </div>
+
+  <div class="row">
+
+    <div ng-if="data.detalle_3" class="col-md-12 text-center">
+       <smart-content 
+        url="data.detalle_3"
+        titulo="data.detalle_3_nombre"
+        nota="data.detalle_3_nota"
+        fuente="data.detalle_3_fuente"
+        simple-load-callback="dataLoaded3"
+        template="'views/directives/customChart.html'"
+        ></smart-content>
     </div>
 
-    <hr/>
-
   </div>
+  <hr/>
+
 </div>
