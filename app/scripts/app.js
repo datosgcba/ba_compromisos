@@ -84,12 +84,12 @@ angular
     };
   })
   .service('UrlService', function () {
-      this.baseUrl = 'http://api.topranking.link/';
+      if(!window.COMPROMISOS_CONFIG){
+        console.error('Archivo de configuración inexistente.');
+      }
+      this.baseUrl = window.COMPROMISOS_CONFIG.BASE_URL;
       this.urls = {
-        //Datos Prod CSV
-        //'home': 'http://palamago.com.ar/api/?source_format=csv&source=https://goo.gl/NZ8vyv'
-        // Datos Ejemplo CSV
-        'home': this.baseUrl + '?source_format=csv&source=https://goo.gl/Cid4QS'
+        'home': this.baseUrl + '?source_format=csv&source='+window.COMPROMISOS_CONFIG.HOME_CSV
       };
       this.getUrlByPage = function(page) {
           return this.urls[page] + '&callback=JSON_CALLBACK';

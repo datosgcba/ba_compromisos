@@ -17,3 +17,5 @@ node_modules
 .npm
 .node_repl_history
 /**/.DS_Store
+/dist/config.js
+/app/config.js
