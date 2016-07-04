@@ -68,7 +68,7 @@ angular.module('compromisosSiteApp')
               show:true
           },
           y: {
-              show:false
+              show:true
           }
         },
         legend: {
@@ -112,7 +112,7 @@ angular.module('compromisosSiteApp')
               show:true
           },
           y: {
-              show:false
+              show:true
           }
         },
         legend: {

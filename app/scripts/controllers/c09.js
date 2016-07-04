@@ -59,16 +59,22 @@ angular.module('compromisosSiteApp')
         },
         axis: {
           x: {
-            type: 'timeseries',
-            tick: {
-                  format: '%m-%Y'
-            },
-            show:true
+              type:'timeseries',
+              show:true,
+              tick:{
+                rotate: 60,
+                format:'%m-%Y'
+              }
           },
           y: {
-              min:0,
-              max:100,
-              show:true
+              show:true,
+              min: 0,
+              padding: 5,
+              tick:{
+                format:function(y){
+                  return y+'%';
+                }
+              }
           }
         },
         legend: {
