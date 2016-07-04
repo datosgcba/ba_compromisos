@@ -5,7 +5,7 @@ Dashboard de progreso de Compromisos de Gobierno.
 ## ¿Cómo ejecutar el proyecto localmente?
  
 * Clonar el proyecto
-* Archivo de configuración: En /dist duplicar el archivo config.js.example con el nombre config.js.
+* Archivo de configuración: En /app duplicar el archivo config.js.example con el nombre config.js.
 * Instalar NodeJS: [Node Js Oficial](http://nodejs.org)
 * Instalar http-server
 `npm install http-server -g`
