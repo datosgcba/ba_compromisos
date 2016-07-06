@@ -117,8 +117,8 @@ angular.module('compromisosSiteApp')
               x:'estado'
           },
           colors: {
-            'cantidad_iniciativas':$scope.currentCompromise.color,
-            'meta_acumulado':'#ccc'
+            'proyectos':$scope.currentCompromise.color,
+            'obras':'#ccc'
           },
           groups: [
               ['proyectos','obras']

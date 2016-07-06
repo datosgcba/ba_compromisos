@@ -48,23 +48,19 @@ angular.module('compromisosSiteApp')
       return angular.merge(config,{
         data:{
           types: {
-            'Meta G2': 'line', 
+            'Meta G2': 'area', 
             'Desempeño G2'  : 'line', 
-            'Meta G3' : 'line', 
+            'Meta G3' : 'area', 
             'Desempeño G3': 'line'
-          },
-          regions: {
-            'Meta G2': [{'style':'dashed'}], 
-            'Meta G3': [{'style':'dashed'}], 
           },
           keys: {
               value: ['Meta G2','Desempeño G2', 'Meta G3', 'Desempeño G3'],
               x: 'anio'
           },
           colors: {
-                'Meta G2': '#3cb8b0', 
-                'Desempeño G2'  : '#3cb8b0', 
-                'Meta G3' : '#f98f41', 
+                'Meta G2': $scope.currentCompromise.secondColor,
+                'Desempeño G2'  : '#3cb8b0',
+                'Meta G3' : $scope.currentCompromise.secondColor,
                 'Desempeño G3': '#f98f41', 
               }
         },

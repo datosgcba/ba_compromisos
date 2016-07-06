@@ -76,7 +76,7 @@ angular.module('compromisosSiteApp')
               tick:{
                 format:function(y){
                   return y+'%';
-                }
+                },
               }
           }
         },

@@ -40,7 +40,7 @@ angular.module('compromisosSiteApp')
 
       angular.forEach(data,function(d){
         $scope.mediConfig.push({
-          icono:'persona',
+          icono:'hombre',
           orientacion: 'rows',
           items: 20,
           base:{

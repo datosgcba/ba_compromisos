@@ -387,7 +387,7 @@ div#category_chart {
 #date_chart .c3-ygrid-lines line,
 #state_chart .c3-ygrid-lines line{
   stroke-dasharray:none;
-  stroke-width:5px;
+  stroke-width:3px;
   stroke:#FFF;
 }
 

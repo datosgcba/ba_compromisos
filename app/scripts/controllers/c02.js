@@ -204,7 +204,8 @@ angular.module('compromisosSiteApp')
               show:true
           },
           y: {
-              show:true
+              show:true,
+              max:14000
           }
         },
         legend: {

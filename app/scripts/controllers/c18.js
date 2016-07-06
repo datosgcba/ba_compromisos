@@ -39,7 +39,7 @@ angular.module('compromisosSiteApp')
 
       angular.forEach(data,function(d){
         $scope.mediConfig.push({
-          icono:'persona',
+          icono:'hombre',
           orientacion: 'rows',
           items: 20,
           base:{
@@ -103,7 +103,7 @@ angular.module('compromisosSiteApp')
             top: 0,
             right: 20,
             bottom: 10,
-            left: 100,
+            left: 40,
         },
         axis: {
           rotated:false,
