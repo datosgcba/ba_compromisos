@@ -16,7 +16,7 @@ Dashboard de progreso de Compromisos de Gobierno.
 Dirección: `http://localhost:8080`
 
 ## Instalar en producción
-* Hacer clone y pull del proyecto
+* Hacer clone y pull del proyecto 
 * Apuntar la configuración del web server a la carpera /dist
 * En /dist duplicar el archivo config.js.example con el nombre config.js.
 * Navegar hacia la url
