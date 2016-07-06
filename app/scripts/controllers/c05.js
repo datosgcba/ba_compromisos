@@ -47,7 +47,7 @@ angular.module('compromisosSiteApp')
       var w = $('#'+chart1Id).width();
       var h = 300;
       var barW = w/chart1Data.length;
-      var pad = barW*0.1;
+      var pad = barW*0.2;
 
       var yScale = d3.scale.linear()
           .domain([0,100])

@@ -61,9 +61,10 @@ angular.module('compromisosSiteApp')
           x: {
               type:'timeseries',
               show:true,
-              tick:{
-                rotate: 60,
-                format:'%m-%Y'
+              tick: {
+                  fit: true,
+                  format: "%Y",
+                  count:4
               }
           },
           y: {

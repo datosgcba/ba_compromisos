@@ -42,6 +42,8 @@ angular.module('compromisosSiteApp')
     $scope.completeConfig1 = function(config){
       return angular.merge(config,{
         data:{
+          xFormat: '%m-%Y',
+          
           types: {
             meta: 'area',
             baches_resueltos: 'line',
@@ -64,8 +66,13 @@ angular.module('compromisosSiteApp')
         },
         axis: {
           x: {
-              type: 'category',
-              show:true
+              type: 'timeseries',
+              show:true,
+              tick: {
+                  fit: true,
+                  format: "%b",
+                  count:4
+              }
           },
           y: {
               show:true

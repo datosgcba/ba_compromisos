@@ -193,7 +193,9 @@ div#category_chart {
 }
 
 .bubble-container text {
-  font: 10px sans-serif;
+  font-size: 10px;
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
+  font-weight: bolder;
 }
 
 .bubble-container .label-group{
@@ -358,6 +360,11 @@ div#category_chart {
 .c3 svg {
   font-family: "OpenSans", Helvetica, Arial, sans-serif;
 
+}
+
+.leaf.node text{
+   font-family: "OpenSans", Helvetica, Arial, sans-serif;
+   font-weight: 800;
 }
 
 .detalle-frame .c3 svg{

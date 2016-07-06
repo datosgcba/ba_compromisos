@@ -128,6 +128,7 @@ angular.module('compromisosSiteApp')
           y: {
               show:true,
               tick: {
+                fit:true,
                 count:8
             }
           }
