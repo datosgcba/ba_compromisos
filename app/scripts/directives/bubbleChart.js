@@ -18,7 +18,7 @@ angular.module('compromisosSiteApp')
 
           function render(){
 
-              var diameter = 300;
+              var diameter = 350;
 
               var pad = ($('#'+$scope.id).width()-diameter) / 2;
 
@@ -30,6 +30,7 @@ angular.module('compromisosSiteApp')
               var pack = d3.layout.pack()
                 .sort(null)
                 .size([diameter, diameter])
+                .padding(5)
                 .value(function(d) { 
                   return parseInt(d.value); 
                 });
