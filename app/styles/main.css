@@ -356,7 +356,12 @@ div#category_chart {
   text-transform: uppercase;
 }
    
+   tick
 /*Axis*/
+.c3-axis.c3-axis-y path.domain,
+.c3-axis.c3-axis-y .tick line{
+  stroke-width:0;
+}
 .c3-axis.c3-axis-x path.domain,
 .c3-axis.c3-axis-x .tick line{
   stroke-width:0;
@@ -370,7 +375,7 @@ div#category_chart {
 .c3-ygrid-lines line{
   stroke-dasharray: 5, 5;
 }
-
+.c3
 #home_chart .c3-ygrid-lines line,
 #date_chart .c3-ygrid-lines line,
 #state_chart .c3-ygrid-lines line{
@@ -565,4 +570,9 @@ p.sub{
   height: 150px;
   vertical-align: middle;
 
+}
+
+.c3-legend-item {
+    font-size: 11px;
+    font-weight: bolder;
 }

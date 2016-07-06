@@ -126,7 +126,10 @@ angular.module('compromisosSiteApp')
               show:false
           },
           y: {
-              show:true
+              show:true,
+              tick: {
+                count:8
+            }
           }
         },
         legend: {

@@ -193,7 +193,7 @@ angular.module('compromisosSiteApp')
               colors: angular.copy(SlugColorService.getColorBySlug())
           },
           bar: {
-            width: 45
+            width: 48
           },
           size: {
               height: 150,

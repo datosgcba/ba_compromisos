@@ -85,6 +85,12 @@ angular.module('compromisosSiteApp')
           }
         },
         legend: {
+
+            anchor: 'top-left',
+            x: 10,
+            y: 0,
+            step: undefined,
+
             show: true
         }
         

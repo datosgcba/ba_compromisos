@@ -69,6 +69,17 @@ angular.module('compromisosSiteApp')
                   bottom: 0,
                   left: 50,
                 },
+                legend:{
+                  // amount of padding to put between each legend element
+                  padding: 35,
+                  // define custom height and width for the legend item tile
+                  item: {
+                      tile: {
+                          width: 20,
+                          height: 20
+                      }
+                  },
+                },
                 onrendered: function () {
                   /*if($scope.readyCallback){
                     $scope.readyCallback($scope.chart,$scope.id);
