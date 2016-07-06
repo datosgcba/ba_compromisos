@@ -181,6 +181,7 @@ html {
 #menu_chart .label-group-text{
   fill: #a6a9ad;
   font-size: 30px;
+  font-weight: 700;
 }
 //bubble
 
@@ -281,6 +282,7 @@ div#category_chart {
   background-color: #3abaaf;
 }
 
+
 .c-option-selected.c-color-humana,
 .bg-color-humana{
   background-color: #f58b45;
@@ -310,7 +312,13 @@ div#category_chart {
 .c-color-disabled{
 
 }
+/*botones*/
 
+.btn.bg-color-disfrute, .btn.bg-color-humana,
+.btn.bg-color-social, .btn.creatividad{
+ color: white;
+ font-weight: 600;
+}
 /*groups*/
 .group-btn{
   background-color: rgba(255, 255, 255, 0.5);
@@ -356,7 +364,6 @@ div#category_chart {
   text-transform: uppercase;
 }
    
-   tick
 /*Axis*/
 .c3-axis.c3-axis-y path.domain,
 .c3-axis.c3-axis-y .tick line{
