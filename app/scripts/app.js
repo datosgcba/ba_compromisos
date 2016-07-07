@@ -97,5 +97,45 @@ angular
       this.getUrlByCsv = function(csv) {
           return this.baseUrl + '?source_format=csv&source='+csv+ '&callback=JSON_CALLBACK';
       };
-  });
+  })
+  .run(function($rootScope,$interval) { // instance-injector
+    var intervalID,max=350,coincidence=0;
+    var updateFrame = function(){
+        $interval.cancel(intervalID);
+        intervalID = $interval(function(){
+          console.log('lanza!');
+          $('.detalle-frame').each(function(i,e){
+            $(e).css('height','auto');
+            var h = $(e).height();
+            if(h>max){
+              max = h;
+            }
+            console.log(i,h,max);
+          });
+          $('.detalle-frame').css('height',max+'px');
+        },2000);
+    };
 
+    function adjust() {    
+      
+      updateFrame();
+
+      setTimeout(function(){
+        $interval.cancel(intervalID);
+      },10000);
+
+    };
+
+    /*setTimeout(function(){
+      adjust();
+    },2000);
+
+    var id;
+    $(window).resize(function() {
+        clearTimeout(id);
+        id = setTimeout(function(){
+          adjust();
+        }, 500);
+    });*/
+
+  });

@@ -290,13 +290,12 @@ angular.module('compromisosSiteApp')
       });
     };
 
+
     var id;
     $(window).resize(function() {
         clearTimeout(id);
         id = setTimeout(function(){
-          // if(chart1){
-          //   createCustomChart1();
-          // }          
+          //$scope.updateFrame();
         }, 500);
     });
 
