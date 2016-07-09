@@ -72,16 +72,18 @@ angular.module('compromisosSiteApp')
             left: 40,
         },
         axis: {
-          x: {
+         x: {
               type: 'timeseries',
               show:true,
               tick: {
-                  format: '%m-%Y'
+                  fit: true,
+                  format: "%b-%y",
+                  count:6
               }
           },
           y: {
             show:true,
-            min: -1,
+            min: 0,
           }
         },
         legend: {

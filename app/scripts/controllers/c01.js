@@ -62,7 +62,7 @@ angular.module('compromisosSiteApp')
             top: 0,
             right: 20,
             bottom: 10,
-            left: 20,
+            left: 30,
         },
         axis: {
           x: {
@@ -71,7 +71,7 @@ angular.module('compromisosSiteApp')
               tick: {
                   fit: true,
                   format: "%b",
-                  count:4
+                  count:6
               }
           },
           y: {
@@ -93,6 +93,7 @@ angular.module('compromisosSiteApp')
     $scope.completeConfig2 = function(config){
       return angular.merge(config,{
         data:{
+          xFormat: '%m-%Y',
           types: {
             dias: 'line',
             meta: 'area'
@@ -115,8 +116,13 @@ angular.module('compromisosSiteApp')
         },
         axis: {
           x: {
-              type: 'category',
-              show:true
+              type: 'timeseries',
+              show:true,
+              tick: {
+                  fit: true,
+                  format: "%b",
+                  count:6
+              }
           },
           y: {
               show:true

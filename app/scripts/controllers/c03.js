@@ -116,7 +116,12 @@ angular.module('compromisosSiteApp')
               show:false
           },
           y: {
-              show:true
+              show:true,
+              tick:{
+                format:function(y){
+                  return y+'%';
+                }
+              }
           }
         },
         legend: {
@@ -154,7 +159,7 @@ angular.module('compromisosSiteApp')
             top: 0,
             right: 20,
             bottom: 10,
-            left: 100,
+            left: 120,
         },
         axis: {
           rotated:true,
@@ -163,7 +168,13 @@ angular.module('compromisosSiteApp')
               show:true
           },
           y: {
-              show:true
+              show:true,
+              tick:{
+                
+                format:function(y){
+                  return y+'%';
+                }
+              }
           }
         },
         legend: {

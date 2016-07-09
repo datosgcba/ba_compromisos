@@ -127,10 +127,14 @@ angular.module('compromisosSiteApp')
           },
           y: {
               show:true,
-              tick: {
+              min: 0,
+              padding: 5,
+              tick:{
                 fit:true,
-                count:8
-            }
+                format:function(y){
+                  return Math.ceil(parseFloat(y));
+                }
+              }
           }
         },
         legend: {
@@ -199,7 +203,14 @@ angular.module('compromisosSiteApp')
               show:false
           },
           y: {
-              show:true
+              show:true,
+              min: 0,
+              padding: 5,
+              tick:{
+                format:function(y){
+                  return y+'%';
+                }
+              }
           }
         },
         legend: {
@@ -245,8 +256,8 @@ angular.module('compromisosSiteApp')
             ['proyectados','kilometros']
           ],
           colors: 
-          {'kilometros': $scope.currentCompromise.color,
-          'proyectados' : $scope.currentCompromise.secondColor}
+          {'proyectados' : $scope.currentCompromise.secondColor,
+          'kilometros': $scope.currentCompromise.color}
         },
         size: {
             height: 300,
