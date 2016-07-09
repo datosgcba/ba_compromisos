@@ -144,11 +144,11 @@ angular.module('compromisosSiteApp')
     };
  
     $scope.chartReady2 = function(chart,id){
-      var container = d3.select('#'+id+'.c3-texts');
+      
+      var container = d3.select('.c3-texts');
       d3.selectAll('#'+id+' .c3-event-rect').each(function(d){
         var dato = data2[d.index];
         var bar = d3.select(this);
-        //TODO: Agrego clase? con .tipo>?
         var offset = parseInt(bar.attr('height')/2);
         container
           .append('text')
@@ -220,20 +220,7 @@ angular.module('compromisosSiteApp')
     };
  
     $scope.chartReady3 = function(chart,id){
-      var container = d3.select('#'+id+'.c3-texts');
-      d3.selectAll('#'+id+' .c3-event-rect').each(function(d){
-        var dato = data3[d.index];
-        var bar = d3.select(this);
-        //TODO: Agrego clase? con .tipo>?
-        var offset = parseInt(bar.attr('height')/2);
-        container
-          .append('text')
-          .attr('alignment-baseline','middle')
-          .classed('custom-c3-text',true)
-          .attr('x',parseInt(bar.attr('x'))+10)
-          .attr('y',parseInt(bar.attr('y'))+offset)
-          .text(dato.corredor);
-      });
+      
     };
 
 
@@ -285,20 +272,7 @@ angular.module('compromisosSiteApp')
     };
  
     $scope.chartReady4 = function(chart,id){
-      var container = d3.select('#'+id+'.c3-texts');
-      d3.selectAll('#'+id+' .c3-event-rect').each(function(d){
-        var dato = data4[d.index];
-        var bar = d3.select(this);
-        //TODO: Agrego clase? con .tipo>?
-        var offset = parseInt(bar.attr('height')/2);
-        container
-          .append('text')
-          .attr('alignment-baseline','middle')
-          .classed('custom-c3-text',true)
-          .attr('x',parseInt(bar.attr('x'))+10)
-          .attr('y',parseInt(bar.attr('y'))+offset)
-          .text(dato.ciudad);
-      });
+     
     };
 
 

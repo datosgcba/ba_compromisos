@@ -107,10 +107,15 @@ angular.module('compromisosSiteApp')
                     $timeout(function() {
                         $scope.chart = c3.generate($scope.chartConfigDefaults);
                         $scope.bindFinalEvents();
-                        if($scope.readyCallback){
-                          $scope.readyCallback($scope.chart,$scope.id);
-                        }
-                    },500);
+
+                        $timeout(function(){
+                          if($scope.readyCallback){
+                            console.log($scope.chart,$scope.id);
+                            $scope.readyCallback($scope.chart,$scope.id);
+                          }  
+                        },1200)
+                        
+                    },500); 
                 });
 
             };
