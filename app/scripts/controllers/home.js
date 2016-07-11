@@ -140,8 +140,11 @@ angular.module('compromisosSiteApp')
     };
     
     $scope.closeDetail = function(){
+      deselectTitle();
+      defaultChartColors();
       $scope.currentCompromise = null;
       d3.select('#filler').style('height','0px');
+      $scope.selectedCategory = '';
     };
 
     function renderDateChart(){
@@ -212,59 +215,6 @@ angular.module('compromisosSiteApp')
                     type: 'category'
                 },
                 y: {show:false},
-            },
-          grid: {
-              y: {
-                  lines: lines
-              }
-          }
-      });
-    }
-
-    function renderHomeChart(){
-      
-      var columns = [];
-
-      angular.forEach($scope.availableCategories,function(e){
-        columns.push([e,1,1,1,1,1]);
-      });
-
-      //lines
-      var max = 4;
-      var lines = d3.range(0,max+1).map(function(e){return {value:e};});
-
-      $scope.charts.home_chart = c3.generate({
-          bindto: '#home_chart',
-          data: {
-              columns: columns,
-              type: 'bar',
-              groups: [
-                  $scope.availableCategories
-              ],
-              colors: angular.copy(SlugColorService.getColorBySlug())
-          },
-          size: {
-              height: 150,
-          },
-          padding: {
-              top: 30,
-              right: 30,
-              bottom: 30,
-              left: 30,
-          },
-          legend: {
-              show: false
-          },
-          axis: {
-                x: {
-                    type: 'category',
-                    show: false
-                },
-                y: {
-                    show:false,
-                    // Range includes padding, set 0 if no padding needed
-                    padding: {top:0, bottom:1}
-                }
             },
           grid: {
               y: {
@@ -363,7 +313,6 @@ angular.module('compromisosSiteApp')
     function changeChartColors(colors){
       $scope.charts.state_chart.data.colors(colors);
       $scope.charts.date_chart.data.colors(colors);
-      $scope.charts.home_chart.data.colors(colors);
 
       angular.forEach(colors,function(e,k){
         d3.selectAll('.leaf.'+k+' circle').style('fill',e);
@@ -805,6 +754,11 @@ angular.module('compromisosSiteApp')
                 })
                 .on("click", function(){
                   showDetail(d,d3.mouse(this),d3.event);
+                  selectTitle(d.slug);
+                  selectCategoryChart(d.slug);
+                  $scope.$apply(function(){
+                    $scope.selectedCategory = d.slug;
+                  });
                 });
 
           })
