@@ -103,14 +103,14 @@ angular
     var updateFrame = function(){
         $interval.cancel(intervalID);
         intervalID = $interval(function(){
-          console.log('lanza!');
+          //console.log('lanza!');
           $('.detalle-frame').each(function(i,e){
             $(e).css('height','auto');
-            var h = $(e).height();
+            var h = $(e).outerHeight();
             if(h>max){
               max = h;
             }
-            console.log(i,h,max);
+            //console.log(i,h,max);
           });
           $('.detalle-frame').css('height',max+'px');
         },2000);
@@ -126,7 +126,7 @@ angular
 
     };
 
-    /*setTimeout(function(){
+    setTimeout(function(){
       adjust();
     },2000);
 
@@ -136,6 +136,6 @@ angular
         id = setTimeout(function(){
           adjust();
         }, 500);
-    });*/
+    });
 
   });
