@@ -70,9 +70,7 @@ angular.module('compromisosSiteApp')
                   left: 50,
                 },
                 legend:{
-                 
-                   
-                 
+                    
                   // amount of padding to put between each legend element
                   padding: 35,
                   // define custom height and width for the legend item tile
