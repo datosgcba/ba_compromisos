@@ -70,6 +70,9 @@ angular.module('compromisosSiteApp')
                   left: 50,
                 },
                 legend:{
+                 
+                   
+                 
                   // amount of padding to put between each legend element
                   padding: 35,
                   // define custom height and width for the legend item tile
@@ -77,13 +80,13 @@ angular.module('compromisosSiteApp')
                       tile: {
                           width: 20,
                           height: 20
-                      }
+                      },
+                      //disables any click :)
+                      onclick: function () {}
                   },
                 },
                 onrendered: function () {
-                  /*if($scope.readyCallback){
-                    $scope.readyCallback($scope.chart,$scope.id);
-                  }*/
+                  
                 }
             };
 
@@ -107,7 +110,6 @@ angular.module('compromisosSiteApp')
                     $timeout(function() {
                         $scope.chart = c3.generate($scope.chartConfigDefaults);
                         $scope.bindFinalEvents();
-
                         $timeout(function(){
                           if($scope.readyCallback){
                             console.log($scope.chart,$scope.id);

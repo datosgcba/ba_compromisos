@@ -8,7 +8,7 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('Compromiso01Ctrl', function (UrlService, $scope, $http,SlugColorService,LoadSVGService,$sce,$templateRequest,$compile) {
+  .controller('Compromiso01Ctrl', function (UrlService,$rootScope, $scope, $http,SlugColorService,LoadSVGService,$sce,$templateRequest,$compile) {
 
   	var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({ polling: 1000 });
@@ -70,7 +70,7 @@ angular.module('compromisosSiteApp')
               show:true,
               tick: {
                   fit: true,
-                  format: "%b",
+                  format: $rootScope.d3Locale_ES.timeFormat("%b"),
                   count:6
               }
           },
@@ -120,7 +120,7 @@ angular.module('compromisosSiteApp')
               show:true,
               tick: {
                   fit: true,
-                  format: "%b",
+                  format: $rootScope.d3Locale_ES.timeFormat("%b"),
                   count:6
               }
           },
