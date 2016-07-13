@@ -58,6 +58,10 @@ angular.module('compromisosSiteApp')
               value: ['policias','meta'],
               x: 'fecha'
           },
+          names: {
+            meta: 'Meta',
+            policias: 'Policías'
+          },
           colors: {
                 'meta':$scope.currentCompromise.secondColor,
                 'policias': $scope.currentCompromise.color}
@@ -110,6 +114,10 @@ angular.module('compromisosSiteApp')
           keys: {
               value: ['policias_cienmilhab'],
               x:'ciudad'
+          },
+          names: {
+            ciudad: 'Ciudad',
+            policias_cienmilhab: 'Policías por 100 mil Habitantes'
           },
           colors: 
           {'policias_cienmilhab':

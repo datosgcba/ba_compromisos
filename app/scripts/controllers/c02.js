@@ -41,6 +41,10 @@ angular.module('compromisosSiteApp')
               value: ['meta_modelada','reciclado_real'],
               x:'trimestre'
           },
+          names: {
+            reciclado_real: 'Reciclado Real',
+            meta_modelada: 'Meta Modelada'
+          },
           colors: {
             'reciclado_real':$scope.currentCompromise.color,
             'meta_modelada':'#ccc'

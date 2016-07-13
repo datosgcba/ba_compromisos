@@ -234,6 +234,9 @@ angular.module('compromisosSiteApp')
               value: ['metros_habitante'],
               x:'ciudad'
           },
+          names: {
+            metros_habitante: 'Metros Habitante'
+          },
           colors: {'metros_habitante':$scope.currentCompromise.color}
         },
         size: {

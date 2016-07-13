@@ -55,6 +55,10 @@ angular.module('compromisosSiteApp')
               value: ['adultos_incluidos_acumulado','meta_acumulado'],
               x: 'mes'
           },
+          names: {
+            meta_acumulado: 'Meta Acumulada',
+            adultos_incluidos_acumulado: 'Adultos Incluidos Acumulado'
+          },
           colors: {'meta_acumulado':$scope.currentCompromise.secondColor,
                     'adultos_incluidos_acumulado': $scope.currentCompromise.color}
         },
@@ -96,6 +100,10 @@ angular.module('compromisosSiteApp')
           keys: {
               value: ['uso_computadora','uso_internet'],
               x:'edad'
+          },
+          names: {
+            uso_computadora: 'Uso Computadora',
+            uso_internet: 'Uso Internet'
           },
           colors: {
             'uso_computadora':$scope.currentCompromise.color,
@@ -147,6 +155,10 @@ angular.module('compromisosSiteApp')
           keys: {
               value: ['poblacion_mayor_o_igual_65'],
               x:'provincia'
+          },
+          names: {
+            poblacion_mayor_o_igual_65: 'Población Mayor o Igual 65',
+            provincia: 'Provincia'
           },
           colors: 
           {'poblacion_mayor_o_igual_65':

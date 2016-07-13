@@ -106,6 +106,10 @@ angular.module('compromisosSiteApp')
               value: ['contravenciones','delitos'],
               x:'comuna'
           },
+          names: {
+            contravenciones: 'Contravenciones',
+            delitos: 'Delitos'
+          },
           colors: 
           {'contravenciones':$scope.currentCompromise.color,
           'delitos': $scope.currentCompromise.secondColor}

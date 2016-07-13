@@ -77,6 +77,9 @@ angular.module('compromisosSiteApp')
           types: {
             cantidad_consultas : 'line'
           },
+          names: {
+            cantidad_consultas: 'Cantidad de Consultas',
+          },
           keys: {
               value: ['cantidad_consultas'],
               x: 'anio'

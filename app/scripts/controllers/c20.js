@@ -54,6 +54,10 @@ angular.module('compromisosSiteApp')
               value: ['cantidad_iniciativas','meta_acumulado'],
               x:'mes'
           },
+          names: {
+            cantidad_iniciativas: 'Cantidad de Iniciativas',
+            meta_acumulado: 'Meta',
+          },
           colors: {
             'cantidad_iniciativas':$scope.currentCompromise.color,
             'meta_acumulado':'#ccc'
@@ -115,6 +119,10 @@ angular.module('compromisosSiteApp')
           keys: {
               value: ['proyectos','obras'],
               x:'estado'
+          },
+          names: {
+            proyectos: 'Proyectos',
+            obras: 'Obras',
           },
           colors: {
             'proyectos':$scope.currentCompromise.color,

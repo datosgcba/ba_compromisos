@@ -107,6 +107,9 @@ angular.module('compromisosSiteApp')
               value: ['pasajeros_diarios'],
               x:'corredor'
           },
+          names: {
+            pasajeros_diarios: 'Pasajeros Diarios',
+          },
           colors: 
           {'pasajeros_diarios': $scope.currentCompromise.color}
         },
@@ -180,9 +183,14 @@ angular.module('compromisosSiteApp')
               value: ['porcentaje_avance', 'restante'],
               x:'corredor'
           },
+
           groups: [
             ['porcentaje_avance','restante']
           ],
+          names: {
+            porcentaje_avance: 'Porcentaje Avance',
+            restante: 'Restante'
+          },
           colors: 
           {'porcentaje_avance': $scope.currentCompromise.color,
           'restante': $scope.currentCompromise.secondColor}
@@ -238,6 +246,10 @@ angular.module('compromisosSiteApp')
           keys: {
               value: ['proyectados','kilometros',],
               x:'ciudad'
+          },
+          names: {
+            proyectados: 'Proyectados',
+            kilometros: 'Kilómetros'
           },
           groups: [
             ['proyectados','kilometros']

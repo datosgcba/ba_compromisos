@@ -56,6 +56,11 @@ angular.module('compromisosSiteApp')
               value: ['meta_mensual','meta_acumulada', 'medicion_real'],
               x: 'mes'
           },
+          names: {
+            meta_acumulada: 'Acmuluada',
+            medicion_real: 'Real',
+            meta_mensual: 'Mensual'
+          },
           colors: {
                 'meta_mensual':$scope.currentCompromise.secondColor,
                 'meta_acumulada':'#ccc',
@@ -103,6 +108,9 @@ angular.module('compromisosSiteApp')
           keys: {
               value: ['cantidad_zonas_wifi_gratis'],
               x:'ciudad'
+          },
+          names: {
+            cantidad_zonas_wifi_gratis: 'Cantidad de Zonas Wifi Gratis',
           },
           colors: 
           {'cantidad_zonas_wifi_gratis':

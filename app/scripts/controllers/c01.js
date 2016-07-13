@@ -52,6 +52,9 @@ angular.module('compromisosSiteApp')
               value: ['meta','baches_resueltos'],
               x:'mes'
           },
+          names: {
+            baches_resueltos: 'Baches Resueltos',
+          },
           colors: {'meta':colorMeta,
                     'baches_resueltos': $scope.currentCompromise.color}
         },

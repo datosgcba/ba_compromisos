@@ -141,7 +141,10 @@ angular.module('compromisosSiteApp')
               value: ['poblacion_mayor_o_igual_65'],
               x:'provincia'
           },
-          
+          names: {
+            poblacion_mayor_o_igual_65: 'Población Mayor o Igual 65',
+            provincia: 'Provincia'
+          },
           colors: 
           {'poblacion_mayor_o_igual_65':
           $scope.currentCompromise.color}
