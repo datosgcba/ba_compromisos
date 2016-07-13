@@ -339,17 +339,22 @@ div#category_chart {
 }
 
 .btn-checkbox{
-  padding-left: 33px;
-  height: 24px;
+  padding-left: 0px;
+  height: 17px;
+  background-size: 16px;
   background-image: url('../images/checkbox.png');
   background-repeat: no-repeat;
-  background-position: 0px -26px;
+  background-position: 0px -17px;
   font-weight: bold;
-  font-size: 15px;
+  font-family: "Gotham", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  letter-spacing: -0.5px;
+  text-align: center;
+
 }
 
 .btn-checkbox.selected {
-  background-position: 0px -2px;
+  background-position: 0px 0px;
 }
 
 .select-container{
