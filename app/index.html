@@ -19,7 +19,8 @@
     <style type="text/css">
 
         textarea{resize: none;}
-        .row-preview{background-color: #dadada;}
+        .row-preview{background-color: #dadada;display: none;}
+        .row-selectores{display: none;}
     </style>
   </head>
   <body>
@@ -29,7 +30,8 @@
 
     <!-- CONTENIDO -->
     <div class="container">
-        <div class="row">
+        <h1 id="loading" class="text-center">Cargando...</h1>
+        <div class="row row-selectores">
           <div class="col-md-12">
               <h1>¡Hola, Buenos Aires!</h1>
               <p>Esta es la página de prueba para visualizar los compromisos de GCBA</p>
@@ -113,8 +115,11 @@
             $container = $('#pym-container');
             $selected = $('.selected');
             $rows = $('.row-preview');
+            $selectores = $('.row-selectores');
             $textarea = $('#embed');
-            $rows.hide();
+            $loading = $('#loading');
+            $loading.hide();
+            $selectores.show();
             $('a.btn-primary').on('click',function(){
                 $rows.show();
                 $container.empty();
