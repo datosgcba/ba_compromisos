@@ -230,7 +230,7 @@ angular.module('compromisosSiteApp')
     $scope.chartReady3 = function(chart,id){
       var container = d3.select('#'+id+' .c3-texts');
       d3.selectAll('#'+id+' .c3-event-rect').each(function(d){
-        var dato = data2[d.index];
+        var dato = data3[d.index];
         var bar = d3.select(this);
         var offset = parseInt(bar.attr('height')/2);
         container
@@ -255,20 +255,24 @@ angular.module('compromisosSiteApp')
       return angular.merge(config,{
         data:{
           type: 'bar',
-          keys: {
-              value: ['proyectados','kilometros',],
+            keys: {
+              value: ['kilometros', 'proyectados'],
               x:'ciudad'
           },
           names: {
+            kilometros: 'Kilómetros',
             proyectados: 'Proyectados',
-            kilometros: 'Kilómetros'
+           
           },
           groups: [
-            ['proyectados','kilometros']
+             ['kilometros', 'proyectados']
           ],
+          order: 'asc',
           colors: 
-          {'proyectados' : $scope.currentCompromise.secondColor,
-          'kilometros': $scope.currentCompromise.color}
+          {
+            'kilometros': $scope.currentCompromise.color,
+            'proyectados' : $scope.currentCompromise.secondColor,
+          }
         },
         size: {
             height: 300,
@@ -298,7 +302,7 @@ angular.module('compromisosSiteApp')
     $scope.chartReady4 = function(chart,id){
      var container = d3.select('#'+id+' .c3-texts');
       d3.selectAll('#'+id+' .c3-event-rect').each(function(d){
-        var dato = data2[d.index];
+        var dato = data4[d.index];
         var bar = d3.select(this);
         var offset = parseInt(bar.attr('height')/2);
         container
