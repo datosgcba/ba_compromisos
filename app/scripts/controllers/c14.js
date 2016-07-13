@@ -149,7 +149,7 @@ angular.module('compromisosSiteApp')
     };
 
     $scope.chartReady2 = function(chart,id){
-      var container = d3.select('.c3-texts');
+      var container = d3.select('#'+id+' .c3-texts');
       d3.selectAll('#'+id+' .c3-event-rect').each(function(d){
         var dato = data2[d.index];
         var bar = d3.select(this);
