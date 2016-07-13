@@ -68,7 +68,7 @@ html {
 }
 
 .detalle-frame{
-  border: 1px solid #999;
+  border: 1px solid #DDD;
   padding: 10px;
   margin-bottom: 25px;
 }
@@ -359,12 +359,13 @@ div#category_chart {
 
 .c3 svg {
   font-family: "OpenSans", Helvetica, Arial, sans-serif;
-
+  text-transform: uppercase;
 }
 
 .leaf.node text{
    font-family: "OpenSans", Helvetica, Arial, sans-serif;
    font-weight: 800;
+   text-transform: uppercase;
 }
 
 .detalle-frame .c3 svg{

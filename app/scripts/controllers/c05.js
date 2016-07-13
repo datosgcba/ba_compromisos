@@ -235,7 +235,7 @@ angular.module('compromisosSiteApp')
               x:'ciudad'
           },
           names: {
-            metros_habitante: 'Metros Habitante'
+            metros_habitante: ' m² por Habitante'
           },
           colors: {'metros_habitante':$scope.currentCompromise.color}
         },
@@ -282,7 +282,7 @@ angular.module('compromisosSiteApp')
           .classed('custom-c3-text',true)
           .attr('x',parseInt(bar.attr('x'))+10)
           .attr('y',parseInt(bar.attr('y'))+offset)
-          .text(dato.ciudad+': '+dato.metros_habitante+' m²');
+          .text(dato.ciudad);
       });
     };
 

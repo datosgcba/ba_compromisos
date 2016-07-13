@@ -65,7 +65,7 @@ angular.module('compromisosSiteApp')
                 'kilometros_construidos_totales': $scope.currentCompromise.color}
         },
         size: {
-            height: 300,
+              height: 350,
         },
         padding: {
             top: 0,
@@ -114,13 +114,16 @@ angular.module('compromisosSiteApp')
           {'pasajeros_diarios': $scope.currentCompromise.color}
         },
         size: {
-            height: 300,
+            height: 350,
         },
         padding: {
             top: 0,
             right: 20,
             bottom: 10,
             left: 20,
+        },
+         bar: {
+          width: 22
         },
         axis: {
           rotated:true,
@@ -196,12 +199,12 @@ angular.module('compromisosSiteApp')
           'restante': $scope.currentCompromise.secondColor}
         },
         size: {
-            height: 300,
+            height: 350,
         },
         padding: {
             top: 0,
             right: 20,
-            bottom: 10,
+            bottom: 0,
             left: 20,
         },
         axis: {
@@ -275,7 +278,7 @@ angular.module('compromisosSiteApp')
           }
         },
         size: {
-            height: 300,
+            height: 350,
         },
         padding: {
             top: 0,
