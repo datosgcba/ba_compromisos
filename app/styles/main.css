@@ -178,10 +178,8 @@ html {
   cursor: pointer;
 }
 
-#menu_chart .label-group-text{
+#menu_chart .label-group-text text{
   fill: #a6a9ad;
-  font-size: 30px;
-  font-weight: 700;
 }
 //bubble
 

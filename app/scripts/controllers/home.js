@@ -600,44 +600,51 @@ angular.module('compromisosSiteApp')
           .enter()
           .append('g')
           .classed('label-group',true)
-          .each(function(d){
+          .each(function(d,i){
               var group = d3.select(this);
 
               //frame
               group
                 .append('rect')
                 .classed('label-group-shape',true)
+                .attr('id','c'+i+'-label-group-shape',true)
                 .classed('shape',true)
                 .attr('height',itemSize)
                 .attr('width',(smallDevice)?w:w/3)
                 .attr('fill','none');
 
               group
-                .append('text')
+                .append('g')
+                .attr('id','c'+i+'-label-group-text',true)
                 .classed('label-group-text',true)
-                .classed('wrap',true)
-//                .attr('x',gap)
-//                .attr('y',itemSize/4)
-                .attr('text-anchor','start')
-                .attr('opacity',1)
-                .text(function(d){
-                  return d.title;
-                });
+                .classed('wrap',true);
+
+              var shape = group.select('.label-group-shape');
+              var data = {"text": d.title};
+        
+              var pad = 10;
+
+              var anchor = (smallDevice)?'middle':'start';
+
+              var textWrap = d3plus.box()
+                .select('g#c'+i+'-label-group-text')
+                .data([data])
+                .width([shape.attr('width')])
+                .y([itemSize/4])
+                .x([0])
+                .fontFamily(['"Gotham", Helvetica, Arial, sans-serif'])
+                .fontSize([30]);
+
+              if(smallDevice){
+                textWrap.textAnchor(['middle']);
+              }
+
+              textWrap(function() { });
 
               group
                 .attr("transform",function(){
                   return "translate("+0+','+d.rows*itemSize+")";
                 });
-
-              var t = group.select("text");
-
-              /*d3plus.textwrap()
-                .container(t)
-                .shape('square')
-                .align('left')
-                .valign('middle')
-                .padding(3)
-                .draw();*/
 
           });
 
@@ -737,8 +744,9 @@ angular.module('compromisosSiteApp')
               .width([shape.attr('width')])
               .x([shape.attr('x')])
               .y([shape.attr('y')])
+              .fontFamily(['"Gotham", Helvetica, Arial, sans-serif'])
               .fontSize([14])
-              .fontColor(['#333'])(function() { console.log("draw complete!"); });
+              .fontColor(['#333'])(function() { });
 
               //rect frame
               group
@@ -778,19 +786,10 @@ angular.module('compromisosSiteApp')
               var y = h/2-itemSize/2;
               return "translate(" + x +"," + y + ")"; 
           })
-          .each("end", function(d){
+          /*.each("end", function(d){
             var t = d3.select('text#c'+d.numero+'-text');
-
-            /*d3plus.textwrap()
-              .container(t)
-              .shape('square')
-              .align('center')
-              .valign('top')
-              .padding(3)
-              .draw();*/
-
             t.transition().attr('opacity',1);
-          });
+          });*/
 
         }
 
