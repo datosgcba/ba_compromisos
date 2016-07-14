@@ -134,31 +134,31 @@ html {
 	stroke:#ccc;
 }
 
-.categoria-creatividad .compromiso-label,
+.categoria-creatividad .compromiso-label text,
 .categoria-creatividad .fill-color,
 .categoria-creatividad .st0{
   fill: #7c4194;
 }
 
-.categoria-disfrute .compromiso-label,
+.categoria-disfrute .compromiso-label text,
 .categoria-disfrute .fill-color,
 .categoria-disfrute .st0{
   fill: #3abaaf;
 }
 
-.categoria-humana .compromiso-label,
+.categoria-humana .compromiso-label text,
 .categoria-humana .fill-color,
 .categoria-humana .st0{
   fill: #f58b45;
 }
 
-.categoria-social .compromiso-label,
+.categoria-social .compromiso-label text,
 .categoria-social .fill-color,
 .categoria-social .st0{
   fill: #c15180;
 }
 
-.categoria-unselected .compromiso-label,
+.categoria-unselected .compromiso-label text,
 .categoria-unselected .fill-color,
 .categoria-unselected .st0{
   fill: #444;

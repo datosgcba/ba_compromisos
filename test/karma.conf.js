@@ -27,9 +27,6 @@ module.exports = function(config) {
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/pym.js/dist/pym.js',
       'bower_components/d3/d3.js',
-      'bower_components/heap/lib/heap.js',
-      'bower_components/topojson/topojson.js',
-      'bower_components/d3plus/d3plus.full.js',
       'bower_components/c3/c3.js',
       'bower_components/lodash/lodash.js',
       // endbower
