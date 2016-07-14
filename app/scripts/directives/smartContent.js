@@ -110,7 +110,6 @@ angular.module('compromisosSiteApp')
                         $scope.bindFinalEvents();
                         $timeout(function(){
                           if($scope.readyCallback){
-                            console.log($scope.chart,$scope.id);
                             $scope.readyCallback($scope.chart,$scope.id);
                           }  
                         },1200)

@@ -192,10 +192,12 @@ angular.module('compromisosSiteApp')
 
       chart[id].bars.selectAll('rect.vertical-bar-value')
         .attr('height',function(d){
-          return yScale(parseInt(d.avance)); 
+          var value = (d.avance)?d.avance:0;
+          return yScale(parseInt(value));
         })
         .attr('y',function(d){
-          return barW+ (h-barW-barW/2)- yScale(parseInt(d.avance)); 
+          var value = (d.avance)?d.avance:0;
+          return barW+ (h-barW-barW/2)- yScale(parseInt(value)); 
         })
         .attr('x',pad)
         .attr('width',barW-pad*2);

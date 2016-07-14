@@ -18,12 +18,8 @@ $.urlParam = function(url,name){
  */
 angular
   .module('compromisosSiteApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch',
     'ngYoutubeEmbed'
   ])
   .config(function ($routeProvider) {
