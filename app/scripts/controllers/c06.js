@@ -25,7 +25,8 @@ angular.module('compromisosSiteApp')
       $scope.currentCompromise = $scope.data = _.find(data, function(d){ return parseInt(d.numero) === 6; });
       $scope.currentCompromise.porcentaje_completado = parseInt($scope.currentCompromise.porcentaje_completado);
       $scope.currentCompromise.color = SlugColorService.getColorBySlug($scope.currentCompromise.slug);
-      $scope.currentCompromise.secondColor = '#bdbec2';
+      $scope.currentCompromise.secondColor = '#fcc793';
+      $scope.currentCompromise.grayColor = '#e6e7e9';
       $scope.loading = false;
       LoadSVGService.loadIcon($scope.currentCompromise.icono,function(iconLoaded){
         /*$(iconLoaded)
@@ -104,14 +105,18 @@ angular.module('compromisosSiteApp')
         data:{
           type: 'bar',
           keys: {
-              value: ['pasajeros_diarios'],
+              value: ['Existentes', 'Proyectados'],
               x:'corredor'
           },
+           groups: [
+            ['Existentes', 'Proyectados']
+          ],
           names: {
-            pasajeros_diarios: 'Pasajeros Diarios',
+            Existentes: 'Metrobús Existente',
+            Proyectados : 'Metrobús Proyectado'
           },
-          colors: 
-          {'pasajeros_diarios': $scope.currentCompromise.color}
+          colors: {'Existentes': $scope.currentCompromise.color,
+          'Proyectados': $scope.currentCompromise.secondColor}
         },
         size: {
             height: 350,
@@ -123,7 +128,7 @@ angular.module('compromisosSiteApp')
             left: 20,
         },
          bar: {
-          width: 22
+          width: 23
         },
         axis: {
           rotated:true,
@@ -134,6 +139,8 @@ angular.module('compromisosSiteApp')
           y: {
               show:true,
               min: 0,
+              max: 225000,
+              count:4,
               padding: 5,
               tick:{
                 fit:true,
@@ -144,7 +151,7 @@ angular.module('compromisosSiteApp')
           }
         },
         legend: {
-            show: false
+            show: true
         }
       });
     };
@@ -196,7 +203,7 @@ angular.module('compromisosSiteApp')
           },
           colors: 
           {'porcentaje_avance': $scope.currentCompromise.color,
-          'restante': $scope.currentCompromise.secondColor}
+          'restante': $scope.currentCompromise.grayColor}
         },
         size: {
             height: 350,
@@ -263,8 +270,8 @@ angular.module('compromisosSiteApp')
               x:'ciudad'
           },
           names: {
-            kilometros: 'Kilómetros',
-            proyectados: 'Proyectados',
+            kilometros: 'Existente',
+            proyectados: 'Proyectado',
            
           },
           groups: [
@@ -297,7 +304,7 @@ angular.module('compromisosSiteApp')
           }
         },
         legend: {
-            show: false
+            show: true
         }
       });
     };

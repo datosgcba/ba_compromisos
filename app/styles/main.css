@@ -18,7 +18,9 @@ html {
   text-align: center;
   box-shadow: none;
 }
-
+.darker-text .c3 text.custom-c3-text{
+  fill:#7c6861;
+}
 .progress .progress-w{
     text-align: center;
     position: relative;
