@@ -8,7 +8,7 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('Compromiso03Ctrl', function (UrlService, $scope, $http,SlugColorService,LoadSVGService) {
+  .controller('Compromiso03Ctrl', function (UrlService,$rootScope, $scope, $http,SlugColorService,LoadSVGService) {
 
   	var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({ polling: 1000 });
@@ -47,6 +47,7 @@ angular.module('compromisosSiteApp')
     $scope.completeConfig = function(config){
       return angular.merge(config,{
         data:{
+          xFormat: '%Y-%m',
           types: {
             meta_acumulado: 'area',
             adultos_incluidos_acumulado: 'line'
@@ -72,9 +73,14 @@ angular.module('compromisosSiteApp')
             left: 80,
         },
         axis: {
-          x: {
-              type: 'category',
-              show:false
+           x: {
+              type: 'timeseries',
+              show:true,
+              tick: {
+                  fit: true,
+                  format: $rootScope.d3Locale_ES.timeFormat("%b-%y"),
+                  count:6
+              }
           },
           y: {
               show:true

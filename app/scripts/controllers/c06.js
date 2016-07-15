@@ -184,6 +184,7 @@ angular.module('compromisosSiteApp')
       return angular.merge(config,{
         data:{
           type: 'bar',
+          xFormat: '%Y-%m',
           keys: {
               value: ['porcentaje_avance', 'restante'],
               x:'corredor'

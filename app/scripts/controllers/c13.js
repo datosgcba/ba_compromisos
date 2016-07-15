@@ -41,6 +41,7 @@ angular.module('compromisosSiteApp')
 
 
     $scope.prepareData1 = function(data){
+      console.log(data);
       return data;
     };
 
@@ -49,19 +50,24 @@ angular.module('compromisosSiteApp')
         data:{
           types: {
             'Meta G2': 'area', 
-            'Desempeño G2'  : 'line', 
+            'Desempeno G2'  : 'line', 
             'Meta G3' : 'area', 
-            'Desempeño G3': 'line'
+            'Desempeno G3': 'line'
           },
           keys: {
-              value: ['Meta G2','Desempeño G2', 'Meta G3', 'Desempeño G3'],
+              value: ['Meta G2','Desempeno G2', 'Meta G3','Desempeno G3'],
               x: 'anio'
           },
+          names:{
+            'Desempeno G2': 'Desempeño G2',
+            'Desempeno G2': 'Desempeño G3',
+          },
+          order: 'asc',
           colors: {
                 'Meta G2': $scope.currentCompromise.secondColor,
-                'Desempeño G2'  : '#3cb8b0',
+                'Desempeno G2'  : '#3cb8b0',
                 'Meta G3' : $scope.currentCompromise.secondColor,
-                'Desempeño G3': '#f98f41', 
+                'Desempeno G3': '#f98f41', 
               }
         },
         size: {
@@ -70,7 +76,7 @@ angular.module('compromisosSiteApp')
         padding: {
             top: 0,
             right: 20,
-            bottom: 10,
+            bottom: 20,
             left: 40,
         },
         axis: {
@@ -80,13 +86,23 @@ angular.module('compromisosSiteApp')
           },
           y: {
             show:true,
+            min: 0,
             tick:{
-              format: function(value) {return Math.round(value*100) + '%';}
+                format:function(y){
+                  return y+'%';
+                }
             }
+              
           }
         },
         legend: {
-            show: true
+            show: true,
+            item: {
+                      tile: {
+                          width: 5,
+                          height: 10
+                      },
+          },
         }
       });
     };
