@@ -18,7 +18,9 @@ html {
   text-align: center;
   box-shadow: none;
 }
-
+.darker-text .c3 text.custom-c3-text{
+  fill:#7c6861;
+}
 .progress .progress-w{
     text-align: center;
     position: relative;
@@ -480,6 +482,10 @@ div#category_chart {
 
 /* Large Devices, Wide Screens */
 @media only screen and (max-width : 1200px) {
+  /* The max width is dependant on the container (more info below) */
+  .popover{
+      max-width: 200px; /* Max Width of the popover (depending on the container!) */
+  }
   .hidden-desktop{
     display: none;
   }
@@ -593,4 +599,14 @@ p.sub{
 .c3-legend-item {
     font-size: 11px;
     font-weight: bolder;
+}
+
+
+.escuela-detail{
+  background: #fafafa;
+  text-align: left;
+  padding: 10px;
+}
+.escuela-detail span{
+  color:#c0c2c1;
 }
