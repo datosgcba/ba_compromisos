@@ -189,7 +189,7 @@ angular.module('compromisosSiteApp')
               value: ['porcentaje_avance', 'restante'],
               x:'corredor'
           },
-
+          order: 'asc',
           groups: [
             ['porcentaje_avance','restante']
           ],
