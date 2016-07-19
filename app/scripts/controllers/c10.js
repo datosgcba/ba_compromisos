@@ -44,9 +44,8 @@ angular.module('compromisosSiteApp')
           },
           names:{
             'estudiantes_abandonan': 'Abandonos',
-            'variacion_interanual': 'Interanual',
-            'variacion_acumulada': 'Acumulada',
-
+            'variacion_interanual': 'Continúan (por año)',
+            'variacion_acumulada': 'Continúan (acumulado)',
           },
           colors: {
             'estudiantes_abandonan': $scope.currentCompromise.color,

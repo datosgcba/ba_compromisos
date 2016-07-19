@@ -373,6 +373,11 @@ div#category_chart {
    text-transform: uppercase;
 }
 
+.detalle-frame img{
+    display: block;
+    margin: 0 auto;
+
+}
 .detalle-frame .c3 svg{
   text-transform: uppercase;
 }

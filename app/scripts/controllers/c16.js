@@ -57,9 +57,9 @@ angular.module('compromisosSiteApp')
               x: 'mes'
           },
           names: {
-            meta_acumulada: 'Acmuluada',
-            medicion_real: 'Real',
-            meta_mensual: 'Mensual'
+            meta_acumulada: 'Meta Acumulada',
+            medicion_real: 'Avance',
+            meta_mensual: 'Meta Mensual'
           },
           colors: {
                 'meta_mensual':$scope.currentCompromise.secondColor,

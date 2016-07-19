@@ -127,7 +127,7 @@ angular.module('compromisosSiteApp')
         axis: {
           x: {
               type: 'category',
-              show:false
+              show:true
           },
           y: {
               show:true,

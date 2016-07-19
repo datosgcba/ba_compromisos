@@ -106,7 +106,12 @@ angular.module('compromisosSiteApp')
           },
           y: {
             show:true,
-            min: -1,
+            min: 500,
+            count:4,
+            tick: {
+                  min: 0,
+                  fit: true
+            }
           }
         },
         legend: {
@@ -123,10 +128,7 @@ angular.module('compromisosSiteApp')
     var id;
     $(window).resize(function() {
         clearTimeout(id);
-        id = setTimeout(function(){
-          // if(chart1){
-          //   createCustomChart1();
-          // }          
+        id = setTimeout(function(){          
         }, 500);
     });
 
