@@ -74,10 +74,16 @@ angular.module('compromisosSiteApp')
             },
             show:true
           },
-          y: {
-              min:10,
-              max:90,
-              show:true
+           y: {
+              show:true,
+              min: 0,
+              max:100,
+              padding: 5,
+              tick:{
+                format:function(y){
+                  return y+'%';
+                },
+              }
           }
         },
         legend: {
