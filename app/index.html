@@ -73,13 +73,6 @@
         </div>
         <div class="row row-preview">
           <div class="col-md-12">
-            <h3>Código para embeber de <span class="selected"></span>:</h3>
-            <textarea class="form-control" id="embed"></textarea>
-            <textarea style="display:none" id="template"><div data-pym-src="{{URL}}"></div><script type="text/javascript" src="{{SERVER}}scripts/pym.min.js"></script></textarea>
-          </div>
-        </div>
-        <div class="row row-preview">
-          <div class="col-md-12">
             <h3>Ejemplo de iframe con <span class="selected"></span>:</h3>
             <hr>
             <div id="pym-container"></div>
@@ -109,7 +102,6 @@
             $selected = $('.selected');
             $rows = $('.row-preview');
             $selectores = $('.row-selectores');
-            $textarea = $('#embed');
             $loading = $('#loading');
             $loading.hide();
             $selectores.show();
@@ -119,7 +111,6 @@
                 $selected.html($(this).html());
                 var server = location.origin + location.pathname;
                 var url = server +'app.html'+$(this).attr('href');
-                $textarea.val(embed.replace('{{URL}}',url).replace('{{SERVER}}',server));
                 pymParent = new pym.Parent('pym-container', url, {});
             });
         });
