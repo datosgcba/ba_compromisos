@@ -2,6 +2,9 @@
 	<p class="detalle-frame-title text-left" ng-if="title">{{title}}</p>
 	<i ng-if="nota || fuente" class="detalle-frame-icon glyphicon glyphicon-info-sign" data-container="body" title="{{nota}}" data-toggle="popover" data-placement="bottom" data-content="Fuente: {{fuente}}">
 	</i>
+  <i ng-if="nota || fuente" class="detalle-frame-icon-2 glyphicon glyphicon glyphicon-download-alt">
+  </i>
+
 	<span ng-show="loading">Cargando...</span>
 	<div id="{{id}}" ng-init="renderChart()"></div>
 </div>

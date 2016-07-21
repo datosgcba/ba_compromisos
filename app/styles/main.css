@@ -85,6 +85,18 @@ html {
   font-size: 15pt;
 }
 
+.detalle-frame-icon-2 {
+    top: 40px;
+    right: 27px;
+    font-size: 15pt;
+    position: absolute;
+    cursor: pointer;
+    z-index: 33;
+}
+.popover{
+  z-index: 100;
+}
+
 .detalle-frame .detalle-frame-title {
   font-size: 14pt;
   font-weight: 600;
@@ -102,11 +114,11 @@ html {
     top: 0;
     width: 100%;
 }
-#compromiso-detail h1, 
-#compromiso-detail .h1, 
-#compromiso-detail h2, 
-#compromiso-detail .h2, 
-#compromiso-detail h3, 
+#compromiso-detail h1,
+#compromiso-detail .h1,
+#compromiso-detail h2,
+#compromiso-detail .h2,
+#compromiso-detail h3,
 #compromiso-detail .h3{
     margin-top: 0px;
     margin-bottom: 0px;
@@ -220,14 +232,14 @@ div#category_chart {
 
 }
 
-.bubble-chart-text-title{            
+.bubble-chart-text-title{
   text-anchor: middle;
   fill: white;
   font-size: 12px;
 }
 
 
-.bubble-chart-text-subtitle{            
+.bubble-chart-text-subtitle{
   text-anchor: middle;
   fill: white;
   font-size: 10px;
@@ -381,7 +393,7 @@ div#category_chart {
 .detalle-frame .c3 svg{
   text-transform: uppercase;
 }
-   
+
 /*Axis*/
 .c3-axis.c3-axis-y path.domain,
 .c3-axis.c3-axis-y .tick line{
@@ -541,7 +553,7 @@ div#category_chart {
 
 }
 
-/* Extra Small Devices, Phones */ 
+/* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {
   .hidden-desktop{
     display: block;
@@ -560,7 +572,7 @@ div#category_chart {
   }
 }
 
-/* Custom, iPhone Retina */ 
+/* Custom, iPhone Retina */
 @media only screen and (max-width : 320px) {
   .hidden-desktop{
     display: block;
