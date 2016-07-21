@@ -5,10 +5,11 @@
   <div ng-include="'views/includes/detail.html'" ng-cloak ng-show="currentCompromise"></div>
 
   <div class="row">
-    
+
     <div ng-if="data.detalle_1" class="col-md-6 text-center">
-       <smart-content 
+       <smart-content
         url="data.detalle_1"
+        source="data.detalle_1"
         prepare-callback="prepareData1"
         config-callback="completeConfig1"
         ready-callback="chartReady1"
@@ -17,7 +18,7 @@
         fuente="data.detalle_1_fuente"
         ></smart-content>
     </div>
-    
+
     <div ng-if="data.detalle_2" class="col-md-6 text-center">
       <smart-content url="data.detalle_2"
       titulo="data.detalle_2_nombre"
@@ -31,7 +32,7 @@
       titulo="data.detalle_3_nombre"></smart-content>
     </div>
 
- 
+
 
 
   </div>

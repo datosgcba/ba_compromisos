@@ -5,10 +5,11 @@
   <div ng-include="'views/includes/detail.html'" ng-cloak ng-show="currentCompromise"></div>
 
   <div class="row">
-    
+
     <div ng-if="data.detalle_1" class="col-md-12 text-center">
-       <smart-content 
+       <smart-content
         url="data.detalle_1"
+        source="data.detalle_1"
         titulo="data.detalle_1_nombre"
         nota="data.detalle_1_nota"
         fuente="data.detalle_1_fuente"
@@ -16,7 +17,7 @@
         template="'views/directives/customChart.html'"
         ></smart-content>
     </div>
-  
+
   </div>
 
   <hr/>
