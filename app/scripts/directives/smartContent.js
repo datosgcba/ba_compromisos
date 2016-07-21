@@ -10,6 +10,7 @@ angular.module('compromisosSiteApp')
           title: '=titulo',
           nota: '=nota',
           fuente: '=fuente',
+          source: '=source',
           prepareCallback: '=prepareCallback',
           configCallback: '=configCallback',
           readyCallback: '=readyCallback',
@@ -60,7 +61,7 @@ angular.module('compromisosSiteApp')
             };
 
             $scope.chartConfigDefaults = {
-                data:{                
+                data:{
                     json: []
                 },
                 padding: {
@@ -70,7 +71,7 @@ angular.module('compromisosSiteApp')
                   left: 50,
                 },
                 legend:{
-                    
+
                   // amount of padding to put between each legend element
                   padding: 35,
                   // define custom height and width for the legend item tile
@@ -84,7 +85,7 @@ angular.module('compromisosSiteApp')
                   },
                 },
                 onrendered: function () {
-                  
+
                 }
             };
 
@@ -93,7 +94,7 @@ angular.module('compromisosSiteApp')
                 var url = UrlService.getUrlByCsv($scope.url);
 
                 $scope.chartConfigDefaults.bindto = '#'+$scope.id;
-                
+
                 $http.jsonp(url)
                 .success(function(data){
                     if($scope.prepareCallback){
@@ -111,10 +112,10 @@ angular.module('compromisosSiteApp')
                         $timeout(function(){
                           if($scope.readyCallback){
                             $scope.readyCallback($scope.chart,$scope.id);
-                          }  
+                          }
                         },1200)
-                        
-                    },500); 
+
+                    },500);
                 });
 
             };
@@ -138,14 +139,14 @@ angular.module('compromisosSiteApp')
             var id;
             $(window).resize(function() {
                 clearTimeout(id);
-                id = setTimeout(function(){ 
+                id = setTimeout(function(){
                   if($scope.resizeFunction){
                     $scope.resizeFunction();
                   }
                 }, 500);
             });
 
-        }, 
+        },
         template: '<ng-include src="getTemplateUrl()"/>'
     };
 

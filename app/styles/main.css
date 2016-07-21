@@ -84,7 +84,9 @@ html {
   right: 28px;
   font-size: 15pt;
 }
-
+.detalle-frame a{
+  color: #333;
+}
 .detalle-frame-icon-2 {
     top: 40px;
     right: 27px;
@@ -92,6 +94,12 @@ html {
     position: absolute;
     cursor: pointer;
     z-index: 33;
+}
+.override {
+  position: absolute;
+  top: 12px;
+  right: 28px;
+  font-size: 15pt;
 }
 .popover{
   z-index: 100;
