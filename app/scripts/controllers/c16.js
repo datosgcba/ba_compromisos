@@ -15,7 +15,7 @@ angular.module('compromisosSiteApp')
     pymChild.sendHeight();
     var _ = window._;
 
-    //para ir a otra url en el padre  
+    //para ir a otra url en el padre
     //pymChild.navigateParentTo('https://github.com/nprapps/pym.js');
 
     $scope.loading = true;
@@ -59,7 +59,7 @@ angular.module('compromisosSiteApp')
           names: {
             meta_acumulada: 'Meta Acumulada',
             medicion_real: 'Avance',
-            meta_mensual: 'Meta Mensual'
+            meta_mensual: 'Meta'
           },
           colors: {
                 'meta_mensual':$scope.currentCompromise.secondColor,
@@ -94,7 +94,7 @@ angular.module('compromisosSiteApp')
     $scope.chartReady = function(chart){
 
     };
-    
+
     //detalle 2
 
     $scope.prepareData2 = function(data){
@@ -112,7 +112,7 @@ angular.module('compromisosSiteApp')
           names: {
             cantidad_zonas_wifi_gratis: 'Cantidad de Zonas Wifi Gratis',
           },
-          colors: 
+          colors:
           {'cantidad_zonas_wifi_gratis':
           $scope.currentCompromise.color}
         },
@@ -151,9 +151,9 @@ angular.module('compromisosSiteApp')
         id = setTimeout(function(){
           // if(chart1){
           //   createCustomChart1();
-          // }          
+          // }
         }, 500);
     });
 
-  	
+
   });

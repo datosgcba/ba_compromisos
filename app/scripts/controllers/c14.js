@@ -15,7 +15,7 @@ angular.module('compromisosSiteApp')
     pymChild.sendHeight();
     var _ = window._;
 
-    //para ir a otra url en el padre  
+    //para ir a otra url en el padre
     //pymChild.navigateParentTo('https://github.com/nprapps/pym.js');
 
     $scope.loading = true;
@@ -47,12 +47,12 @@ angular.module('compromisosSiteApp')
         data:{
           xFormat: '%Y-%m',
           types: {
-        
+
             meta: 'area',
             policias : 'line'
           },
           regions: {
-            'meta': [{'style':'dashed'}], 
+            'meta': [{'style':'dashed'}],
           },
           keys: {
               value: ['policias','meta'],
@@ -87,7 +87,7 @@ angular.module('compromisosSiteApp')
           },
           y: {
             show:true,
-            min: 0,
+            min: 10,
           }
         },
         legend: {
@@ -99,7 +99,7 @@ angular.module('compromisosSiteApp')
     $scope.chartReady = function(chart){
 
     };
-    
+
     //detalle 2
     var data2 = {};
     $scope.prepareData2 = function(data){
@@ -119,7 +119,7 @@ angular.module('compromisosSiteApp')
             ciudad: 'Ciudad',
             policias_cienmilhab: 'Policías por 100 mil Habitantes'
           },
-          colors: 
+          colors:
           {'policias_cienmilhab':
           $scope.currentCompromise.color}
         },
@@ -170,9 +170,9 @@ angular.module('compromisosSiteApp')
         id = setTimeout(function(){
           // if(chart1){
           //   createCustomChart1();
-          // }          
+          // }
         }, 500);
     });
 
-  	
+
   });

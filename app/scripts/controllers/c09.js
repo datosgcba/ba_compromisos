@@ -70,6 +70,7 @@ angular.module('compromisosSiteApp')
           y: {
               show:true,
               min: 0,
+              max:100,
               padding: 5,
               tick:{
                 format:function(y){
@@ -95,9 +96,9 @@ angular.module('compromisosSiteApp')
         id = setTimeout(function(){
           // if(chart1){
           //   createCustomChart1();
-          // }          
+          // }
         }, 500);
     });
 
-  	
+
   });

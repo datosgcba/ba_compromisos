@@ -119,7 +119,7 @@
 				  <div class="progress-w" ng-show="!currentCompromise.porcentaje_completado"><p>-</p> </div>
 				  <div class="progress-w" ng-show="currentCompromise.porcentaje_completado<50" ng-style="{ 'width': (100 - currentCompromise.porcentaje_completado) + '%' }">{{currentCompromise.porcentaje_completado}}% </div>
 				</div>
-				<p>Cumplimiento:<strong> {{currentCompromise.cumplimiento}} </strong> </p>
+				<p>Cumplimiento: <span class="f-color-{{currentCompromise.slug}}">{{currentCompromise.cumplimiento_label}}</span></p>
 				<div class="col-md-4 center-block">
 					<button ng-click="redirectParent(currentCompromise.url_interna)" id="singlebutton" name="singlebutton" type="button" class="btn btn-xs upper bg-color-{{currentCompromise.slug}}  hidden-desktop center-block" >Ver mas sobre el compromiso &#187; </button>
 				</div>

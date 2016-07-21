@@ -41,14 +41,14 @@ angular.module('compromisosSiteApp')
       return angular.merge(config,{
         data:{
           keys: {
-              value: ['porcentaje_avance'],
+              value: ['meta'],
               x: 'mes'
           },
           names:{
-            'porcentaje_avance': 'Porcentaje Avance'
+            'meta':'Meta'
           },
           colors: {
-            'porcentaje_avance': $scope.currentCompromise.color
+            'meta': $scope.currentCompromise.color
             }
         },
         size: {
@@ -56,7 +56,7 @@ angular.module('compromisosSiteApp')
         },
         padding: {
             top: 0,
-            right: 20,
+            right: 40,
             bottom: 10,
             left: 40,
         },
@@ -91,5 +91,5 @@ angular.module('compromisosSiteApp')
 
     };
 
-  	
+
   });
