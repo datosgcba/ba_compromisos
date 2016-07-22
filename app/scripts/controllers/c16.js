@@ -8,7 +8,7 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('Compromiso16Ctrl', function (UrlService, $scope, $http,SlugColorService,LoadSVGService) {
+  .controller('Compromiso16Ctrl', function (UrlService, $scope, $http,SlugColorService,LoadSVGService,$rootScope) {
 
   	var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({ polling: 1000 });
@@ -34,13 +34,15 @@ angular.module('compromisosSiteApp')
             .get(0);*/
         $('.icon-svg-container').html(iconLoaded.cloneNode(true));
       });
-      console.log($scope.currentCompromise);
     });
 
     $scope.youtubeLink = 'https://www.youtube.com/watch?v=AoZ98-TwqM4';
 
 
     $scope.prepareData = function(data){
+      _.each(data,function(d){
+        d.mes_date = d.mes+'-01';
+      });
       return data;
     };
 
@@ -49,22 +51,21 @@ angular.module('compromisosSiteApp')
         data:{
           types: {
             meta_mensual: 'area',
-            meta_acumulada: 'area',
             medicion_real : 'line'
           },
           keys: {
-              value: ['meta_mensual','meta_acumulada', 'medicion_real'],
-              x: 'mes'
+              value: ['meta_mensual', 'medicion_real'],
+              x: 'mes_date'
           },
           names: {
-            meta_acumulada: 'Meta Acumulada',
-            medicion_real: 'Avance',
+            medicion_real: 'Nuevos puntos digitales',
             meta_mensual: 'Meta'
           },
           colors: {
-                'meta_mensual':$scope.currentCompromise.secondColor,
-                'meta_acumulada':'#ccc',
-                'medicion_real': $scope.currentCompromise.color}
+                //'meta_mensual':$scope.currentCompromise.secondColor,
+                'meta_mensual':'#ccc',
+                'medicion_real': $scope.currentCompromise.color
+          }
         },
         size: {
             height: 300,
@@ -77,8 +78,13 @@ angular.module('compromisosSiteApp')
         },
         axis: {
           x: {
-              type: 'category',
-              show:true
+              type: 'timeseries',
+              show:true,
+              tick: {
+                  fit: true,
+                  format: $rootScope.d3Locale_ES.timeFormat("%b-%y"),
+                  count:6
+              }
           },
           y: {
             show:true,
