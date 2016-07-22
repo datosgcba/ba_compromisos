@@ -8,7 +8,7 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('HomeCtrl', function ($scope,$timeout,$http,UrlService,SlugColorService,LoadSVGService) {
+  .controller('HomeCtrl', function ($scope,$timeout,$document,$http,UrlService,SlugColorService,LoadSVGService) {
 
     $scope.pymChild = new pym.Child({ polling: 1000 });
     $scope.pymChild.sendHeight();
@@ -132,13 +132,20 @@ angular.module('compromisosSiteApp')
       var pos = mouseOffset + eTop + 145;
       d3.select('#compromiso-detail')
         .style('top',pos+'px');
-      var filler = pos + popupH - docH + fillerH;
-      if(filler>0){
-        d3.select('#filler').style('height',filler+'px');
-      }
-      else {
-       d3.select('#filler').style('height',0+'px');
-      }
+
+      $scope.$apply(function(){
+        var someElement = angular.element(document.getElementById('compromiso-detail'));
+        if(filler>0){
+          d3.select('#filler').style('height',filler+'px');
+        }
+        else {
+         d3.select('#filler').style('height',0+'px');
+        }
+          $document.scrollToElement(someElement, 500, 500);
+         var filler = pos + popupH - docH + fillerH;
+
+      });
+
     }
 
     $scope.redirectParent = function(url){
