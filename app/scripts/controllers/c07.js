@@ -10,14 +10,14 @@
 angular.module('compromisosSiteApp')
   .controller('Compromiso07Ctrl', function (UrlService, $rootScope, $scope, $http,SlugColorService,LoadSVGService,$sce,$compile,$templateRequest) {
 
-  	var url = UrlService.getUrlByPage('home');
+    var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({ polling: 1000 });
     pymChild.sendHeight();
     var _ = window._;
 
     var chart3;
 
-    //para ir a otra url en el padre  
+    //para ir a otra url en el padre
     //pymChild.navigateParentTo('https://github.com/nprapps/pym.js');
 
     $scope.loading = true;
@@ -43,7 +43,7 @@ angular.module('compromisosSiteApp')
       function toSeconds(ms){
         if(ms){
           ms = ms.split(':');
-          return(+ms[0]) * 60 + (+ms[1]); 
+          return(+ms[0]) * 60 + (+ms[1]);
         } else {
           return null;
         }
@@ -77,8 +77,15 @@ angular.module('compromisosSiteApp')
             'linea_h_sec':'Línea H',
             'total_sec':'Total'
           },
-          type: 'spline'
-/*          colors: {'muertes': $scope.currentCompromise.color}*/
+          type: 'spline',
+          colors: {
+            'linea_a_sec': "rgb(0, 174, 219)",
+            'linea_b_sec': "rgb(238, 27, 46)",
+            'linea_c_sec': "rgb(1, 103, 178)",
+            'linea_d_sec': "rgb(0, 128, 103)",
+            'linea_e_sec': "rgb(108, 33, 128)",
+            'linea_h_sec': "rgb(255, 210, 3)"
+          }
         },
         size: {
             height: 300,
@@ -105,10 +112,10 @@ angular.module('compromisosSiteApp')
           y: {
               show:true,
               tick: {
-                format: function (time) { 
+                format: function (time) {
                   var minutes = Math.floor(time / 60);
                   var seconds = time - minutes * 60;
-                  seconds = ((''+seconds).length===1)?'0'+seconds:seconds; 
+                  seconds = ((''+seconds).length===1)?'0'+seconds:seconds;
                   return minutes+':'+(seconds);
                 }
               }
@@ -121,7 +128,7 @@ angular.module('compromisosSiteApp')
     };
 
     $scope.chartReady1 = function(chart){
-      
+
     };
 
     //detalle 3
@@ -169,12 +176,12 @@ angular.module('compromisosSiteApp')
             'linea_h':'Línea H'
           },
           type: 'spline'
-          /*colors: 
+          /*colors:
           {'poblacion_mayor_o_igual_65':
           $scope.currentCompromise.color}*/
 
         };
-      return angular.merge(config,{ 
+      return angular.merge(config,{
         data:$scope.dataConfig,
         size: {
             height: 300,
@@ -199,7 +206,7 @@ angular.module('compromisosSiteApp')
           y: {
               show:true,
               tick: {
-                format: function (millones) { 
+                format: function (millones) {
                   return (millones+'').replace('000000','m');
                 }
               }
@@ -228,9 +235,9 @@ angular.module('compromisosSiteApp')
         id = setTimeout(function(){
           // if(chart1){
           //   createCustomChart1();
-          // }          
+          // }
         }, 500);
     });
 
-  	
+
   });
