@@ -19,6 +19,7 @@ $.urlParam = function(url,name){
 angular
   .module('compromisosSiteApp', [
     'ngRoute',
+    'duScroll',
     'ngSanitize',
     'ngYoutubeEmbed'
   ])
@@ -36,19 +37,19 @@ angular
       .when('/c05', {templateUrl: 'views/c05.html',controller: 'Compromiso05Ctrl',controllerAs: 'c05'})
       .when('/c06', {templateUrl: 'views/c06.html',controller: 'Compromiso06Ctrl',controllerAs: 'c06'})
       .when('/c07', {templateUrl: 'views/c07.html',controller: 'Compromiso07Ctrl',controllerAs: 'c07'})
-      .when('/c08', {templateUrl: 'views/c08.html',controller: 'Compromiso08Ctrl',controllerAs: 'c08'})  
-      .when('/c09', {templateUrl: 'views/c09.html',controller: 'Compromiso09Ctrl',controllerAs: 'c09'})  
-      .when('/c10', {templateUrl: 'views/c10.html',controller: 'Compromiso10Ctrl',controllerAs: 'c10'})  
-      .when('/c11', {templateUrl: 'views/c11.html',controller: 'Compromiso11Ctrl',controllerAs: 'c11'})  
-      .when('/c12', {templateUrl: 'views/c12.html',controller: 'Compromiso12Ctrl',controllerAs: 'c12'})  
-      .when('/c13', {templateUrl: 'views/c13.html',controller: 'Compromiso13Ctrl',controllerAs: 'c13'})  
-      .when('/c14', {templateUrl: 'views/c14.html',controller: 'Compromiso14Ctrl',controllerAs: 'c14'})  
-      .when('/c15', {templateUrl: 'views/c15.html',controller: 'Compromiso15Ctrl',controllerAs: 'c15'})  
-      .when('/c16', {templateUrl: 'views/c16.html',controller: 'Compromiso16Ctrl',controllerAs: 'c16'})  
-      .when('/c17', {templateUrl: 'views/c17.html',controller: 'Compromiso17Ctrl',controllerAs: 'c17'})  
-      .when('/c18', {templateUrl: 'views/c18.html',controller: 'Compromiso18Ctrl',controllerAs: 'c18'})  
-      .when('/c19', {templateUrl: 'views/c19.html',controller: 'Compromiso19Ctrl',controllerAs: 'c19'})    
-      .when('/c20', {templateUrl: 'views/c20.html',controller: 'Compromiso20Ctrl',controllerAs: 'c20'})  
+      .when('/c08', {templateUrl: 'views/c08.html',controller: 'Compromiso08Ctrl',controllerAs: 'c08'})
+      .when('/c09', {templateUrl: 'views/c09.html',controller: 'Compromiso09Ctrl',controllerAs: 'c09'})
+      .when('/c10', {templateUrl: 'views/c10.html',controller: 'Compromiso10Ctrl',controllerAs: 'c10'})
+      .when('/c11', {templateUrl: 'views/c11.html',controller: 'Compromiso11Ctrl',controllerAs: 'c11'})
+      .when('/c12', {templateUrl: 'views/c12.html',controller: 'Compromiso12Ctrl',controllerAs: 'c12'})
+      .when('/c13', {templateUrl: 'views/c13.html',controller: 'Compromiso13Ctrl',controllerAs: 'c13'})
+      .when('/c14', {templateUrl: 'views/c14.html',controller: 'Compromiso14Ctrl',controllerAs: 'c14'})
+      .when('/c15', {templateUrl: 'views/c15.html',controller: 'Compromiso15Ctrl',controllerAs: 'c15'})
+      .when('/c16', {templateUrl: 'views/c16.html',controller: 'Compromiso16Ctrl',controllerAs: 'c16'})
+      .when('/c17', {templateUrl: 'views/c17.html',controller: 'Compromiso17Ctrl',controllerAs: 'c17'})
+      .when('/c18', {templateUrl: 'views/c18.html',controller: 'Compromiso18Ctrl',controllerAs: 'c18'})
+      .when('/c19', {templateUrl: 'views/c19.html',controller: 'Compromiso19Ctrl',controllerAs: 'c19'})
+      .when('/c20', {templateUrl: 'views/c20.html',controller: 'Compromiso20Ctrl',controllerAs: 'c20'})
       .otherwise({
         redirectTo: '/'
       });
@@ -72,7 +73,7 @@ angular
       };
   })
   .service('LoadSVGService', function () {
-    this.loadIcon = function(name,cb){    
+    this.loadIcon = function(name,cb){
       var icon = 'images/iconos/GCBA-compromisos-icons-'+name+'.svg';
       d3.xml(icon, "image/svg+xml", function(error, xml) {
         cb(document.importNode(xml.documentElement, true));
@@ -94,7 +95,7 @@ angular
           return this.baseUrl + '?source_format=csv&source='+csv+ '&callback=JSON_CALLBACK';
       };
   })
-  .run(function($rootScope,$interval) { 
+  .run(function($rootScope,$interval) {
 
     //Locale!
     var es_ES = {
@@ -132,8 +133,8 @@ angular
         },2000);
     };
 
-    function adjust() {    
-      
+    function adjust() {
+
       updateFrame();
 
       setTimeout(function(){

@@ -8,7 +8,7 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('HomeCtrl', function ($scope,$timeout,$http,UrlService,SlugColorService,LoadSVGService) {
+  .controller('HomeCtrl', function ($scope,$timeout,$document,$http,UrlService,SlugColorService,LoadSVGService) {
 
     $scope.pymChild = new pym.Child({ polling: 1000 });
     $scope.pymChild.sendHeight();
@@ -47,7 +47,7 @@ angular.module('compromisosSiteApp')
            $scope.availableCategories.push(g.key);
         });
       angular.forEach($scope.categoriesGroup, function(g){
-    
+
           g.finishedYearsGroup = d3.nest()
           .key(function(d) { return d.cumplimiento; })
           .rollup(function(leaves) { return leaves.length; })
@@ -72,14 +72,14 @@ angular.module('compromisosSiteApp')
 
       $scope.finishedPercentageGroup = d3.nest()
         .key(function(d) { return getPercentageGroup(d);})
-        .entries($scope.data);    
- 
+        .entries($scope.data);
+
       /*console.log($scope.categoriesGroup);
       console.log($scope.finishedYearsGroup);
       console.log($scope.finishedPercentageGroup);*/
 
     };
-    
+
     var groups=[];
     groups.push({from:0,to:25});
     groups.push({from:25,to:50});
@@ -107,37 +107,51 @@ angular.module('compromisosSiteApp')
       renderStateChart();
       renderCategoryChart();
       renderMenuChart();
-      
-      
+
+
     };
 
 
     function showDetail(c,localEvent,mouseEvent){
+
+      var menu_chartRowSize = 150;
       $scope.$apply(function(){
-        $scope.currentCompromise = c;  
+        $scope.currentCompromise = c;
       });
-      console.log(localEvent);
+
       var popupH = parseInt( d3.select('#compromiso-detail').style('height').replace('px','') );
+      var fillerH = parseInt( d3.select('#filler').style('height').replace('px','') );
+
       var docH = parseInt( $(window).height() );
       var yOffset = parseInt ( mouseEvent.clientY );
       var eTop = $('#menu_chart').offset().top; //get the offset top of the element
       var finalTop = eTop - $(window).scrollTop(); //position of the ele w.r.t window
-      var mouseOffset = Math.floor((mouseEvent.clientY-eTop) / 150) * 150;
-      
+      var mouseOffset = Math.floor((mouseEvent.clientY-eTop) / menu_chartRowSize) * menu_chartRowSize;
+
       console.log(eTop, mouseEvent.clientY, mouseOffset);
       var pos = mouseOffset + eTop + 145;
       d3.select('#compromiso-detail')
         .style('top',pos+'px');
-      var filler = yOffset + popupH - docH;
-      if(filler>0){
-        d3.select('#filler').style('height',filler+'px');
-      }
+
+      $scope.$apply(function(){
+        var someElement = angular.element(document.getElementById('compromiso-detail'));
+        if(filler>0){
+          d3.select('#filler').style('height',filler+'px');
+        }
+        else {
+         d3.select('#filler').style('height',0+'px');
+        }
+          $document.scrollToElement(someElement, 500, 500);
+         var filler = pos + popupH - docH + fillerH;
+
+      });
+
     }
 
     $scope.redirectParent = function(url){
       $scope.pymChild.navigateParentTo(url);
     };
-    
+
     $scope.closeDetail = function(){
       deselectTitle();
       defaultChartColors();
@@ -149,7 +163,7 @@ angular.module('compromisosSiteApp')
     function renderDateChart(){
       //Get Years
       var mainColumns= ['x'].concat($scope.availableYears);
-      //Group by years by category count, 
+      //Group by years by category count,
       angular.forEach($scope.categoriesGroup,function(c){
         c.years = d3.nest()
           .key(function(d) { return d.cumplimiento; })
@@ -159,7 +173,7 @@ angular.module('compromisosSiteApp')
 
       var seriesColumns = [];
       seriesColumns.push(mainColumns);
-      
+
       angular.forEach($scope.categoriesGroup,function(c){
         var series = [];
         series.push(c.key);
@@ -177,7 +191,7 @@ angular.module('compromisosSiteApp')
         });
         seriesColumns.push(series);
       });
-      
+
       //lines
       var max = d3.max($scope.finishedYearsGroup,function(d){return  d.values.length;});
       var lines = d3.range(0,max+1).map(function(e){return {value:e};});
@@ -226,7 +240,7 @@ angular.module('compromisosSiteApp')
     function renderStateChart(){
           //Get Years
           var mainColumns= ['x', '0-25%','25-50%','50-75%','75-100%'];
-          //Group by years by category count, 
+          //Group by years by category count,
           angular.forEach($scope.categoriesGroup,function(c){
             c.percentages = d3.nest()
               .key(function(d) { return d.percentageGroup; })
@@ -236,7 +250,7 @@ angular.module('compromisosSiteApp')
 
           var seriesColumns = [];
           seriesColumns.push(mainColumns);
-          
+
             angular.forEach($scope.categoriesGroup,function(c){
               var series = [];
               series.push(c.key);
@@ -254,7 +268,7 @@ angular.module('compromisosSiteApp')
               });
               seriesColumns.push(series);
             });
-          
+
           //lines
           var max = d3.max($scope.finishedPercentageGroup,function(d){return  d.values.length;});
           var lines = d3.range(0,max+1).map(function(e){return {value:e};});
@@ -291,7 +305,7 @@ angular.module('compromisosSiteApp')
                     },
                     y: {
                         max: 10,
-                        
+
                         show:false,
                         // Range includes padding, set 0 if no padding needed
                         padding: {top:0, bottom:0}
@@ -340,16 +354,16 @@ angular.module('compromisosSiteApp')
         var pack = d3.layout.pack()
           .sort(null)
           .size([diameter, diameter])
-          .value(function(d) { 
-            return parseInt(d.porcentaje_completado); 
+          .value(function(d) {
+            return parseInt(d.porcentaje_completado);
           });
 
         //setup the chart
         if(!$scope.charts.category_chart){
-          
+
           $scope.charts.category_chart = {};
-          
-          $scope.charts.category_chart.svg = 
+
+          $scope.charts.category_chart.svg =
             d3.select("#category_chart")
               .append("svg")
               .attr("class", "bubble-container")
@@ -360,8 +374,8 @@ angular.module('compromisosSiteApp')
             .append('g')
             .classed('main',true);
 
-          $scope.charts.category_chart.data = 
-              { 
+          $scope.charts.category_chart.data =
+              {
                 name:"categories",
                 children:[],
               };
@@ -371,15 +385,15 @@ angular.module('compromisosSiteApp')
              $scope.charts.category_chart.data.children.push(
              {
               name: c.key,
-              children : c.values, 
+              children : c.values,
              });
           }
-            
+
         }
 
         $scope.charts.category_chart.svg.attr("width", $('#category_chart').width());
-  
-        $scope.charts.category_chart.mainGroup.attr("transform", function() 
+
+        $scope.charts.category_chart.mainGroup.attr("transform", function()
               { return "translate(" + pad + ",0)"; });
 
         var nodes = $scope.charts.category_chart.mainGroup
@@ -389,22 +403,22 @@ angular.module('compromisosSiteApp')
 
         nodes.enter()
             .append("g")
-            .attr("class", function(d) 
-              { 
-                var what =  d.children ? "node" : "leaf node"; 
+            .attr("class", function(d)
+              {
+                var what =  d.children ? "node" : "leaf node";
                 var who = d.slug ? d.slug  : d.name;
                 return what + " " + who;
             })
             .each(function(){
               d3.select(this).append("circle")
                 .filter(function(d) { return d.name !== "categories"; })
-                .style("fill", function(d) 
-                  { 
+                .style("fill", function(d)
+                  {
                     return SlugColorService.getColorBySlug(d.slug);
                   });
             });
-            
-        nodes.attr("transform", function(d) 
+
+        nodes.attr("transform", function(d)
               { return "translate(" + d.x + "," + d.y + ")"; });
 
         nodes.selectAll('circle')
@@ -417,11 +431,11 @@ angular.module('compromisosSiteApp')
         //     .attr("dy", ".3em")
         //     .style({
         //         "text-anchor": "middle",
-        //         "fill":"white", 
+        //         "fill":"white",
         //         "font-family":"Helvetica Neue, Helvetica, Arial, san-serif",
         //         "font-size": "12px"})
         //     .text(function(d) { return d.titulo.substring(0, d.r / 3); });
-     
+
 
       //d3.select(self.frameElement).style("height", diameter + "px");
 
@@ -479,7 +493,7 @@ angular.module('compromisosSiteApp')
           .attr("height", h);
 
         //send update to frame
-        
+
 
       }
 
@@ -621,7 +635,7 @@ angular.module('compromisosSiteApp')
 
               var shape = group.select('.label-group-shape');
               var data = {"text": d.title};
-        
+
               var pad = 10;
 
               var anchor = (smallDevice)?'middle':'start';
@@ -719,10 +733,10 @@ angular.module('compromisosSiteApp')
                 .attr("transform", function() {
                     var x = itemSize/2-25;
                     var y = itemSize/3-25;
-                    return "translate(" + x +"," + y + ")"; 
+                    return "translate(" + x +"," + y + ")";
                 })
                 .each(function(d){
-    
+
                   var iconG = this;
                   LoadSVGService.loadIcon(d.icono,function(iconLoaded){
                     $(iconLoaded)
@@ -736,7 +750,7 @@ angular.module('compromisosSiteApp')
 
             var shape = d3.select('rect#c'+d.numero+'-label-shape');
             var data = {"text": d.titulo};
-      
+
             d3plus.box()
               .select('g#c'+d.numero+'-text')
               .data([data])
@@ -784,7 +798,7 @@ angular.module('compromisosSiteApp')
           .attr("transform", function() {
               var x = w/2-itemSize/2;
               var y = h/2-itemSize/2;
-              return "translate(" + x +"," + y + ")"; 
+              return "translate(" + x +"," + y + ")";
           })
           /*.each("end", function(d){
             var t = d3.select('text#c'+d.numero+'-text');
@@ -819,7 +833,7 @@ angular.module('compromisosSiteApp')
           setTimeout(function(){
             $scope.charts.menu_chart.api.group($scope.selectedGroup);
           },1000);
-          
+
         }
 
         //render menu chart
@@ -831,14 +845,14 @@ angular.module('compromisosSiteApp')
     var id;
     $(window).resize(function() {
         clearTimeout(id);
-        id = setTimeout(function(){ 
+        id = setTimeout(function(){
           if($scope.charts.menu_chart){
             $scope.charts.menu_chart.api.group($scope.selectedGroup);
           }
           if($scope.charts.category_chart){
             renderCategoryChart();
           }
-          
+
         }, 500);
     });
 
