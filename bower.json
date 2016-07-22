@@ -9,7 +9,8 @@
     "BAstrap": "https://github.com/gcba/BAstrap.git#b97e3c7d2d56c12c53864240514f8e87099a7c42",
     "pym.js": "^0.4.5",
     "c3": "^0.4.11",
-    "lodash": "^4.13.1"
+    "lodash": "^4.13.1",
+    "angular-scroll": "~1.0.0"
   },
   "appPath": "app",
   "moduleName": "compromisosSiteApp",
