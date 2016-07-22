@@ -11,17 +11,18 @@ Dashboard de progreso de Compromisos de Gobierno.
 * Ir a Directorio /dist y ejecutar servidor
 `cd dist`
 `http-server ./`
-*Abrir navegador 
+* Abrir navegador 
 Dirección: `http://localhost:8080`
 
 ## Para desarrolladores
 * Archivo de configuración: En /app duplicar el archivo config.js.example con el nombre config.js.
-*Correr la aplicación desde /app -> Hacer los cambios en /app y con live reloading se actualizará en http://localhost:10000
+* Correr la aplicación desde /app -> Hacer los cambios en /app y con live reloading se actualizará en http://localhost:10000
 `grunt server`
-*Compilar
+* Compilar
 `grunt build`
 
-## Probar los compilados. Levanta la aplicación en http://localhost:10000 desde /dist
+## Probar los compilados. 
+* Levanta la aplicación en http://localhost:10000 desde /dist
 `grunt server:dist`
 
 ## Instalar en producción
