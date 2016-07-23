@@ -128,7 +128,7 @@ angular.module('compromisosSiteApp')
       var finalTop = eTop - $(window).scrollTop(); //position of the ele w.r.t window
       var mouseOffset = Math.floor((mouseEvent.clientY-eTop) / menu_chartRowSize) * menu_chartRowSize;
 
-      console.log(eTop, mouseEvent.clientY, mouseOffset);
+      //console.log(eTop, mouseEvent.clientY, mouseOffset);
       var pos = mouseOffset + eTop + 145;
       d3.select('#compromiso-detail')
         .style('top',pos+'px');
@@ -736,9 +736,8 @@ angular.module('compromisosSiteApp')
                     return "translate(" + x +"," + y + ")";
                 })
                 .each(function(d){
-
                   var iconG = this;
-                  LoadSVGService.loadIcon(d.icono,function(iconLoaded){
+                  LoadSVGService.loadIcon(d.numero,function(iconLoaded){
                     $(iconLoaded)
                         .attr('width', 50)
                         .attr('height', 50)
