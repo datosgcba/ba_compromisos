@@ -26,7 +26,7 @@ angular.module('compromisosSiteApp')
       $scope.currentCompromise.color = SlugColorService.getColorBySlug($scope.currentCompromise.slug);
 
       $scope.loading = false;
-      LoadSVGService.loadIcon($scope.currentCompromise.icono,function(iconLoaded){
+      LoadSVGService.loadIcon($scope.currentCompromise.numero,function(iconLoaded){
         $('.icon-svg-container').html(iconLoaded.cloneNode(true));
       });
       console.log($scope.currentCompromise);

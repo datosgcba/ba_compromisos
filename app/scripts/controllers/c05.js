@@ -25,7 +25,7 @@ angular.module('compromisosSiteApp')
       $scope.currentCompromise.color = SlugColorService.getColorBySlug($scope.currentCompromise.slug);
       $scope.currentCompromise.porcentaje_completado = parseInt($scope.currentCompromise.porcentaje_completado);
       $scope.loading = false;
-      LoadSVGService.loadIcon($scope.currentCompromise.icono,function(iconLoaded){
+      LoadSVGService.loadIcon($scope.currentCompromise.numero,function(iconLoaded){
         treeIcon = iconLoaded;
         $('.icon-svg-container').html(iconLoaded.cloneNode(true));
       });

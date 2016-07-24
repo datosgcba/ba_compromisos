@@ -74,7 +74,8 @@ angular
   })
   .service('LoadSVGService', function () {
     this.loadIcon = function(name,cb){
-      var icon = 'images/iconos/GCBA-compromisos-icons-'+name+'.svg';
+      name = (name.length==1)?'0'+name:name;
+      var icon = 'images/iconos_v2/GCBA-compromisos-icons-'+name+'.svg';
       d3.xml(icon, "image/svg+xml", function(error, xml) {
         cb(document.importNode(xml.documentElement, true));
       });
