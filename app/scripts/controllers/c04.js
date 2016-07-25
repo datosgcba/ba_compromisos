@@ -8,14 +8,14 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('Compromiso04Ctrl', function (UrlService, $scope, $http,SlugColorService,LoadSVGService) {
+  .controller('Compromiso04Ctrl', function ($sce,$templateRequest, $compile,   UrlService, $scope, $http,SlugColorService,LoadSVGService) {
 
   	var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({ polling: 1000 });
     pymChild.sendHeight();
     var _ = window._;
 
-    //para ir a otra url en el padre  
+    //para ir a otra url en el padre
     //pymChild.navigateParentTo('https://github.com/nprapps/pym.js');
 
     $scope.loading = true;
@@ -37,195 +37,39 @@ angular.module('compromisosSiteApp')
       console.log($scope.currentCompromise);
     });
 
-    $scope.youtubeLink = 'https://www.youtube.com/watch?v=AoZ98-TwqM4';
+     $scope.dataLoaded2 = function(id,data){
+      $scope.medicos = data;
+      $scope.mediConfig = [];
 
+      angular.forEach(data,function(d){
+        $scope.mediConfig.push({
+          icono:'hombre',
+          orientacion: 'rows',
+          items: 500,
+          base:{
+            titulo: '',
+            color: '#cccccc',
+            cantidad: parseInt(d.agentes)
+          },
+          opciones:[
+            {
+              titulo: '',
+              color: $scope.currentCompromise.color,
+              cantidad: parseInt(d.equipos)
+            }
+          ]
 
-    $scope.prepareData = function(data){
-      return data;
-    };
+        })
+      });
 
-    $scope.completeConfig = function(config){
-      return angular.merge(config,{
-        data:{
-          keys: {
-              value: ['muertes'],
-              x: 'anio'
-          },
-          names:{
-            'muertes': 'Medición'
-          },
-          colors: {'muertes': $scope.currentCompromise.color}
-        },
-        size: {
-            height: 300,
-        },
-        padding: {
-            top: 0,
-            right: 20,
-            bottom: 10,
-            left: 40,
-        },
-        axis: {
-          x: {
-   
-              show:true
-          },
-          y: {
-              show:true
-          }
-        },
-        legend: {
-            show: true
-        }
+      var templateUrl = $sce.getTrustedResourceUrl('views/includes/medicos.html');
+      $templateRequest(templateUrl).then(function(template) {
+          $compile($('#'+id).html(template).contents())($scope);
       });
     };
 
-    $scope.chartReady = function(chart){
-
-    };
-    $scope.prepareData2 = function(data){
-      return data;
-    };
-
-     $scope.completeConfig2 = function(config){
-      return angular.merge(config,{
-        data:{
-          keys: {
-              value: ['lesionados'],
-              x: 'anio'
-          },
-          names:{
-            'lesionados': 'Medición'
-          },
-          colors: {'lesionados': $scope.currentCompromise.color}
-        },
-        size: {
-            height: 300,
-        },
-        padding: {
-            top: 0,
-            right: 20,
-            bottom: 10,
-            left: 40,
-        },
-        axis: {
-          x: {
-             
-              show:true
-          },
-          y: {
-              show:true
-          }
-        },
-        legend: {
-            show: true
-        }
-      });
-    };
-
-    $scope.chartReady2 = function(chart){
-
-    };
-
-    //detalle 3
-
-    $scope.prepareData3 = function(data){
-      return data;
-    };
-
-    $scope.completeConfig3 = function(config){
-      return angular.merge(config,{
-        data:{
-          type: 'bar',
-          keys: {
-              value: ['poblacion_mayor_o_igual_65'],
-              x:'provincia'
-          },
-          names: {
-            poblacion_mayor_o_igual_65: 'Población Mayor o Igual 65',
-            provincia: 'Provincia'
-          },
-          colors: 
-          {'poblacion_mayor_o_igual_65':
-          $scope.currentCompromise.color}
-        },
-        size: {
-            height: 300,
-        },
-        padding: {
-            top: 0,
-            right: 20,
-            bottom: 10,
-            left: 100,
-        },
-        axis: {
-          rotated:true,
-          x: {
-              type: 'category',
-              show:true
-          },
-          y: {
-              show:false
-          }
-        },
-        legend: {
-            show: false
-        }
-      });
-    };
-
-    $scope.chartReady3 = function(chart){
-
-    };
 
 
-    $scope.prepareData4 = function(data){
-      return data;
-    };
-
-    $scope.completeConfig4 = function(config){
-      return angular.merge(config,{
-        data:{
-          type: 'bar',
-          keys: {
-              value: ['buenos_aires','seattle', 'nueva_york'],
-              x:'anio'
-          },
-          colors: 
-          {
-            'buenos_aires':$scope.currentCompromise.color,
-            'seattle':$scope.currentCompromise.color,
-            'nueva_york':$scope.currentCompromise.color}
-
-        },
-        size: {
-            height: 300,
-        },
-        padding: {
-            top: 0,
-            right: 20,
-            bottom: 10,
-            left: 40,
-        },
-        axis: {
-          rotated:true,
-          x: {
-              type: 'category',
-              show:true
-          },
-          y: {
-              show:false
-          }
-        },
-        legend: {
-            show: false
-        }
-      });
-    };
-
-    $scope.chartReady4 = function(chart){
-
-    };
 
     var id;
     $(window).resize(function() {
@@ -233,9 +77,9 @@ angular.module('compromisosSiteApp')
         id = setTimeout(function(){
           // if(chart1){
           //   createCustomChart1();
-          // }          
+          // }
         }, 500);
     });
 
-  	
+
   });
