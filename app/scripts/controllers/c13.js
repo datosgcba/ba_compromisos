@@ -34,11 +34,8 @@ angular.module('compromisosSiteApp')
             .get(0);*/
         $('.icon-svg-container').html(iconLoaded.cloneNode(true));
       });
-      console.log($scope.currentCompromise);
+      //console.log($scope.currentCompromise);;
     });
-
-    $scope.youtubeLink = 'https://www.youtube.com/watch?v=AoZ98-TwqM4';
-
 
     $scope.prepareData1 = function(data){
       console.log(data);

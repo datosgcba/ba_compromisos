@@ -28,6 +28,9 @@ angular.module('compromisosSiteApp')
         c.categoria = c.categoria.trim();
         return c;
       });
+      $scope.data = $scope.data.sort(function(a,b){
+        return (a.titulo > b.titulo);
+      });
       $scope.loading = false;
       $scope.groupData();
       $scope.renderCharts();

@@ -36,9 +36,6 @@ angular.module('compromisosSiteApp')
       });
     });
 
-    $scope.youtubeLink = 'https://www.youtube.com/watch?v=AoZ98-TwqM4';
-
-
     $scope.prepareData = function(data){
       _.each(data,function(d){
         d.mes_date = d.mes+'-01';

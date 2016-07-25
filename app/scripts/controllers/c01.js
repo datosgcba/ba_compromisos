@@ -29,7 +29,7 @@ angular.module('compromisosSiteApp')
       LoadSVGService.loadIcon($scope.currentCompromise.numero,function(iconLoaded){
         $('.icon-svg-container').html(iconLoaded.cloneNode(true));
       });
-      console.log($scope.currentCompromise);
+      //console.log($scope.currentCompromise);;
     });
 
     var colorMeta = '#bdbec2';

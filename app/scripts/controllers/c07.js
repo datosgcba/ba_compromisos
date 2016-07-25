@@ -29,7 +29,7 @@ angular.module('compromisosSiteApp')
       $scope.currentCompromise.porcentaje_completado_2 = parseInt($scope.currentCompromise.cumplimiento_2_porcentaje_completado);
       $scope.currentCompromise.color = SlugColorService.getColorBySlug($scope.currentCompromise.slug);
       $scope.loading = false;
-      console.log($scope.currentCompromise);
+      //console.log($scope.currentCompromise);;
       LoadSVGService.loadIcon($scope.currentCompromise.numero,function(iconLoaded){
         /*$(iconLoaded)
             .attr('width', 50)

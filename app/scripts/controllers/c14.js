@@ -34,7 +34,7 @@ angular.module('compromisosSiteApp')
             .get(0);*/
         $('.icon-svg-container').html(iconLoaded.cloneNode(true));
       });
-      console.log($scope.currentCompromise);
+      //console.log($scope.currentCompromise);;
     });
 
 
