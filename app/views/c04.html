@@ -17,12 +17,13 @@
         fuente="data.detalle_1_fuente"
         ></smart-content>
     </div>
-    <div ng-if="data.detalle_2" class="col-md-6 text-center">
-      <smart-content
+     <div ng-if="data.detalle_2" class="col-md-6 text-center darker-text">
+       <smart-content
         url="data.detalle_2"
         source="data.detalle_2"
-        prepare-callback="prepareData"
-        config-callback="completeConfig"
+        prepare-callback="prepareData2"
+        config-callback="completeConfig2"
+        ready-callback="chartReady2"
         titulo="data.detalle_2_nombre"
         nota="data.detalle_2_nota"
         fuente="data.detalle_2_fuente"
