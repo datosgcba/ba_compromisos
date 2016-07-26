@@ -158,7 +158,7 @@ html {
 
 .categoria-creatividad .compromiso-label text,
 .categoria-creatividad .fill-color,
-.categoria-creatividad .st0, 
+.categoria-creatividad .st0,
 .categoria-creatividad svg path ,
 .categoria-creatividad svg circle,
 .categoria-creatividad svg polygon,
@@ -656,3 +656,8 @@ p.sub{
 .escuela-detail span{
   color:#c0c2c1;
 }
+
+span.two-lines{
+  text-align: center;
+    padding: 0.7em;
+  }

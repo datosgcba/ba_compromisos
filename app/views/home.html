@@ -46,19 +46,19 @@
 <div class="row">
 	<div class="col-sm-3 hidden-device" ng-class="{'display':(selectedGroup=='home')}">
 		<a class="group-btn" ng-click="groupMenu('home')"></a>
-		<p class="btn-checkbox hidden-device" ng-class="{'selected':(selectedGroup=='home')}">Ordenar por nombre</p>
+		<p class="btn-checkbox hidden-device" ng-class="{'selected':(selectedGroup=='home')}"><span>Ordenar por nombre</span></p>
 		<div id="home_chart">
 			<h1 class="text-center specialHead" ng-cloak ng-hide="loading"> A &raquo; Z </h1>
-			
+
 			<p class="text-center" ng-cloak ng-hide="loading">{{data.length}} compromisos</p>
 			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
-			
+
 		</div>
 		<p class="sub text-center">Vista general de los compromisos</p>
   	</div>
 	<div class="col-sm-3 hidden-device" ng-class="{'display':(selectedGroup=='date')}">
 		<a class="group-btn" ng-click="groupMenu('date')"></a>
-  		<p class="btn-checkbox hidden-device" ng-class="{'selected':(selectedGroup=='date')}">Ordenar por fecha de cumplimiento</p>
+  		<p class="btn-checkbox hidden-device" ng-class="{'selected':(selectedGroup=='date')}"><span class="two-lines">Ordenar por fecha de cumplimiento</span></p>
 		<div id="date_chart">
 			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
 		</div>
@@ -66,7 +66,7 @@
   	</div>
 	<div class="col-sm-3 hidden-device" ng-class="{'display':(selectedGroup=='state')}">
 		<a class="group-btn" ng-click="groupMenu('state')"></a>
-  		<p class="btn-checkbox hidden-device" ng-class="{'selected':(selectedGroup=='state')}">Ordenar por estado</p>
+  		<p class="btn-checkbox hidden-device" ng-class="{'selected':(selectedGroup=='state')}"><span>Ordenar por estado</span></p>
 		<div id="state_chart" ng-click="groupMenu('state')">
 			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
 		</div>
@@ -74,7 +74,7 @@
   	</div>
 	<div class="col-sm-3 hidden-device" ng-class="{'display':(selectedGroup=='category')}">
 		<a class="group-btn" ng-click="groupMenu('category')"></a>
-  		<p class="btn-checkbox hidden-device" ng-class="{'selected':(selectedGroup=='category')}">Ordenar por categoría</p>
+  		<p class="btn-checkbox hidden-device" ng-class="{'selected':(selectedGroup=='category')}"><span>Ordenar por categoría</span></p>
 		<div id="category_chart" ng-click="groupMenu('category')">
 			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
 		</div>
@@ -89,19 +89,19 @@
 	<div class="row">
 	  	<div id="menu_chart"></div>
 	</div>
-	
+
 
 		<div id="compromiso-detail" class="row well" ng-cloak ng-show="currentCompromise">
-			
-			<div class="col-sm-3 hidden-device"> 
+
+			<div class="col-sm-3 hidden-device">
 				<img ng-src="{{currentCompromise.imagen}}">
 			</div>
-			
-			<div class="col-sm-6"> 
+
+			<div class="col-sm-6">
 				<div class="row">
 					<div class="col-xs-10 col-sm-12"><h2><small>{{currentCompromise.categoria}}</small></h2></div>
 					<div class="col-xs-2 hidden-desktop"><a class="" href="javascript:;" ng-click="closeDetail()">Cerrar</a></div>
-				</div>			
+				</div>
 				<h2>{{currentCompromise.titulo}}</h2>
 				<h5>{{currentCompromise.cumplimiento}}</h5>
 				<p> {{currentCompromise.desc}}</p>
@@ -112,7 +112,7 @@
 				<p class="upper"><strong>Estado del Compromiso</strong></p>
 				<div class="progress">
 					 <div class="progress-bar bg-color-{{currentCompromise.slug}}"
-				  	role="progressbar" 
+				  	role="progressbar"
 				  		ng-style="{ 'width': currentCompromise.porcentaje_completado + '%' }">
 				    <span class="progressbar-w" ng-hide="currentCompromise.porcentaje_completado<50">{{currentCompromise.porcentaje_completado}}% </span>
 				  </div>
@@ -125,7 +125,7 @@
 				</div>
 			</div>
 		</div>
-	
+
 
 		<div id="filler"></div>
 
