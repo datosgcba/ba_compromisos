@@ -177,12 +177,12 @@ angular.module('compromisosSiteApp')
           },
           type: 'spline',
           colors: {
-            'linea_a_sec': "rgb(0, 174, 219)",
-            'linea_b_sec': "rgb(238, 27, 46)",
-            'linea_c_sec': "rgb(1, 103, 178)",
-            'linea_d_sec': "rgb(0, 128, 103)",
-            'linea_e_sec': "rgb(108, 33, 128)",
-            'linea_h_sec': "rgb(255, 210, 3)"
+            'linea_a': "rgb(0, 174, 219)",
+            'linea_b': "rgb(238, 27, 46)",
+            'linea_c': "rgb(1, 103, 178)",
+            'linea_d': "rgb(0, 128, 103)",
+            'linea_e': "rgb(108, 33, 128)",
+            'linea_h': "rgb(255, 210, 3)"
           }
 
         };
