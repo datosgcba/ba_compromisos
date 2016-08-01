@@ -136,6 +136,7 @@ angular.module('compromisosSiteApp')
       d3.select('#compromiso-detail')
         .style('top',pos+'px');
 
+
       $scope.$apply(function(){
         var someElement = angular.element(document.getElementById('compromiso-detail'));
         if(filler>0){
@@ -156,10 +157,15 @@ angular.module('compromisosSiteApp')
     };
 
     $scope.closeDetail = function(){
+       //Agregamos opacity animation
+      d3.selectAll('.menu_chart rect').transition().style('fill','rgba(255, 255, 255, 0)');
+
+
       deselectTitle();
       defaultChartColors();
       $scope.currentCompromise = null;
       d3.select('#filler').style('height','0px');
+
       $scope.selectedCategory = '';
     };
 
@@ -786,12 +792,21 @@ angular.module('compromisosSiteApp')
                   }
                 })
                 .on("click", function(){
-                  showDetail(d,d3.mouse(this),d3.event);
+                  d3.selectAll('.menu_chart rect').transition().style('fill','rgba(255, 255, 255, 0)');
+                  //Agregamos opacity animation
+                  d3.selectAll('.menu_chart g.categoria-unselected rect').transition().style('fill','rgba(255, 255, 255, 0.83)');
+
+
                   selectTitle(d.slug);
                   selectCategoryChart(d.slug);
+                  hoverCompromisoItem(d.numero);
+
                   $scope.$apply(function(){
                     $scope.selectedCategory = d.slug;
                   });
+
+                  showDetail(d,d3.mouse(this),d3.event);
+
                 });
 
           })
@@ -862,6 +877,7 @@ angular.module('compromisosSiteApp')
     function hoverCompromisoItem(id){
       $('.compromiso-item').addClass('categoria-unselected');
       $('.compromiso-item#c'+id).removeClass('categoria-unselected');
+
     }
 
     function unhoverCompromisoItem(){
@@ -869,6 +885,10 @@ angular.module('compromisosSiteApp')
     }
 
     function selectCompromisoItem(slug){
+      $('.compromiso-item').addClass('categoria-unselected');
+      $('.compromiso-item.categoria-'+slug).removeClass('categoria-unselected');
+    }
+    function highlightCompromisoItem(slug){
       $('.compromiso-item').addClass('categoria-unselected');
       $('.compromiso-item.categoria-'+slug).removeClass('categoria-unselected');
     }
@@ -886,6 +906,7 @@ angular.module('compromisosSiteApp')
       $('.c-option').removeClass('c-option-selected');
       $('.c-option[data-slug="'+slug+'"]').addClass('c-option-selected');
     }
+
 
     function deselectTitle(){
       $('.c-option').removeClass('c-option-selected');

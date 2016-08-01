@@ -15,7 +15,7 @@ angular.module('compromisosSiteApp')
     pymChild.sendHeight();
     var _ = window._;
 
-    //para ir a otra url en el padre  
+    //para ir a otra url en el padre
     //pymChild.navigateParentTo('https://github.com/nprapps/pym.js');
 
     $scope.loading = true;
@@ -46,7 +46,7 @@ angular.module('compromisosSiteApp')
             kilometros_construidos_totales : 'line'
           },
           regions: {
-            'kilometros_construidos_proyectados': [{'style':'dashed'}], 
+            'kilometros_construidos_proyectados': [{'style':'dashed'}],
           },
           names: {
             kilometros_construidos_proyectados: 'Km Proyectados',
@@ -87,7 +87,7 @@ angular.module('compromisosSiteApp')
     $scope.chartReady = function(chart){
 
     };
-    
+
     //detalle 2
     var data2 = {};
     $scope.prepareData2 = function(data){
@@ -150,9 +150,9 @@ angular.module('compromisosSiteApp')
         }
       });
     };
- 
+
     $scope.chartReady2 = function(chart,id){
-      
+
       var container = d3.select('#'+id+' .c3-texts');
       d3.selectAll('#'+id+' .c3-event-rect').each(function(d){
         var dato = data2[d.index];
@@ -197,7 +197,7 @@ angular.module('compromisosSiteApp')
             porcentaje_avance: 'Porcentaje Avance',
             restante: 'Restante'
           },
-          colors: 
+          colors:
           {'porcentaje_avance': $scope.currentCompromise.color,
           'restante': $scope.currentCompromise.grayColor}
         },
@@ -232,7 +232,7 @@ angular.module('compromisosSiteApp')
         }
       });
     };
- 
+
     $scope.chartReady3 = function(chart,id){
       var container = d3.select('#'+id+' .c3-texts');
       d3.selectAll('#'+id+' .c3-event-rect').each(function(d){
@@ -268,13 +268,13 @@ angular.module('compromisosSiteApp')
           names: {
             kilometros: 'Existente',
             proyectados: 'Proyectado',
-           
+
           },
           groups: [
              ['kilometros', 'proyectados']
           ],
           order: 'asc',
-          colors: 
+          colors:
           {
             'kilometros': $scope.currentCompromise.color,
             'proyectados' : $scope.currentCompromise.secondColor,
@@ -304,7 +304,7 @@ angular.module('compromisosSiteApp')
         }
       });
     };
- 
+
     $scope.chartReady4 = function(chart,id){
      var container = d3.select('#'+id+' .c3-texts');
       d3.selectAll('#'+id+' .c3-event-rect').each(function(d){
@@ -330,5 +330,5 @@ angular.module('compromisosSiteApp')
         }, 500);
     });
 
-  	
+
   });
