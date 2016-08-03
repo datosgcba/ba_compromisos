@@ -45,24 +45,24 @@ angular.module('compromisosSiteApp')
         $scope.mediConfig.push({
           icono:'hombre',
           orientacion: 'rows',
-          items: 500,
+          items: 10,
           base:{
             titulo: '',
-            color: '#cccccc',
-            cantidad: parseInt(d.agentes)
+            color: $scope.currentCompromise.color,
+            cantidad: parseInt(d.agentes)/200
           },
           opciones:[
             {
               titulo: '',
               color: $scope.currentCompromise.color,
-              cantidad: parseInt(d.equipos)
+              cantidad: parseInt(d.periodos)
             }
           ]
 
         })
       });
 
-      var templateUrl = $sce.getTrustedResourceUrl('views/includes/medicos.html');
+      var templateUrl = $sce.getTrustedResourceUrl('views/includes/agentes.html');
       $templateRequest(templateUrl).then(function(template) {
           $compile($('#'+id).html(template).contents())($scope);
       });

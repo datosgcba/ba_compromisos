@@ -40,7 +40,7 @@ angular.module('compromisosSiteApp')
             });
 
             function addOpciones(){
-              
+
               $('.icons-chart-base')
                 .css('color',$scope.base.color)
                 .css('border-color',$scope.base.color);
@@ -62,7 +62,7 @@ angular.module('compromisosSiteApp')
             }
 
 
-        }, 
+        },
         templateUrl: 'views/directives/iconChart.html'
     };
 
