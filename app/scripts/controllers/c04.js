@@ -70,7 +70,7 @@ angular.module('compromisosSiteApp')
             top: 0,
             right: 20,
             bottom: 10,
-            left: 30,
+            left: 40,
         },
         axis: {
           rotated:false,
