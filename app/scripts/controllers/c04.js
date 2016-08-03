@@ -37,35 +37,60 @@ angular.module('compromisosSiteApp')
       //console.log($scope.currentCompromise);;
     });
 
-     $scope.dataLoaded2 = function(id,data){
-      $scope.medicos = data;
-      $scope.mediConfig = [];
 
-      angular.forEach(data,function(d){
-        $scope.mediConfig.push({
-          icono:'hombre',
-          orientacion: 'rows',
-          items: 10,
-          base:{
-            titulo: '',
-            color: $scope.currentCompromise.color,
-            cantidad: parseInt(d.agentes)/200
+    //Detalle 2
+
+    $scope.prepareData2 = function(data){
+      return data;
+    };
+
+    $scope.completeConfig2 = function(config){
+      return angular.merge(config,{
+        data:{
+          type: 'bar',
+          keys: {
+              value: ['agentes'],
+              x:'periodos'
           },
-          opciones:[
-            {
-              titulo: '',
-              color: $scope.currentCompromise.color,
-              cantidad: parseInt(d.periodos)
-            }
-          ]
+          names: {
+            periodos: 'Períodos',
+            agentes: 'Agentes',
+          },
+          colors: {
+            'agentes':$scope.currentCompromise.color
+          }
+        },
+        point: {
+            show: false
+        },
+        size: {
+            height: 300,
+        },
+        padding: {
+            top: 0,
+            right: 20,
+            bottom: 10,
+            left: 30,
+        },
+        axis: {
+          rotated:false,
+          x: {
+              type: 'category',
+              show:true
+          },
+          y: {
+              show:true
+          }
+        },
+        legend: {
+            show: true
+        }
 
-        })
       });
+    };
 
-      var templateUrl = $sce.getTrustedResourceUrl('views/includes/agentes.html');
-      $templateRequest(templateUrl).then(function(template) {
-          $compile($('#'+id).html(template).contents())($scope);
-      });
+    $scope.chartReady2 = function(chart,id){
+      //do nothing
     };
 
 
