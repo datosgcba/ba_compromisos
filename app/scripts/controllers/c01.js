@@ -14,7 +14,7 @@ angular.module('compromisosSiteApp')
     var pymChild = new pym.Child({ polling: 1000 });
     pymChild.sendHeight();
     var _ = window._;
-    //para ir a otra url en el padre  
+    //para ir a otra url en el padre
     //pymChild.navigateParentTo('https://github.com/nprapps/pym.js');
 
     $scope.loading = true;
@@ -43,7 +43,7 @@ angular.module('compromisosSiteApp')
       return angular.merge(config,{
         data:{
           xFormat: '%m-%Y',
-          
+
           types: {
             meta: 'area',
             baches_resueltos: 'line',
@@ -53,7 +53,8 @@ angular.module('compromisosSiteApp')
               x:'mes'
           },
           names: {
-            baches_resueltos: 'Baches Resueltos',
+            baches_resueltos: 'Baches resueltos',
+            meta: 'Meta',
           },
           colors: {'meta':colorMeta,
                     'baches_resueltos': $scope.currentCompromise.color}
@@ -65,7 +66,7 @@ angular.module('compromisosSiteApp')
             top: 0,
             right: 20,
             bottom: 10,
-            left: 30,
+            left: 40,
         },
         axis: {
           x: {
@@ -78,7 +79,15 @@ angular.module('compromisosSiteApp')
               }
           },
           y: {
-              show:true
+              show:true,
+              min: 0,
+              max:100,
+              padding: 5,
+              tick:{
+                format:function(y){
+                  return y+'%';
+                }
+              }
           }
         },
         legend: {
@@ -149,7 +158,7 @@ angular.module('compromisosSiteApp')
           color: '#cccccc',
           cantidad: 100
         },
-        opciones:[ 
+        opciones:[
           {
             titulo: data[1].detalle,
             color: $scope.currentCompromise.color,
@@ -164,5 +173,5 @@ angular.module('compromisosSiteApp')
       console.log(3,id,data);
       return data;
     };
-  	
+
   });

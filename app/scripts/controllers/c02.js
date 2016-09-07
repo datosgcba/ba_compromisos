@@ -36,14 +36,17 @@ angular.module('compromisosSiteApp')
     $scope.completeConfig1 = function(config){
       return angular.merge(config,{
         data:{
-          type: 'spline',
+          types: {
+            meta_modelada: 'area',
+            reciclado_real: 'spline'
+          },
           keys: {
               value: ['meta_modelada','reciclado_real'],
               x:'trimestre'
           },
           names: {
-            reciclado_real: 'Reciclado Real',
-            meta_modelada: 'Meta Modelada'
+            reciclado_real: 'Toneladas',
+            meta_modelada: 'Meta'
           },
           colors: {
             'reciclado_real':$scope.currentCompromise.color,
@@ -79,7 +82,7 @@ angular.module('compromisosSiteApp')
         legend: {
             show: true
         }
-        
+
       });
     };
 
@@ -156,7 +159,7 @@ angular.module('compromisosSiteApp')
                 },
                 value: function (value) {
                     if(value!==0){
-                      return value;                  
+                      return value;
                     }
                     return '';
                 }
@@ -215,7 +218,7 @@ angular.module('compromisosSiteApp')
         legend: {
             show: false
         }
-        
+
       });
     };
 
@@ -238,5 +241,5 @@ angular.module('compromisosSiteApp')
       );
     };
 
-    
+
   });

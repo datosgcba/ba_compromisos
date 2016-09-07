@@ -15,7 +15,7 @@ angular.module('compromisosSiteApp')
     pymChild.sendHeight();
     var _ = window._;
 
-    //para ir a otra url en el padre  
+    //para ir a otra url en el padre
     //pymChild.navigateParentTo('https://github.com/nprapps/pym.js');
 
     $scope.loading = true;
@@ -55,8 +55,8 @@ angular.module('compromisosSiteApp')
               x: 'mes'
           },
           names: {
-            meta_acumulado: 'Meta Acumulada',
-            adultos_incluidos_acumulado: 'Adultos Incluidos Acumulado'
+            meta_acumulado: 'Meta acumulada',
+            adultos_incluidos_acumulado: 'Adultos incluidos acumulado'
           },
           colors: {'meta_acumulado':$scope.currentCompromise.secondColor,
                     'adultos_incluidos_acumulado': $scope.currentCompromise.color}
@@ -81,7 +81,8 @@ angular.module('compromisosSiteApp')
               }
           },
           y: {
-              show:true
+              show:true,
+              max:94000
           }
         },
         legend: {
@@ -161,10 +162,10 @@ angular.module('compromisosSiteApp')
               x:'provincia'
           },
           names: {
-            poblacion_mayor_o_igual_65: 'Población Mayor o Igual 65',
+            poblacion_mayor_o_igual_65: 'Población mayor o igual a 65 años"',
             provincia: 'Provincia'
           },
-          colors: 
+          colors:
           {'poblacion_mayor_o_igual_65':
           $scope.currentCompromise.color}
         },
@@ -185,8 +186,10 @@ angular.module('compromisosSiteApp')
           },
           y: {
               show:true,
+              min: 0,
+              max:100,
+              padding: 5,
               tick:{
-                
                 format:function(y){
                   return y+'%';
                 }
@@ -209,9 +212,9 @@ angular.module('compromisosSiteApp')
         id = setTimeout(function(){
           // if(chart1){
           //   createCustomChart1();
-          // }          
+          // }
         }, 500);
     });
 
-  	
+
   });

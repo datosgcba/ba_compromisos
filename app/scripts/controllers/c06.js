@@ -45,9 +45,7 @@ angular.module('compromisosSiteApp')
             kilometros_construidos_proyectados: 'line',
             kilometros_construidos_totales : 'line'
           },
-          regions: {
-            'kilometros_construidos_proyectados': [{'style':'dashed'}],
-          },
+
           names: {
             kilometros_construidos_proyectados: 'Km Proyectados',
             kilometros_construidos_totales : 'Km Construidos'
@@ -57,7 +55,7 @@ angular.module('compromisosSiteApp')
               x: 'anio'
           },
           colors: {
-                'kilometros_construidos_proyectados':$scope.currentCompromise.color,
+                'kilometros_construidos_proyectados':$scope.currentCompromise.grayColor,
                 'kilometros_construidos_totales': $scope.currentCompromise.color}
         },
         size: {
@@ -107,8 +105,8 @@ angular.module('compromisosSiteApp')
             ['Existentes', 'Proyectados']
           ],
           names: {
-            Existentes: 'Metrobús Existente',
-            Proyectados : 'Metrobús Proyectado'
+            Existentes: 'Metrobus Existente',
+            Proyectados : 'Metrobus Proyectado'
           },
           colors: {'Existentes': $scope.currentCompromise.color,
           'Proyectados': $scope.currentCompromise.secondColor}

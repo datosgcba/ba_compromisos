@@ -55,7 +55,7 @@ angular.module('compromisosSiteApp')
               x: 'mes_date'
           },
           names: {
-            medicion_real: 'Nuevos puntos digitales',
+            medicion_real: 'NUEVOS PUNTOS WIFI',
             meta_mensual: 'Meta'
           },
           colors: {

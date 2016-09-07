@@ -8,7 +8,7 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('Compromiso08Ctrl', function (UrlService, $scope, $http,SlugColorService,LoadSVGService) {
+  .controller('Compromiso08Ctrl', function ($rootScope,UrlService, $scope, $http,SlugColorService,LoadSVGService) {
 
   	var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({ polling: 1000 });
@@ -42,7 +42,7 @@ angular.module('compromisosSiteApp')
               x: 'obra'
           },
           names:{
-            'avance': 'Avance'
+            'avance': 'Avance De Obra'
           },
           colors: {
               'avance': $scope.currentCompromise.color,
@@ -63,10 +63,11 @@ angular.module('compromisosSiteApp')
               show:true,
               tick: {
                   fit: true,
-                  format: "%Y",
+                  format: $rootScope.d3Locale_ES.timeFormat("%b-%Y"),
                   count:4
               }
           },
+
           y: {
               show:true,
               min: 0,
@@ -96,9 +97,9 @@ angular.module('compromisosSiteApp')
         id = setTimeout(function(){
           // if(chart1){
           //   createCustomChart1();
-          // }          
+          // }
         }, 500);
     });
 
-  	
+
   });

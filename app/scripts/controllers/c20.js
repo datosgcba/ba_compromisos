@@ -15,7 +15,7 @@ angular.module('compromisosSiteApp')
     pymChild.sendHeight();
     var _ = window._;
 
-    //para ir a otra url en el padre  
+    //para ir a otra url en el padre
     //pymChild.navigateParentTo('https://github.com/nprapps/pym.js');
 
     $scope.loading = true;
@@ -49,7 +49,10 @@ angular.module('compromisosSiteApp')
     $scope.completeConfig1 = function(config){
       return angular.merge(config,{
         data:{
-          type: 'line',
+          types: {
+            meta_acumulado: 'area',
+            cantidad_iniciativas: 'spline'
+          },
           keys: {
               value: ['cantidad_iniciativas','meta_acumulado'],
               x:'mes'
@@ -97,7 +100,7 @@ angular.module('compromisosSiteApp')
 
             show: true
         }
-        
+
       });
     };
 
@@ -157,7 +160,7 @@ angular.module('compromisosSiteApp')
         legend: {
             show: true
         }
-        
+
       });
     };
 
@@ -166,7 +169,7 @@ angular.module('compromisosSiteApp')
     };
 
     //Detalle 4
-    
+
     $scope.dataLoaded4 = function(id,data){
       $scope.bubbleId = id;
       $scope.bubbleConfig = {
@@ -175,7 +178,7 @@ angular.module('compromisosSiteApp')
 
       var total = d3.sum(data,function(d){return parseInt(d.cantidad_proyectos)});
 
-      $scope.bubbleData = { 
+      $scope.bubbleData = {
                     name:"total",
                     children:[]
                   };
@@ -196,5 +199,5 @@ angular.module('compromisosSiteApp')
       });
 
     };
-  	
+
   });
