@@ -15,7 +15,7 @@ angular.module('compromisosSiteApp')
     pymChild.sendHeight();
     var _ = window._;
 
-    //para ir a otra url en el padre  
+    //para ir a otra url en el padre
     //pymChild.navigateParentTo('https://github.com/nprapps/pym.js');
 
     $scope.loading = true;
@@ -46,9 +46,9 @@ angular.module('compromisosSiteApp')
       return angular.merge(config,{
         data:{
           types: {
-            'Meta G2': 'area', 
-            'Desempeno G2'  : 'line', 
-            'Meta G3' : 'area', 
+            'Meta G2': 'area',
+            'Desempeno G2'  : 'line',
+            'Meta G3' : 'area',
             'Desempeno G3': 'line'
           },
           keys: {
@@ -64,7 +64,7 @@ angular.module('compromisosSiteApp')
                 'Meta G2': $scope.currentCompromise.secondColor,
                 'Desempeno G2'  : '#3cb8b0',
                 'Meta G3' : $scope.currentCompromise.secondColor,
-                'Desempeno G3': '#f98f41', 
+                'Desempeno G3': '#f98f41',
               }
         },
         size: {
@@ -74,7 +74,7 @@ angular.module('compromisosSiteApp')
             top: 0,
             right: 20,
             bottom: 20,
-            left: 40,
+            left: 0,
         },
         axis: {
           x: {
@@ -89,7 +89,7 @@ angular.module('compromisosSiteApp')
                   return y+'%';
                 }
             }
-              
+
           }
         },
         legend: {
@@ -107,16 +107,16 @@ angular.module('compromisosSiteApp')
     $scope.chartReady1 = function(chart){
 
     };
-    
+
     var id;
     $(window).resize(function() {
         clearTimeout(id);
         id = setTimeout(function(){
           // if(chart1){
           //   createCustomChart1();
-          // }          
+          // }
         }, 500);
     });
 
-  	
+
   });

@@ -84,17 +84,18 @@ angular.module('compromisosSiteApp')
     };
 
     var groups=[];
-    groups.push({from:0,to:25});
-    groups.push({from:25,to:50});
-    groups.push({from:50,to:75});
-    groups.push({from:75,to:100});
+
+    groups.push({from:100,to:75});
+    groups.push({from:75,to:50});
+    groups.push({from:50,to:25});
+    groups.push({from:25,to:0});
 
     function getPercentageGroup(d){
-      var group = 0;
+      var group = 3;
       for (var i = 0; i < groups.length; i++) {
         var g = groups[i];
         var p = parseInt(d.porcentaje_completado);
-        if (p >= g.from &&  p < g.to){
+        if (p <= g.from &&  p > g.to){
           group= i;
           break;
         }
@@ -248,7 +249,7 @@ angular.module('compromisosSiteApp')
 
     function renderStateChart(){
           //Get Years
-          var mainColumns= ['x', '0-25%','25-50%','50-75%','75-100%'];
+          var mainColumns= ['x', '75-100%','50-75%','25-50%','0-25%'];
           //Group by years by category count,
           angular.forEach($scope.categoriesGroup,function(c){
             c.percentages = d3.nest()

@@ -661,3 +661,7 @@ span.two-lines{
   text-align: center;
     padding: 0.7em;
   }
+
+g.c3-chart-lines .c3-line {
+  stroke-width: 2.5px;
+}
