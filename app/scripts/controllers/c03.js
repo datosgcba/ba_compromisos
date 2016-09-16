@@ -51,7 +51,7 @@ angular.module('compromisosSiteApp')
             adultos_incluidos_acumulado: 'line'
           },
           keys: {
-              value: ['adultos_incluidos_acumulado','meta_acumulado'],
+              value: ['meta_acumulado','adultos_incluidos_acumulado'],
               x: 'mes'
           },
           names: {
