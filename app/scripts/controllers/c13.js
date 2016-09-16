@@ -28,13 +28,8 @@ angular.module('compromisosSiteApp')
       $scope.currentCompromise.secondColor = '#bdbec2';
       $scope.loading = false;
       LoadSVGService.loadIcon($scope.currentCompromise.numero,function(iconLoaded){
-        /*$(iconLoaded)
-            .attr('width', 50)
-            .attr('height', 50)
-            .get(0);*/
-        $('.icon-svg-container').html(iconLoaded.cloneNode(true));
+         $('.icon-svg-container').html(iconLoaded.cloneNode(true));
       });
-      //console.log($scope.currentCompromise);;
     });
 
     $scope.prepareData1 = function(data){
@@ -74,12 +69,16 @@ angular.module('compromisosSiteApp')
             top: 0,
             right: 20,
             bottom: 20,
-            left: 0,
+            left: 40,
         },
         axis: {
           x: {
               type: 'category',
-              show:true
+              show:true,
+              tick: {
+                  fit: true,
+                  count:4
+              }
           },
           y: {
             show:true,
