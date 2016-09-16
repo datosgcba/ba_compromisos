@@ -14,6 +14,8 @@ angular.module('compromisosSiteApp')
         },
         controller: function($scope, $http, LoadSVGService) {
 
+            $scope.tagID = 'icons-container-'+Date.now();
+
             $scope.items = ($scope.items)?parseInt($scope.items):10;
 
             $scope.qty = d3.range(0,parseInt($scope.base.cantidad));
@@ -35,27 +37,27 @@ angular.module('compromisosSiteApp')
             });
 
             LoadSVGService.loadIcon($scope.icono,function(iconLoaded){
-              $('.icon-chart-svg-container-icon').html(iconLoaded.cloneNode(true));
+              $('#'+$scope.tagID+' .icon-chart-svg-container-icon').html(iconLoaded.cloneNode(true));
               addOpciones();
             });
 
             function addOpciones(){
 
-              $('.icons-chart-base')
+              $('#'+$scope.tagID+' .icons-chart-base')
                 .css('color',$scope.base.color)
                 .css('border-color',$scope.base.color);
 
-              $('.icons-chart-option').each(function(e){
+              $('#'+$scope.tagID+' .icons-chart-option').each(function(e){
                 var color = $(this).data('color');
                 $(this).css('color',color);
                 //$(this).find('.icon-chart-svg-container-icon .st0').css('fill',color);
               });
 
-              $('.icon-chart-svg-container-icon .st0').css('fill',$scope.base.color);
+              $('#'+$scope.tagID+' .icon-chart-svg-container-icon .st0').css('fill',$scope.base.color);
               var pointer=0;
               angular.forEach($scope.opciones,function(e){
                 angular.forEach(d3.range(pointer,pointer+e.cantidad),function(){
-                  $('#icon-chart-svg-'+pointer+' .st0').css('fill',e.color);
+                  $('#'+$scope.tagID+' #icon-chart-svg-'+pointer+' .st0').css('fill',e.color);
                   pointer++;
                 });
               });

@@ -38,20 +38,25 @@ angular.module('compromisosSiteApp')
       $scope.medicos = data;
       $scope.mediConfig = [];
 
-      angular.forEach(data,function(d){
+      console.log(data);
+
+      angular.forEach(data,function(d,ix){
+
+        var color = (ix==0)?$scope.currentCompromise.color:'#cccccc';
+        
         $scope.mediConfig.push({
           icono:'hombre',
           orientacion: 'rows',
-          items: 20,
+          items: parseInt(d.equipos),
           base:{
             titulo: '',
-            color: '#cccccc',
+            color: color,
             cantidad: parseInt(d.equipos)
           },
           opciones:[ 
             {
               titulo: '',
-              color: $scope.currentCompromise.color,
+              color: color,
               cantidad: parseInt(d.equipos)
             }
           ]
