@@ -78,8 +78,12 @@ angular.module('compromisosSiteApp')
         },
         axis: {
           x: {
-              type: 'category',
-              show:true
+              type: 'indexed',
+              show:true,
+              padding: {
+                left: 0.1,
+                right: 0.1,
+              }
           },
           y: {
             show:true,
