@@ -172,10 +172,10 @@ angular.module('compromisosSiteApp')
       data3 = data;
 
       for (var i = 0; i < data3.length; i++) {
-        var p = parseFloat(data3[i].porcentaje_avance);
-        data3[i].restante = 100 - p;
+        data3[i].porcentaje_avance = (data3[i].porcentaje_avance)?parseInt(data3[i].porcentaje_avance):0;
+        data3[i].restante = parseInt(100 - data3[i].porcentaje_avance);
       };
-      return data;
+      return data3;
     };
 
     $scope.completeConfig3 = function(config){
@@ -184,20 +184,22 @@ angular.module('compromisosSiteApp')
           type: 'bar',
           xFormat: '%Y-%m',
           keys: {
-              value: ['porcentaje_avance', 'restante'],
+              value: ['porcentaje_avance','restante'],
               x:'corredor'
           },
-          order: 'asc',
           groups: [
-            ['porcentaje_avance','restante']
+            ['restante','porcentaje_avance']
           ],
           names: {
             porcentaje_avance: 'Porcentaje Avance',
             restante: 'Restante'
           },
+          order: null,
           colors:
-          {'porcentaje_avance': $scope.currentCompromise.color,
-          'restante': $scope.currentCompromise.grayColor}
+            {
+              'porcentaje_avance': $scope.currentCompromise.color,
+              'restante': $scope.currentCompromise.grayColor
+            }
         },
         size: {
             height: 350,

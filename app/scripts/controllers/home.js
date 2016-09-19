@@ -29,7 +29,9 @@ angular.module('compromisosSiteApp')
         return c;
       });
       $scope.data = $scope.data.sort(function(a,b){
-        return (a.titulo > b.titulo);
+        var upA = a.titulo.toUpperCase();
+        var upB = b.titulo.toUpperCase();
+        return (upA < upB) ? -1 : (upA > upB) ? 1 : 0;
       });
       $scope.loading = false;
       $scope.groupData();
@@ -467,6 +469,9 @@ angular.module('compromisosSiteApp')
       $scope.groupMenu($scope.selectedGroup);
     };
     $scope.groupMenu = function(type){
+      if($scope.currentCompromise){
+        $scope.closeDetail();
+      }
       $scope.selectedGroup = type;
       $scope.charts.menu_chart.api.group($scope.selectedGroup);
     };
@@ -641,7 +646,14 @@ angular.module('compromisosSiteApp')
                 .append('g')
                 .attr('id','c'+i+'-label-group-text',true)
                 .classed('label-group-text',true)
-                .classed('wrap',true);
+                .classed('wrap',true)
+                .on("click", function(){
+                  if($scope.currentCompromise){
+                    $scope.$apply(function(){
+                      $scope.closeDetail();
+                    });
+                  }
+                });
 
               var shape = group.select('.label-group-shape');
               var data = {"text": d.title};
@@ -806,7 +818,13 @@ angular.module('compromisosSiteApp')
                     $scope.selectedCategory = d.slug;
                   });
 
-                  showDetail(d,d3.mouse(this),d3.event);
+                  if($scope.currentCompromise && ($scope.currentCompromise.numero == d.numero) ){
+                    $scope.$apply(function(){
+                      $scope.closeDetail();
+                    });
+                  } else {
+                    showDetail(d,d3.mouse(this),d3.event);
+                  }
 
                 });
 
@@ -952,6 +970,11 @@ angular.module('compromisosSiteApp')
               $scope.selectedCategory = slug;
             });
           }
+        }
+        if($scope.currentCompromise){
+          $scope.$apply(function(){
+            $scope.closeDetail();
+          });
         }
       });
     }

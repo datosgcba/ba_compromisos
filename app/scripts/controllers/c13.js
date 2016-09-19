@@ -33,7 +33,7 @@ angular.module('compromisosSiteApp')
     });
 
     $scope.prepareData1 = function(data){
-      console.log(data);
+      //console.log(data);
       return data;
     };
 
@@ -73,11 +73,19 @@ angular.module('compromisosSiteApp')
         },
         axis: {
           x: {
+<<<<<<< HEAD
               type: 'category',
               show:true,
               tick: {
                   fit: true,
                   count:4
+=======
+              type: 'indexed',
+              show:true,
+              padding: {
+                left: 0.1,
+                right: 0.1,
+>>>>>>> 2d2f873e825147449d591d8d6726e46c22427736
               }
           },
           y: {
