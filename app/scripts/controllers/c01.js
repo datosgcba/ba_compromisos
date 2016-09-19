@@ -73,9 +73,8 @@ angular.module('compromisosSiteApp')
               type: 'timeseries',
               show:true,
               tick: {
-                  fit: true,
-                  format: $rootScope.d3Locale_ES.timeFormat("%b"),
-                  count:6
+
+                  format: $rootScope.d3Locale_ES.timeFormat("%b")
               }
           },
           y: {
@@ -131,9 +130,7 @@ angular.module('compromisosSiteApp')
               type: 'timeseries',
               show:true,
               tick: {
-                  fit: true,
-                  format: $rootScope.d3Locale_ES.timeFormat("%b"),
-                  count:6
+                  format: $rootScope.d3Locale_ES.timeFormat("%b")
               }
           },
           y: {
