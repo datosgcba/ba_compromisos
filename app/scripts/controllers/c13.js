@@ -15,7 +15,7 @@ angular.module('compromisosSiteApp')
     pymChild.sendHeight();
     var _ = window._;
 
-    //para ir a otra url en el padre  
+    //para ir a otra url en el padre
     //pymChild.navigateParentTo('https://github.com/nprapps/pym.js');
 
     $scope.loading = true;
@@ -28,13 +28,8 @@ angular.module('compromisosSiteApp')
       $scope.currentCompromise.secondColor = '#bdbec2';
       $scope.loading = false;
       LoadSVGService.loadIcon($scope.currentCompromise.numero,function(iconLoaded){
-        /*$(iconLoaded)
-            .attr('width', 50)
-            .attr('height', 50)
-            .get(0);*/
-        $('.icon-svg-container').html(iconLoaded.cloneNode(true));
+         $('.icon-svg-container').html(iconLoaded.cloneNode(true));
       });
-      //console.log($scope.currentCompromise);;
     });
 
     $scope.prepareData1 = function(data){
@@ -46,9 +41,9 @@ angular.module('compromisosSiteApp')
       return angular.merge(config,{
         data:{
           types: {
-            'Meta G2': 'area', 
-            'Desempeno G2'  : 'line', 
-            'Meta G3' : 'area', 
+            'Meta G2': 'area',
+            'Desempeno G2'  : 'line',
+            'Meta G3' : 'area',
             'Desempeno G3': 'line'
           },
           keys: {
@@ -57,14 +52,14 @@ angular.module('compromisosSiteApp')
           },
           names:{
             'Desempeno G2': 'Desempeño G2',
-            'Desempeno G2': 'Desempeño G3',
+            'Desempeno G3': 'Desempeño G3',
           },
           order: 'asc',
           colors: {
                 'Meta G2': $scope.currentCompromise.secondColor,
                 'Desempeno G2'  : '#3cb8b0',
                 'Meta G3' : $scope.currentCompromise.secondColor,
-                'Desempeno G3': '#f98f41', 
+                'Desempeno G3': '#f98f41',
               }
         },
         size: {
@@ -93,7 +88,7 @@ angular.module('compromisosSiteApp')
                   return y+'%';
                 }
             }
-              
+
           }
         },
         legend: {
@@ -111,16 +106,16 @@ angular.module('compromisosSiteApp')
     $scope.chartReady1 = function(chart){
 
     };
-    
+
     var id;
     $(window).resize(function() {
         clearTimeout(id);
         id = setTimeout(function(){
           // if(chart1){
           //   createCustomChart1();
-          // }          
+          // }
         }, 500);
     });
 
-  	
+
   });

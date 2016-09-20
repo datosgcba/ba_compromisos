@@ -15,9 +15,9 @@ angular.module('compromisosSiteApp')
     pymChild.sendHeight();
     var _ = window._;
 
-    
 
-    //para ir a otra url en el padre  
+
+    //para ir a otra url en el padre
     //pymChild.navigateParentTo('https://github.com/nprapps/pym.js');
 
     $scope.loading = true;
@@ -53,14 +53,14 @@ angular.module('compromisosSiteApp')
             color: color,
             cantidad: parseInt(d.equipos)
           },
-          opciones:[ 
+          opciones:[
             {
               titulo: '',
               color: color,
               cantidad: parseInt(d.equipos)
             }
           ]
-          
+
         })
       });
 
@@ -128,14 +128,14 @@ angular.module('compromisosSiteApp')
     $scope.chartReady2 = function(chart){
 
     };
-    
+
 
     var id;
     $(window).resize(function() {
         clearTimeout(id);
-        id = setTimeout(function(){          
+        id = setTimeout(function(){
         }, 500);
     });
 
-  	
+
   });
