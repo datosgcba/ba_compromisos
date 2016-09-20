@@ -136,7 +136,8 @@ angular.module('compromisosSiteApp')
                 format:function(y){
                   return y+'%';
                 }
-              }
+              },
+              padding: {top:0, bottom:0}
           }
         },
         legend: {
