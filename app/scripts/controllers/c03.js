@@ -131,7 +131,7 @@ angular.module('compromisosSiteApp')
           y: {
               show:true,
               min: 0,
-              max:100,
+              max:99,
               tick:{
                 format:function(y){
                   return y+'%';
