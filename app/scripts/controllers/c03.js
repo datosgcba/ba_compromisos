@@ -130,11 +130,14 @@ angular.module('compromisosSiteApp')
           },
           y: {
               show:true,
+              max:100,
+              min:0,
               tick:{
                 format:function(y){
                   return y+'%';
                 }
-              }
+              },
+              padding: {top:0, bottom:0}
           }
         },
         legend: {
