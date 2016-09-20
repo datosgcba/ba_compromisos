@@ -55,8 +55,8 @@ angular.module('compromisosSiteApp')
               x: 'mes'
           },
           names: {
-            meta_acumulado: 'Meta acumulada',
-            adultos_incluidos_acumulado: 'Adultos incluidos acumulado'
+            meta_acumulado: 'Meta',
+            adultos_incluidos_acumulado: 'Adultos mayores incluidos '
           },
           colors: {'meta_acumulado':$scope.currentCompromise.secondColor,
                     'adultos_incluidos_acumulado': $scope.currentCompromise.color}
@@ -130,6 +130,8 @@ angular.module('compromisosSiteApp')
           },
           y: {
               show:true,
+              min: 0,
+              max:100,
               tick:{
                 format:function(y){
                   return y+'%';
@@ -162,7 +164,7 @@ angular.module('compromisosSiteApp')
               x:'provincia'
           },
           names: {
-            poblacion_mayor_o_igual_65: 'Población mayor o igual a 65 años"',
+            poblacion_mayor_o_igual_65: 'Población mayor o igual a 65 años',
             provincia: 'Provincia'
           },
           colors:

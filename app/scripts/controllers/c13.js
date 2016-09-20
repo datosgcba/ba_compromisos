@@ -52,7 +52,7 @@ angular.module('compromisosSiteApp')
           },
           names:{
             'Desempeno G2': 'Desempeño G2',
-            'Desempeno G2': 'Desempeño G3',
+            'Desempeno G3': 'Desempeño G3',
           },
           order: 'asc',
           colors: {
