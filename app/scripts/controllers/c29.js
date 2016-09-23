@@ -8,7 +8,7 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('Compromiso23Ctrl', function (UrlService,$rootScope, $scope, $http,SlugColorService,LoadSVGService) {
+  .controller('Compromiso29Ctrl', function (UrlService,$rootScope, $scope, $http,SlugColorService,LoadSVGService) {
 
   	var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({ polling: 1000 });
@@ -22,7 +22,7 @@ angular.module('compromisosSiteApp')
 
     $http.jsonp(url)
     .success(function(data){
-      $scope.currentCompromise = $scope.data = _.find(data, function(d){ return parseInt(d.numero) === 23; });
+      $scope.currentCompromise = $scope.data = _.find(data, function(d){ return parseInt(d.numero) === 29; });
       $scope.currentCompromise.porcentaje_completado = parseInt($scope.currentCompromise.porcentaje_completado);
       $scope.currentCompromise.color = SlugColorService.getColorBySlug($scope.currentCompromise.slug);
       $scope.currentCompromise.secondColor = '#bdbec2';
@@ -47,19 +47,19 @@ angular.module('compromisosSiteApp')
            xFormat: '%Y-%m',
            types: {
             meta: 'area',
-            cesacs: 'line',
+            jovenes_capacitados: 'line',
           },
           keys: {
-              value: ['cesacs','meta'],
+              value: ['jovenes_capacitados','meta'],
               x:'fecha'
           },
           names: {
             meta: 'Meta',
-            cesacs: 'Cesacs'
+            jovenes_capacitados: 'Jovenes Capacitados'
           },
           colors: {
-            'Meta':$scope.currentCompromise.color,
-            'Cesacs':$scope.currentCompromise.secondColor}
+            'Meta':$scope.currentCompromise.secondColor,
+            'jovenes_capacitados':$scope.currentCompromise.color}
         },
         size: {
             height: 300,
@@ -83,13 +83,8 @@ angular.module('compromisosSiteApp')
           y: {
               show:true,
               min: 0,
-              max:100,
               padding: 5,
-              tick:{
-                format:function(y){
-                  return y+'%';
-                }
-              }
+
           }
         },
         legend: {

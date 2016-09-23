@@ -8,7 +8,7 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('Compromiso23Ctrl', function (UrlService,$rootScope, $scope, $http,SlugColorService,LoadSVGService) {
+  .controller('Compromiso21Ctrl', function (UrlService,$rootScope, $scope, $http,SlugColorService,LoadSVGService) {
 
   	var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({ polling: 1000 });
@@ -22,7 +22,7 @@ angular.module('compromisosSiteApp')
 
     $http.jsonp(url)
     .success(function(data){
-      $scope.currentCompromise = $scope.data = _.find(data, function(d){ return parseInt(d.numero) === 23; });
+      $scope.currentCompromise = $scope.data = _.find(data, function(d){ return parseInt(d.numero) === 21; });
       $scope.currentCompromise.porcentaje_completado = parseInt($scope.currentCompromise.porcentaje_completado);
       $scope.currentCompromise.color = SlugColorService.getColorBySlug($scope.currentCompromise.slug);
       $scope.currentCompromise.secondColor = '#bdbec2';
@@ -47,19 +47,19 @@ angular.module('compromisosSiteApp')
            xFormat: '%Y-%m',
            types: {
             meta: 'area',
-            cesacs: 'line',
+            nuevas_rampas_construidas: 'line',
           },
           keys: {
-              value: ['cesacs','meta'],
+              value: ['nuevas_rampas_construidas','meta'],
               x:'fecha'
           },
           names: {
             meta: 'Meta',
-            cesacs: 'Cesacs'
+            nuevas_rampas_construidas: 'Nuevas Rampas Construidas'
           },
           colors: {
-            'Meta':$scope.currentCompromise.color,
-            'Cesacs':$scope.currentCompromise.secondColor}
+            'nuevas_rampas_construidas':$scope.currentCompromise.color,
+            'meta':$scope.currentCompromise.secondColor}
         },
         size: {
             height: 300,
@@ -109,18 +109,19 @@ angular.module('compromisosSiteApp')
           xFormat: '%Y-%m',
           type: 'bar',
           keys: {
-              value: ['cantidad','acumulado'],
+              value: ['nuevas_rampas','meta'],
               x: 'fecha'
           },
           groups: [
-            ['cantidad','acumulado']
+            ['nuevas_rampas','meta']
           ],
           names: {
-            cantidad: 'Cantidad',
-            acumulado: 'Acumulado '
+            nuevas_rampas: 'Nuevas Rampas',
+            meta: 'Meta '
           },
-          colors: {'acumulado':$scope.currentCompromise.secondColor,
-                    'cantidad': $scope.currentCompromise.color}
+          colors: {
+            'meta':$scope.currentCompromise.secondColor,
+            'nuevas_rampas': $scope.currentCompromise.color}
         },
         size: {
             height: 300,
@@ -161,7 +162,60 @@ angular.module('compromisosSiteApp')
 
     };
 
+ $scope.completeConfig3 = function(config){
+      return angular.merge(config,{
+        data:{
+          type: 'bar',
+          keys: {
+              value: ['varon','mujer'],
+              x: 'comunas'
+          },
+          groups: [
+            ['varon','mujer']
+          ],
+          names: {
+            varon: 'Varón',
+            mujer: 'Mujer',
+            comunas: 'Comunas'
+          },
+          colors: {
+            'varon':$scope.currentCompromise.secondColor,
+            'mujer': $scope.currentCompromise.color}
+        },
+        size: {
+            height: 300,
+        },
+        padding: {
+            top: 0,
+            right: 20,
+            bottom: 10,
+            left: 80,
+        },
+        axis: {
+           x: {
+              type: 'category',
+              show:true,
+          },
+          y: {
+              show:true,
+              min: 0,
+              padding: {top:0, bottom:0}
+          }
+        },
+        legend: {
+            show: true
+        }
+      });
+    };
+    $scope.prepareData3 = function(data){
+      return data;
+    };
 
+
+
+    $scope.chartReady3 = function(chart){
+
+    };
 
     var id;
     $(window).resize(function() {
