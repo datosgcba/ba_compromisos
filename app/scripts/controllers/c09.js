@@ -42,7 +42,7 @@ angular.module('compromisosSiteApp')
               x: 'obra'
           },
           names:{
-            'avance': 'Avance de Obra'
+            'avance': 'Avance de obra'
           },
           colors: {
               'avance': $scope.currentCompromise.color,

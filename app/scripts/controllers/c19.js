@@ -83,7 +83,7 @@ angular.module('compromisosSiteApp')
             cantidad_consultas : 'line'
           },
           names: {
-            cantidad_consultas: 'Cantidad de Consultas',
+            cantidad_consultas: 'Cantidad de consultas',
           },
           keys: {
               value: ['cantidad_consultas'],

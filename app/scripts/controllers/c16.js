@@ -55,7 +55,7 @@ angular.module('compromisosSiteApp')
               x: 'mes_date'
           },
           names: {
-            medicion_real: 'NUEVOS PUNTOS WIFI',
+            medicion_real: 'Nuevos puntos WIFI',
             meta_mensual: 'Meta'
           },
           colors: {
@@ -113,7 +113,7 @@ angular.module('compromisosSiteApp')
               x:'ciudad'
           },
           names: {
-            cantidad_zonas_wifi_gratis: 'Cantidad de Zonas Wifi Gratis',
+            cantidad_zonas_wifi_gratis: 'Cantidad de zonas WIFI gratuitas',
           },
           colors:
           {'cantidad_zonas_wifi_gratis':

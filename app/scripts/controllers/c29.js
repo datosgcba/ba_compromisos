@@ -55,7 +55,7 @@ angular.module('compromisosSiteApp')
           },
           names: {
             meta: 'Meta',
-            jovenes_capacitados: 'Jovenes Capacitados'
+            jovenes_capacitados: 'Jóvenes capacitados'
           },
           colors: {
             'meta':$scope.currentCompromise.secondColor,

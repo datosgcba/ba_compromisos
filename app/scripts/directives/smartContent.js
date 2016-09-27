@@ -16,7 +16,8 @@ angular.module('compromisosSiteApp')
           configCallback: '=configCallback',
           readyCallback: '=readyCallback',
           simpleLoadCallback: '=simpleLoadCallback',
-          template: '=template'
+          template: '=template',
+          class: '=class'
         },
         controller: function($scope, $timeout, UrlService, $http) {
 

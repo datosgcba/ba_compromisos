@@ -128,7 +128,7 @@ angular
         $interval.cancel(intervalID);
         intervalID = $interval(function(){
           //console.log('lanza!');
-          $('.detalle-frame').each(function(i,e){
+          $('.detalle-frame').not('.ignore-adjust').each(function(i,e){
             $(e).css('height','auto');
             var h = $(e).outerHeight();
             if(h>max){
@@ -136,7 +136,7 @@ angular
             }
             //console.log(i,h,max);
           });
-          $('.detalle-frame').css('height',max+'px');
+          $('.detalle-frame').not('.ignore-adjust').css('height',max+'px');
         },2000);
     };
 

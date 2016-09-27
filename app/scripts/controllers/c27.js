@@ -24,6 +24,7 @@ angular.module('compromisosSiteApp')
       $scope.currentCompromise = $scope.data = _.find(data, function(d){ return parseInt(d.numero) === 27; });
       $scope.currentCompromise.color = SlugColorService.getColorBySlug($scope.currentCompromise.slug);
       $scope.currentCompromise.porcentaje_completado = parseInt($scope.currentCompromise.porcentaje_completado);
+      $scope.currentCompromise.secondColor = '#ccc';
       $scope.loading = false;
       LoadSVGService.loadIcon($scope.currentCompromise.numero,function(iconLoaded){
         treeIcon = iconLoaded;

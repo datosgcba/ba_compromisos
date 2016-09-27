@@ -50,16 +50,16 @@ angular.module('compromisosSiteApp')
             cesacs: 'line',
           },
           keys: {
-              value: ['cesacs','meta'],
+              value: ['meta','cesacs'],
               x:'fecha'
           },
           names: {
             meta: 'Meta',
-            cesacs: 'Cesacs'
+            cesacs: 'CeSACs'
           },
           colors: {
-            'Meta':$scope.currentCompromise.color,
-            'Cesacs':$scope.currentCompromise.secondColor}
+            'cesacs':$scope.currentCompromise.color,
+            'meta':$scope.currentCompromise.secondColor}
         },
         size: {
             height: 300,
@@ -112,11 +112,8 @@ angular.module('compromisosSiteApp')
               value: ['cantidad','acumulado'],
               x: 'fecha'
           },
-          groups: [
-            ['cantidad','acumulado']
-          ],
           names: {
-            cantidad: 'Cantidad',
+            cantidad: 'Nuevos',
             acumulado: 'Acumulado '
           },
           colors: {'acumulado':$scope.currentCompromise.secondColor,

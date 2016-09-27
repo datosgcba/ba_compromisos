@@ -234,7 +234,7 @@ div#category_chart {
 }
 
 .bubble-container text {
-  font-size: 10px;
+  font-size: 12px;
   font-family: "OpenSans", Helvetica, Arial, sans-serif;
   font-weight: bolder;
 }
@@ -264,7 +264,11 @@ div#category_chart {
 .bubble-chart-text-title{
   text-anchor: middle;
   fill: white;
-  font-size: 12px;
+  stroke-width:1px;
+  stroke-linecap:butt;
+  stroke-linejoin:miter;
+  stroke-opacity:1;
+  paint-order: stroke;
 }
 
 

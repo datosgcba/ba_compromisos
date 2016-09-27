@@ -81,11 +81,23 @@ angular.module('compromisosSiteApp')
                     d3.select(this).append("text")
                       .attr("dy", "0em")
                       .classed('bubble-chart-text-title',true)
+                      .style("stroke", function() 
+                        { 
+                          return $scope.config.color;
+                        })
+                      /*.style("fill", function() 
+                        { 
+                          return d3.rgb($scope.config.color).darker(2);
+                        })*/
                       .text(function(d) { return d.name; });
 
                     d3.select(this).append("text")
                       .attr("dy", "1em")
                       .classed('bubble-chart-text-subtitle',true)
+                      /*.style("fill", function() 
+                        { 
+                          return d3.rgb($scope.config.color).darker(1);
+                        })*/
                       .text(function(d) { return d.data; });
                   });
                   

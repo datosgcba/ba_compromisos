@@ -47,8 +47,8 @@ angular.module('compromisosSiteApp')
           },
 
           names: {
-            kilometros_construidos_proyectados: 'Km Proyectados',
-            kilometros_construidos_totales : 'Km Construidos'
+            kilometros_construidos_proyectados: 'Km proyectados',
+            kilometros_construidos_totales : 'Km construídos'
           },
           keys: {
               value: ['kilometros_construidos_proyectados','kilometros_construidos_totales'],
@@ -105,8 +105,8 @@ angular.module('compromisosSiteApp')
             ['Existentes', 'Proyectados']
           ],
           names: {
-            Existentes: 'Metrobus Existente',
-            Proyectados : 'Metrobus Proyectado'
+            Existentes: 'Metrobus existente',
+            Proyectados : 'Metrobus proyectado'
           },
           colors: {'Existentes': $scope.currentCompromise.color,
           'Proyectados': $scope.currentCompromise.secondColor}
@@ -191,7 +191,7 @@ angular.module('compromisosSiteApp')
             ['restante','porcentaje_avance']
           ],
           names: {
-            porcentaje_avance: 'Porcentaje Avance',
+            porcentaje_avance: 'Avance',
             restante: 'Restante'
           },
           order: null,

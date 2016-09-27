@@ -58,7 +58,7 @@ angular.module('compromisosSiteApp')
               x:'mes'
           },
           names: {
-            cantidad_iniciativas: 'Cantidad de Iniciativas',
+            cantidad_iniciativas: 'Cantidad de iniciativas',
             meta_acumulado: 'Meta',
           },
           colors: {

@@ -55,7 +55,7 @@ angular.module('compromisosSiteApp')
           },
           names: {
             meta: 'Meta',
-            nuevas_rampas_construidas: 'Nuevas Rampas Construidas'
+            nuevas_rampas_construidas: 'Nuevas rampas construídas'
           },
           colors: {
             'nuevas_rampas_construidas':$scope.currentCompromise.color,
@@ -109,19 +109,20 @@ angular.module('compromisosSiteApp')
           xFormat: '%Y-%m',
           type: 'bar',
           keys: {
-              value: ['nuevas_rampas','meta'],
+              value: ['nuevas_rampas','diff'],
               x: 'fecha'
           },
           groups: [
-            ['nuevas_rampas','meta']
+            ['nuevas_rampas','diff']
           ],
           names: {
             nuevas_rampas: 'Nuevas Rampas',
-            meta: 'Meta '
+            diff: 'Meta'
           },
           colors: {
-            'meta':$scope.currentCompromise.secondColor,
-            'nuevas_rampas': $scope.currentCompromise.color}
+            'nuevas_rampas': $scope.currentCompromise.color,
+            'diff':$scope.currentCompromise.secondColor
+          }
         },
         size: {
             height: 300,
@@ -133,6 +134,7 @@ angular.module('compromisosSiteApp')
             left: 80,
         },
         axis: {
+           rotated: true,
            x: {
               type: 'timeseries',
               show:true,
@@ -153,7 +155,10 @@ angular.module('compromisosSiteApp')
       });
     };
     $scope.prepareData2 = function(data){
-      return data;
+      return data.map(function(e){
+        e.diff = parseInt(e.meta) - parseInt((e.nuevas_rampas)?e.nuevas_rampas:0);
+        return e;
+      });
     };
 
 
