@@ -7,10 +7,11 @@
     <i class="detalle-frame-icon-2 glyphicon glyphicon glyphicon-download-alt">
     </i>
   </a>
-  <a ng-if="source && (!nota && !fuente)"ng-href="{{source}}" target="_blank">
+  <a ng-if="source && (!nota && !fuente)" ng-href="{{source}}" target="_blank">
     <i class="detalle-frame-icon glyphicon glyphicon glyphicon-download-alt">
     </i>
   </a>
 	<span ng-show="loading">Cargando...</span>
 	<div id="{{id}}" ng-init="simpleLoad()"></div>
+  <p ng-show="descripcion && !loading">{{descripcion}}</p>
 </div>

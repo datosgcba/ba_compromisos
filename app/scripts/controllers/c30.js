@@ -51,7 +51,7 @@ angular.module('compromisosSiteApp')
             acumulado: 'line',
           },
           keys: {
-              value: ['nuevos_usuarios','acumulado','meta'],
+              value: ['meta','nuevos_usuarios','acumulado'],
               x:'fecha'
           },
           names: {

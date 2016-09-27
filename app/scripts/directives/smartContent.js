@@ -11,6 +11,7 @@ angular.module('compromisosSiteApp')
           nota: '=nota',
           fuente: '=fuente',
           source: '=source',
+          descripcion: '=descripcion',
           prepareCallback: '=prepareCallback',
           configCallback: '=configCallback',
           readyCallback: '=readyCallback',

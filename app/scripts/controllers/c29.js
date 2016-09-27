@@ -50,7 +50,7 @@ angular.module('compromisosSiteApp')
             jovenes_capacitados: 'line',
           },
           keys: {
-              value: ['jovenes_capacitados','meta'],
+              value: ['meta','jovenes_capacitados'],
               x:'fecha'
           },
           names: {
@@ -58,7 +58,7 @@ angular.module('compromisosSiteApp')
             jovenes_capacitados: 'Jovenes Capacitados'
           },
           colors: {
-            'Meta':$scope.currentCompromise.secondColor,
+            'meta':$scope.currentCompromise.secondColor,
             'jovenes_capacitados':$scope.currentCompromise.color}
         },
         size: {
