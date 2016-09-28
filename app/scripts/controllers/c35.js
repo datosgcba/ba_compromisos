@@ -232,7 +232,7 @@ angular.module('compromisosSiteApp')
           }
         },
         legend: {
-            show: true
+            show: false
         }
       });
     };
