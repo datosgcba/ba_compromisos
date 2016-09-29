@@ -1,48 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
-	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
-	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
-	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
-	<!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
-	<!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
-	<!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
-	<!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
-	<!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
 ]>
-<svg version="1.1" id="Layer_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1920px" height="1080px"
-	 viewBox="0 0 1920 1080" enable-background="new 0 0 1920 1080" xml:space="preserve">
-
-	<g i:extraneous="self">
-		<g>
-			<path fill="#5A5B5B" d="M1135.775,378.958H892.857v30.744v352.898h245.133V378.958H1135.775z M1122.146,388.731
-				c3.586,0,6.498,2.918,6.498,6.504c0,3.592-2.912,6.498-6.498,6.498s-6.492-2.906-6.492-6.498
-				C1115.654,391.649,1118.561,388.731,1122.146,388.731z M1089.328,388.731c3.586,0,6.498,2.918,6.498,6.504
-				c0,3.592-2.912,6.498-6.498,6.498s-6.498-2.906-6.498-6.498C1082.83,391.649,1085.742,388.731,1089.328,388.731z
-				 M1056.51,388.731c3.586,0,6.492,2.918,6.492,6.504c0,3.592-2.906,6.498-6.492,6.498s-6.492-2.906-6.492-6.498
-				C1050.018,391.649,1052.924,388.731,1056.51,388.731z M1129.576,754.187H901.266V409.702h228.311V754.187z"/>
-			<rect x="871.014" y="431.054" fill="#5A5B5B" width="236.045" height="8.414"/>
-			<rect x="910.084" y="457.099" fill="#5A5B5B" width="169.301" height="8.414"/>
-			<rect x="975.199" y="483.149" fill="#5A5B5B" width="131.859" height="8.414"/>
-			<rect x="871.014" y="535.233" fill="#5A5B5B" width="236.045" height="8.414"/>
-			<rect x="923.654" y="561.278" fill="#5A5B5B" width="183.404" height="8.414"/>
-			<rect x="949.693" y="587.329" fill="#5A5B5B" width="157.365" height="8.414"/>
-			<rect x="871.014" y="639.425" fill="#5A5B5B" width="236.045" height="8.414"/>
-			<rect x="923.654" y="665.47" fill="#5A5B5B" width="154.652" height="8.414"/>
-			<rect x="949.693" y="691.515" fill="#5A5B5B" width="157.365" height="8.414"/>
-			<rect x="976.564" y="717.565" fill="#5A5B5B" width="77.643" height="8.414"/>
-			<g>
-				<path fill="#5A5B5B" d="M1160.01,310.274H891.053c1.066,5.549,1.676,11.256,1.676,17.109c0,11.936-2.379,23.314-6.592,33.762
-					h288.158v419.256H856.283V399.864c-6.949,5.209-14.648,9.422-22.934,12.48v381.721c0,20.549,16.652,37.213,37.219,37.213
-					h289.441c20.549,0,37.219-16.664,37.219-37.213V347.487C1197.229,326.938,1180.559,310.274,1160.01,310.274z M1015.289,820.444
-					c-7.758,0-14.051-6.293-14.051-14.045c0-7.764,6.293-14.057,14.051-14.057s14.051,6.293,14.051,14.057
-					C1029.34,814.151,1023.047,820.444,1015.289,820.444z"/>
-			</g>
-			<path fill="#5A5B5B" d="M801.428,248.722c-43.441,0-78.656,35.221-78.656,78.662c0,43.43,35.215,78.639,78.656,78.639
-				c43.43,0,78.645-35.209,78.645-78.639C880.072,283.942,844.857,248.722,801.428,248.722z M840.041,338.786h-27.205v27.205
-				h-22.822v-27.205h-27.211V315.97h27.211v-27.217h22.822v27.217h27.205V338.786z"/>
-		</g>
-	</g>
-
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
+<defs>
+</defs>
+<rect fill="none" width="300" height="300"/>
+<rect x="145.141" y="219.909" fill="#FFFFFF" width="21.724" height="15.325"/>
+<rect x="115.884" y="95.709" fill="#FFFFFF" width="76.104" height="114.828"/>
+<rect x="115.884" y="95.709" fill="#FFFFFF" width="76.104" height="114.828"/>
+<path fill="#5A5B5B" d="M194.054,85.461h-80.973v10.248v117.633h81.711V85.461H194.054z M115.884,210.537V95.709h76.104v114.828
+	H115.884z"/>
+<circle fill="#FFFFFF" cx="189.512" cy="90.887" r="2.165"/>
+<circle fill="#FFFFFF" cx="178.571" cy="90.887" r="2.166"/>
+<circle fill="#FFFFFF" cx="167.632" cy="90.887" r="2.164"/>
+<rect x="105.8" y="102.826" fill="#5A5B5B" width="78.682" height="2.805"/>
+<rect x="118.823" y="111.508" fill="#5A5B5B" width="56.434" height="2.805"/>
+<rect x="140.528" y="120.191" fill="#5A5B5B" width="43.953" height="2.805"/>
+<rect x="105.8" y="137.553" fill="#5A5B5B" width="78.682" height="2.805"/>
+<rect x="123.347" y="146.234" fill="#5A5B5B" width="61.135" height="2.805"/>
+<rect x="132.026" y="154.918" fill="#5A5B5B" width="52.455" height="2.805"/>
+<rect x="105.8" y="172.283" fill="#5A5B5B" width="78.682" height="2.805"/>
+<rect x="123.347" y="180.965" fill="#5A5B5B" width="51.551" height="2.805"/>
+<rect x="132.026" y="189.646" fill="#5A5B5B" width="52.455" height="2.805"/>
+<rect x="140.983" y="198.33" fill="#5A5B5B" width="25.881" height="2.805"/>
+<path fill="#5A5B5B" d="M202.132,62.566h-89.652c0.355,1.85,0.559,3.752,0.559,5.703c0,3.979-0.793,7.771-2.197,11.254h96.053
+	v139.752H100.89V92.43c-2.316,1.736-4.883,3.141-7.645,4.16v127.24c0,6.85,5.551,12.404,12.406,12.404h96.48
+	c6.85,0,12.406-5.555,12.406-12.404V74.971C214.538,68.121,208.981,62.566,202.132,62.566z M153.892,232.623
+	c-2.586,0-4.684-2.098-4.684-4.682c0-2.588,2.098-4.686,4.684-4.686s4.684,2.098,4.684,4.686
+	C158.575,230.525,156.478,232.623,153.892,232.623z"/>
+<path fill="#5A5B5B" d="M108.819,68.27c0,14.477-11.738,26.213-26.215,26.213c-14.48,0-26.219-11.736-26.219-26.213
+	c0-14.48,11.738-26.221,26.219-26.221C97.081,42.049,108.819,53.789,108.819,68.27"/>
+<polygon fill="#FFFFFF" points="95.476,64.465 86.407,64.465 86.407,55.393 78.8,55.393 78.8,64.465 69.729,64.465 69.729,72.07 
+	78.8,72.07 78.8,81.139 86.407,81.139 86.407,72.07 95.476,72.07 "/>
 </svg>

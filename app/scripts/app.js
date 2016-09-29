@@ -89,7 +89,18 @@ angular
   })
   .service('UrlService', function () {
       if(!window.COMPROMISOS_CONFIG){
-        console.error('Archivo de configuración inexistente.');
+        console.error('Archivo de configuración inexistente, utilizando configuración default de desarrollo.');
+        window.COMPROMISOS_CONFIG = {
+          BASE_URL: 'http://api.topranking.link/',
+          HOME_CSV: 'https://goo.gl/w0wnOj',
+          /*HOME_CSV: 'https://goo.gl/Nj6FZm'*/
+          /*
+          BASE_URL: 'https://compromisos-csv.buenosaires.gob.ar',
+          HOME_CSV: 'http://recursos-data.buenosaires.gob.ar/ckan2/compromisos/master_compromisos.csv'
+          */
+
+        };
+
       }
       this.baseUrl = window.COMPROMISOS_CONFIG.BASE_URL;
       this.urls = {
