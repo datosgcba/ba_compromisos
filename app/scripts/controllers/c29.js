@@ -28,10 +28,10 @@ angular.module('compromisosSiteApp')
       $scope.currentCompromise.secondColor = '#bdbec2';
       $scope.loading = false;
       LoadSVGService.loadIcon($scope.currentCompromise.numero,function(iconLoaded){
-        /*$(iconLoaded)
-            .attr('width', 50)
-            .attr('height', 50)
-            .get(0);*/
+        $(iconLoaded)
+            .attr('width', '100%')
+            .attr('height', '100%')
+            .get(0);
         $('.icon-svg-container').html(iconLoaded.cloneNode(true));
       });
       //console.log($scope.currentCompromise);;
