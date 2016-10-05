@@ -105,7 +105,7 @@
 				<h2>{{currentCompromise.titulo}}</h2>
 				<h5>{{currentCompromise.cumplimiento}}</h5>
 				<p> {{currentCompromise.desc}}</p>
-				<button ng-click="redirectParent(currentCompromise.url_interna)" type="button" class="btn btn-xs upper bg-color-{{currentCompromise.slug}}  hidden-device" >Ver mas sobre el compromiso &#187; </button>
+				<button ng-if="currentCompromise.detalle_1" ng-click="redirectParent(currentCompromise.url_interna)" type="button" class="btn btn-xs upper bg-color-{{currentCompromise.slug}}  hidden-device" >Ver mas sobre el compromiso &#187; </button>
 			</div>
 			<div class="col-sm-3">
 				<p class="hidden-device text-right"><a class="" href="javascript:;" ng-click="closeDetail()">Cerrar</a></p>
@@ -120,7 +120,7 @@
 				  <div class="progress-w" ng-show="currentCompromise.porcentaje_completado<50" ng-style="{ 'width': (100 - currentCompromise.porcentaje_completado) + '%' }">{{currentCompromise.porcentaje_completado}}% </div>
 				</div>
 				<p>Cumplimiento: <span class="f-color-{{currentCompromise.slug}}">{{currentCompromise.cumplimiento_label}}</span></p>
-				<div class="col-md-4 center-block">
+				<div ng-if="currentCompromise.detalle_1" class="col-md-4 center-block">
 					<button ng-click="redirectParent(currentCompromise.url_interna)" id="singlebutton" name="singlebutton" type="button" class="btn btn-xs upper bg-color-{{currentCompromise.slug}}  hidden-desktop center-block" >Ver mas sobre el compromiso &#187; </button>
 				</div>
 			</div>
