@@ -1,4 +1,3 @@
-
 'use strict';
 
 /**
@@ -9,7 +8,7 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('Compromiso29Ctrl', function (UrlService,$rootScope, $scope, $http,SlugColorService,LoadSVGService) {
+  .controller('Compromiso22Ctrl', function (UrlService,$rootScope, $scope, $http,SlugColorService,LoadSVGService) {
 
     var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({ polling: 1000 });
@@ -23,7 +22,7 @@ angular.module('compromisosSiteApp')
 
     $http.jsonp(url)
     .success(function(data){
-      $scope.currentCompromise = $scope.data = _.find(data, function(d){ return parseInt(d.numero) === 29; });
+      $scope.currentCompromise = $scope.data = _.find(data, function(d){ return parseInt(d.numero) === 22; });
       $scope.currentCompromise.porcentaje_completado = parseInt($scope.currentCompromise.porcentaje_completado);
       $scope.currentCompromise.color = SlugColorService.getColorBySlug($scope.currentCompromise.slug);
       $scope.currentCompromise.secondColor = '#bdbec2';
@@ -48,19 +47,19 @@ angular.module('compromisosSiteApp')
            xFormat: '%Y-%m',
            types: {
             meta: 'area',
-            jovenes_capacitados: 'line',
+            acumulado: 'line',
           },
           keys: {
-              value: ['meta','jovenes_capacitados'],
-              x:'fecha'
+              value: ['meta','acumulado'],
+              x:'trimestre'
           },
           names: {
             meta: 'Meta',
-            jovenes_capacitados: 'Jóvenes capacitados'
+            acumulado: 'Acumuado'
           },
           colors: {
             'meta':$scope.currentCompromise.secondColor,
-            'jovenes_capacitados':$scope.currentCompromise.color}
+            'acumulado':$scope.currentCompromise.color}
         },
         size: {
             height: 300,
@@ -102,21 +101,22 @@ angular.module('compromisosSiteApp')
     $scope.completeConfig2 = function(config){
       return angular.merge(config,{
         data:{
-          xFormat: '%Y-%m',
-          type: 'bar',
+           xFormat: '%Y-%m',
+           types: {
+            meta: 'area',
+            acumulado: 'line',
+          },
           keys: {
-              value: ['cantidad','acumulado'],
-              x: 'fecha'
+              value: ['meta','acumulado'],
+              x:'trimestre'
           },
-          groups: [
-            ['cantidad','acumulado']
-          ],
           names: {
-            cantidad: 'Cantidad',
-            acumulado: 'Acumulado '
+            meta: 'Meta',
+            acumulado: 'Acumuado'
           },
-          colors: {'acumulado':$scope.currentCompromise.secondColor,
-                    'cantidad': $scope.currentCompromise.color}
+          colors: {
+            'meta':$scope.currentCompromise.secondColor,
+            'acumulado':$scope.currentCompromise.color}
         },
         size: {
             height: 300,
@@ -134,12 +134,14 @@ angular.module('compromisosSiteApp')
               tick: {
                   fit: true,
                   format: $rootScope.d3Locale_ES.timeFormat("%b-%y"),
+                  count:5
               }
           },
           y: {
               show:true,
               min: 0,
-              padding: {top:0, bottom:0}
+              padding: 5,
+
           }
         },
         legend: {

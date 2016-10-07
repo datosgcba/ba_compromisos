@@ -1,0 +1,53 @@
+<p class="text-center" ng-show="loading">Cargando...</p>
+
+<div ng-hide="loading">
+
+  <div ng-include="'views/includes/detail.html'" ng-cloak ng-show="currentCompromise"></div>
+
+  <div class="row">
+
+    <div ng-if="data.detalle_1" class="col-md-6 text-center">
+      <smart-content
+        url="data.detalle_1"
+        source="data.detalle_1"
+        prepare-callback="prepareData"
+        config-callback="completeConfig"
+        titulo="data.detalle_1_nombre"
+        nota="data.detalle_1_nota"
+        fuente="data.detalle_1_fuente"
+        descripcion="data.detalle_1_descripcion"
+        ></smart-content>
+    </div>
+
+    <div ng-if="data.detalle_2" class="col-md-6 text-center">
+       <smart-content
+        url="data.detalle_2"
+        source="data.detalle_2"
+        prepare-callback="prepareData2"
+        config-callback="completeConfig2"
+        ready-callback="chartReady2"
+        titulo="data.detalle_2_nombre"
+        nota="data.detalle_2_nota"
+        fuente="data.detalle_2_fuente"
+        descripcion="data.detalle_2_descripcion"
+        ></smart-content>
+    </div>
+<hr/>
+    <div ng-if="data.detalle_3" class="col-md-6 text-center">
+       <smart-content
+        url="data.detalle_3"
+        source="data.detalle_3"
+        prepare-callback="prepareData3"
+        config-callback="completeConfig3"
+        ready-callback="chartReady3"
+        titulo="data.detalle_3_nombre"
+        nota="data.detalle_3_nota"
+        fuente="data.detalle_3_fuente"
+        descripcion="data.detalle_3_descripcion"
+        ></smart-content>
+    </div>
+
+  </div>
+
+
+</div>

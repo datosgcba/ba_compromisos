@@ -51,6 +51,7 @@ angular
       .when('/c19', {templateUrl: 'views/c19.html',controller: 'Compromiso19Ctrl',controllerAs: 'c19'})
       .when('/c20', {templateUrl: 'views/c20.html',controller: 'Compromiso20Ctrl',controllerAs: 'c20'})
       .when('/c21', {templateUrl: 'views/c21.html',controller: 'Compromiso21Ctrl',controllerAs: 'c21'})
+      .when('/c22', {templateUrl: 'views/c22.html',controller: 'Compromiso22Ctrl',controllerAs: 'c22'})
       .when('/c23', {templateUrl: 'views/c23.html',controller: 'Compromiso23Ctrl',controllerAs: 'c23'})
       .when('/c27', {templateUrl: 'views/c27.html',controller: 'Compromiso27Ctrl',controllerAs: 'c27'})
       .when('/c29', {templateUrl: 'views/c29.html',controller: 'Compromiso29Ctrl',controllerAs: 'c29'})
