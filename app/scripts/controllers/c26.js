@@ -51,7 +51,7 @@ angular.module('compromisosSiteApp')
             comunas_con_delegacion: 'line',
           },
           keys: {
-              value: ['comunas_con_delegacion','meta'],
+              value: ['meta','comunas_con_delegacion'],
               x:'fecha'
           },
           names: {
@@ -59,8 +59,8 @@ angular.module('compromisosSiteApp')
             comunas_con_delegacion: 'Comunas Con Delegación'
           },
           colors: {
-            'comunas_con_delegacion':$scope.currentCompromise.color,
-            'meta':$scope.currentCompromise.secondColor}
+            'meta':$scope.currentCompromise.secondColor,
+            'comunas_con_delegacion':$scope.currentCompromise.color}
         },
         size: {
             height: 300,
