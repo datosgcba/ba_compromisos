@@ -55,10 +55,12 @@ angular
       .when('/c23', {templateUrl: 'views/c23.html',controller: 'Compromiso23Ctrl',controllerAs: 'c23'})
       .when('/c26', {templateUrl: 'views/c26.html',controller: 'Compromiso26Ctrl',controllerAs: 'c26'})
       .when('/c27', {templateUrl: 'views/c27.html',controller: 'Compromiso27Ctrl',controllerAs: 'c27'})
+      .when('/c28', {templateUrl: 'views/c28.html',controller: 'Compromiso28Ctrl',controllerAs: 'c28'})
       .when('/c29', {templateUrl: 'views/c29.html',controller: 'Compromiso29Ctrl',controllerAs: 'c29'})
       .when('/c30', {templateUrl: 'views/c30.html',controller: 'Compromiso30Ctrl',controllerAs: 'c30'})
       .when('/c31', {templateUrl: 'views/c31.html',controller: 'Compromiso31Ctrl',controllerAs: 'c31'})
       .when('/c33', {templateUrl: 'views/c33.html',controller: 'Compromiso33Ctrl',controllerAs: 'c33'})
+      .when('/c34', {templateUrl: 'views/c35.html',controller: 'Compromiso34Ctrl',controllerAs: 'c34'})
       .when('/c35', {templateUrl: 'views/c35.html',controller: 'Compromiso35Ctrl',controllerAs: 'c35'})
       .otherwise({
         redirectTo: '/'
