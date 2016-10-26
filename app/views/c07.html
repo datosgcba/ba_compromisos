@@ -9,6 +9,7 @@
     <div ng-if="data.detalle_1" class="col-md-12 text-center">
        <smart-content
         url="data.detalle_1"
+        source="data.detalle_1"
         prepare-callback="prepareData1"
         config-callback="completeConfig1"
         ready-callback="chartReady1"
@@ -23,6 +24,7 @@
     <div ng-if="data.detalle_2" class="col-md-6 text-center">
        <smart-content
         url="data.detalle_2"
+        source="data.detalle_2"
         titulo="data.detalle_2_nombre"
         nota="data.detalle_2_nota"
         fuente="data.detalle_2_fuente"
@@ -32,6 +34,7 @@
     <div ng-if="data.detalle_3" class="col-md-6 text-center">
        <smart-content
         url="data.detalle_3"
+        source="data.detalle_3"
         prepare-callback="prepareData3"
         config-callback="completeConfig3"
         ready-callback="chartReady3"
