@@ -198,10 +198,10 @@ angular.module('compromisosSiteApp')
     $scope.completeConfig2 = function(config){
       return angular.merge(config,{
         data:{
-           xFormat: '%Y-%m',
+           //xFormat: '%Y-%m',
            types: {
-            nuevos_metros_peatonalizados: 'line',
-            acumulado: 'line',
+            nuevos_metros_peatonalizados: 'bar',
+            acumulado: 'bar',
           },
           keys: {
               value: ['acumulado','nuevos_metros_peatonalizados'],
@@ -226,12 +226,13 @@ angular.module('compromisosSiteApp')
         },
         axis: {
            x: {
-              type: 'timeseries',
+              type: 'category',
               show:true,
               tick: {
-                  fit: true,
-                  format: $rootScope.d3Locale_ES.timeFormat("%b-%y"),
-                  count:5
+                rotate: 90,
+                multiline: false
+                  //format: function (d) { return "$" + d; }
+                  //format: $rootScope.d3Locale_ES.timeFormat("%b-%y")
               }
           },
           y: {
@@ -247,6 +248,7 @@ angular.module('compromisosSiteApp')
       });
     };
     $scope.prepareData2 = function(data){
+      console.log(data);
       return data;
     };
 
