@@ -6,7 +6,7 @@
 
   <div class="row">
 
-    <div ng-if="data.detalle_1" class="col-md-6 text-center">
+    <div ng-if="data.detalle_1" class="col-md-12 text-center">
       <smart-content
         url="data.detalle_1"
         source="data.detalle_1"
@@ -18,8 +18,8 @@
         descripcion="data.detalle_1_descripcion"
         ></smart-content>
     </div>
-
-
+</div>
+  <div class="row">
     <div ng-if="data.detalle_2" class="col-md-6 text-center">
        <smart-content
         url="data.detalle_2"
@@ -33,8 +33,7 @@
         descripcion="data.detalle_2_descripcion"
         ></smart-content>
     </div>
-
-    <div ng-if="data.detalle_3" class="col-md-6 text-center bar-chart-{{currentCompromise.slug}}">
+     <div ng-if="data.detalle_3" class="col-md-6 text-center">
        <smart-content
         url="data.detalle_3"
         source="data.detalle_3"
@@ -47,6 +46,8 @@
         descripcion="data.detalle_3_descripcion"
         ></smart-content>
     </div>
+
+
 
 
 
