@@ -10,7 +10,7 @@
 angular.module('compromisosSiteApp')
   .controller('Compromiso32Ctrl', function (UrlService,$rootScope, $scope, $http,SlugColorService,LoadSVGService) {
 
-  	var url = UrlService.getUrlByPage('home');
+    var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({ polling: 1000 });
     pymChild.sendHeight();
     var _ = window._;
@@ -36,6 +36,124 @@ angular.module('compromisosSiteApp')
       });
       //console.log($scope.currentCompromise);;
     });
+
+
+    $scope.prepareData = function(data){
+      return data;
+    };
+ $scope.completeConfig = function(config){
+      return angular.merge(config,{
+        data:{
+           xFormat: '%Y-%m',
+           types: {
+            meta: 'area',
+            en_funcionamiento: 'line',
+          },
+          keys: {
+              value: ['meta','autos_retirados'],
+              x:'fecha'
+          },
+          names: {
+            meta: 'Meta',
+            autos_retirados: 'Autos Retirados'
+          },
+          colors: {
+            'autos_retirados':$scope.currentCompromise.color,
+            'meta':$scope.currentCompromise.secondColor}
+        },
+        size: {
+            height: 300,
+        },
+        padding: {
+            top: 0,
+            right: 20,
+            bottom: 10,
+            left: 80,
+        },
+        axis: {
+           x: {
+              type: 'timeseries',
+              show:true,
+              tick: {
+                  fit: true,
+                  format: $rootScope.d3Locale_ES.timeFormat("%b-%y"),
+                  count:5
+              }
+          },
+          y: {
+              show:true,
+              min: 0,
+              padding: 5,
+
+          }
+        },
+        legend: {
+            show: true
+        }
+      });
+    };
+
+
+    $scope.chartReady = function(chart){
+
+    };
+
+
+    $scope.completeConfig2 = function(config){
+      return angular.merge(config,{
+        data:{
+          type: 'bar',
+          keys: {
+              value: ['pendientes','en_proceso', 'resueltos'],
+              x: 'comuna'
+          },
+          names: {
+            pendientes: 'Pendientes',
+            en_proceso:'En Proceso',
+            resueltos: 'Resueltos',
+          },
+          colors: {
+            pendientes: $scope.currentCompromise.secondColor,
+            en_proceso: $scope.currentCompromise.secondColor,
+            resueltos: $scope.currentCompromise.color
+          }
+        },
+        size: {
+            height: 300,
+        },
+        padding: {
+            top: 0,
+            right: 20,
+            bottom: 10,
+            left: 80,
+        },
+        axis: {
+           x: {
+              type: 'category',
+              show:false,
+
+          },
+          y: {
+              show:true,
+              min: 0,
+              padding: {top:0, bottom:0}
+          }
+        },
+        legend: {
+            show: true
+        }
+      });
+    };
+    $scope.prepareData2 = function(data){
+      return data;
+    };
+
+
+
+    $scope.chartReady2 = function(chart){
+
+    };
+
 
 
     var id;
