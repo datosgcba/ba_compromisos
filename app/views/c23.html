@@ -46,7 +46,19 @@
         descripcion="data.detalle_3_descripcion"
         ></smart-content>
     </div>
-
+    <div ng-if="data.detalle_4" class="col-md-6 text-center bar-chart-{{currentCompromise.slug}}">
+       <smart-content
+        url="data.detalle_4"
+        source="data.detalle_4"
+        prepare-callback="prepareData4"
+        config-callback="completeConfig4"
+        ready-callback="chartReady4"
+        titulo="data.detalle_4_nombre"
+        nota="data.detalle_4_nota"
+        fuente="data.detalle_4_fuente"
+        descripcion="data.detalle_4_descripcion"
+        ></smart-content>
+    </div>
 
 
 

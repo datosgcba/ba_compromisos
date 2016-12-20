@@ -209,7 +209,7 @@ angular.module('compromisosSiteApp')
           },
           names: {
             nuevos_metros_peatonalizados: 'Nuevos metros peatonalizados',
-            acumulado: 'Acumuado'
+            acumulado: 'Acumulado'
           },
           colors: {
             'acumulado':$scope.currentCompromise.secondColor,

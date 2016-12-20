@@ -115,7 +115,7 @@ angular.module('compromisosSiteApp')
             top: 0,
             right: 20,
             bottom: 10,
-            left: 80,
+            left: 20,
         },
         axis: {
            x: {

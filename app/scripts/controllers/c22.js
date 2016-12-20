@@ -55,7 +55,7 @@ angular.module('compromisosSiteApp')
           },
           names: {
             meta: 'Meta',
-            acumulado: 'Acumuado'
+            acumulado: 'Acumulado'
           },
           colors: {
             'meta':$scope.currentCompromise.secondColor,
@@ -112,7 +112,7 @@ angular.module('compromisosSiteApp')
           },
           names: {
             meta: 'Meta',
-            acumulado: 'Acumuado'
+            acumulado: 'Acumulado'
           },
           colors: {
             'meta':$scope.currentCompromise.secondColor,
