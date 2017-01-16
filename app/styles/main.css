@@ -669,3 +669,7 @@ span.two-lines{
 g.c3-chart-lines .c3-line {
   stroke-width: 2.5px;
 }
+
+.second-progress{
+    min-width: 60%;
+}

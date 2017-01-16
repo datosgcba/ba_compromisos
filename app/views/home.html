@@ -117,7 +117,7 @@
 				    <span class="progressbar-w" ng-hide="currentCompromise.porcentaje_completado<50">{{currentCompromise.porcentaje_completado}}% </span>
 				  </div>
 				  <div class="progress-w" ng-show="!currentCompromise.porcentaje_completado"><p>-</p> </div>
-				  <div class="progress-w" ng-show="currentCompromise.porcentaje_completado<50" ng-style="{ 'width': (100 - currentCompromise.porcentaje_completado) + '%' }">{{currentCompromise.porcentaje_completado}}% </div>
+				  <div class="progress-w second-progress" ng-show="currentCompromise.porcentaje_completado<50" ng-style="{ 'width': (100 - currentCompromise.porcentaje_completado) + '%' }">{{currentCompromise.porcentaje_completado}}% </div>
 				</div>
 				<p>Cumplimiento: <span class="f-color-{{currentCompromise.slug}}">{{currentCompromise.cumplimiento_label}}</span></p>
 				<div  class="col-md-4 center-block">
