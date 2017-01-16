@@ -759,7 +759,13 @@ angular.module('compromisosSiteApp')
                 })
                 .each(function(d){
                   var iconG = this;
-                  LoadSVGService.loadIcon(d.numero,function(iconLoaded){
+                  var p = parseInt(d.porcentaje_completado);
+                  var nombreIcono= d.numero;
+                  if (p === 100)
+                  {
+                    nombreIcono = "cumplido";
+                  }
+                  LoadSVGService.loadIcon(nombreIcono,function(iconLoaded){
                     $(iconLoaded)
                         .attr('width', 50)
                         .attr('height', 50)
