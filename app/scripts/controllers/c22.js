@@ -68,7 +68,7 @@ angular.module('compromisosSiteApp')
             top: 0,
             right: 10,
             bottom: 10,
-            left: 10,
+            left: 30,
         },
         axis: {
            x: {
@@ -126,7 +126,7 @@ angular.module('compromisosSiteApp')
             top: 0,
             right: 10,
             bottom: 10,
-            left: 10,
+            left: 30,
         },
         axis: {
            x: {
