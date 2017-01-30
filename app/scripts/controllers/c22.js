@@ -66,14 +66,20 @@ angular.module('compromisosSiteApp')
         },
         padding: {
             top: 0,
-            right: 20,
+            right: 10,
             bottom: 10,
-            left: 80,
+            left: 10,
         },
         axis: {
            x: {
               type: 'categories',
-              show:true
+              show:true,
+              tick: {
+                rotate: 90,
+                multiline: false
+                  //format: function (d) { return "$" + d; }
+                  //format: $rootScope.d3Locale_ES.timeFormat("%b-%y")
+              }
           },
           y: {
               show:true,
@@ -120,12 +126,18 @@ angular.module('compromisosSiteApp')
             top: 0,
             right: 10,
             bottom: 10,
-            left: 60,
+            left: 10,
         },
         axis: {
            x: {
               type: 'categories',
-              show:true
+              show:true,
+              tick: {
+                rotate: 90,
+                multiline: false
+                  //format: function (d) { return "$" + d; }
+                  //format: $rootScope.d3Locale_ES.timeFormat("%b-%y")
+              }
           },
           y: {
               show:true,
