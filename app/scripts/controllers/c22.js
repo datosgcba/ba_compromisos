@@ -72,13 +72,8 @@ angular.module('compromisosSiteApp')
         },
         axis: {
            x: {
-              type: 'timeseries',
-              show:true,
-              tick: {
-                  fit: true,
-                  format: $rootScope.d3Locale_ES.timeFormat("%b-%y"),
-                  count:5
-              }
+              type: 'categories',
+              show:true
           },
           y: {
               show:true,
@@ -123,19 +118,14 @@ angular.module('compromisosSiteApp')
         },
         padding: {
             top: 0,
-            right: 20,
+            right: 10,
             bottom: 10,
-            left: 80,
+            left: 60,
         },
         axis: {
            x: {
-              type: 'timeseries',
-              show:true,
-              tick: {
-                  fit: true,
-                  format: $rootScope.d3Locale_ES.timeFormat("%b-%y"),
-                  count:5
-              }
+              type: 'categories',
+              show:true
           },
           y: {
               show:true,
