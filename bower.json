@@ -2,10 +2,10 @@
   "name": "compromisos-site",
   "version": "0.0.0",
   "dependencies": {
-    "angular": "^1.4.0",
+    "angular": "1.5.7",
     "bootstrap": "^3.2.0",
-    "angular-route": "^1.4.0",
-    "angular-sanitize": "^1.4.0",
+    "angular-route": "1.5.7",
+    "angular-sanitize": "1.5.7",
     "BAstrap": "https://github.com/gcba/BAstrap.git#b97e3c7d2d56c12c53864240514f8e87099a7c42",
     "pym.js": "^0.4.5",
     "c3": "^0.4.11",
