@@ -53,7 +53,8 @@ html {
 }
 
 #compromiso-interna .compromiso-icon svg {
-
+  max-width: 60px;
+  max-height: 60px;
 }
 
 #compromiso-interna h4{

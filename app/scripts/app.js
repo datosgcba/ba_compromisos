@@ -65,6 +65,21 @@ angular
       .when('/c33', {templateUrl: 'views/c33.html',controller: 'Compromiso33Ctrl',controllerAs: 'c33'})
       .when('/c34', {templateUrl: 'views/c34.html',controller: 'Compromiso34Ctrl',controllerAs: 'c34'})
       .when('/c35', {templateUrl: 'views/c35.html',controller: 'Compromiso35Ctrl',controllerAs: 'c35'})
+      .when('/c36', {templateUrl: 'views/c36.html',controller: 'Compromiso36Ctrl',controllerAs: 'c36'})
+      .when('/c37', {templateUrl: 'views/c37.html',controller: 'Compromiso37Ctrl',controllerAs: 'c37'})
+      .when('/c38', {templateUrl: 'views/c38.html',controller: 'Compromiso38Ctrl',controllerAs: 'c38'})
+      .when('/c39', {templateUrl: 'views/c39.html',controller: 'Compromiso39Ctrl',controllerAs: 'c39'})
+      .when('/c40', {templateUrl: 'views/c40.html',controller: 'Compromiso40Ctrl',controllerAs: 'c40'})
+      .when('/c41', {templateUrl: 'views/c41.html',controller: 'Compromiso41Ctrl',controllerAs: 'c41'})
+      .when('/c42', {templateUrl: 'views/c42.html',controller: 'Compromiso42Ctrl',controllerAs: 'c42'})
+      .when('/c43', {templateUrl: 'views/c43.html',controller: 'Compromiso43Ctrl',controllerAs: 'c43'})
+      .when('/c44', {templateUrl: 'views/c44.html',controller: 'Compromiso44Ctrl',controllerAs: 'c44'})
+      .when('/c45', {templateUrl: 'views/c45.html',controller: 'Compromiso45Ctrl',controllerAs: 'c45'})
+      .when('/c46', {templateUrl: 'views/c46.html',controller: 'Compromiso46Ctrl',controllerAs: 'c46'})
+      .when('/c47', {templateUrl: 'views/c47.html',controller: 'Compromiso47Ctrl',controllerAs: 'c47'})
+      .when('/c48', {templateUrl: 'views/c48.html',controller: 'Compromiso48Ctrl',controllerAs: 'c48'})
+      .when('/c49', {templateUrl: 'views/c49.html',controller: 'Compromiso49Ctrl',controllerAs: 'c49'})
+      .when('/c50', {templateUrl: 'views/c50.html',controller: 'Compromiso50Ctrl',controllerAs: 'c50'})
       .otherwise({
         redirectTo: '/'
       });
