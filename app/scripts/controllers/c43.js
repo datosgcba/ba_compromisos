@@ -8,14 +8,12 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('Compromiso43Ctrl', function (UrlService, $scope, $http,SlugColorService,LoadSVGService,$sce,$compile,$templateRequest) {
+  .controller('Compromiso43Ctrl', function (UrlService,$rootScope, $scope, $http,SlugColorService,LoadSVGService) {
 
   	var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({ polling: 1000 });
     pymChild.sendHeight();
     var _ = window._;
-
-    var chart3;
 
     //para ir a otra url en el padre
     //pymChild.navigateParentTo('https://github.com/nprapps/pym.js');
@@ -36,26 +34,37 @@ angular.module('compromisosSiteApp')
             .get(0);*/
         $('.icon-svg-container').html(iconLoaded.cloneNode(true));
       });
+      //console.log($scope.currentCompromise);;
     });
 
-     $scope.prepareData1 = function(data){
+    $scope.prepareData = function(data){
+      _.each(data,function(d){
+        d.mes_date = d.mes+'-01';
+      });
       return data;
     };
 
-    $scope.completeConfig1 = function(config){
+    $scope.completeConfig = function(config){
+
       return angular.merge(config,{
         data:{
-          xFormat: '%d-%m-%Y',
-          keys: {
-              value: ['avance'],
-              x: 'obra'
+          types: {
+            meta: 'area',
+            avance : 'line'
           },
-          names:{
-            'avance': 'Avance'
+          keys: {
+              value: ['meta', 'avance'],
+              x: 'mes_date'
+          },
+          names: {
+            avance: 'Estaciones de Ecobici',
+            meta: 'Meta'
           },
           colors: {
-              'avance': $scope.currentCompromise.color,
-            }
+                //'meta':$scope.currentCompromise.secondColor,
+                'meta':'#ccc',
+                'avance': $scope.currentCompromise.color
+          }
         },
         size: {
             height: 300,
@@ -68,22 +77,17 @@ angular.module('compromisosSiteApp')
         },
         axis: {
           x: {
-            type: 'timeseries',
-            tick: {
-                  format: '%m-%Y'
-            },
-            show:true
-          },
-           y: {
+              type: 'timeseries',
               show:true,
-              min: 0,
-              max:100,
-              padding: 5,
-              tick:{
-                format:function(y){
-                  return y+'%';
-                },
+              tick: {
+                  fit: true,
+                  format: $rootScope.d3Locale_ES.timeFormat("%b-%y"),
+                  count:6
               }
+          },
+          y: {
+            show:true,
+            min: -1,
           }
         },
         legend: {
@@ -92,7 +96,7 @@ angular.module('compromisosSiteApp')
       });
     };
 
-    $scope.chartReady1 = function(chart){
+    $scope.chartReady = function(chart){
 
     };
 
@@ -100,25 +104,33 @@ angular.module('compromisosSiteApp')
     //detalle 2
     var data2 = {};
     $scope.prepareData2 = function(data){
-      data2 = data;
+      _.each(data,function(d){
+        d.mes_date = d.mes+'-01';
+      });
       return data;
     };
 
     $scope.completeConfig2 = function(config){
+
       return angular.merge(config,{
         data:{
-          type: 'bar',
+          types: {
+            meta: 'area',
+            avance : 'line'
+          },
           keys: {
-              value: ['contravenciones','delitos'],
-              x:'comuna'
+              value: ['meta', 'avance'],
+              x: 'mes_date'
           },
           names: {
-            contravenciones: 'Contravenciones',
-            delitos: 'Delitos'
+            avance: 'Ciclovías',
+            meta: 'Meta'
           },
-          colors:
-          {'contravenciones':$scope.currentCompromise.color,
-          'delitos': $scope.currentCompromise.secondColor}
+          colors: {
+                //'meta':$scope.currentCompromise.secondColor,
+                'meta':'#ccc',
+                'avance': $scope.currentCompromise.color
+          }
         },
         size: {
             height: 300,
@@ -127,16 +139,21 @@ angular.module('compromisosSiteApp')
             top: 0,
             right: 20,
             bottom: 10,
-            left: 20,
+            left: 40,
         },
         axis: {
-          rotated:true,
           x: {
-              type: 'category',
-              show:true
+              type: 'timeseries',
+              show:true,
+              tick: {
+                  fit: true,
+                  format: $rootScope.d3Locale_ES.timeFormat("%b-%y"),
+                  count:6
+              }
           },
           y: {
-              show:true
+            show:true,
+            min: -1,
           }
         },
         legend: {

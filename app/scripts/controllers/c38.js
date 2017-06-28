@@ -8,7 +8,7 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('Compromiso38Ctrl', function (UrlService, $scope, $http,SlugColorService,LoadSVGService,$sce,$compile,$templateRequest) {
+  .controller('Compromiso38Ctrl', function (UrlService,$rootScope, $scope, $http,SlugColorService,LoadSVGService,$sce,$compile,$templateRequest) {
 
   	var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({ polling: 1000 });
@@ -38,24 +38,34 @@ angular.module('compromisosSiteApp')
       });
     });
 
-     $scope.prepareData1 = function(data){
+    $scope.prepareData = function(data){
+      _.each(data,function(d){
+        d.mes_date = d.mes+'-01';
+      });
       return data;
     };
 
-    $scope.completeConfig1 = function(config){
+    $scope.completeConfig = function(config){
+
       return angular.merge(config,{
         data:{
-          xFormat: '%d-%m-%Y',
-          keys: {
-              value: ['avance'],
-              x: 'obra'
+          types: {
+            meta: 'area',
+            avance : 'line'
           },
-          names:{
-            'avance': 'Avance'
+          keys: {
+              value: ['meta', 'avance'],
+              x: 'mes_date'
+          },
+          names: {
+            avance: 'Obra Hidráulica',
+            meta: 'Meta'
           },
           colors: {
-              'avance': $scope.currentCompromise.color,
-            }
+                //'meta':$scope.currentCompromise.secondColor,
+                'meta':'#ccc',
+                'avance': $scope.currentCompromise.color
+          }
         },
         size: {
             height: 300,
@@ -68,75 +78,17 @@ angular.module('compromisosSiteApp')
         },
         axis: {
           x: {
-            type: 'timeseries',
-            tick: {
-                  format: '%m-%Y'
-            },
-            show:true
-          },
-           y: {
+              type: 'timeseries',
               show:true,
-              min: 0,
-              max:100,
-              padding: 5,
-              tick:{
-                format:function(y){
-                  return y+'%';
-                },
+              tick: {
+                  fit: true,
+                  format: $rootScope.d3Locale_ES.timeFormat("%b-%y"),
+                  count:6
               }
-          }
-        },
-        legend: {
-            show: true
-        }
-      });
-    };
-
-    $scope.chartReady1 = function(chart){
-
-    };
-
-
-    //detalle 2
-    var data2 = {};
-    $scope.prepareData2 = function(data){
-      data2 = data;
-      return data;
-    };
-
-    $scope.completeConfig2 = function(config){
-      return angular.merge(config,{
-        data:{
-          type: 'bar',
-          keys: {
-              value: ['contravenciones','delitos'],
-              x:'comuna'
-          },
-          names: {
-            contravenciones: 'Contravenciones',
-            delitos: 'Delitos'
-          },
-          colors:
-          {'contravenciones':$scope.currentCompromise.color,
-          'delitos': $scope.currentCompromise.secondColor}
-        },
-        size: {
-            height: 300,
-        },
-        padding: {
-            top: 0,
-            right: 20,
-            bottom: 10,
-            left: 20,
-        },
-        axis: {
-          rotated:true,
-          x: {
-              type: 'category',
-              show:true
           },
           y: {
-              show:true
+            show:true,
+            min: -1,
           }
         },
         legend: {
@@ -145,9 +97,10 @@ angular.module('compromisosSiteApp')
       });
     };
 
-    $scope.chartReady2 = function(chart,id){
+    $scope.chartReady = function(chart){
 
     };
+
 
     var id;
     $(window).resize(function() {
