@@ -144,7 +144,7 @@ angular.module('compromisosSiteApp')
         d.anio = parseInt(d.anio);
       });
       $scope.data3 = data;
-      $scope.selectedYear = 2015;
+      $scope.selectedYear = 2017;
       $scope.selectOptions = _.map(_.groupBy(data, 'anio'),function(v,k){return parseInt(k); });
       return $scope.getFilteredData();
     };
