@@ -39,9 +39,7 @@ angular.module('compromisosSiteApp')
     });
 
     $scope.prepareData = function(data){
-      _.each(data,function(d){
-        d.mes_date = d.mes+'-01';
-      });
+      console.log(data);
       return data;
     };
 
@@ -55,7 +53,7 @@ angular.module('compromisosSiteApp')
           },
           keys: {
               value: ['meta', 'avance'],
-              x: 'mes_date'
+              x: 'trimestre'
           },
           names: {
             avance: 'Obra Hidráulica',
@@ -78,13 +76,9 @@ angular.module('compromisosSiteApp')
         },
         axis: {
           x: {
-              type: 'timeseries',
+              type: 'category',
               show:true,
-              tick: {
-                  fit: true,
-                  format: $rootScope.d3Locale_ES.timeFormat("%b-%y"),
-                  count:6
-              }
+
           },
           y: {
             show:true,
