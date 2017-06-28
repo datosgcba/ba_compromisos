@@ -8,7 +8,7 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('Compromiso37Ctrl', function(UrlService, $rootScope, $scope, $http, SlugColorService, LoadSVGService) {
+  .controller('Compromiso37Ctrl', function(UrlService, $rootScope, $scope, $http, SlugColorService, LoadSVGService, $sce,$templateRequest,$compile) {
 
     var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({
@@ -146,17 +146,17 @@ angular.module('compromisosSiteApp')
             .attr('fill', 'transparent')
             .on("mouseover", function() {})
             .on("mouseout", function() {})
-            // .on("click", function(d){
-            //     $scope.selectedIcon = chart1Data[d.ix];
-            //     d3.selectAll('.vertical-bar-g').classed('categoria-unselected',true).classed('categoria-selected',false);
-            //     d3.selectAll('.vertical-bar-g#vertical-bar-g-'+d.ix).classed('categoria-unselected',false).classed('categoria-selected',true);
-            //     var templateUrl = $sce.getTrustedResourceUrl('views/includes/cimDetail.html');
-            //     $templateRequest(templateUrl).then(function(template) {
-            //         $compile($('#vertical-bar-detail').html(template).contents())($scope);
-            //     }, function() {
-            //         // An error has occurred
-            //     });
-            // });
+            .on("click", function(d){
+                $scope.selectedIcon = chart1Data[d.ix];
+                d3.selectAll('.vertical-bar-g').classed('categoria-unselected',true).classed('categoria-selected',false);
+                d3.selectAll('.vertical-bar-g#vertical-bar-g-'+d.ix).classed('categoria-unselected',false).classed('categoria-selected',true);
+                var templateUrl = $sce.getTrustedResourceUrl('views/includes/cimDetail2.html');
+                $templateRequest(templateUrl).then(function(template) {
+                    $compile($('#vertical-bar-detail').html(template).contents())($scope);
+                }, function() {
+                    // An error has occurred
+                });
+            });
 
         });
 

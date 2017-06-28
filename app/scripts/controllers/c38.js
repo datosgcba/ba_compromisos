@@ -88,7 +88,7 @@ angular.module('compromisosSiteApp')
           },
           y: {
             show:true,
-            min: -1,
+            min: 0,
           }
         },
         legend: {
