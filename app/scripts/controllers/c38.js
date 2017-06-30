@@ -39,7 +39,6 @@ angular.module('compromisosSiteApp')
     });
 
     $scope.prepareData = function(data){
-      console.log(data);
       return data;
     };
 
