@@ -38,9 +38,6 @@ angular.module('compromisosSiteApp')
     });
 
     $scope.prepareData = function(data){
-      _.each(data,function(d){
-        d.mes_date = d.mes+'-01';
-      });
       return data;
     };
 
@@ -54,7 +51,7 @@ angular.module('compromisosSiteApp')
           },
           keys: {
               value: ['meta', 'avance'],
-              x: 'mes_date'
+                 x: 'trimestre'
           },
           names: {
             avance: 'Estaciones de Ecobici',
@@ -77,13 +74,8 @@ angular.module('compromisosSiteApp')
         },
         axis: {
           x: {
-              type: 'timeseries',
-              show:true,
-              tick: {
-                  fit: true,
-                  format: $rootScope.d3Locale_ES.timeFormat("%b-%y"),
-                  count:6
-              }
+              type: 'category',
+              show:true
           },
           y: {
             show:true,
@@ -104,9 +96,6 @@ angular.module('compromisosSiteApp')
     //detalle 2
     var data2 = {};
     $scope.prepareData2 = function(data){
-      _.each(data,function(d){
-        d.mes_date = d.mes+'-01';
-      });
       return data;
     };
 
@@ -120,7 +109,7 @@ angular.module('compromisosSiteApp')
           },
           keys: {
               value: ['meta', 'avance'],
-              x: 'mes_date'
+              x: 'trimestre'
           },
           names: {
             avance: 'Ciclovías',
@@ -142,14 +131,9 @@ angular.module('compromisosSiteApp')
             left: 40,
         },
         axis: {
-          x: {
-              type: 'timeseries',
-              show:true,
-              tick: {
-                  fit: true,
-                  format: $rootScope.d3Locale_ES.timeFormat("%b-%y"),
-                  count:6
-              }
+         x: {
+              type: 'category',
+              show:true
           },
           y: {
             show:true,

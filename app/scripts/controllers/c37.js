@@ -250,7 +250,7 @@ angular.module('compromisosSiteApp')
           },
           y: {
             show: true,
-            min: -1,
+            max: 20
           }
         },
         legend: {
