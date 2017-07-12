@@ -8,17 +8,12 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('Compromiso41Ctrl', function (UrlService, $scope, $http,SlugColorService,LoadSVGService,$sce,$compile,$templateRequest) {
+  .controller('Compromiso41Ctrl', function (UrlService, $scope,$rootScope, $http,SlugColorService,LoadSVGService,$sce,$compile,$templateRequest) {
 
-  	var url = UrlService.getUrlByPage('home');
+    var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({ polling: 1000 });
     pymChild.sendHeight();
     var _ = window._;
-
-    var chart3;
-
-    //para ir a otra url en el padre
-    //pymChild.navigateParentTo('https://github.com/nprapps/pym.js');
 
     $scope.loading = true;
 
@@ -30,31 +25,30 @@ angular.module('compromisosSiteApp')
       $scope.currentCompromise.secondColor = '#bdbec2';
       $scope.loading = false;
       LoadSVGService.loadIcon($scope.currentCompromise.numero,function(iconLoaded){
-        /*$(iconLoaded)
-            .attr('width', 50)
-            .attr('height', 50)
-            .get(0);*/
         $('.icon-svg-container').html(iconLoaded.cloneNode(true));
       });
     });
 
      $scope.prepareData1 = function(data){
+      data.map(function(d){
+        d.mes += '-01';
+        d.porcentaje_avance = (d.porcentaje_avance)?parseInt(d.porcentaje_avance):0;
+      });
       return data;
     };
 
     $scope.completeConfig1 = function(config){
       return angular.merge(config,{
         data:{
-          xFormat: '%d-%m-%Y',
           keys: {
               value: ['avance'],
-              x: 'obra'
+              x: 'mes'
           },
           names:{
-            'avance': 'Avance'
+            'avance':'Avance'
           },
           colors: {
-              'avance': $scope.currentCompromise.color,
+            'avance': $scope.currentCompromise.color
             }
         },
         size: {
@@ -62,22 +56,23 @@ angular.module('compromisosSiteApp')
         },
         padding: {
             top: 0,
-            right: 20,
+            right: 40,
             bottom: 10,
             left: 40,
         },
         axis: {
           x: {
-            type: 'timeseries',
-            tick: {
-                  format: '%m-%Y'
-            },
-            show:true
+              type:'timeseries',
+              show:true,
+              tick: {
+                  fit: true,
+                  format: $rootScope.d3Locale_ES.timeFormat("%b-%y"),
+                  count:4
+              }
           },
-           y: {
+          y: {
               show:true,
               min: 0,
-              max:100,
               padding: 5,
               tick:{
                 format:function(y){
@@ -92,7 +87,7 @@ angular.module('compromisosSiteApp')
       });
     };
 
-    $scope.chartReady1 = function(chart){
+    $scope.chartReady1 = function(){
 
     };
 
