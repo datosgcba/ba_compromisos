@@ -38,24 +38,27 @@ angular.module('compromisosSiteApp')
       });
     });
 
-     $scope.prepareData1 = function(data){
+    $scope.prepareData = function(data){
       return data;
     };
 
-    $scope.completeConfig1 = function(config){
+    $scope.completeConfig = function(config){
+
       return angular.merge(config,{
         data:{
-          xFormat: '%d-%m-%Y',
-          keys: {
-              value: ['avance'],
-              x: 'obra'
+          types: {
+            personas : 'line'
           },
-          names:{
-            'avance': 'Avance'
+          keys: {
+              value: [ 'personas'],
+              x: 'trimestre'
+          },
+          names: {
+            personas: 'Personas'
           },
           colors: {
-              'avance': $scope.currentCompromise.color,
-            }
+                'personas': $scope.currentCompromise.color
+          }
         },
         size: {
             height: 300,
@@ -68,22 +71,13 @@ angular.module('compromisosSiteApp')
         },
         axis: {
           x: {
-            type: 'timeseries',
-            tick: {
-                  format: '%m-%Y'
-            },
-            show:true
-          },
-           y: {
+              type: 'category',
               show:true,
-              min: 0,
-              max:100,
-              padding: 5,
-              tick:{
-                format:function(y){
-                  return y+'%';
-                },
-              }
+
+          },
+          y: {
+            show:true,
+            max:199
           }
         },
         legend: {
@@ -92,33 +86,33 @@ angular.module('compromisosSiteApp')
       });
     };
 
-    $scope.chartReady1 = function(chart){
+    $scope.chartReady = function(chart){
 
     };
 
 
-    //detalle 2
-    var data2 = {};
-    $scope.prepareData2 = function(data){
-      data2 = data;
+    $scope.prepareData3 = function(data){
       return data;
     };
 
-    $scope.completeConfig2 = function(config){
+    $scope.completeConfig3 = function(config){
+
       return angular.merge(config,{
         data:{
-          type: 'bar',
+          types: {
+            avance : 'line'
+          },
           keys: {
-              value: ['contravenciones','delitos'],
-              x:'comuna'
+              value: ['avance'],
+              x: 'trimestre'
           },
           names: {
-            contravenciones: 'Contravenciones',
-            delitos: 'Delitos'
+            avance: 'Avance'
           },
-          colors:
-          {'contravenciones':$scope.currentCompromise.color,
-          'delitos': $scope.currentCompromise.secondColor}
+          colors: {
+
+                'avance': $scope.currentCompromise.color
+          }
         },
         size: {
             height: 300,
@@ -127,16 +121,17 @@ angular.module('compromisosSiteApp')
             top: 0,
             right: 20,
             bottom: 10,
-            left: 20,
+            left: 40,
         },
         axis: {
-          rotated:true,
           x: {
               type: 'category',
-              show:true
+              show:true,
+
           },
           y: {
-              show:true
+            show:true,
+            max:199
           }
         },
         legend: {
@@ -145,7 +140,7 @@ angular.module('compromisosSiteApp')
       });
     };
 
-    $scope.chartReady2 = function(chart,id){
+    $scope.chartReady3 = function(chart){
 
     };
 

@@ -38,24 +38,27 @@ angular.module('compromisosSiteApp')
       });
     });
 
-     $scope.prepareData1 = function(data){
+    $scope.prepareData = function(data){
       return data;
     };
 
-    $scope.completeConfig1 = function(config){
+    $scope.completeConfig = function(config){
+
       return angular.merge(config,{
         data:{
-          xFormat: '%d-%m-%Y',
-          keys: {
-              value: ['avance'],
-              x: 'obra'
+          types: {
+            avance : 'line'
           },
-          names:{
-            'avance': 'Avance'
+          keys: {
+              value: [ 'avance'],
+              x: 'trimestre'
+          },
+          names: {
+            avance: 'Avance'
           },
           colors: {
-              'avance': $scope.currentCompromise.color,
-            }
+                'avance': $scope.currentCompromise.color
+          }
         },
         size: {
             height: 300,
@@ -68,75 +71,13 @@ angular.module('compromisosSiteApp')
         },
         axis: {
           x: {
-            type: 'timeseries',
-            tick: {
-                  format: '%m-%Y'
-            },
-            show:true
-          },
-           y: {
-              show:true,
-              min: 0,
-              max:100,
-              padding: 5,
-              tick:{
-                format:function(y){
-                  return y+'%';
-                },
-              }
-          }
-        },
-        legend: {
-            show: true
-        }
-      });
-    };
-
-    $scope.chartReady1 = function(chart){
-
-    };
-
-
-    //detalle 2
-    var data2 = {};
-    $scope.prepareData2 = function(data){
-      data2 = data;
-      return data;
-    };
-
-    $scope.completeConfig2 = function(config){
-      return angular.merge(config,{
-        data:{
-          type: 'bar',
-          keys: {
-              value: ['contravenciones','delitos'],
-              x:'comuna'
-          },
-          names: {
-            contravenciones: 'Contravenciones',
-            delitos: 'Delitos'
-          },
-          colors:
-          {'contravenciones':$scope.currentCompromise.color,
-          'delitos': $scope.currentCompromise.secondColor}
-        },
-        size: {
-            height: 300,
-        },
-        padding: {
-            top: 0,
-            right: 20,
-            bottom: 10,
-            left: 20,
-        },
-        axis: {
-          rotated:true,
-          x: {
               type: 'category',
-              show:true
+              show:true,
+
           },
           y: {
-              show:true
+            show:true,
+            max:99
           }
         },
         legend: {
@@ -145,10 +86,9 @@ angular.module('compromisosSiteApp')
       });
     };
 
-    $scope.chartReady2 = function(chart,id){
+    $scope.chartReady = function(chart){
 
     };
-
     var id;
     $(window).resize(function() {
         clearTimeout(id);

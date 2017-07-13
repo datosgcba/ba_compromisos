@@ -5,18 +5,20 @@
   <div ng-include="'views/includes/detail.html'" ng-cloak ng-show="currentCompromise"></div>
 
   <div class="row">
+
     <div ng-if="data.detalle_1" class="col-md-6 text-center">
-       <smart-content
-        url="data.detalle_1"
-        source="data.detalle_1"
-        titulo="data.detalle_1_nombre"
-        nota="data.detalle_1_nota"
-        fuente="data.detalle_1_fuente"
-        simple-load-callback="dataLoaded"
-        template="'views/directives/customChart.html'"
-        descripcion="data.detalle_1_descripcion"
-        ></smart-content>
+        <smart-content
+         url="data.detalle_1"
+         source="data.detalle_1"
+         titulo="data.detalle_1_nombre"
+         nota="data.detalle_1_nota"
+         fuente="data.detalle_1_fuente"
+         simple-load-callback="dataLoaded"
+         template="'views/directives/customChart.html'"
+         descripcion="data.detalle_1_descripcion"
+         ></smart-content>
     </div>
+
   </div>
   <div class="row">
     <div ng-if="data.detalle_3" class="col-md-6 text-center">
