@@ -37,6 +37,55 @@ angular.module('compromisosSiteApp')
         $('.icon-svg-container').html(iconLoaded.cloneNode(true));
       });
     });
+
+
+        $scope.prepareData = function(data){
+          return data;
+        };
+
+        $scope.completeConfig = function(config){
+          return angular.merge(config,{
+            data:{
+              types: {
+                pasajeros: 'line'
+              },
+              names: {
+                pasajeros: 'Pasajeros'
+              },
+              keys: {
+                  value: ['pasajeros'],
+                  x: 'anio'
+              },
+              colors: {
+                    'pasajeros': $scope.currentCompromise.color}
+            },
+            size: {
+                  height: 350,
+            },
+            padding: {
+                top: 0,
+                right: 0,
+                bottom: 10,
+                left: 70,
+            },
+            axis: {
+              x: {
+                  type: 'category',
+                  show:true
+              },
+              y: {
+                show:true
+              }
+            },
+            legend: {
+                show: true
+            }
+          });
+        };
+
+        $scope.chartReady = function(chart){
+
+        };
     //detalle 3
     $scope.prepareData3 = function(data) {
       _.each(data, function(d) {
