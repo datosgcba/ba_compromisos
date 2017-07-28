@@ -49,7 +49,8 @@ angular.module('compromisosSiteApp')
             'entregadas':'Avance'
           },
           colors: {
-            'meta': $scope.currentCompromise.color
+            'entregadas': $scope.currentCompromise.color,
+            'meta': '#ccc'
             }
         },
         size: {

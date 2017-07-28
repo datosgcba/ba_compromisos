@@ -122,7 +122,7 @@ angular.module('compromisosSiteApp')
           colors:
             {
               'avance': $scope.currentCompromise.color,
-              'restante': $scope.currentCompromise.grayColor
+              'restante': d3.rgb($scope.currentCompromise.color).darker().toString()
             }
         },
         size: {
@@ -204,7 +204,7 @@ angular.module('compromisosSiteApp')
           colors:
             {
               'avance': $scope.currentCompromise.color,
-              'restante': $scope.currentCompromise.grayColor
+              'restante': d3.rgb($scope.currentCompromise.color).darker().toString()
             }
         },
         size: {
