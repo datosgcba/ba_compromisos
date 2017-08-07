@@ -44,6 +44,10 @@ angular.module('compromisosSiteApp')
               value: ['meta','entregadas'],
               x: 'mes'
           },
+          types: {
+            meta: 'area',
+            entregadas : 'line'
+          },
           names:{
             'meta':'Meta',
             'entregadas':'Avance'
