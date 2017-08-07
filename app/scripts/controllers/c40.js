@@ -85,7 +85,37 @@ angular.module('compromisosSiteApp')
 
     $scope.chartReady = function(chart){
     };
+    //detalle 2
+    $scope.dataLoaded2 = function(id,data){
 
+      $scope.bubbleId = id;
+      $scope.bubbleConfig = {
+        color: $scope.currentCompromise.color
+      };
+
+      var total = d3.sum(data,function(d){return parseInt(d.hectareas)});
+
+      $scope.bubbleData = {
+                    name:"total",
+                    children:[]
+                  };
+
+
+      _.each(data,function(d){
+        $scope.bubbleData.children.push({
+          name: d.tipo,
+          data: Math.round((parseInt(d.hectareas)*100)/total) + '%',
+          value: parseInt(d.hectareas),
+          children : []
+        });
+      });
+
+      var templateUrl = $sce.getTrustedResourceUrl('views/includes/bubble.html');
+      $templateRequest(templateUrl).then(function(template) {
+          $compile($('#'+id).html(template).contents())($scope);
+      });
+
+    };
     //detalle 4
     var data4;
     $scope.prepareData4 = function(data){
