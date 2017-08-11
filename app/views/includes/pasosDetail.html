@@ -1,4 +1,4 @@
-<div class="escuela-detail">
+<div id="detailDiv" class="escuela-detail">
 	<div class="row">
 	  <div class="col-md-3">
 		<p><strong><span class="label-header">Nombre: </span></strong></p>
@@ -16,4 +16,15 @@
 		<p>{{selectedIcon.descripcion || "-"}}</p>
 	</div>
 	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<input id="close" class="closeButton" type="button" value="cerrar" onclick="closeBar();" />
+		</div>
+	</div>
 </div>
+
+<script type="text/javascript">
+  var closeBar  = function() {
+    var div = document.getElementById("detailDiv").remove();
+  }
+</script>

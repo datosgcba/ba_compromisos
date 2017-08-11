@@ -1,4 +1,4 @@
-<div class="escuela-detail">
+<div id="detailDiv" class="escuela-detail">
 
 <p><strong><span class="label-header">Polideportivo o Parque: </span></strong></p>
   <p>{{selectedIcon.polideportivos_y_parques|| "-"}}</p>
@@ -8,4 +8,15 @@
   <p>{{selectedIcon.comuna|| "-"}}</p>
 	<p><strong><span class="label-header">Avance: </span></strong></p>
 	<p>{{selectedIcon.avance|| "-"}}</p>
+  <div class="row">
+    <div class="col-xs-12">
+      <input id="close" class="closeButton" type="button" value="cerrar" onclick="closeBar();" />
+    </div>
+  </div>
 </div>
+
+<script type="text/javascript">
+  var closeBar  = function() {
+    var div = document.getElementById("detailDiv").remove();
+  }
+</script>
