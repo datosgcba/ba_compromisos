@@ -1,32 +1,34 @@
-<div class="escuela-detail">
+<div id="detailDiv" class="escuela-detail">
   <div class="row">
     <div class="col-md-12">
-      <p><strong><span class="label-header">Centro: </span></strong></p>
+      <p><strong><span class="label-header">Centros: </span></strong></p>
       <p>{{selectedIcon.centros|| "-"}}</p>
-      <p><strong><span class="label-header">Comuna: </span></strong></p>
-      <p>{{selectedIcon.comuna|| "-"}}</p>
+      <p><strong><span class="label-header">Meta: </span></strong></p>
+      <p>{{selectedIcon.meta|| "-"}}</p>
+
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
-      <p><strong><span class="label-header">Direccion: </span></strong></p>
-      <p>{{selectedIcon.direccion|| "-"}}</p>
+      <p><strong><span class="label-header">Avance: </span></strong></p>
+      <p>{{selectedIcon.avance|| "-"}}</p>
+      <p><strong><span class="label-header">Comuna: </span></strong></p>
+      <p>{{selectedIcon.comuna|| "-"}}</p>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-12">
-      <p><strong><span class="label-header">Meta: </span></strong></p>
-      <p>{{selectedIcon.meta|| "-"}}</p>
-      <p><strong><span class="label-header">Avance: </span></strong></p>
-      <p>{{selectedIcon.avance|| "-"}}</p>
+      <p><strong><span class="label-header">Dirección: </span></strong></p>
+      <p>{{selectedIcon.direccion|| "-"}}</p>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <p><strong><span class="label-header">Telefono: </span></strong></p>
-      <p>{{selectedIcon.Telefono|| "-"}}</p>
-      <p><strong><span class="label-header">horario: </span></strong></p>
-      <p>{{selectedIcon.horario|| "-"}}</p>
-    </div>
-  </div>
+  <input id="close" type="button" value="cerrar" onclick="closeBar();" />
+
+</div>
+
+<script type="text/javascript">
+  var closeBar  = function() {
+    var div = document.getElementById("detailDiv").remove();
+  }
+</script>

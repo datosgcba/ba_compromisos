@@ -157,6 +157,10 @@ angular.module('compromisosSiteApp')
 
         });
 
+
+
+
+
       chart1.bars
         .attr('transform', function(d,i){
             return 'translate('+i*barW+',0)';
