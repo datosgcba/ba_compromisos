@@ -1,18 +1,16 @@
-<div id="detailDiv" class="row escuela-detail">
-	<div class="col-md-3">
-		<p><span class="label-header">Nombre: </span>{{selectedPlaza.nombre}}</p>
-		<p><span ng-show="selectedPlaza.superficie" ng-cloak
-			class="label-header">Superficie en m2: </span>{{selectedPlaza.superficie}}</p>
-		<p><span ng-show="selectedPlaza.tipo" ng-cloak
-			class="label-header">Tipo: </span>{{selectedPlaza.tipo}}</p>
-	</div>
-	<div class="col-md-3">
-		<p><span class="label-header">Comuna: </span>{{selectedPlaza.comuna}}</p>
-		<p><span class="label-header">Ubicación: </span>{{selectedPlaza.direccion}}</p>
-	</div>
+<div id="detailDiv" class="escuela-detail">
 	<div class="row">
-		<div class="col-xs-12">
-			<input id="close" class="closeButton" type="button" value="cerrar" onclick="closeBar();" />
+		<input id="close" class="closeButton" type="button" value="X" onclick="closeBar();" />
+		<div class="col-md-3">
+			<p><span class="label-header">Nombre: </span>{{selectedPlaza.nombre}}</p>
+			<p><span ng-show="selectedPlaza.superficie" ng-cloak
+				class="label-header">Superficie en m2: </span>{{selectedPlaza.superficie}}</p>
+			<p><span ng-show="selectedPlaza.tipo" ng-cloak
+				class="label-header">Tipo: </span>{{selectedPlaza.tipo}}</p>
+		</div>
+		<div class="col-md-3">
+			<p><span class="label-header">Comuna: </span>{{selectedPlaza.comuna}}</p>
+			<p><span class="label-header">Ubicación: </span>{{selectedPlaza.direccion}}</p>
 		</div>
 	</div>
 </div>

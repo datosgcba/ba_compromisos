@@ -1,5 +1,6 @@
 <div id="detailDiv" class="escuela-detail">
   <div class="row">
+    <input id="close" class="closeButton" type="button" value="X" onclick="closeBar();" />
     <div class="col-md-12">
       <p><strong><span class="label-header">Centros: </span></strong></p>
       <p>{{selectedIcon.centros|| "-"}}</p>
@@ -23,8 +24,6 @@
       <p>{{selectedIcon.direccion|| "-"}}</p>
     </div>
   </div>
-  <input id="close" class="closeButton" type="button" value="cerrar" onclick="closeBar();" />
-
 </div>
 
 <script type="text/javascript">
