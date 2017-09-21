@@ -10,17 +10,14 @@
 angular.module('compromisosSiteApp')
   .controller('Compromiso40Ctrl', function (UrlService, $scope, $http,SlugColorService,LoadSVGService,$sce,$compile,$templateRequest) {
 
-  	var url = UrlService.getUrlByPage('home');
+    var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({ polling: 1000 });
     pymChild.sendHeight();
     var _ = window._;
 
+    $scope.loading = true;
     var chart3;
 
-    //para ir a otra url en el padre
-    //pymChild.navigateParentTo('https://github.com/nprapps/pym.js');
-
-    $scope.loading = true;
 
     $http.jsonp(url)
     .success(function(data){
@@ -30,32 +27,35 @@ angular.module('compromisosSiteApp')
       $scope.currentCompromise.secondColor = '#bdbec2';
       $scope.loading = false;
       LoadSVGService.loadIcon($scope.currentCompromise.numero,function(iconLoaded){
-        /*$(iconLoaded)
-            .attr('width', 50)
-            .attr('height', 50)
-            .get(0);*/
         $('.icon-svg-container').html(iconLoaded.cloneNode(true));
       });
     });
 
-     $scope.prepareData1 = function(data){
+    $scope.prepareData = function(data){
       return data;
     };
 
-    $scope.completeConfig1 = function(config){
+    $scope.completeConfig = function(config){
+
       return angular.merge(config,{
         data:{
-          xFormat: '%d-%m-%Y',
-          keys: {
-              value: ['avance'],
-              x: 'obra'
+          types: {
+            meta: 'area',
+            avance : 'line'
           },
-          names:{
-            'avance': 'Avance'
+          keys: {
+              value: ['meta', 'avance'],
+              x: 'trimestre'
+          },
+          names: {
+            avance: 'Avance',
+            meta: 'Meta'
           },
           colors: {
-              'avance': $scope.currentCompromise.color,
-            }
+                //'meta':$scope.currentCompromise.secondColor,
+                'meta':'#ccc',
+                'avance': $scope.currentCompromise.color
+          }
         },
         size: {
             height: 300,
@@ -68,22 +68,13 @@ angular.module('compromisosSiteApp')
         },
         axis: {
           x: {
-            type: 'timeseries',
-            tick: {
-                  format: '%m-%Y'
-            },
-            show:true
-          },
-           y: {
+              type: 'category',
               show:true,
-              min: 0,
-              max:100,
-              padding: 5,
-              tick:{
-                format:function(y){
-                  return y+'%';
-                },
-              }
+
+          },
+          y: {
+            show:true,
+            max:110
           }
         },
         legend: {
@@ -92,33 +83,58 @@ angular.module('compromisosSiteApp')
       });
     };
 
-    $scope.chartReady1 = function(chart){
+    $scope.chartReady = function(chart){
+    };
+    //detalle 2
+    $scope.dataLoaded2 = function(id,data){
+
+      $scope.bubbleId = id;
+      $scope.bubbleConfig = {
+        color: $scope.currentCompromise.color
+      };
+
+      var total = d3.sum(data,function(d){return parseInt(d.hectareas)});
+
+      $scope.bubbleData = {
+                    name:"total",
+                    children:[]
+                  };
+
+
+      _.each(data,function(d){
+        $scope.bubbleData.children.push({
+          name: d.tipo,
+          data: Math.round((parseInt(d.hectareas)*100)/total) + '%',
+          value: parseInt(d.hectareas),
+          children : []
+        });
+      });
+
+      var templateUrl = $sce.getTrustedResourceUrl('views/includes/bubble.html');
+      $templateRequest(templateUrl).then(function(template) {
+          $compile($('#'+id).html(template).contents())($scope);
+      });
 
     };
-
-
-    //detalle 2
-    var data2 = {};
-    $scope.prepareData2 = function(data){
-      data2 = data;
+    //detalle 4
+    var data4;
+    $scope.prepareData4 = function(data){
+      data4 = data;
       return data;
     };
 
-    $scope.completeConfig2 = function(config){
+    $scope.completeConfig4 = function(config){
       return angular.merge(config,{
         data:{
           type: 'bar',
           keys: {
-              value: ['contravenciones','delitos'],
-              x:'comuna'
+              value: ['metros_habitante'],
+              x:'ciudad'
           },
           names: {
-            contravenciones: 'Contravenciones',
-            delitos: 'Delitos'
+            metros_habitante: ' m² por Habitante'
           },
-          colors:
-          {'contravenciones':$scope.currentCompromise.color,
-          'delitos': $scope.currentCompromise.secondColor}
+          colors: {'metros_habitante':$scope.currentCompromise.color}
         },
         size: {
             height: 300,
@@ -133,22 +149,39 @@ angular.module('compromisosSiteApp')
           rotated:true,
           x: {
               type: 'category',
-              show:true
+              show:false
           },
           y: {
               show:true
           }
         },
         legend: {
-            show: true
-        }
+            show: false
+        },
+        bar: {
+            width: {
+                ratio: 0.8 // this makes bar width 50% of length between ticks
+            }
+        },
+
       });
     };
 
-    $scope.chartReady2 = function(chart,id){
-
+    $scope.chartReady4 = function(chart,id){
+      var container = d3.select('.c3-texts-metros-habitante');
+      d3.selectAll('#'+id+' .c3-event-rect').each(function(d){
+        var dato = data4[d.index];
+        var bar = d3.select(this);
+        var offset = parseInt(bar.attr('height')/2);
+        container
+          .append('text')
+          .attr('alignment-baseline','middle')
+          .classed('custom-c3-text',true)
+          .attr('x',parseInt(bar.attr('x'))+10)
+          .attr('y',parseInt(bar.attr('y'))+offset)
+          .text(dato.ciudad);
+      });
     };
-
     var id;
     $(window).resize(function() {
         clearTimeout(id);

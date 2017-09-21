@@ -38,24 +38,27 @@ angular.module('compromisosSiteApp')
       });
     });
 
-     $scope.prepareData1 = function(data){
+    $scope.prepareData = function(data){
       return data;
     };
 
-    $scope.completeConfig1 = function(config){
+    $scope.completeConfig = function(config){
+
       return angular.merge(config,{
         data:{
-          xFormat: '%d-%m-%Y',
-          keys: {
-              value: ['avance'],
-              x: 'obra'
+          types: {
+            personas : 'line'
           },
-          names:{
-            'avance': 'Avance'
+          keys: {
+              value: [ 'personas'],
+              x: 'trimestre'
+          },
+          names: {
+            personas: 'Personas'
           },
           colors: {
-              'avance': $scope.currentCompromise.color,
-            }
+                'personas': $scope.currentCompromise.color
+          }
         },
         size: {
             height: 300,
@@ -68,22 +71,13 @@ angular.module('compromisosSiteApp')
         },
         axis: {
           x: {
-            type: 'timeseries',
-            tick: {
-                  format: '%m-%Y'
-            },
-            show:true
-          },
-           y: {
+              type: 'category',
               show:true,
-              min: 0,
-              max:100,
-              padding: 5,
-              tick:{
-                format:function(y){
-                  return y+'%';
-                },
-              }
+
+          },
+          y: {
+            show:true,
+            max:199
           }
         },
         legend: {
@@ -92,33 +86,115 @@ angular.module('compromisosSiteApp')
       });
     };
 
-    $scope.chartReady1 = function(chart){
+    $scope.chartReady = function(chart){
 
     };
 
+    //.-------------------
+    var chart2,chart2Data,chart2Columns;
 
-    //detalle 2
-    var data2 = {};
     $scope.prepareData2 = function(data){
-      data2 = data;
-      return data;
+      $scope.selectedPeriodo = 'progreso';
+      $scope.selectOptions = _.without(_.keys(data[0]),'comuna','punto_verde');
+      $scope.selectOptions = $scope.selectOptions.map(function(l){
+        return {label:l.toUpperCase().replace('_',' '),value:l};
+      });
+      chart2Data = d3.nest()
+            .key(function(d){return d.comuna;})
+            .entries(data);
+
+      return parseData();
     };
+
+    function parseData(){
+      var mes = $scope.selectedPeriodo;
+      var centrosRange = d3.range(0,d3.max(chart2Data,function(d){return d.values.length;}));
+      chart2Columns = centrosRange.map(function(i){
+        return 'c'+(i+1);
+      });
+      var finalData = [];
+      finalData = chart2Data.map(function(e){
+        var obj = {comuna:e.key};
+        angular.forEach(centrosRange,function(i){
+          if(e.values[i]){
+            obj['c'+(i+1)] = (e.values[i][mes])?parseFloat(e.values[i][mes]):0;
+          } else {
+            obj['c'+(i+1)] = 0;
+          }
+        });
+        return obj;
+      });
+      return finalData;
+    }
 
     $scope.completeConfig2 = function(config){
-      return angular.merge(config,{
-        data:{
+      var colors = {};
+      var nextColor = $scope.currentCompromise.color;
+      chart2Columns.forEach(function(e){
+        colors[e] = nextColor;
+        nextColor = d3.rgb(nextColor).darker().toString();
+      });
+      $scope.dataConfig = {
           type: 'bar',
           keys: {
-              value: ['contravenciones','delitos'],
+              value: chart2Columns,
               x:'comuna'
           },
-          names: {
-            contravenciones: 'Contravenciones',
-            delitos: 'Delitos'
-          },
-          colors:
-          {'contravenciones':$scope.currentCompromise.color,
-          'delitos': $scope.currentCompromise.secondColor}
+          colors: colors,
+          groups: [
+              chart2Columns
+          ]
+        };
+      return angular.merge(config,{
+        data: $scope.dataConfig,
+        tooltip: {
+            grouped: true,
+            format: {
+                title: function (d) { return 'Comuna ' + (d+1); },
+                name: function (name, ratio, id, index) {
+                  var values = chart2Data[index].values;
+                  if(values[parseInt(name.replace('c',''))-1]){
+                    return values[parseInt(name.replace('c',''))-1].punto_verde;
+                  }
+                  return '';
+                },
+                value: function (value) {
+                    if(value!==0){
+                      return value;
+                    }
+                    return '';
+                }
+            },
+            contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
+                var $$ = this, config = $$.config,
+                    titleFormat = config.tooltip_format_title || defaultTitleFormat,
+                    nameFormat = config.tooltip_format_name || function (name) { return name; },
+                    valueFormat = config.tooltip_format_value || defaultValueFormat,
+                    text, i, title, value, name, bgcolor;
+                for (i = 0; i < d.length; i++) {
+                    if (! (d[i] && (d[i].value || d[i].value === 0))) { continue; }
+
+                    if (! text) {
+                        title = titleFormat ? titleFormat(d[i].x) : d[i].x;
+                        text = "<table class='" + $$.CLASS.tooltip + "'>" + (title || title === 0 ? "<tr><th colspan='2'>" + title + "</th></tr>" : "");
+                    }
+
+                    name = nameFormat(d[i].name, d[i].ratio, d[i].id, d[i].index);
+                    value = valueFormat(d[i].value, d[i].ratio, d[i].id, d[i].index);
+                    value = (name!=='' && value==='')?0:value;
+                    bgcolor = $$.levelColor ? $$.levelColor(d[i].value) : color(d[i].id);
+                    bgcolor = (name==='')?'white':bgcolor;
+
+                    text += "<tr class='" + $$.CLASS.tooltipName + "-" + d[i].id + "'>";
+                    text += "<td class='name'><span style='background-color:" + bgcolor + "'></span>" + name + "</td>";
+                    text += "<td class='value'>" + value + "</td>";
+                    text += "</tr>";
+                }
+                return text + "</table>";
+            }
+        },
+        point: {
+            show: false
         },
         size: {
             height: 300,
@@ -127,7 +203,7 @@ angular.module('compromisosSiteApp')
             top: 0,
             right: 20,
             bottom: 10,
-            left: 20,
+            left: 50,
         },
         axis: {
           rotated:true,
@@ -136,7 +212,64 @@ angular.module('compromisosSiteApp')
               show:true
           },
           y: {
-              show:true
+              show:true,
+              max:19
+          }
+        },
+        legend: {
+            show: false
+        }
+
+      });
+    };
+
+    $scope.chartReady2 = function(chart,id){
+      chart2 = chart;
+
+    };
+    //.-------------------
+
+    $scope.prepareData3 = function(data){
+      return data;
+    };
+
+    $scope.completeConfig3 = function(config){
+
+      return angular.merge(config,{
+        data:{
+          types: {
+            avance : 'line'
+          },
+          keys: {
+              value: ['avance'],
+              x: 'trimestre'
+          },
+          names: {
+            avance: 'Avance'
+          },
+          colors: {
+
+                'avance': $scope.currentCompromise.color
+          }
+        },
+        size: {
+            height: 300,
+        },
+        padding: {
+            top: 0,
+            right: 20,
+            bottom: 10,
+            left: 40,
+        },
+        axis: {
+          x: {
+              type: 'category',
+              show:true,
+
+          },
+          y: {
+            show:true,
+            max:199
           }
         },
         legend: {
@@ -145,7 +278,7 @@ angular.module('compromisosSiteApp')
       });
     };
 
-    $scope.chartReady2 = function(chart,id){
+    $scope.chartReady3 = function(chart){
 
     };
 

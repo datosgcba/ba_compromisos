@@ -141,6 +141,7 @@ angular.module('compromisosSiteApp')
         d.linea_d = parseInt(d.linea_d);
         d.linea_e = parseInt(d.linea_e);
         d.linea_h = parseInt(d.linea_h);
+        d.premetro = parseInt(d.premetro);
         d.anio = parseInt(d.anio);
       });
       $scope.data3 = data;
@@ -164,7 +165,7 @@ angular.module('compromisosSiteApp')
     $scope.completeConfig3 = function(config){
       $scope.dataConfig = {
         keys: {
-              value: ['linea_a','linea_b','linea_c','linea_d','linea_e','linea_h'],
+              value: ['linea_a','linea_b','linea_c','linea_d','linea_e','linea_h','premetro'],
               x: 'mes_date'
           },
           names:{
@@ -173,7 +174,8 @@ angular.module('compromisosSiteApp')
             'linea_c':'Línea C',
             'linea_d':'Línea D',
             'linea_e':'Línea E',
-            'linea_h':'Línea H'
+            'linea_h':'Línea H',
+            'premetro':'Premetro'
           },
           type: 'spline',
           colors: {
@@ -182,7 +184,8 @@ angular.module('compromisosSiteApp')
             'linea_c': "rgb(1, 103, 178)",
             'linea_d': "rgb(0, 128, 103)",
             'linea_e': "rgb(108, 33, 128)",
-            'linea_h': "rgb(255, 210, 3)"
+            'linea_h': "rgb(255, 210, 3)",
+            'premetro': "rgb(200, 200, 3)"
           }
 
         };

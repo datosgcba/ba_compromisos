@@ -178,11 +178,11 @@ angular.module('compromisosSiteApp')
       chart1.bars.selectAll('rect.vertical-bar-value')
         .attr('height',function(d){
           var value = (d.avance)?d.avance:0;
-          return yScale(parseInt(value)); 
+          return yScale(parseInt(value));
         })
         .attr('y',function(d){
           var value = (d.avance)?d.avance:0;
-          return barW+ (h-barW-barW/2)- yScale(parseInt(value)); 
+          return barW+ (h-barW-barW/2)- yScale(parseInt(value));
         })
         .attr('x',pad)
         .attr('width',barW-pad*2);
@@ -199,7 +199,7 @@ angular.module('compromisosSiteApp')
 
       var total = d3.sum(data,function(d){return parseInt(d.hectareas)});
 
-      $scope.bubbleData = { 
+      $scope.bubbleData = {
                     name:"total",
                     children:[]
                   };
@@ -268,7 +268,7 @@ angular.module('compromisosSiteApp')
                 ratio: 0.8 // this makes bar width 50% of length between ticks
             }
         },
-        
+
       });
     };
 
@@ -297,5 +297,5 @@ angular.module('compromisosSiteApp')
           }
         }, 500);
     });
-  	
+
   });

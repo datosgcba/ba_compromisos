@@ -1,10 +1,21 @@
-<div class="escuela-detail">
-	<p><strong><span class="label-header">Nombre: </span></strong></p>
-	<p>{{selectedIcon.nombre|| "-"}}</p>
-	<p><strong><span class="label-header">Ubicación: </span></strong></p>
-	<p>{{selectedIcon.ubicacion|| "-"}}</p>
-	<p><strong><span class="label-header">Inicio Obra: </span></strong></p>
-	<p>{{selectedIcon.inicio_obra|| "-"}}</p>
-  <p><strong><span class="label-header">Características: </span></strong></p>
-  <p>{{selectedIcon.caracteristicas|| "-"}}</p>
+<div id="detailDiv" class="escuela-detail">
+	<div class="row">
+		<input id="close" class="closeButton" type="button" value="X" onclick="closeBar();" />
+		<div class="col-xs-12">
+			<p><strong><span class="label-header">Nombre: </span></strong></p>
+			<p>{{selectedIcon.nombre|| "-"}}</p>
+			<p><strong><span class="label-header">Ubicación: </span></strong></p>
+			<p>{{selectedIcon.ubicacion|| "-"}}</p>
+			<p><strong><span class="label-header">Inicio Obra: </span></strong></p>
+			<p>{{selectedIcon.inicio_obra|| "-"}}</p>
+			<p><strong><span class="label-header">Características: </span></strong></p>
+			<p>{{selectedIcon.caracteristicas|| "-"}}</p>
+		</div>
+	</div>
 </div>
+
+<script type="text/javascript">
+  var closeBar  = function() {
+    var div = document.getElementById("detailDiv").remove();
+  }
+</script>

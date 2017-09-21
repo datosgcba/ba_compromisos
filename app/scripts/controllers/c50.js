@@ -38,24 +38,27 @@ angular.module('compromisosSiteApp')
       });
     });
 
-     $scope.prepareData1 = function(data){
+    $scope.prepareData = function(data){
       return data;
     };
 
-    $scope.completeConfig1 = function(config){
+    $scope.completeConfig = function(config){
+
       return angular.merge(config,{
         data:{
-          xFormat: '%d-%m-%Y',
-          keys: {
-              value: ['avance'],
-              x: 'obra'
+          types: {
+            avance : 'line'
           },
-          names:{
-            'avance': 'Avance'
+          keys: {
+              value: [ 'avance'],
+              x: 'trimestre'
+          },
+          names: {
+            avance: 'Avance'
           },
           colors: {
-              'avance': $scope.currentCompromise.color,
-            }
+                'avance': $scope.currentCompromise.color
+          }
         },
         size: {
             height: 300,
@@ -68,22 +71,13 @@ angular.module('compromisosSiteApp')
         },
         axis: {
           x: {
-            type: 'timeseries',
-            tick: {
-                  format: '%m-%Y'
-            },
-            show:true
-          },
-           y: {
+              type: 'category',
               show:true,
-              min: 0,
-              max:100,
-              padding: 5,
-              tick:{
-                format:function(y){
-                  return y+'%';
-                },
-              }
+
+          },
+          y: {
+            show:true,
+            max:99
           }
         },
         legend: {
@@ -92,62 +86,175 @@ angular.module('compromisosSiteApp')
       });
     };
 
-    $scope.chartReady1 = function(chart){
+    $scope.chartReady = function(chart){
 
     };
 
 
-    //detalle 2
     var data2 = {};
     $scope.prepareData2 = function(data){
       data2 = data;
-      return data;
+
+      for (var i = 0; i < data2.length; i++) {
+        data2[i].avance = (data2[i].avance)?parseInt(data2[i].avance):0;
+        data2[i].restante = parseInt(100 - data2[i].avance);
+      };
+      return data2;
     };
 
     $scope.completeConfig2 = function(config){
       return angular.merge(config,{
         data:{
           type: 'bar',
+          xFormat: '%Y-%m',
           keys: {
-              value: ['contravenciones','delitos'],
-              x:'comuna'
+              value: ['avance','restante'],
+              x:'polo_educativo'
           },
+          groups: [
+            ['restante','avance']
+          ],
           names: {
-            contravenciones: 'Contravenciones',
-            delitos: 'Delitos'
+            avance: 'Avance',
+            restante: 'Restante'
           },
+          order: null,
           colors:
-          {'contravenciones':$scope.currentCompromise.color,
-          'delitos': $scope.currentCompromise.secondColor}
+            {
+              'avance': d3.rgb($scope.currentCompromise.color).darker().toString(),
+              'restante': $scope.currentCompromise.color
+            }
         },
         size: {
-            height: 300,
+            height: 340,
         },
         padding: {
             top: 0,
             right: 20,
-            bottom: 10,
+            bottom: 0,
             left: 20,
         },
         axis: {
           rotated:true,
           x: {
               type: 'category',
-              show:true
+              show:false
           },
           y: {
-              show:true
+              show:true,
+              min: 0,
+              padding: 5,
+              tick:{
+                format:function(y){
+                  return y+'%';
+                }
+              }
           }
         },
         legend: {
-            show: true
+            show: false
         }
       });
     };
 
     $scope.chartReady2 = function(chart,id){
-
+      var container = d3.select('#'+id+' .c3-texts');
+      d3.selectAll('#'+id+' .c3-event-rect').each(function(d){
+        var dato = data2[d.index];
+        var bar = d3.select(this);
+        var offset = parseInt(bar.attr('height')/2);
+        container
+          .append('text')
+          .attr('alignment-baseline','middle')
+          .classed('custom-c3-text',true)
+          .attr('x',parseInt(bar.attr('x'))+10)
+          .attr('y',parseInt(bar.attr('y'))+offset)
+          .text(dato.polo_educativo);
+      });
     };
+
+    var data3 = {};
+    $scope.prepareData3 = function(data){
+      data3 = data;
+
+      for (var i = 0; i < data3.length; i++) {
+        data3[i].avance = (data3[i].avance)?parseInt(data3[i].avance):0;
+        data3[i].restante = parseInt(100 - data3[i].avance);
+      };
+      return data3;
+    };
+
+    $scope.completeConfig3 = function(config){
+      return angular.merge(config,{
+        data:{
+          type: 'bar',
+          xFormat: '%Y-%m',
+          keys: {
+              value: ['avance','restante'],
+              x:'iniciativas'
+          },
+          groups: [
+            ['restante','avance']
+          ],
+          names: {
+            avance: 'Avance',
+            restante: 'Restante'
+          },
+          order: null,
+          colors:
+            {
+              'avance': d3.rgb($scope.currentCompromise.color).darker().toString(),
+              'restante': $scope.currentCompromise.color
+            }
+        },
+        size: {
+            height: 340,
+        },
+        padding: {
+            top: 0,
+            right: 20,
+            bottom: 0,
+            left: 20,
+        },
+        axis: {
+          rotated:true,
+          x: {
+              type: 'category',
+              show:false
+          },
+          y: {
+              show:true,
+              min: 0,
+              padding: 5,
+              tick:{
+                format:function(y){
+                  return y+'%';
+                }
+              }
+          }
+        },
+        legend: {
+            show: false
+        }
+      });
+    };
+
+    $scope.chartReady3 = function(chart,id){
+      var container = d3.select('#'+id+' .c3-texts');
+      d3.selectAll('#'+id+' .c3-event-rect').each(function(d){
+        var dato = data3[d.index];
+        var bar = d3.select(this);
+        var offset = parseInt(bar.attr('height')/2);
+        container
+          .append('text')
+          .attr('alignment-baseline','middle')
+          .classed('custom-c3-text',true)
+          .attr('x',parseInt(bar.attr('x'))+10)
+          .attr('y',parseInt(bar.attr('y'))+offset)
+          .text(dato.iniciativas);
+      });
+    };
+
 
     var id;
     $(window).resize(function() {

@@ -6,7 +6,18 @@ html {
 [ng\:cloak], [ng-cloak], .ng-cloak {
     display: none;
 }
-
+.closeButton {
+  background: lightgray;
+      border: none;
+      padding: 0.3rem 0.6rem;
+      font-size: 1rem;
+      float: right;
+      margin-right: 1.5rem;
+}
+.closeButton:hover, .closeButton:active{
+  border: none;
+  outline: 0;
+}
 .upper{
 	text-transform: uppercase;
 }

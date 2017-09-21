@@ -41,14 +41,20 @@ angular.module('compromisosSiteApp')
       return angular.merge(config,{
         data:{
           keys: {
-              value: ['meta'],
+              value: ['meta','entregadas'],
               x: 'mes'
           },
+          types: {
+            meta: 'area',
+            entregadas : 'line'
+          },
           names:{
-            'meta':'Meta'
+            'meta':'Meta',
+            'entregadas':'Avance'
           },
           colors: {
-            'meta': $scope.currentCompromise.color
+            'entregadas': $scope.currentCompromise.color,
+            'meta': '#ccc'
             }
         },
         size: {

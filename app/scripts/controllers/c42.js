@@ -8,7 +8,7 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('Compromiso42Ctrl', function (UrlService, $scope, $http,SlugColorService,LoadSVGService,$sce,$compile,$templateRequest) {
+  .controller('Compromiso42Ctrl', function (UrlService, $scope,$rootScope, $http,SlugColorService,LoadSVGService,$sce,$compile,$templateRequest) {
 
   	var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({ polling: 1000 });
@@ -38,61 +38,65 @@ angular.module('compromisosSiteApp')
       });
     });
 
-     $scope.prepareData1 = function(data){
+    //detalle 3
+    $scope.prepareData1 = function(data) {
+      _.each(data, function(d) {
+        d.mes_date = d.obra + '-01';
+      });
       return data;
     };
 
-    $scope.completeConfig1 = function(config){
-      return angular.merge(config,{
-        data:{
-          xFormat: '%d-%m-%Y',
-          keys: {
-              value: ['avance'],
-              x: 'obra'
+    $scope.completeConfig1 = function(config) {
+      return angular.merge(config, {
+        data: {
+          types: {
+            avance: 'line'
           },
-          names:{
-            'avance': 'Avance'
+          keys: {
+            value: ['avance'],
+            x: 'mes_date'
+          },
+          names: {
+            avance: 'Centros Comerciales',
+            meta: 'Meta'
           },
           colors: {
-              'avance': $scope.currentCompromise.color,
-            }
+            //'meta':$scope.currentCompromise.secondColor,
+            'meta': '#ccc',
+            'avance': $scope.currentCompromise.color
+          }
         },
         size: {
-            height: 300,
+          height: 300,
         },
         padding: {
-            top: 0,
-            right: 20,
-            bottom: 10,
-            left: 40,
+          top: 0,
+          right: 20,
+          bottom: 10,
+          left: 40,
         },
         axis: {
           x: {
             type: 'timeseries',
+            show: true,
             tick: {
-                  format: '%m-%Y'
-            },
-            show:true
+              fit: true,
+              format: $rootScope.d3Locale_ES.timeFormat("%b-%y"),
+              count: 6
+            }
           },
-           y: {
-              show:true,
-              min: 0,
-              max:100,
-              padding: 5,
-              tick:{
-                format:function(y){
-                  return y+'%';
-                },
-              }
+          y: {
+            show: true,
+            max: 100
           }
         },
         legend: {
-            show: true
+          show: true
         }
       });
     };
 
-    $scope.chartReady1 = function(chart){
+    $scope.chartReady1 = function(chart) {
 
     };
 
