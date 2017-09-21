@@ -29,16 +29,9 @@ Dirección: `http://localhost:8080`
 * Hacer clone y/o pull del proyecto 
 * Apuntar la configuración del web server a la carpera /dist
 * En /dist duplicar el archivo config.js.example con el nombre config.js.
-* Navegar hacia la url
 
-=======
+# Actualización
 
-Bienvenido al Repositorio de Entregas de los proyectos a la ASI, denominado GIT.
-La definición de como se entrega y que documentos deben entregar se encuentra en la carpeta denominada "Instructivos-Documentos ASI" donde encontrarán un instructivo del GIT que explica el proceso y donde subir cada archivo. 
-Adicionalmente se encuentran los templates de guía para completar la documentación del proyecto para avanzar con las tareas y actividades de la ASI como Documento de Arquitectura, Manual de instalación, Documento de Alcance y funcionamiento, etc.
-
-Es obligatorio que contemplen que  el sistema operativo que deben utilizar es **RedHat 6.5**. Puede descargar la versión gratuita del mismo (Centos 6.5) desde el siguiente enlace [Descargar](https://github.com/2creatives/vagrant-centos/releases/download/v6.5.1/centos65-x86_64-20131205.box)
-
-Recuerden que **ninguno** de los ambientes productivos cuentan con acceso a internet. Si para el correcto funcionamiento de la aplicación es necesario comunicarse con servidores externos los mismos debe enumerarse en el manual de instalación indicando dominio/puerto que debe estar habilitado justificando su uso en cada caso. 
-
-NOTA:  La entrega por este medio no reemplaza los compromisos de entrega relacionado con la contratación,es decir, esto es un requerimiento obligatorio adicional a la entrega formal.
+1. Ubicarse en la carpeta raíz del proyecto (actualmente publicado en [https://obras.buenosaires.gob.ar/](https://obras.buenosaires.gob.ar/) ), dentro del servidor y ejecutar el pull al tag de la versión indicada.`git fetch --tags` y luego `git checkout v2.2`
+2. Testear el correcto funcionamiento de todo ingresando a la URL [https://obras.buenosaires.gob.ar/](https://obras.buenosaires.gob.ar/), deberían verse unos botones amarillos y poder renderizar las páginas de ejemplo para ser luego embebidas.
+3. Con esto se considera concluída la actualización.
