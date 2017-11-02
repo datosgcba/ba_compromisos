@@ -2,6 +2,11 @@
 
 Dashboard de progreso de Compromisos de Gobierno.
 
+## Documentación
+
+* Deploy: ver INSTALL.MD y UPGRADE.MD
+* Changelog: ver CHANGELOG.MD 
+
 ## Probar el proyecto de manera standalone
 * Clonar el proyecto
 * Archivo de configuración: En /dist duplicar el archivo config.js.example con el nombre config.js.
