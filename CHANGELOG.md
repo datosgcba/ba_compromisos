@@ -2,6 +2,9 @@
 Todos los cambios notables del proyecto a partir de la version 0.1.0 seran documentados en este archivo.
 
 El formato esta basado en [Keep a Changelog](http://keepachangelog.com/) y este proyecto se adhiere a  [Semantic Versioning](http://semver.org/).
+## [Unreleased]
+### Added
+- c45 construccion cuadrantes 3 y 4.
 
 ## [Unreleased]
 ### Added
