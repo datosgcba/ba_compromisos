@@ -111,6 +111,13 @@ angular
       });
     };
   })
+  .service('GetSVGNameService', function () {
+    this.getUrl = function(name){
+      name = (name.length==1)?'0'+name:name;
+      var icon = 'images/iconos_v2/GCBA-compromisos-icons-'+name+'.svg';
+      return icon;
+    };
+  })
   .service('UrlService', function () {
       if(!window.COMPROMISOS_CONFIG){
         console.error('Archivo de configuración inexistente, utilizando configuración default de desarrollo.');

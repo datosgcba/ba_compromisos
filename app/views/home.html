@@ -1,93 +1,18 @@
-<div class="row hidden-device">
-	<div class="col-sm-3 c-option c-color-humana" data-slug="humana">
-  		<h3 class="text-center">Ciudad a Escala Humana</h3>
-  	</div>
-	<div class="col-sm-3 c-option c-color-disfrute" data-slug="disfrute">
-  		<h3 class="text-center">Disfrute y Convivencia</h3>
-  	</div>
-	<div class="col-sm-3 c-option c-option-short c-color-creatividad" data-slug="creatividad">
-  		<h3 class="text-center">Creatividad</h3>
-  	</div>
-	<div class="col-sm-3 c-option c-option-short c-color-social" data-slug="social">
-  		<h3 class="text-center">Integración social</h3>
-  	</div>
-</div>
+<h1> Hola ! </h1>
 
-<div class="row hidden-desktop">
-	<div class="col-xs-3 c-option c-color-humana"></div>
-	<div class="col-xs-3 c-option c-color-disfrute"></div>
-	<div class="col-xs-3 c-option c-color-creatividad"></div>
-	<div class="col-xs-3 c-option c-color-social"></div>
-</div>
+<ul isotope-container="isotope-container" class="compromisos-container">
+    <li ng-repeat="d in data" isotope-item="isotope-item" class="compromiso-row" onclick="showDetail(this)">
+        <img class="icon-svg-container compromiso-icon" ng-src="{{d.iconSVG}}">
+        <h4 class="titulo">{{d.titulo}}</h4>
+        <div class="cumplimiento"  number="{{d.cumplimiento}}" >{{d.cumplimiento}}</div>
 
-<hr>
-
-<div class="row hidden-desktop select-container">
-	<div class="col-xs-12">
-	  	<select ng-change="onChangeCategory()" ng-model="selectedCategory" class="form-control">
-	  		<option value="">Elegir categoría</option>
-	  		<option value="humana">Ciudad a Escala Humana</option>
-	  		<option value="disfrute">Disfrute y Convivencia</option>
-	  		<option value="creatividad">Creatividad</option>
-	  		<option value="social">Integración social</option>
-	  	</select>
-  	</div>
-  	<div class="col-xs-12">
-	  	<select ng-change="onChangeGroup()" ng-model="selectedGroup" class="form-control">
-	  		<option value="home">Ordenar por nombre</option>
-	  		<option value="date">Ordenar por fecha fin</option>
-	  		<option value="state">Ordenar por estado</option>
-	  		<option value="category">Ordenar por categoría</option>
-	  	</select>
-	</div>
-</div>
-
-
-<div class="row">
-	<div class="col-sm-3 hidden-device" ng-class="{'display':(selectedGroup=='home')}">
-		<a class="group-btn" ng-click="groupMenu('home')"></a>
-		<p class="btn-checkbox hidden-device" ng-class="{'selected':(selectedGroup=='home')}"><span>Ordenar por nombre</span></p>
-		<div id="home_chart">
-			<h1 class="text-center specialHead" ng-cloak ng-hide="loading"> A &raquo; Z </h1>
-
-			<p class="text-center" ng-cloak ng-hide="loading">{{data.length}} compromisos</p>
-			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
-
-		</div>
-		<p class="sub text-center">Vista general de los compromisos</p>
-  	</div>
-	<div class="col-sm-3 hidden-device" ng-class="{'display':(selectedGroup=='date')}">
-		<a class="group-btn" ng-click="groupMenu('date')"></a>
-  		<p class="btn-checkbox hidden-device" ng-class="{'selected':(selectedGroup=='date')}"><span class="two-lines">Ordenar por fecha de cumplimiento</span></p>
-		<div id="date_chart">
-			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
-		</div>
-		<p class="sub text-center">Cantidad de compromisos por año de finalización</p>
-  	</div>
-	<div class="col-sm-3 hidden-device" ng-class="{'display':(selectedGroup=='state')}">
-		<a class="group-btn" ng-click="groupMenu('state')"></a>
-  		<p class="btn-checkbox hidden-device" ng-class="{'selected':(selectedGroup=='state')}"><span>Ordenar por estado</span></p>
-		<div id="state_chart" ng-click="groupMenu('state')">
-			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
-		</div>
-		<p class="sub text-center">Cantidad de compromisos por estado de progreso</p>
-  	</div>
-	<div class="col-sm-3 hidden-device" ng-class="{'display':(selectedGroup=='category')}">
-		<a class="group-btn" ng-click="groupMenu('category')"></a>
-  		<p class="btn-checkbox hidden-device" ng-class="{'selected':(selectedGroup=='category')}"><span>Ordenar por categoría</span></p>
-		<div id="category_chart" ng-click="groupMenu('category')">
-			<p class="text-center" ng-cloak ng-show="loading">Cargando...</p>
-		</div>
-		<p class="sub text-center">Cantidad de compromisos por categoría de pertenencia</p>
-  	</div>
-</div>
-
+    </li>
 
 <p class="text-center" ng-show="loading">Cargando...</p>
 <div ng-cloak ng-hide="loading">
 
 	<div class="row">
-	  	<div id="menu_chart"></div>
+
 	</div>
 
 

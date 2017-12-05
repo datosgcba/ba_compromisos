@@ -698,3 +698,13 @@ g.c3-chart-lines .c3-line {
 .second-progress{
     min-width: 60%;
 }
+
+
+img.compromiso-icon {
+    max-width: 60px;
+    max-height: 60px;
+}
+
+.compromisos-container ul, .compromisos-container li{
+  list-style: none;
+}
