@@ -39,5 +39,8 @@
   },
   "scripts": {
     "test": "karma start test/karma.conf.js"
+  },
+  "dependencies": {
+    "angular-highlight-js": "^2.0.1"
   }
 }

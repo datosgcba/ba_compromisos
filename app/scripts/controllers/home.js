@@ -177,14 +177,14 @@ angular.module('compromisosSiteApp')
     };
 
     function renderDateChart(){
- 
-      
+
+
     }
 
     function renderStateChart(){
           //Get Years
           var mainColumns= ['x', '75-100%','50-75%','25-50%','0-25%'];
-          
+
     }
 
     function defaultChartColors(){
@@ -212,12 +212,12 @@ angular.module('compromisosSiteApp')
     }
 
     function renderCategoryChart(){
-        
+
     }
 
     //Render & interact menu chart
     $scope.onChangeCategory = function(){
-      
+
     };
     $scope.onChangeGroup = function(){
       $scope.groupMenu($scope.selectedGroup);
@@ -236,30 +236,30 @@ angular.module('compromisosSiteApp')
 
       function groupByCategory(){
 
-      
+
 
       }
 
       function groupByDate(){
 
-      
+
 
       }
 
       function updateLabels(data){
 
-       
+
 
       }
 
     function createCompromisos( ){
 
-        
 
-    
+
+
 
     }
 
-    
+
 
   });

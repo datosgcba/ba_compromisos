@@ -21,7 +21,8 @@ angular
     'ngRoute',
     'duScroll',
     'ngSanitize',
-    'ngYoutubeEmbed'
+    'ngYoutubeEmbed',
+    'iso.directives', 'hljs'
   ])
   .config(function ($routeProvider) {
     $routeProvider
