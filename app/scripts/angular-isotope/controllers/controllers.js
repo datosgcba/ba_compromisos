@@ -17,6 +17,13 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
         });
       });
     };
+    // quick search regex
+// var qsRegex;
+//
+//     var $quicksearch = $('.quicksearch').keyup( debounce( function() {
+//   qsRegex = new RegExp( $quicksearch.val(), 'gi' );
+//   $grid.isotope();
+// }, 200 ) );
     optionsStore.store({
       onLayout: $scope.layoutEventEmit
     });
