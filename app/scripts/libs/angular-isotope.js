@@ -140,7 +140,12 @@ angular.module("iso.controllers", ["iso.config", "iso.services"])
     $scope.removeElement = function(element) {
       return isotopeContainer && isotopeContainer.isotope("remove", element);
     };
+
+
+
   }
+
+
 ])
 .controller("isoSortByDataController", [
   "iso.config", "$scope", "optionsStore", function(config, $scope, optionsStore) {
@@ -300,7 +305,7 @@ angular.module("iso.directives")
             return $timeout((function() {
               return scope.refreshIso();
             }), config.refreshDelay || 0);
-          });          
+          });
         }
         return element;
       }
@@ -400,7 +405,7 @@ angular.module("iso.directives")
       };
 
       determineActiveClass();
-      
+
       createSortByDataMethods(optionSet);
 
       if (active.length) {

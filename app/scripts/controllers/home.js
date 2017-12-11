@@ -34,10 +34,26 @@ angular.module('compromisosSiteApp')
         var upB = b.titulo.toUpperCase();
         return (upA < upB) ? -1 : (upA > upB) ? 1 : 0;
       });
+      var areas = []
+      var cumplimiento = []
+      $scope.data.map(function(elem){
+        if(elem.cumplimiento != undefined) cumplimiento.push(elem.cumplimiento)
+
+        if(elem.area1 != undefined) areas.push(elem.area1.toLowerCase().replace(/ /g,"-"))
+        if(elem.area2 != undefined) areas.push(elem.area2.toLowerCase().replace(/ /g,"-"))
+        if(elem.area3 != undefined) areas.push(elem.area3.toLowerCase().replace(/ /g,"-"))
+        if(elem.area4 != undefined) areas.push(elem.area4.toLowerCase().replace(/ /g,"-"))
+      })
+      $scope.areas = Array.from(new Set(areas))
+      $scope.cumplimiento = Array.from(new Set(cumplimiento))
+      console.log($scope.areas);
+      console.log($scope.cumplimiento);
+
 
 
       console.log($scope.data);
       $scope.loading = false;
+      // $scope.executeIsotope()
       $scope.groupData();
       $scope.renderCharts();
     });
@@ -259,8 +275,156 @@ angular.module('compromisosSiteApp')
 
 
     }
+    // $scope.executeIsotope2 = function(){
+    //   console.log("executeIsotope");
+    //   $(function(){
+    //
+    //   var $container = $('#isotopeHomeContainer'),
+    //   $checkboxes = $('#filters input'),
+    //   qsRegex;
+    //
+    //   $container.isotope({
+    //   itemSelector: '.item',
+    //   layoutMode: 'fitRows'
+    //   });
+    //
+    //
+    //   // get Isotope instance
+    //   var isotope = $container.data('isotope');
+    //
+    //   // add even classes to every other visible item, in current order
+    //   function addEvenClasses() {
+    //     isotope.$filteredAtoms.each( function( i, elem ) {
+    //     $(elem)[ ( i % 2 ? 'addClass' : 'removeClass' ) ]('even')
+    //     });
+    //   }
+    //
+    //
+    //   $checkboxes.change(function(){
+    //     var filters = [];
+    //     // get checked checkboxes values
+    //     $checkboxes.filter(':checked').each(function(){
+    //     filters.push( this.value );
+    //     });
+    //
+    //
+    //     var searchResult = qsRegex ? $inputSearch.text().match( qsRegex ) : true;
+    //
+    //     filters = filters.join(', ');
+    //     $container.isotope({ filter: filters, searchResult });
+    //     addEvenClasses();
+    //   });
+    //
+    //
+    //
+    //   $('#shuffle').click(function(){
+    //   $container.isotope('shuffle');
+    //   addEvenClasses();
+    //   });
+    //
+    //   // debounce so filtering doesn't happen every millisecond
+    //   function debounce( fn, threshold ) {
+    //     var timeout;
+    //     return function debounced() {
+    //       if ( timeout ) {
+    //         clearTimeout( timeout );
+    //       }
+    //       function delayed() {
+    //         fn();
+    //         timeout = null;
+    //       }
+    //       setTimeout( delayed, threshold || 100 );
+    //     };
+    //   }
+    //
+    //   });
+    // }
 
 
+    $scope.executeIsotope = function(){
+
+    }
+  })
+  .directive('myRepeatDirective', function() {
+  return function(scope, element, attrs) {
+          console.log("executeIsotope");
+          var $container = $('#isotopeContainer').isotope({
+          itemSelector: '.item'
+          });
+
+          var $output = $('#output');
+
+          // filter with selects and checkboxes
+          var $selects = $('#form-ui select');
+          var $checkboxes = $('#form-ui #categories');
+          var $years = $('#form-ui #years');
+          var $percent = $('#form-ui #percent');
+          $years.add( $checkboxes ).change( function() {
+          // map input values to an array
+          var exclusives = [];
+          var inclusives = [];
+          // exclusive filters from selects
+          $selects.each( function( i, elem ) {
+            if ( elem.value ) {
+              exclusives.push( elem.value );
+            }
+          });
+          // inclusive filters from checkboxes
+          $years.each( function( i, elem ) {
+            // if checkbox, use value if checked
+            if ( elem.checked ) {
+              inclusives.push( elem.value );
+            }
+          });
+          $percent.each( function( i, elem ) {
+            // if checkbox, use value if checked
+            if ( elem.checked ) {
+              inclusives.push( elem.value );
+            }
+          });
+          // inclusive filters from checkboxes
+          $checkboxes.each( function( i, elem ) {
+            // if checkbox, use value if checked
+            if ( elem.checked ) {
+              inclusives.push( elem.value );
+            }
+          });
+
+          // combine exclusive and inclusive filters
+
+          // first combine exclusives
+          exclusives = exclusives.join('');
+
+          var filterValue;
+          if ( inclusives.length ) {
+            // map inclusives with exclusives for
+            filterValue = $.map( inclusives, function( value ) {
+              return value + exclusives;
+            });
+            filterValue = filterValue.join(', ');
+          } else {
+            filterValue = exclusives;
+          }
+
+          $output.text( filterValue );
+          $container.isotope({ filter: filterValue })
+          });
+          $('.checkboxCheck').change(function () {
+            console.log("holaaaa");
+                  if($(this).hasClass('ckecked'))
+                  {
+                    console.log("checked");
+                    $(this).removeClass('checked');
+                  }else{
+                  $(this).addClass('checked')}
+          });
 
 
-  });
+  };
+})
+
+// $('.checkboxCheck').change(function () {
+//   console.log("holaaaa");
+//         $('label').next().removeClass('checked');
+//         $(this).next().addClass('checked');
+// });

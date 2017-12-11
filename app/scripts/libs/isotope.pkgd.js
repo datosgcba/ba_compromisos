@@ -645,7 +645,6 @@ utils.handleEvent = function( event ) {
 
 utils.filterFindElements = function( elems, selector ) {
   // make array of elems
-
   elems = utils.makeArray( elems );
   var ffElems = [];
 
@@ -3209,7 +3208,6 @@ var trim = String.prototype.trim ?
 
   // get a jQuery, function, or a matchesSelector test given the filter
   proto._getFilterTest = function( filter ) {
-    console.log(filter);
     if ( jQuery && this.options.isJQueryFiltering ) {
       // use jQuery
       return function( item ) {

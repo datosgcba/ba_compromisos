@@ -1,15 +1,104 @@
+<div id="form-ui" >
+  <h3>Explorador de compromisos</h3>
+<!-- <p>
+  <select>
+    <option value="">–Select price–</option>
+    <option value=".2019">2019</option>
+    <option value=".humana">humana</option>
+    <option value=".creatividad">creatividad</option>
+  </select>
+  </p> -->
+<p>Filtrar por área</p>
+<div class="homeAreaContainer">
+  <p id="form-ui-1">
+    <label id="checkboxButton" ng-repeat="area in areas" my-repeat-directive class="checkboxCheck"><input id="categories" type="checkbox" value=".{{area}}" /> {{area}}</label>
+  </p>
+</div>
+
+<p id="output">--</p>
+
+<div class="row">
+  <div id="homeTextContainer" class="col-xs-12 col-sm-4">
+    <p>Buscar por palabra clave:</p>
+    <input id="textoBusca" type="text" ng-model="search.titulo">
+  </div>
+  <div id="homeYearContainer" class="col-xs-6 col-sm-4">
+    <p>Filtrar por año de cumplimiento:</p>
+    <div class="">
+      <label ng-repeat="cump in cumplimiento" my-repeat-directive><input id="years" type="checkbox" value=".{{cump}}" /> {{cump}}</label>
+    </div>
+  </div>
+  <div id="homePercentContainer" class="col-xs-6 col-sm-4">
+    <p>Filtrar por avance:</p>
+    <div >
+      <label my-repeat-directive><input id="percent" type="checkbox" value="0" /> 0%</label>
+      <label my-repeat-directive><input id="percent" type="checkbox" value="25" /> 25%</label>
+      <label my-repeat-directive><input id="percent" type="checkbox" value="50" /> 50%</label>
+      <label my-repeat-directive><input id="percent" type="checkbox" value="75" /> 75%</label>
+      <label my-repeat-directive><input id="percent" type="checkbox" value="100" /> 100%</label>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+<!--
+<div id="filters" >
+  <input type="checkbox" name="social" value=".social" id="social"><label for="social">social</label>
+  <input type="checkbox" name="humana" value=".humana" id="humana"><label for="humana">humana</label>
+  <input type="checkbox" name="creatividad" value=".creatividad" id="creatividad"><label for="creatividad">creatividad</label>
+  <input type="checkbox" name="disfrute" value=".disfrute" id="disfrute"><label for="disfrute">disfrute</label>
+</div> -->
+
+
+<!-- <div id="isotopeHomeContainer">
+    <ul class="compromisos-container">
+    <li ng-repeat="d in data" class="item isotope-item {{d.slug}}" onclick="showDetail(this)">
+        <img class="icon-svg-container compromiso-icon" ng-src="{{d.iconSVG}}">
+        <h4 class="titulo">{{d.titulo}}</h4>
+    </li>
+  </ul>
+</div> -->
+<!-- <p><input type="text" class="quicksearch" placeholder="Search" /></p>
 <div class="row">
   <div class="col-md-12">
     <h4>Filtrar por Area</h4>
     <div class="btn-group" opt-kind ok-key="filter" >
-      <!-- <button type='button' class='btn btn-default active' ok-sel="*">Todas las Categorías</button> -->
-      <button type='button' class='btn btn-default active' ok-sel=".social">Integración Social</button>
+      <button type='button' class='btn btn-default active' ok-sel="*">Todas las Categorías</button>
+      <button type='button' class='btn btn-default' ok-sel=".social">Integración Social</button>
       <button type='button' class='btn btn-default' ok-sel=".humana">Escala Humana</button>
       <button type='button' class='btn btn-default' ok-sel=".creatividad">Creatividad</button>
       <button type='button' class='btn btn-default' ok-sel=".disfrute">Disfrute y Convivencia</button>
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-12">
+    <h4>Filtrar por Area</h4>
+    <div class="btn-group" opt-kind ok-key="filter" >
+      <button type='button' class='btn btn-default active' ok-sel="*">Todos los años</button>
+      <button type='button' class='btn btn-default' ok-sel=".2016">2016</button>
+      <button type='button' class='btn btn-default' ok-sel=".2017">2017</button>
+      <button type='button' class='btn btn-default' ok-sel=".2018">2018</button>
+      <button type='button' class='btn btn-default' ok-sel=".2019">2019</button>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <h4>Filtrar por Area</h4>
+    <div class="btn-group" opt-kind ok-key="filter" >
+      <button type='button' class='btn btn-default active' ok-sel="*">Todos los avances</button>
+      <button type='button' class='btn btn-default' ok-sel=".0">0</button>
+      <button type='button' class='btn btn-default' ok-sel=".25">25</button>
+      <button type='button' class='btn btn-default' ok-sel=".50">50</button>
+      <button type='button' class='btn btn-default' ok-sel=".75">75</button>
+      <button type='button' class='btn btn-default' ok-sel=".100">100</button>
+    </div>
+  </div>
+</div> -->
 <!-- <div class="row">
   <div class="col-md-6">
     <h4>Selector and Value-Based Sort</h4>
@@ -19,19 +108,16 @@
       <button type="button" class="btn btn-default" ok-sel="[date]" ok-type="integer">Date</button>
     </div>
   </div>
-  <div class="col-md-6">
-    <h4>Click an Item to Remove</small></h4>
-    <button type='button' class='btn btn-default' onClick="addToList()">Add item to array</button>
-  </div>
 </div> -->
 
-<input type="text" ng-model="search.titulo" ng-chamge="refreshIso">
-    <ul id="isotopeContainer" isotope-container="isotope-container" class="compromisos-container">
-    <li ng-repeat="d in data | filter:search" isotope-item="isotope-item" class="compromiso-row {{d.slug}} col-xs-3" onclick="showDetail(this)">
+
+  <ul id="isotopeContainer" isotope-container="isotope-container" class="compromisos-container">
+    <li ng-repeat="d in data | filter:search" isotope-item="isotope-item" class="compromiso-row {{d.slug}} {{d.cumplimiento}} {{d.porcentaje_completado}} {{d.area1.toLowerCase().split(' ').join('-')}} {{d.area2.toLowerCase().split(' ').join('-')}} {{d.area3.toLowerCase().split(' ').join('-')}} {{d.area4.toLowerCase().split(' ').join('-')}} col-xs-3 item" onclick="showDetail(this)">
         <img class="icon-svg-container compromiso-icon" ng-src="{{d.iconSVG}}">
         <h4 class="titulo">{{d.titulo}}</h4>
         <div class="cumplimiento"  number="{{d.cumplimiento}}" >{{d.cumplimiento}}</div>
     </li>
+  </ul>
 
 <p class="text-center" ng-show="loading">Cargando...</p>
 <div ng-cloak ng-hide="loading">

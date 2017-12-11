@@ -708,3 +708,51 @@ img.compromiso-icon {
 .compromisos-container ul, .compromisos-container li{
   list-style: none;
 }
+
+#form-ui-1 input[type=radio], #form-ui-1 input[type=checkbox] {
+		display:none;
+	}
+#form-ui-1 label {
+  display: inline-block;
+  margin: 5px;
+  padding: 5px 8px;
+  cursor: pointer;
+  border: 1px solid gray;
+  color: gray;
+  border-radius: 20px;
+
+}
+#form-ui-1 label+input[type="radio"]:checked{
+
+  border:1px solid red;
+  background: red;
+  color: white;
+
+}
+
+
+#homeYearContainer > div,#homePercentContainer > div{
+  display: flex;
+justify-content: flex-start;
+flex-direction: row;
+width: auto;
+}
+#homeTextContainer input{
+  width: 100%;
+}
+#homeYearContainer > p,#homePercentContainer > p{
+  padding-left: 1rem;
+}
+#homeYearContainer label,#homePercentContainer label{
+  margin-bottom: 5px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin: 0 10px;
+flex-direction: column;
+}
+.checked {
+  background: #CC105F;
+  border: 1px solid #CC105F !important ;
+  color: white !important;
+}
