@@ -181,6 +181,7 @@ angular.module('compromisosSiteApp')
       console.log(eTop, localEvent.clientY, mouseOffset);
       var pos = mouseOffset + eTop + 150;
       d3.select('#compromiso-detail')
+        .transition()
         .style('top',pos+'px');
 
 
