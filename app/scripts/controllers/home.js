@@ -385,8 +385,8 @@ angular.module('compromisosSiteApp')
           var $selects = $('#form-ui select');
           var $checkboxes = $('#form-ui #categories');
           var $years = $('#form-ui #years');
-          var $percent = $('#form-ui #percent');
-          $years.add( $checkboxes ).change( function() {
+          var $percent = $('#form-ui .percent');
+          $years.add( $checkboxes ).add( $percent).change( function() {
           // map input values to an array
           var exclusives = [];
           var inclusives = [];
@@ -436,15 +436,18 @@ angular.module('compromisosSiteApp')
           $output.text( filterValue );
           $container.isotope({ filter: filterValue })
           });
+
           $('.checkboxCheck').change(function () {
-            console.log("holaaaa");
                   if($(this).hasClass('ckecked'))
                   {
-                    console.log("checked");
                     $(this).removeClass('checked');
                   }else{
-                  $(this).addClass('checked')}
+                  $(this).addClass('checked')
+                }
+
           });
+
+
 
 
   };

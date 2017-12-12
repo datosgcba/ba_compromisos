@@ -739,6 +739,13 @@ width: auto;
 }
 #homeTextContainer input{
   width: 100%;
+  height: 30px;
+  margin-bottom: 0;
+}
+#homeTextContainer input:focus{
+  focus:none;
+  box-shadow: none !important;
+  border: 1px solid #CC105F !important;
 }
 #homeYearContainer > p,#homePercentContainer > p{
   padding-left: 1rem;
@@ -755,4 +762,10 @@ flex-direction: column;
   background: #CC105F;
   border: 1px solid #CC105F !important ;
   color: white !important;
+}
+.active {
+    border: 1px solid #f90;
+}
+.inactive {
+    color: 1px solid red;
 }

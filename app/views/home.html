@@ -11,7 +11,9 @@
 <p>Filtrar por área</p>
 <div class="homeAreaContainer">
   <p id="form-ui-1">
-    <label id="checkboxButton" ng-repeat="area in areas" my-repeat-directive class="checkboxCheck"><input id="categories" type="checkbox" value=".{{area}}" /> {{area}}</label>
+    <label id="checkboxButton" ng-repeat="area in areas" my-repeat-directive class="checkboxCheck inactive">
+      <input id="categories" type="checkbox" value=".{{area}}" /> {{area.toLowerCase().split('-').join(' ')}}
+    </label>
   </p>
 </div>
 
@@ -22,20 +24,20 @@
     <p>Buscar por palabra clave:</p>
     <input id="textoBusca" type="text" ng-model="search.titulo">
   </div>
-  <div id="homeYearContainer" class="col-xs-6 col-sm-4">
+  <div id="homeYearContainer" class="col-xs-12 col-sm-4">
     <p>Filtrar por año de cumplimiento:</p>
     <div class="">
       <label ng-repeat="cump in cumplimiento" my-repeat-directive><input id="years" type="checkbox" value=".{{cump}}" /> {{cump}}</label>
     </div>
   </div>
-  <div id="homePercentContainer" class="col-xs-6 col-sm-4">
+  <div id="homePercentContainer" class="col-xs-12 col-sm-4">
     <p>Filtrar por avance:</p>
     <div >
-      <label my-repeat-directive><input id="percent" type="checkbox" value="0" /> 0%</label>
-      <label my-repeat-directive><input id="percent" type="checkbox" value="25" /> 25%</label>
-      <label my-repeat-directive><input id="percent" type="checkbox" value="50" /> 50%</label>
-      <label my-repeat-directive><input id="percent" type="checkbox" value="75" /> 75%</label>
-      <label my-repeat-directive><input id="percent" type="checkbox" value="100" /> 100%</label>
+      <label my-repeat-directive><input class="percent" type="checkbox" value=".0" /> 0%</label>
+      <label my-repeat-directive><input class="percent" type="checkbox" value=".25" /> 25%</label>
+      <label my-repeat-directive><input class="percent" type="checkbox" value=".50" /> 50%</label>
+      <label my-repeat-directive><input class="percent" type="checkbox" value=".75" /> 75%</label>
+      <label my-repeat-directive><input class="percent" type="checkbox" value=".100" /> 100%</label>
     </div>
   </div>
 </div>
@@ -115,7 +117,7 @@
     <li ng-repeat="d in data | filter:search" isotope-item="isotope-item" class="compromiso-row {{d.slug}} {{d.cumplimiento}} {{d.porcentaje_completado}} {{d.area1.toLowerCase().split(' ').join('-')}} {{d.area2.toLowerCase().split(' ').join('-')}} {{d.area3.toLowerCase().split(' ').join('-')}} {{d.area4.toLowerCase().split(' ').join('-')}} col-xs-3 item" ng-click="showCompromisoDetail(d,$event)">
         <img class="icon-svg-container compromiso-icon" ng-src="{{d.iconSVG}}">
         <h4 class="titulo">{{d.titulo}}</h4>
-        <div class="cumplimiento"  number="{{d.cumplimiento}}" >{{d.cumplimiento}}</div>
+        <!-- <div class="cumplimiento"  number="{{d.cumplimiento}}" >{{d.cumplimiento}}</div> -->
     </li>
   </ul>
 
