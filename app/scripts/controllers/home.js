@@ -126,6 +126,30 @@ angular.module('compromisosSiteApp')
       return group;
     }
 
+    $scope.showCompromisoDetail = function(d,$event){
+      
+        // // d3.selectAll('.menu_chart rect').transition().style('fill','rgba(255, 255, 255, 0)');
+                  // // //Agregamos opacity animation
+                  // // d3.selectAll('.menu_chart g.categoria-unselected rect').transition().style('fill','rgba(255, 255, 255, 0.83)');
+
+
+                  // // selectTitle(d.slug);
+                  // // selectCategoryChart(d.slug);
+                  // // hoverCompromisoItem(d.numero);
+
+                  // $scope.$apply(function(){
+                  //   $scope.selectedCategory = d.slug;
+                  // });
+
+                  // if($scope.currentCompromise && ($scope.currentCompromise.numero == d.numero) ){
+                  //   $scope.$apply(function(){
+                  //     $scope.closeDetail();
+                  //   });
+                  // } else {
+                    showDetail(d,$event,d3.event);
+                  // }
+    };
+
     $scope.renderCharts = function(){
 
       // bindEvents();
@@ -135,22 +159,25 @@ angular.module('compromisosSiteApp')
       renderMenuChart();
 
 
+   
+
+
     };
 
 
     function showDetail(c,localEvent,mouseEvent){
 
       var menu_chartRowSize = 150;
-      $scope.$apply(function(){
+    
         $scope.currentCompromise = c;
-      });
+    
 
       var popupH = parseInt( d3.select('#compromiso-detail').style('height').replace('px','') );
       var fillerH = parseInt( d3.select('#filler').style('height').replace('px','') );
 
       var docH = parseInt( $(window).height() );
       var yOffset = parseInt ( mouseEvent.clientY );
-      var eTop = $('#menu_chart').offset().top; //get the offset top of the element
+      var eTop = $('#form-ui').offset().top; //get the offset top of the element
       var finalTop = eTop - $(window).scrollTop(); //position of the ele w.r.t window
       var mouseOffset = Math.floor((mouseEvent.clientY-eTop) / menu_chartRowSize) * menu_chartRowSize;
 
@@ -160,7 +187,7 @@ angular.module('compromisosSiteApp')
         .style('top',pos+'px');
 
 
-      $scope.$apply(function(){
+      // $scope.$apply(function(){
         var someElement = angular.element(document.getElementById('compromiso-detail'));
         if(filler>0){
           d3.select('#filler').style('height',filler+'px');
@@ -171,7 +198,7 @@ angular.module('compromisosSiteApp')
           $document.scrollToElement(someElement, 500, 500);
          var filler = pos + popupH - docH + fillerH;
 
-      });
+      // });
 
     }
 
