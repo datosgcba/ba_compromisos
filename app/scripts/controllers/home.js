@@ -128,7 +128,7 @@ angular.module('compromisosSiteApp')
     }
 
     $scope.showCompromisoDetail = function(d,$event){
-      
+
                   // d3.selectAll('.menu_chart rect').transition().style('fill','rgba(255, 255, 255, 0)');
                   // // //Agregamos opacity animation
                   // // d3.selectAll('.menu_chart g.categoria-unselected rect').transition().style('fill','rgba(255, 255, 255, 0.83)');
@@ -139,11 +139,11 @@ angular.module('compromisosSiteApp')
                   // // hoverCompromisoItem(d.numero);
 
                       $scope.selectedCategory = d.slug;
-                  
+
                   if($scope.currentCompromise && ($scope.currentCompromise.numero == d.numero) ){
-                   
+
                       $scope.closeDetail();
-                  
+
                   } else {
                     showDetail(d,$event,d3.event);
                   }
@@ -158,7 +158,7 @@ angular.module('compromisosSiteApp')
       renderMenuChart();
 
 
-   
+
 
 
     };
@@ -187,9 +187,9 @@ angular.module('compromisosSiteApp')
        d3.select('#filler').style('height',0+'px');
       }
         $document.scrollToElement(someElement, 500, 500);
-       
 
- 
+
+
 
     }
 
@@ -437,8 +437,6 @@ angular.module('compromisosSiteApp')
                 }
 
           });
-
-
 
 
   };
