@@ -769,3 +769,8 @@ flex-direction: column;
 .inactive {
     color: 1px solid red;
 }
+
+.item{
+  height: 150px;
+  width:150px;
+}

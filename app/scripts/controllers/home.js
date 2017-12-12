@@ -27,7 +27,7 @@ angular.module('compromisosSiteApp')
         c.slug = c.slug.trim();
         c.categoria = c.categoria.trim();
         c.iconSVG = GetSVGNameService.getUrl(c.numero);
-        
+
         return c;
       });
       $scope.data = $scope.data.sort(function(a,b){
@@ -129,7 +129,7 @@ angular.module('compromisosSiteApp')
 
     $scope.showCompromisoDetail = function(d,$event){
       
-        // // d3.selectAll('.menu_chart rect').transition().style('fill','rgba(255, 255, 255, 0)');
+                  // d3.selectAll('.menu_chart rect').transition().style('fill','rgba(255, 255, 255, 0)');
                   // // //Agregamos opacity animation
                   // // d3.selectAll('.menu_chart g.categoria-unselected rect').transition().style('fill','rgba(255, 255, 255, 0.83)');
 
@@ -138,17 +138,15 @@ angular.module('compromisosSiteApp')
                   // // selectCategoryChart(d.slug);
                   // // hoverCompromisoItem(d.numero);
 
-                  // $scope.$apply(function(){
-                  //   $scope.selectedCategory = d.slug;
-                  // });
-
-                  // if($scope.currentCompromise && ($scope.currentCompromise.numero == d.numero) ){
-                  //   $scope.$apply(function(){
-                  //     $scope.closeDetail();
-                  //   });
-                  // } else {
+                      $scope.selectedCategory = d.slug;
+                  
+                  if($scope.currentCompromise && ($scope.currentCompromise.numero == d.numero) ){
+                   
+                      $scope.closeDetail();
+                  
+                  } else {
                     showDetail(d,$event,d3.event);
-                  // }
+                  }
     };
 
     $scope.renderCharts = function(){
@@ -165,41 +163,32 @@ angular.module('compromisosSiteApp')
 
     };
 
-
     function showDetail(c,localEvent,mouseEvent){
-
       var menu_chartRowSize = 150;
-    
-        $scope.currentCompromise = c;
-    
-
+      $scope.currentCompromise = c;
       var popupH = parseInt( d3.select('#compromiso-detail').style('height').replace('px','') );
       var fillerH = parseInt( d3.select('#filler').style('height').replace('px','') );
 
       var docH = parseInt( $(window).height() );
-      var yOffset = parseInt ( localEvent.clientY );
+      var yOffset = parseInt ( localEvent.screenY );
       var eTop = $('#form-ui').offset().top; //get the offset top of the element
       var finalTop = eTop - $(window).scrollTop(); //position of the ele w.r.t window
-      var mouseOffset = Math.floor((localEvent.clientY-eTop) / menu_chartRowSize) * menu_chartRowSize;
+      var mouseOffset = Math.floor((localEvent.screenY-eTop) / menu_chartRowSize) * menu_chartRowSize;
 
-      //console.log(eTop, mouseEvent.clientY, mouseOffset);
       var pos = mouseOffset + eTop + 145;
       d3.select('#compromiso-detail')
         .style('top',pos+'px');
+     var someElement = angular.element(document.getElementById('compromiso-detail'));
+      if(filler>0){
+        d3.select('#filler').style('height',filler+'px');
+      }
+      else {
+       d3.select('#filler').style('height',0+'px');
+      }
+        $document.scrollToElement(someElement, 500, 500);
+       var filler = pos + popupH - docH + fillerH;
 
-
-      // $scope.$apply(function(){
-        var someElement = angular.element(document.getElementById('compromiso-detail'));
-        if(filler>0){
-          d3.select('#filler').style('height',filler+'px');
-        }
-        else {
-         d3.select('#filler').style('height',0+'px');
-        }
-          $document.scrollToElement(someElement, 500, 500);
-         var filler = pos + popupH - docH + fillerH;
-
-      // });
+ 
 
     }
 
@@ -209,11 +198,11 @@ angular.module('compromisosSiteApp')
 
     $scope.closeDetail = function(){
        //Agregamos opacity animation
-      d3.selectAll('.menu_chart rect').transition().style('fill','rgba(255, 255, 255, 0)');
+      // d3.selectAll('.menu_chart rect').transition().style('fill','rgba(255, 255, 255, 0)');
 
 
-      deselectTitle();
-      defaultChartColors();
+      // deselectTitle();
+      // defaultChartColors();
       $scope.currentCompromise = null;
       d3.select('#filler').style('height','0px');
 
