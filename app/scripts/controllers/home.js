@@ -127,7 +127,7 @@ angular.module('compromisosSiteApp')
     }
 
     $scope.showCompromisoDetail = function(d,$event){
-      
+
         // // d3.selectAll('.menu_chart rect').transition().style('fill','rgba(255, 255, 255, 0)');
                   // // //Agregamos opacity animation
                   // // d3.selectAll('.menu_chart g.categoria-unselected rect').transition().style('fill','rgba(255, 255, 255, 0.83)');
@@ -159,7 +159,7 @@ angular.module('compromisosSiteApp')
       renderMenuChart();
 
 
-   
+
 
 
     };
@@ -168,9 +168,9 @@ angular.module('compromisosSiteApp')
     function showDetail(c,localEvent,mouseEvent){
 
       var menu_chartRowSize = 150;
-    
+
         $scope.currentCompromise = c;
-    
+
 
       var popupH = parseInt( d3.select('#compromiso-detail').style('height').replace('px','') );
       var fillerH = parseInt( d3.select('#filler').style('height').replace('px','') );
@@ -446,8 +446,6 @@ angular.module('compromisosSiteApp')
                 }
 
           });
-
-
 
 
   };
