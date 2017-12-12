@@ -164,35 +164,37 @@ angular.module('compromisosSiteApp')
     };
 
     function showDetail(c,localEvent,mouseEvent){
+   
       var menu_chartRowSize = 150;
       $scope.currentCompromise = c;
+      
+
       var popupH = parseInt( d3.select('#compromiso-detail').style('height').replace('px','') );
       var fillerH = parseInt( d3.select('#filler').style('height').replace('px','') );
 
       var docH = parseInt( $(window).height() );
-      var yOffset = parseInt ( localEvent.screenY );
-      var eTop = $('#isotopeContainer').offset().top; //get the offset top of the element
+      var yOffset = parseInt ( localEvent.clientY );
+      var eTop = $('#form-ui').offset().top; //get the offset top of the element
       var finalTop = eTop - $(window).scrollTop(); //position of the ele w.r.t window
-      console.log(localEvent.screenY + $(document).scrollTop() - $('#isotopeContainer').offset().top);
-      var mouseOffset = Math.floor((localEvent.screenY + $(document).scrollTop() - $('#isotopeContainer').offset().top) / menu_chartRowSize) * menu_chartRowSize;      
-      if (mouseOffset < 0){
-        mouseOffset = 0;
-      }
-      var pos = mouseOffset + eTop + menu_chartRowSize;
-      var filler = pos + popupH - docH + fillerH;
+      var mouseOffset = Math.floor((localEvent.clientY-eTop) / menu_chartRowSize) * menu_chartRowSize;
+
+      console.log(eTop, localEvent.clientY, mouseOffset);
+      var pos = mouseOffset + eTop + 150;
       d3.select('#compromiso-detail')
         .style('top',pos+'px');
-     var someElement = angular.element(document.getElementById('compromiso-detail'));
-      if(filler>0){
-        d3.select('#filler').style('height',filler+'px');
-      }
-      else {
-       d3.select('#filler').style('height',0+'px');
-      }
-        $document.scrollToElement(someElement, 500, 500);
 
 
+    
+        var someElement = angular.element(document.getElementById('compromiso-detail'));
+        if(filler>0){
+          d3.select('#filler').style('height',filler+'px');
+        }
+        else {
+         d3.select('#filler').style('height',0+'px');
+        }
+         var filler = pos + popupH - docH + fillerH;
 
+ 
 
     }
 
