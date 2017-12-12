@@ -6,9 +6,10 @@ padding: 3px;
 
 
 .item {
-  width: 120px;
+  width: 150px;
   height: auto;
-  min-height: 200px;
+  min-height: 150px;
+  max-height: 150px;
   margin: 3px;
   float: left;
   text-align: center;

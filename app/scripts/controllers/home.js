@@ -140,13 +140,13 @@ angular.module('compromisosSiteApp')
 
                       $scope.selectedCategory = d.slug;
 
-                  if($scope.currentCompromise && ($scope.currentCompromise.numero == d.numero) ){
+                  // if($scope.currentCompromise && ($scope.currentCompromise.numero == d.numero) ){
 
-                      $scope.closeDetail();
+                  //     $scope.closeDetail();
 
-                  } else {
+                  // } else {
                     showDetail(d,$event,d3.event);
-                  }
+                  // }
     };
 
     $scope.renderCharts = function(){
@@ -173,9 +173,12 @@ angular.module('compromisosSiteApp')
       var yOffset = parseInt ( localEvent.screenY );
       var eTop = $('#isotopeContainer').offset().top; //get the offset top of the element
       var finalTop = eTop - $(window).scrollTop(); //position of the ele w.r.t window
+      console.log(localEvent.screenY + $(document).scrollTop() - $('#isotopeContainer').offset().top);
       var mouseOffset = Math.floor((localEvent.screenY + $(document).scrollTop() - $('#isotopeContainer').offset().top) / menu_chartRowSize) * menu_chartRowSize;      
-
-      var pos = mouseOffset + eTop + 5;
+      if (mouseOffset < 0){
+        mouseOffset = 0;
+      }
+      var pos = mouseOffset + eTop + menu_chartRowSize;
       var filler = pos + popupH - docH + fillerH;
       d3.select('#compromiso-detail')
         .style('top',pos+'px');
