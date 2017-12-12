@@ -713,6 +713,9 @@ ul {
 #form-ui h3, #form-ui p {
   font-family: 'OpenSans';
 }
+#form-ui h3 {
+  padding-left: 5px;
+}
 #form-ui p {
   font-size: 12px;
   color: gray;
@@ -762,7 +765,7 @@ width: auto;
   margin-bottom: 0;
 }
 #homeTextContainer input:focus{
-  focus:none;
+  focus:none !important;
   box-shadow: none !important;
   border: 1px solid #CC105F !important;
 }
