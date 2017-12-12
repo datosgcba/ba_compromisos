@@ -27,6 +27,7 @@ angular.module('compromisosSiteApp')
         c.slug = c.slug.trim();
         c.categoria = c.categoria.trim();
         c.iconSVG = GetSVGNameService.getUrl(c.numero);
+        
         return c;
       });
       $scope.data = $scope.data.sort(function(a,b){
@@ -176,10 +177,10 @@ angular.module('compromisosSiteApp')
       var fillerH = parseInt( d3.select('#filler').style('height').replace('px','') );
 
       var docH = parseInt( $(window).height() );
-      var yOffset = parseInt ( mouseEvent.clientY );
+      var yOffset = parseInt ( localEvent.clientY );
       var eTop = $('#form-ui').offset().top; //get the offset top of the element
       var finalTop = eTop - $(window).scrollTop(); //position of the ele w.r.t window
-      var mouseOffset = Math.floor((mouseEvent.clientY-eTop) / menu_chartRowSize) * menu_chartRowSize;
+      var mouseOffset = Math.floor((localEvent.clientY-eTop) / menu_chartRowSize) * menu_chartRowSize;
 
       //console.log(eTop, mouseEvent.clientY, mouseOffset);
       var pos = mouseOffset + eTop + 145;
