@@ -171,11 +171,12 @@ angular.module('compromisosSiteApp')
 
       var docH = parseInt( $(window).height() );
       var yOffset = parseInt ( localEvent.screenY );
-      var eTop = $('#form-ui').offset().top; //get the offset top of the element
+      var eTop = $('#isotopeContainer').offset().top; //get the offset top of the element
       var finalTop = eTop - $(window).scrollTop(); //position of the ele w.r.t window
-      var mouseOffset = Math.floor((localEvent.screenY-eTop) / menu_chartRowSize) * menu_chartRowSize;
+      var mouseOffset = Math.floor(localEvent.screenY + $(document).scrollTop() - $('#isotopeContainer').offset().top);
+      // ) / menu_chartRowSize) * menu_chartRowSize;
 
-      var pos = mouseOffset + eTop + 145;
+      var pos = mouseOffset + eTop;
       var filler = pos + popupH - docH + fillerH;
       d3.select('#compromiso-detail')
         .style('top',pos+'px');
