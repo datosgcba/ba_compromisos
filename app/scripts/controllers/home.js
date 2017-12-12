@@ -176,6 +176,7 @@ angular.module('compromisosSiteApp')
       var mouseOffset = Math.floor((localEvent.screenY-eTop) / menu_chartRowSize) * menu_chartRowSize;
 
       var pos = mouseOffset + eTop + 145;
+      var filler = pos + popupH - docH + fillerH;
       d3.select('#compromiso-detail')
         .style('top',pos+'px');
      var someElement = angular.element(document.getElementById('compromiso-detail'));
@@ -186,7 +187,7 @@ angular.module('compromisosSiteApp')
        d3.select('#filler').style('height',0+'px');
       }
         $document.scrollToElement(someElement, 500, 500);
-       var filler = pos + popupH - docH + fillerH;
+       
 
  
 

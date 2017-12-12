@@ -771,6 +771,9 @@ flex-direction: column;
 }
 
 .item{
-  height: 150px;
-  width:150px;
+  height: 150px !important;
+  width:150px !important;
+}
+h4{
+  font-size: 14px;
 }
