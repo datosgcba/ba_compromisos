@@ -327,42 +327,30 @@ div#category_chart {
   margin-top: 10px;
 }
 
-.f-color-creatividad{
-  color: #7c4194;
-}
-
-.f-color-disfrute{
-  color: #3abaaf;
-}
-
-.f-color-humana{
-  color: #f58b45;
-}
-
-.f-color-social{
-  color: #c15180;
+.f-color-creatividad, .f-color-disfrute,.f-color-humana, .f-color-social{
+  color: #CC105F;
 }
 
 .c-option-selected.c-color-creatividad,
 .bg-color-creatividad{
-  background-color: #7c4194;
+  background-color: #CC105F;
   color: white;
 }
 
 .c-option-selected.c-color-disfrute,
 .bg-color-disfrute{
-  background-color: #3abaaf;
+  background-color: #CC105F;
 }
 
 
 .c-option-selected.c-color-humana,
 .bg-color-humana{
-  background-color: #f58b45;
+  background-color: #CC105F;
 }
 
 .c-option-selected.c-color-social,
 .bg-color-social{
-  background-color: #c15180;
+  background-color: #CC105F;
 }
 
 .c-option-selected h3{
@@ -389,7 +377,8 @@ div#category_chart {
 .btn.bg-color-disfrute, .btn.bg-color-humana,
 .btn.bg-color-social, .btn.creatividad{
  color: white;
- font-weight: 600;
+ text-shadow: none;
+
 }
 /*groups*/
 .group-btn{
@@ -849,4 +838,14 @@ h4{
 
 h3{
   font-size:22px;
+}
+
+.btn{
+  background-image: none;
+  background-color:#CC105F;  
+  color:black;
+
+}
+.btn:focus{
+  background:#CC105F;  
 }
