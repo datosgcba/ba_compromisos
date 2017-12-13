@@ -378,9 +378,23 @@ div#category_chart {
 .btn.bg-color-disfrute, .btn.bg-color-humana,
 .btn.bg-color-social, .btn.creatividad{
  color: white;
- text-shadow: none;
+  text-shadow: none;
+  
+ 
 
 }
+
+.btn.full{
+    color: white;
+     width: 100%;
+     background-image: none;
+     font-weight: 0;
+     text-shadow: none;
+}
+.btn.full:hover,.btn.full:focus{
+  background:#CC105F;  
+}
+
 /*groups*/
 .group-btn{
   background-color: rgba(255, 255, 255, 0.5);
@@ -850,17 +864,17 @@ h3{
   font-size:22px;
 }
 
+#compromiso-detail{
 
-.btn{
+}
+#compromiso-detail.btn{
   background-image: none;
   background-color:#CC105F;  
   color:white;
   width: 100%;
 
 }
-.btn:focus{
-  background:#CC105F;  
-}
+
 #compromiso-detail.well{
     min-height: 20px;
     padding: 19px;
@@ -880,16 +894,19 @@ h3{
     padding-left: 22px;
     color:white;
 }
-
+#compromiso-detail .header .label-text{
+  display: inline-flex;
+}
 #compromiso-detail .header h5{
     font-weight: 400;
     margin-top: 15px;
+    font-size: 18px;
 
 }
 
 #compromiso-detail img.compromiso-icon{
-    max-width: 50px;
-    max-height: 50px;    
+    max-width: 60px;
+    max-height: 60px;    
     filter: brightness(0) invert(100%);
     margin-right: 10px;
 }

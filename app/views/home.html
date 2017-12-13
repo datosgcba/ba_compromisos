@@ -64,7 +64,7 @@
 		<div id="compromiso-detail" class="row well" ng-cloak ng-show="currentCompromise">
 			<div class="header">
 				<div class="row">
-					<div class="col-xs-8">
+					<div class="col-xs-8 label-text">
 						 <img class="icon-svg-container compromiso-icon" ng-src="{{currentCompromise.iconSVG}}">
 						<h5>{{currentCompromise.titulo}}</h5>
 					</div>
@@ -98,7 +98,7 @@
 				</div>
 				<p>Cumplimiento: <span class="f-color-{{currentCompromise.slug}}">{{currentCompromise.cumplimiento_label}}</span></p>
 				<div  class="col-md-12 center-block">
-					<button ng-hide="currentCompromise.url_interna === undefined" ng-click="redirectParent(currentCompromise.url_interna)" id="singlebutton" name="singlebutton" type="button" class="btn btn-xs upper bg-color-{{currentCompromise.slug}}  center-block" >Ver mas sobre el compromiso &#187; </button>
+					<a ng-href="currentCompromise.url_interna" target="_blank" ng-hide="currentCompromise.url_interna === undefined" class="btn full btn-xs upper bg-color-{{currentCompromise.slug}}  center-block" >Ver mas sobre el compromiso &#187;  </a>
 				</div>
 				</div>
 			</div>
