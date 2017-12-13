@@ -25,7 +25,7 @@
 <div id="homeYearContainer" class="col-xs-12 col-sm-4">
   <p>Filtrar por año de cumplimiento:</p>
   <div class="">
-    <label ng-repeat="cump in cumplimiento" my-repeat-directive><input id="years" type="checkbox" value=".{{cump}}" /> {{cump}}</label>
+    <label ng-repeat="cump in cumplimiento | orderBy: cump" my-repeat-directive><input id="years" type="checkbox" value=".{{cump}}" /> {{cump}}</label>
   </div>
 </div>
 <div id="homePercentContainer" class="col-xs-12 col-sm-4">
