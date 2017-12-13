@@ -2,7 +2,7 @@
 
 <div class="">
   <h3>Explorador de compromisos</h3>
-  <br><br>
+
 <div class="" id="flexOptions">
 <p class="" style="padding-left:5px">Filtrar por área</p>
 <div class="flexOptionsRight">
@@ -18,17 +18,17 @@
     </label>
   </p>
 </div>
-<div id="homeTextContainer" class="col-xs-12 col-sm-4" style="padding-left:5px">
+<div id="homeTextContainer" class="col-xs-12 col-sm-4 filters" >
   <p>Buscar por palabra clave:</p>
   <input id="searchTextInput" type="text" ng-model="search.titulo">
 </div>
-<div id="homeYearContainer" class="col-xs-12 col-sm-4">
+<div id="homeYearContainer" class="col-xs-12 col-sm-4 filters" >
   <p>Filtrar por año de cumplimiento:</p>
   <div class="">
     <label ng-repeat="cump in cumplimiento | orderBy: cump" my-repeat-directive><input id="years" type="checkbox" value=".{{cump}}" /> {{cump}}</label>
   </div>
 </div>
-<div id="homePercentContainer" class="col-xs-12 col-sm-4">
+<div id="homePercentContainer" class="col-xs-12 col-sm-4 filters">
   <p>Filtrar por avance:</p>
   <div >
     <label my-repeat-directive><input class="percent" type="checkbox" value=".very-low" /> 0-25%</label>
@@ -38,15 +38,8 @@
   </div>
 </div>
 </div>
-
-<!-- <p id="output">--</p> -->
-
 </div>
 
-<!-- <div class="row">
-  <hr class="lineShadow">
-</div> -->
-<br>
 <div class="">
 
   <ul id="isotopeContainer" isotope-container="isotope-container" class="compromisos-container">
