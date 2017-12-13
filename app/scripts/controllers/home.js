@@ -38,6 +38,11 @@ angular.module('compromisosSiteApp')
       var areas = []
       var cumplimiento = []
       $scope.data.map(function(elem){
+        if(elem.porcentaje_completado <= 25) elem.classPercent = "very-low"
+        if((elem.porcentaje_completado  >25)&&(elem.porcentaje_completado  <= 50)) elem.classPercent = "low"
+        if((elem.porcentaje_completado  >50)&&(elem.porcentaje_completado  <= 75)) elem.classPercent = "high"
+        if(elem.porcentaje_completado > 75) elem.classPercent = "very-high"
+
         if(elem.cumplimiento != undefined) cumplimiento.push(elem.cumplimiento)
 
         if(elem.area1 != undefined) areas.push(elem.area1.toLowerCase().replace(/ /g,"-"))
@@ -164,10 +169,10 @@ angular.module('compromisosSiteApp')
     };
 
     function showDetail(c,localEvent,mouseEvent){
-   
+
       var menu_chartRowSize = 150;
       $scope.currentCompromise = c;
-      
+
 
       var popupH = parseInt( d3.select('#compromiso-detail').style('height').replace('px','') );
       var fillerH = parseInt( d3.select('#filler').style('height').replace('px','') );
@@ -185,7 +190,7 @@ angular.module('compromisosSiteApp')
         .style('top',pos+'px');
 
 
-    
+
         var someElement = angular.element(document.getElementById('compromiso-detail'));
         if(filler>0){
           d3.select('#filler').style('height',filler+'px');
@@ -195,7 +200,7 @@ angular.module('compromisosSiteApp')
         }
          var filler = pos + popupH - docH + fillerH;
 
- 
+
 
     }
 

@@ -1,9 +1,4 @@
 
-#nuevoCont {
-border: 1px solid;
-padding: 3px;
-}
-
 
 .item {
   width: 150px;
@@ -36,7 +31,7 @@ border-radius: 35px;
 
 /**** Isotope Filtering ****/
 #isotopeContainer {
-
+  margin-top: 10rem;
 }
 
 .isotope-item {
