@@ -3,18 +3,18 @@
    <div class="row">
       <p class="col-xs-12 col-sm-6">Filtrar por área:</p>
       <div class="col-xs-6  col-sm-3 col-md-4">
-         <label my-repeat-directive><input class="percent" type="radio" name="option" value="">Seleccionar todos </label>
+         <label isotope-action><input class="percent" type="radio" name="option" value="">Seleccionar todos </label>
       </div>
          <div class="col-xs-6  col-sm-3 col-md-4">
-            <label my-repeat-directive><input class="percent" type="radio" name="option" value="aaaaaa">Deseleccionar todos </label>
+            <label isotope-action><input class="percent" type="radio" name="option" value="aaaaaa">Deseleccionar todos </label>
          </div>
       </div>
    </div>
    <div class="row">
       <div class="homeAreaContainer">
          <p id="form-ui-1">
-            <label id="checkboxButton" ng-repeat="area in areas" my-repeat-directive class="checkboxCheck inactive">
-            <input id="categories" type="checkbox" value=".{{area}}" /> {{area.toLowerCase().split('-').join(' ')}}
+            <label id="checkboxButton" ng-repeat="area in areas" isotope-action class="checkboxCheck inactive">
+            <input id="categories" class="categories" type="checkbox" value=".{{area}}" /> {{area.toLowerCase().split('-').join(' ')}}
             </label>
          </p>
       </div>
@@ -27,16 +27,16 @@
       <div id="homeYearContainer" class="col-xs-12 col-sm-4 filters" >
          <p>Filtrar por año de cumplimiento:</p>
          <div class="">
-            <label ng-repeat="cump in cumplimiento | orderBy: cump" my-repeat-directive><input id="years" type="checkbox" value=".{{cump}}" /> {{cump}}</label>
+            <label ng-repeat="cump in cumplimiento | orderBy: cump" isotope-action><input class="years" id="years" type="checkbox" value=".{{cump}}" /> {{cump}}</label>
          </div>
       </div>
       <div id="homePercentContainer" class="col-xs-12 col-sm-4 filters">
          <p>Filtrar por avance:</p>
          <div >
-            <label my-repeat-directive><input class="percent" type="checkbox" value=".very-low" /> 0-25%</label>
-            <label my-repeat-directive><input class="percent" type="checkbox" value=".low" /> 25-50%</label>
-            <label my-repeat-directive><input class="percent" type="checkbox" value=".high" /> 50-75%</label>
-            <label my-repeat-directive><input class="percent" type="checkbox" value=".very-high" /> 75-100%</label>
+            <label isotope-action><input class="percent" type="checkbox" value=".very-low" /> 0-25%</label>
+            <label isotope-action><input class="percent" type="checkbox" value=".low" /> 25-50%</label>
+            <label isotope-action><input class="percent" type="checkbox" value=".high" /> 50-75%</label>
+            <label isotope-action><input class="percent" type="checkbox" value=".very-high" /> 75-100%</label>
          </div>
          </div>
    </div>
