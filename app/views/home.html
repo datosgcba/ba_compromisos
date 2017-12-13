@@ -6,9 +6,8 @@
 <div class="" id="flexOptions">
 <p class="" style="padding-left:5px">Filtrar por área</p>
 <div class="flexOptionsRight">
-  <label my-repeat-directive><input class="percent" type="radio" name="option" value="">Seleccionar todos </label>
--
-  <label my-repeat-directive><input class="percent" type="radio" name="option" value="aaaaaa">Deseleccionar todos </label>
+  <button id="allFilters" my-repeat-directive type="button" name="button" >all</button>
+  <button id="nothingShow" my-repeat-directive type="button" name="button">nothing</button>
 </div>
 </div>
 <div class="homeAreaContainer">
@@ -39,18 +38,16 @@
 </div>
 </div>
 
-<!-- <p id="output">--</p> -->
-
+<p id="output">--</p>
 </div>
 
 <!-- <div class="row">
   <hr class="lineShadow">
 </div> -->
-<br>
 <div class="">
 
   <ul id="isotopeContainer" isotope-container="isotope-container" class="compromisos-container">
-    <li ng-repeat="d in data | filter:search" isotope-item="isotope-item" class="compromiso-row {{d.slug}} {{d.cumplimiento}} {{d.porcentaje_completado}} {{d.area1.toLowerCase().split(' ').join('-')}} {{d.area2.toLowerCase().split(' ').join('-')}} {{d.area3.toLowerCase().split(' ').join('-')}} {{d.area4.toLowerCase().split(' ').join('-')}} col-xs-3 item {{d.classPercent}}"
+    <li ng-repeat="d in data | filter:search" isotope-item="isotope-item" class="compromiso-row {{d.slug}} {{d.cumplimiento}} {{d.porcentaje_completado}} {{d.area1.toLowerCase().split(' ').join('-')}} {{d.area2.toLowerCase().split(' ').join('-')}} {{d.area3.toLowerCase().split(' ').join('-')}} {{d.area4.toLowerCase().split(' ').join('-')}} col-xs-3 item {{d.classPercent}} allFilters"
      ng-mouseover="showCompromisoDetail(d,$event)">
         <img class="icon-svg-container compromiso-icon" ng-src="{{d.iconSVG}}">
         <h4 class="titulo">{{d.titulo}}</h4>
