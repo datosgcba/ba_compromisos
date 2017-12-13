@@ -27,7 +27,6 @@ angular.module('compromisosSiteApp')
         c.slug = c.slug.trim();
         c.categoria = c.categoria.trim();
         c.iconSVG = GetSVGNameService.getUrl(c.numero);
-        
         return c;
       });
       $scope.data = $scope.data.sort(function(a,b){

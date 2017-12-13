@@ -145,7 +145,8 @@ html {
     position: absolute;
     z-index: 2;
     top: 0;
-    width: 100%;
+    width: 95%;
+    max-width: 95%;
 }
 #compromiso-detail h1,
 #compromiso-detail .h1,
@@ -843,23 +844,52 @@ h4{
 .compromiso-row{
   cursor:pointer;
 }
-<<<<<<< HEAD
-=======
+
 
 h3{
   font-size:22px;
 }
-<<<<<<< HEAD
+
 
 .btn{
   background-image: none;
   background-color:#CC105F;  
-  color:black;
+  color:white;
+  width: 100%;
 
 }
 .btn:focus{
   background:#CC105F;  
 }
-=======
->>>>>>> 8e79708d6c8997381f7f8a1c56e5de6653fdd827
->>>>>>> 1713b81bac43322e1f1dc263775d3be12f8fb18b
+#compromiso-detail.well{
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #5f5d60;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+    padding-top: 0;
+    padding-left:0;
+    padding-right: 0;
+  }
+
+#compromiso-detail .header{
+   background: #5f5d60;
+    padding: 10px;
+    padding-left: 22px;
+    color:white;
+}
+
+#compromiso-detail .header h5{
+    font-weight: 400;
+    margin-top: 15px;
+
+}
+
+#compromiso-detail img.compromiso-icon{
+    max-width: 50px;
+    max-height: 50px;    
+    filter: brightness(0) invert(100%);
+    margin-right: 10px;
+}

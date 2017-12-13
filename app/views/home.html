@@ -41,8 +41,8 @@
   </div>
 </div>
 </div>
-
 </div>
+
 
 <div class="">
 
@@ -51,7 +51,6 @@
      ng-mouseover="showCompromisoDetail(d,$event)">
         <img class="icon-svg-container compromiso-icon" ng-src="{{d.iconSVG}}">
         <h4 class="titulo">{{d.titulo}}</h4>
-        <!-- <div class="cumplimiento"  number="{{d.cumplimiento}}" >{{d.cumplimiento}}</div> -->
     </li>
   </ul>
 
@@ -62,20 +61,26 @@
 	</div>
 
 
-		<div id="compromiso-detail" class="row well"  ng-cloak ng-show="currentCompromise">
-<p class="hidden-device text-right"><a class="" href="javascript:;" ng-click="closeDetail()">Cerrar</a></p>
-
-			<div class="col-sm-4 hidden-device">
+		<div id="compromiso-detail" class="row well" ng-cloak ng-show="currentCompromise">
+			<div class="header">
+				<div class="row">
+					<div class="col-xs-8">
+						 <img class="icon-svg-container compromiso-icon" ng-src="{{currentCompromise.iconSVG}}">
+						<h5>{{currentCompromise.titulo}}</h5>
+					</div>
+					<div class="col-xs-4">
+						<h5 class="text-right"><a class="" href="javascript:;" ng-click="closeDetail()">Cerrar</a></h5>
+	 </div>
+	</div>
+</div>
+	<div class="col-sm-4 hidden-device">
 				<img ng-src="{{currentCompromise.imagen}}">
 			</div>
 			<div class="col-xs-12 col-sm-6">
 			<div class="row">
 			<div class="col-sm-12">
-				<div class="row">
-					<div class="col-xs-10 col-sm-12"><h2><small>{{currentCompromise.categoria}}</small></h2></div>
-					<div class="col-xs-2 hidden-desktop"><a class="" href="javascript:;" ng-click="closeDetail()">Cerrar</a></div>
-				</div>
-				<h2>{{currentCompromise.titulo}}</h2>
+				<h3><small>{{currentCompromise.categoria}}</small></h3>
+				<h3>{{currentCompromise.titulo}}</h3>
 				<h5>{{currentCompromise.cumplimiento}}</h5>
 				<p> {{currentCompromise.desc}}</p>
 			</div>
