@@ -13,8 +13,8 @@
    <div class="row">
       <div class="homeAreaContainer">
          <p id="form-ui-1">
-            <label id="checkboxButton" ng-repeat="area in areas" isotope-action class="checkboxCheck inactive">
-            <input id="categories" class="categories" type="checkbox" value=".{{area}}" /> {{area.toLowerCase().split('-').join(' ')}}
+            <label id="checkboxButton" ng-repeat="area in areas" isotope-action class="inactive" >
+            <input id="categories" class="categories checkMyCheck" type="checkbox" value=".{{area}}" /> {{area.toLowerCase().split('-').join(' ')}}
             </label>
          </p>
       </div>
@@ -61,7 +61,8 @@
                <h5>{{currentCompromise.titulo}}</h5>
             </div>
             <div class="col-xs-4">
-               <h5 class="text-right"><a class="" href="javascript:;" ng-click="closeDetail()">Cerrar</a></h5>
+               <h5 class="text-right close"><a class="" href="javascript:;" ng-click="closeDetail()">
+ <span class="glyphicon glyphicon-remove white"></span></a></h5>
             </div>
          </div>
       </div>

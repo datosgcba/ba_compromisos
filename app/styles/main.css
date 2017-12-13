@@ -821,7 +821,8 @@ font-family: 'OpenSans';
 }
 
 .checked {
-font-family: 'OpenSans';  background: #CC105F;
+  font-family: 'OpenSans';  
+  background: #CC105F;
   border: 1px solid #CC105F !important ;
   color: white !important;
 }
@@ -829,7 +830,7 @@ font-family: 'OpenSans';  background: #CC105F;
     border: 1px solid #f90;
 }
 .inactive {
-    color: 1px solid red;
+    border: 1px solid red;
 }
 hr.lineShadow {
     border: 0;
@@ -909,4 +910,26 @@ h3{
     max-height: 60px;    
     filter: brightness(0) invert(100%);
     margin-right: 10px;
+}
+.close a:visited{
+  color:white;
+}
+.close a:hover{
+  color:white;
+}
+.close a:{
+  color:white;
+}
+.white{
+ color:white !important; 
+}
+.close .glyphicon {color:white !important;}
+
+#form-ui-1 label.inactive{
+  background: white;
+}
+
+#form-ui-1 label.active{
+  background: #CC105F;
+  color:white;
 }

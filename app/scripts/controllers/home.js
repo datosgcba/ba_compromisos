@@ -437,23 +437,11 @@ angular.module('compromisosSiteApp')
             }
 
             $output.text( filterValue );
-            $container.isotope({ filter: filterValue })
+             $container.isotope({ filter: filterValue })
             });
 
-            $('.checkboxCheck').change(function () {
-                    if($(this).hasClass('ckecked'))
-                    {
-                      $(this).removeClass('checked');
-                    }else{
-                    $(this).addClass('checked')
-                  }
-
-            });
+           
   };
 })
 
-// $('.checkboxCheck').change(function () {
-//   console.log("holaaaa");
-//         $('label').next().removeClass('checked');
-//         $(this).next().addClass('checked');
-// });
+
