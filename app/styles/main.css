@@ -715,9 +715,10 @@ ul {
 }
 #form-ui h3 {
   padding-left: 5px;
+  font-size:22px;
 }
 #form-ui p {
-  font-size: 12px;
+  font-size: 14px;
   color: gray;
 }
 label{
@@ -747,12 +748,13 @@ label{
   color: white;
 
 }
-#homeYearContainer, #homePercentContainer{
+#homeYearContainer, #homePercentContainer, #homeAreaContainer{
   
-      padding: 0;
+    padding: 0;
     margin: 0;
     padding-left: 5px;
     padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 #homeYearContainer > div,#homePercentContainer > div{
@@ -762,6 +764,14 @@ label{
 justify-content: flex-start;
 flex-direction: row;
 width: auto;
+}
+.filters{
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
 }
 #homeTextContainer input{
   font-family: 'OpenSans';
@@ -835,4 +845,8 @@ h4{
 }
 .compromiso-row{
   cursor:pointer;
+}
+
+h3{
+  font-size:22px;
 }
