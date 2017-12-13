@@ -617,6 +617,14 @@ div#category_chart {
   .c-option{
     min-height: auto;
   }
+  #isotopeContainer{
+    margin-top: 0 !important;
+    display: flex;
+    justify-content: center;
+  }
+  .item{
+    left: auto !important;
+  }
 }
 
 /* Custom, iPhone Retina */
@@ -738,7 +746,7 @@ label{
 
 }
 #homeYearContainer, #homePercentContainer, #homeAreaContainer{
-  
+
     padding: 0;
     margin: 0;
     padding-left: 5px;
@@ -758,7 +766,7 @@ width: auto;
     padding-left: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
-    margin-top: 10px;
+    /*margin-top: 10px;*/
     margin-bottom: 10px;
 
 }
@@ -835,10 +843,13 @@ h4{
 .compromiso-row{
   cursor:pointer;
 }
+<<<<<<< HEAD
+=======
 
 h3{
   font-size:22px;
 }
+<<<<<<< HEAD
 
 .btn{
   background-image: none;
@@ -849,3 +860,6 @@ h3{
 .btn:focus{
   background:#CC105F;  
 }
+=======
+>>>>>>> 8e79708d6c8997381f7f8a1c56e5de6653fdd827
+>>>>>>> 1713b81bac43322e1f1dc263775d3be12f8fb18b

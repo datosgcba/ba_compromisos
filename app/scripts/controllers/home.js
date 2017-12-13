@@ -388,68 +388,68 @@ angular.module('compromisosSiteApp')
           var $checkboxes = $('#form-ui #categories');
           var $years = $('#form-ui #years');
           var $percent = $('#form-ui .percent');
+
           $years.add( $checkboxes ).add( $percent).change( function() {
-          // map input values to an array
-          var exclusives = [];
-          var inclusives = [];
-          // exclusive filters from selects
-          $selects.each( function( i, elem ) {
-            if ( elem.value ) {
-              exclusives.push( elem.value );
-            }
-          });
-          // inclusive filters from checkboxes
-          $years.each( function( i, elem ) {
-            // if checkbox, use value if checked
-            if ( elem.checked ) {
-              inclusives.push( elem.value );
-            }
-          });
-          $percent.each( function( i, elem ) {
-            // if checkbox, use value if checked
-            if ( elem.checked ) {
-              inclusives.push( elem.value );
-            }
-          });
-          // inclusive filters from checkboxes
-          $checkboxes.each( function( i, elem ) {
-            // if checkbox, use value if checked
-            if ( elem.checked ) {
-              inclusives.push( elem.value );
-            }
-          });
+            // map input values to an array
+            var exclusives = [];
+            var inclusives = [];
 
-          // combine exclusive and inclusive filters
-
-          // first combine exclusives
-          exclusives = exclusives.join('');
-
-          var filterValue;
-          if ( inclusives.length ) {
-            // map inclusives with exclusives for
-            filterValue = $.map( inclusives, function( value ) {
-              return value + exclusives;
+            // exclusive filters from selects
+            $selects.each( function( i, elem ) {
+              if ( elem.value ) {
+                exclusives.push( elem.value );
+              }
             });
-            filterValue = filterValue.join(', ');
-          } else {
-            filterValue = exclusives;
-          }
+            // inclusive filters from checkboxes
+            $years.each( function( i, elem ) {
+              // if checkbox, use value if checked
+              if ( elem.checked ) {
+                inclusives.push( elem.value );
+              }
+            });
+            $percent.each( function( i, elem ) {
+              // if checkbox, use value if checked
+              if ( elem.checked ) {
+                inclusives.push( elem.value );
+              }
+            });
+            // inclusive filters from checkboxes
+            $checkboxes.each( function( i, elem ) {
+              // if checkbox, use value if checked
+              if ( elem.checked ) {
+                inclusives.push( elem.value );
+              }
+            });
 
-          $output.text( filterValue );
-          $container.isotope({ filter: filterValue })
-          });
+            // combine exclusive and inclusive filters
 
-          $('.checkboxCheck').change(function () {
-                  if($(this).hasClass('ckecked'))
-                  {
-                    $(this).removeClass('checked');
-                  }else{
-                  $(this).addClass('checked')
-                }
+            // first combine exclusives
+            exclusives = exclusives.join('');
 
-          });
+            var filterValue;
+            if ( inclusives.length ) {
+              // map inclusives with exclusives for
+              filterValue = $.map( inclusives, function( value ) {
+                return value + exclusives;
+              });
+              filterValue = filterValue.join(', ');
+            } else {
+              filterValue = exclusives;
+            }
 
+            $output.text( filterValue );
+            $container.isotope({ filter: filterValue })
+            });
 
+            $('.checkboxCheck').change(function () {
+                    if($(this).hasClass('ckecked'))
+                    {
+                      $(this).removeClass('checked');
+                    }else{
+                    $(this).addClass('checked')
+                  }
+
+            });
   };
 })
 
