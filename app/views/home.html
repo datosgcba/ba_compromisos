@@ -2,12 +2,12 @@
 
 <div class="">
   <h3>Explorador de compromisos</h3>
-  <br><br>
+
 <div class="" id="flexOptions">
 <p class="" style="padding-left:5px">Filtrar por área</p>
 <div class="flexOptionsRight">
-  <button id="allFilters" my-repeat-directive type="button" name="button" >all</button>
-  <button id="nothingShow" my-repeat-directive type="button" name="button">nothing</button>
+  <label my-repeat-directive><input class="percent" type="radio" value="*" />Seleccionar todas</label> -
+  <label my-repeat-directive><input class="percent" type="radio" value="nothing" />Deseleccionar todas</label>
 </div>
 </div>
 <div class="homeAreaContainer">
@@ -17,17 +17,17 @@
     </label>
   </p>
 </div>
-<div id="homeTextContainer" class="col-xs-12 col-sm-4" style="padding-left:5px">
+<div id="homeTextContainer" class="col-xs-12 col-sm-4 filters" >
   <p>Buscar por palabra clave:</p>
   <input id="searchTextInput" type="text" ng-model="search.titulo">
 </div>
-<div id="homeYearContainer" class="col-xs-12 col-sm-4">
+<div id="homeYearContainer" class="col-xs-12 col-sm-4 filters" >
   <p>Filtrar por año de cumplimiento:</p>
   <div class="">
     <label ng-repeat="cump in cumplimiento | orderBy: cump" my-repeat-directive><input id="years" type="checkbox" value=".{{cump}}" /> {{cump}}</label>
   </div>
 </div>
-<div id="homePercentContainer" class="col-xs-12 col-sm-4">
+<div id="homePercentContainer" class="col-xs-12 col-sm-4 filters">
   <p>Filtrar por avance:</p>
   <div >
     <label my-repeat-directive><input class="percent" type="checkbox" value=".very-low" /> 0-25%</label>

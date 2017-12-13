@@ -733,7 +733,7 @@ label{
   font-size: 12px;
   display: inline-block;
   margin: 5px;
-  padding: 5px 8px;
+  padding: 2px 8px;
   cursor: pointer;
   border: 1px solid gray;
   color: gray;
@@ -747,7 +747,13 @@ label{
   color: white;
 
 }
-
+#homeYearContainer, #homePercentContainer{
+  
+      padding: 0;
+    margin: 0;
+    padding-left: 5px;
+    padding-top: 5px;
+}
 
 #homeYearContainer > div,#homePercentContainer > div{
   font-family: 'OpenSans';
@@ -771,18 +777,19 @@ width: auto;
 }
 #homeYearContainer > p,#homePercentContainer > p{
   font-family: 'OpenSans';
-  font-size: 12px;
-  padding-left: 1rem;
+  font-size: 14px;
+  padding-left: 0;
 }
 #homeYearContainer label,#homePercentContainer label{
   font-family: 'OpenSans';
   font-size: 12px;
   margin-bottom: 5px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin: 0 10px;
-flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 10px;
+  flex-direction: column;
+  width: 25%;
 }
 #searchTextInput {
 font-family: 'OpenSans';
