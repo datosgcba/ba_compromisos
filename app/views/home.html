@@ -1,16 +1,12 @@
 <div id="form-ui" class="row">
-   <div class="row filters">
+   <div class="row filters padding">
       <h3>Explorador de compromisos</h3>
       <p class="col-xs-12 col-sm-6">Filtrar por área:</p>
-      <div class="col-xs-12 col-sm-6">
-         <div class="row">
-            <div class="col-xs-6">
-              <a class="action" ng-click="setAllFilters()">Seleccionar todos  </a>
-            </div>
-               <div class="col-xs-6">
-                  <a class="action" ng-click="removeAllFilters()">Deseleccionar todos  </a>
-               </div>
-            </div>
+      <div id="selectsContainer" class="col-xs-12 col-sm-6">
+
+              <a class="action" ng-click="setAllFilters()">Seleccionar todos  - </a>
+
+                <a class="action" ng-click="removeAllFilters()">Deseleccionar todos  </a>
          </div>
       </div>
    <div class="row filters">
@@ -25,16 +21,17 @@
    <div class="row filters">
       <div id="homeTextContainer" class="col-xs-12 col-sm-4 filters" >
          <p>Buscar por palabra clave:</p>
-         <input id="searchTextInput" type="text" ng-model="search.titulo">
+         <!-- <input id="searchTextInput" type="text" ng-model="search.titulo" ng-click="setTextFilter()"> -->
+         <input id="searchTextInput" type="text" ng-model="search" ng-change="setTextFilter()">
       </div>
       <div id="homeYearContainer" class="col-xs-12 col-sm-4 filters" >
          <p>Filtrar por año de cumplimiento:</p>
          <div class="">
-         
+
                <label ng-repeat="cump in cumplimiento | orderBy: cump">
                   <input type="radio" class="years" value=".{{cump}}" name=".years" />
             {{cump}}</label>
-         
+
          </div>
       </div>
       <div id="homePercentContainer" class="col-xs-12 col-sm-4 filters">
@@ -45,7 +42,7 @@
             <label><input type="radio" class="percent" value=".high" name="percentage" />50%-75%</label>
             <label><input type="radio" class="percent" value=".very-high" name="percentage" />75%-100%</label>
 
-            
+
          </div>
          </div>
    </div>
@@ -53,7 +50,8 @@
 </div>
 <div class="">
 <ul id="isotopeContainer" isotope-container="isotope-container" class="compromisos-container">
-   <li ng-repeat="d in data | filter:search" isotope-item="isotope-item" class="compromiso-row {{d.slug}} {{d.cumplimiento}} {{d.porcentaje_completado}} {{d.area1.toLowerCase().split(' ').join('-')}} {{d.area2.toLowerCase().split(' ').join('-')}} {{d.area3.toLowerCase().split(' ').join('-')}} {{d.area4.toLowerCase().split(' ').join('-')}} col-xs-3 item {{d.classPercent}} allFilters"
+  <!-- <li ng-repeat="d in data | filter:search" isotope-item="isotope-item" class="compromiso-row {{d.slug}} {{d.cumplimiento}} {{d.porcentaje_completado}} {{d.area1.toLowerCase().split(' ').join('-')}} {{d.area2.toLowerCase().split(' ').join('-')}} {{d.area3.toLowerCase().split(' ').join('-')}} {{d.area4.toLowerCase().split(' ').join('-')}} col-xs-3 item {{d.classPercent}} allFilters" -->
+  <li ng-repeat="d in data | filter:search" isotope-item="isotope-item" class="compromiso-row {{d.slug}} {{d.cumplimiento}} {{d.porcentaje_completado}} {{d.area1.toLowerCase().split(' ').join('-')}} {{d.area2.toLowerCase().split(' ').join('-')}} {{d.area3.toLowerCase().split(' ').join('-')}} {{d.area4.toLowerCase().split(' ').join('-')}} col-xs-3 item {{d.classPercent}} allFilters"
       ng-mouseover="showCompromisoDetail(d,$event)">
       <img class="icon-svg-container compromiso-icon" ng-src="{{d.iconSVG}}">
       <h4 class="titulo">{{d.titulo}}</h4>
@@ -101,14 +99,14 @@
                   <div class="progress-w second-progress" ng-show="currentCompromise.porcentaje_completado<50" ng-style="{ 'width': (100 - currentCompromise.porcentaje_completado) + '%' }">{{currentCompromise.porcentaje_completado}}% </div>
                </div>
             </div>
-               
+
                   <div class="col-xs-6 col-md-6">
                      <p> </p>
                   </div>
                   <div class="col-xs-6 col-md-6">
                      <p class="right"ng-cloak ng-show="currentCompromise.cumplimiento"> Fecha Finalización <strong>{{currentCompromise.cumplimiento}}</strong></p>
                   </div>
-               
+
                <div class="col-xs-12">
                   <a ng-href="{{currentCompromise.url_interna}}" target="_blank" ng-hide="currentCompromise.url_interna === undefined" class="btn full btn-xs upper bg-color-{{currentCompromise.slug}}  center-block" >Ver mas sobre el compromiso &#187;  </a>
                </div>

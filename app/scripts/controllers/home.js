@@ -297,7 +297,7 @@ angular.module('compromisosSiteApp')
       }
 
     function createCompromisos( ){
-      
+
     }
 
     var refreshGrid = function(){
@@ -347,11 +347,13 @@ angular.module('compromisosSiteApp')
             } else {
               filterValue = exclusives;
             }
-
             $output.text( filterValue );
             $container.isotope({ filter: filterValue })
-            
+
     };
+    $scope.setTextFilter = function(){
+      refreshGrid();
+    }
 
     $scope.setAllFilters = function(){
       $('.checkMyCheck').each(function(){
@@ -403,12 +405,12 @@ angular.module('compromisosSiteApp')
                     else{
                       $(this).parent().addClass('active');
                       $(this).parent().removeClass('inactive');
-                    
+
                   }
 
             });
       });
-  
+
 
   })
   .directive('onFinishRender', function ($timeout) {
@@ -423,6 +425,3 @@ angular.module('compromisosSiteApp')
         }
     }
   });
-
-
-
