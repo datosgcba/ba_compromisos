@@ -303,70 +303,7 @@ angular.module('compromisosSiteApp')
 
 
     }
-    // $scope.executeIsotope2 = function(){
-    //   console.log("executeIsotope");
-    //   $(function(){
-    //
-    //   var $container = $('#isotopeHomeContainer'),
-    //   $checkboxes = $('#filters input'),
-    //   qsRegex;
-    //
-    //   $container.isotope({
-    //   itemSelector: '.item',
-    //   layoutMode: 'fitRows'
-    //   });
-    //
-    //
-    //   // get Isotope instance
-    //   var isotope = $container.data('isotope');
-    //
-    //   // add even classes to every other visible item, in current order
-    //   function addEvenClasses() {
-    //     isotope.$filteredAtoms.each( function( i, elem ) {
-    //     $(elem)[ ( i % 2 ? 'addClass' : 'removeClass' ) ]('even')
-    //     });
-    //   }
-    //
-    //
-    //   $checkboxes.change(function(){
-    //     var filters = [];
-    //     // get checked checkboxes values
-    //     $checkboxes.filter(':checked').each(function(){
-    //     filters.push( this.value );
-    //     });
-    //
-    //
-    //     var searchResult = qsRegex ? $inputSearch.text().match( qsRegex ) : true;
-    //
-    //     filters = filters.join(', ');
-    //     $container.isotope({ filter: filters, searchResult });
-    //     addEvenClasses();
-    //   });
-    //
-    //
-    //
-    //   $('#shuffle').click(function(){
-    //   $container.isotope('shuffle');
-    //   addEvenClasses();
-    //   });
-    //
-    //   // debounce so filtering doesn't happen every millisecond
-    //   function debounce( fn, threshold ) {
-    //     var timeout;
-    //     return function debounced() {
-    //       if ( timeout ) {
-    //         clearTimeout( timeout );
-    //       }
-    //       function delayed() {
-    //         fn();
-    //         timeout = null;
-    //       }
-    //       setTimeout( delayed, threshold || 100 );
-    //     };
-    //   }
-    //
-    //   });
-    // }
+
 
 
     $scope.executeIsotope = function(){

@@ -29,9 +29,15 @@ html {
   text-align: center;
   box-shadow: none;
   height: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
   box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+}
+#compromiso-detail p{
+    font-size: 12px;
+}
+.right{
+  text-align: right;
 }
 
 .progress-bar {
@@ -142,6 +148,7 @@ html {
 }
 
 #compromiso-detail{
+    font-family: 'Open Sans';
     position: absolute;
     z-index: 2;
     top: 0;
@@ -154,13 +161,26 @@ html {
 #compromiso-detail .h2,
 #compromiso-detail h3,
 #compromiso-detail .h3{
+    font-weight: 600;
     margin-top: 0px;
     margin-bottom: 0px;
+}
+#compromiso-detail h3{
+  font-size: 
 }
 #compromiso-detail img{
 	max-width: 100%;
 }
-
+#compromiso-detail img.photo{
+    max-width: 100%;
+    margin: 8px;
+    border-radius: 8px;
+}
+#compromiso-detail div.photo-frame{
+     margin-left: 0;
+    padding-left: 0;
+}
+}
 #compromiso-detail .progress-bar span{
 	color: #FFFFFF;
   float: right;
@@ -390,6 +410,7 @@ div#category_chart {
      background-image: none;
      font-weight: 0;
      text-shadow: none;
+     text-align: left;
 }
 .btn.full:hover,.btn.full:focus{
   background:#CC105F;  
@@ -722,11 +743,14 @@ ul {
 .compromisos-container ul, .compromisos-container li{
   list-style: none;
 }
-#form-ui h3, #form-ui p {
+#form-ui h3, #form-ui p, .filters p {
   font-family: 'OpenSans';
+  color: gray;
+  margin-left: 0;
+  padding-left: 0px;
 }
 #form-ui h3 {
-  padding-left: 5px;
+  color:black;
   font-size:22px;
 }
 #form-ui p {
@@ -863,6 +887,7 @@ h4{
 
 h3{
   font-size:22px;
+  line-height: 30px;
 }
 
 #compromiso-detail{
@@ -892,7 +917,7 @@ h3{
 #compromiso-detail .header{
    background: #5f5d60;
     padding: 10px;
-    padding-left: 22px;
+    padding-left: 8px;
     color:white;
 }
 #compromiso-detail .header .label-text{
@@ -900,8 +925,8 @@ h3{
 }
 #compromiso-detail .header h5{
     font-weight: 400;
-    margin-top: 15px;
-    font-size: 18px;
+    margin-top: 20px;
+    font-size: 14px;
 
 }
 
@@ -932,4 +957,12 @@ h3{
 #form-ui-1 label.active{
   background: #CC105F;
   color:white;
+}
+
+hr {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    border: 0;
+    border-top: 2px solid #eee;
+    border-bottom: 1px solid #fff;
 }

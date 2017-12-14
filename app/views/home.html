@@ -1,12 +1,17 @@
 <div id="form-ui">
-   <h3>Explorador de compromisos</h3>
-   <div class="row">
+   
+   <div class="row filters">
+      <h3>Explorador de compromisos</h3>
       <p class="col-xs-12 col-sm-6">Filtrar por área:</p>
-      <div class="col-xs-6  col-sm-3 col-md-4">
-         <label isotope-action><input class="percent" type="radio" name="option" value="">Seleccionar todos </label>
-      </div>
-         <div class="col-xs-6  col-sm-3 col-md-4">
-            <label isotope-action><input class="percent" type="radio" name="option" value="aaaaaa">Deseleccionar todos </label>
+      <div class="col-xs-12 col-sm-6">
+         <div class="row">
+            <div class="col-xs-6">
+               <label isotope-action><input class="percent" type="radio" name="option" value="">Seleccionar todos </label>
+            </div>
+               <div class="col-xs-6">
+                  <label isotope-action><input class="percent" type="radio" name="option" value="aaaaaa">Deseleccionar todos </label>
+               </div>
+            </div>
          </div>
       </div>
    </div>
@@ -40,6 +45,7 @@
          </div>
          </div>
    </div>
+   <hr/>
 </div>
 <div class="">
 <ul id="isotopeContainer" isotope-container="isotope-container" class="compromisos-container">
@@ -66,19 +72,19 @@
             </div>
          </div>
       </div>
-      <div class="col-sm-4 hidden-device">
-         <img ng-src="{{currentCompromise.imagen}}">
+      <div class="col-sm-4 hidden-device photo-frame">
+         <img class="photo" ng-src="{{currentCompromise.imagen}}">
       </div>
       <div class="col-xs-12 col-sm-6">
          <div class="row">
             <div class="col-sm-12">
                <h3><small>{{currentCompromise.categoria}}</small></h3>
                <h3>{{currentCompromise.titulo}}</h3>
-               <h5>{{currentCompromise.cumplimiento}}</h5>
                <p> {{currentCompromise.desc}}</p>
             </div>
             <div class="col-sm-12">
                <p class="upper"><strong>Estado del Compromiso</strong></p>
+               <p ng-cloak ng-show="currentCompromise.metrica"> ¿Cómo lo medimos? <strong>{{currentCompromise.metrica}}</strong></p>
                <div class="progress">
                   <div class="progress-bar bg-color-{{currentCompromise.slug}}"
                      role="progressbar"
@@ -90,8 +96,16 @@
                   </div>
                   <div class="progress-w second-progress" ng-show="currentCompromise.porcentaje_completado<50" ng-style="{ 'width': (100 - currentCompromise.porcentaje_completado) + '%' }">{{currentCompromise.porcentaje_completado}}% </div>
                </div>
-               <p>Cumplimiento: <span class="f-color-{{currentCompromise.slug}}">{{currentCompromise.cumplimiento_label}}</span></p>
-               <div  class="col-md-12 center-block">
+            </div>
+               
+                  <div class="col-xs-6 col-md-6">
+                     <p> </p>
+                  </div>
+                  <div class="col-xs-6 col-md-6">
+                     <p class="right"ng-cloak ng-show="currentCompromise.cumplimiento"> Fecha Finalización <strong>{{currentCompromise.cumplimiento}}</strong></p>
+                  </div>
+               
+               <div class="col-xs-12">
                   <a ng-href="{{currentCompromise.url_interna}}" target="_blank" ng-hide="currentCompromise.url_interna === undefined" class="btn full btn-xs upper bg-color-{{currentCompromise.slug}}  center-block" >Ver mas sobre el compromiso &#187;  </a>
                </div>
             </div>
