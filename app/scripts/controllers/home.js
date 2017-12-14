@@ -300,20 +300,7 @@ angular.module('compromisosSiteApp')
       
     }
 
-    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
-      var $container = $('#isotopeContainer').isotope({
-            itemSelector: '.item'
-          });
-
-          var $output = $('#output');
-
-          // filter with selects and checkboxes
-          var $selects = $('#form-ui select');
-          var $checkboxes = $('.homeAreaContainer .categories');
-          var $years = $('#homeYearContainer .years');
-          var $percent = $('#homePercentContainer .percent');
-
-          $years.add( $checkboxes ).add( $percent).change( function() {
+    var refreshGrid = function(){
             // map input values to an array
             var exclusives = [];
             var inclusives = [];
@@ -362,8 +349,51 @@ angular.module('compromisosSiteApp')
             }
 
             $output.text( filterValue );
-             $container.isotope({ filter: filterValue })
-            });
+            $container.isotope({ filter: filterValue })
+            
+    };
+
+    $scope.setAllFilters = function(){
+      $('.checkMyCheck').each(function(){
+          $(this).parent().removeClass('inactive');
+          $(this).parent().addClass('active');
+          $(this).prop('checked', true);
+      })
+      $years.add( $percent).each(function(){
+        $(this).prop('checked', false);
+      });
+      refreshGrid();
+    };
+    $scope.removeAllFilters = function(){
+      $('.checkMyCheck').each(function(){
+          $(this).parent().removeClass('active');
+          $(this).parent().addClass('inactive');
+          $(this).prop('checked', false);
+      })
+      $years.add( $percent).each(function(){
+        $(this).prop('checked', false);
+      });
+      refreshGrid();
+    };
+    var $container,$output, $selects ,$checkboxes,$years,$percent;
+
+    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+          $container = $('#isotopeContainer').isotope({
+            itemSelector: '.item'
+          });
+
+           $output = $('#output');
+
+          // filter with selects and checkboxes
+           $selects = $('#form-ui select');
+           $checkboxes = $('.homeAreaContainer .categories');
+           $years = $('#homeYearContainer .years');
+           $percent = $('#homePercentContainer .percent');
+
+          $years.add( $checkboxes ).add( $percent).change(refreshGrid);
+
+
+
             $('.checkMyCheck').change(function () {
                     if($(this).parent().hasClass('active'))
                     {
