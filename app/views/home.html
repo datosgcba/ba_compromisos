@@ -17,7 +17,7 @@
    <div class="row">
       <div class="homeAreaContainer">
          <p id="form-ui-1">
-            <label id="checkboxButton" ng-repeat="area in areas" isotope-action class="inactive" >
+            <label id="checkboxButton" ng-repeat="area in areas" on-finish-render="ngRepeatFinished" class="inactive" >
             <input id="categories" class="categories checkMyCheck" type="checkbox" value=".{{area}}" /> {{area.toLowerCase().split('-').join(' ')}}
             </label>
          </p>
@@ -31,16 +31,16 @@
       <div id="homeYearContainer" class="col-xs-12 col-sm-4 filters" >
          <p>Filtrar por año de cumplimiento:</p>
          <div class="">
-            <label ng-repeat="cump in cumplimiento | orderBy: cump" isotope-action><input class="years" id="years" type="checkbox" value=".{{cump}}" /> {{cump}}</label>
+            <label ng-repeat="cump in cumplimiento | orderBy: cump"><input class="years" id="years" type="checkbox" value=".{{cump}}" /> {{cump}}</label>
          </div>
       </div>
       <div id="homePercentContainer" class="col-xs-12 col-sm-4 filters">
          <p>Filtrar por avance:</p>
          <div >
-            <label isotope-action><input class="percent" type="checkbox" value=".very-low" /> 0-25%</label>
-            <label isotope-action><input class="percent" type="checkbox" value=".low" /> 25-50%</label>
-            <label isotope-action><input class="percent" type="checkbox" value=".high" /> 50-75%</label>
-            <label isotope-action><input class="percent" type="checkbox" value=".very-high" /> 75-100%</label>
+            <label><input class="percent" type="checkbox" value=".very-low" /> 0-25%</label>
+            <label><input class="percent" type="checkbox" value=".low" /> 25-50%</label>
+            <label><input class="percent" type="checkbox" value=".high" /> 50-75%</label>
+            <label><input class="percent" type="checkbox" value=".very-high" /> 75-100%</label>
          </div>
          </div>
    </div>

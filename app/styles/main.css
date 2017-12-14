@@ -758,6 +758,7 @@ ul {
   color: gray;
 }
 label{
+
   font-family: 'OpenSans';
   font-size: 12px;
   color: gray;
@@ -766,6 +767,7 @@ label{
 		display:none;
 	}
 #form-ui-1 label {
+  text-transform: capitalize;
   font-family: 'OpenSans';
   font-size: 12px;
   display: inline-block;
@@ -935,6 +937,17 @@ h3{
     max-height: 60px;    
     filter: brightness(0) invert(100%);
     margin-right: 10px;
+    margin-left: 8px;
+}
+.close {
+    float: right;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+    color: white;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .2;
+    margin-right: 8px;
 }
 .close a:visited{
   color:white;

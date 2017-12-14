@@ -306,15 +306,9 @@ angular.module('compromisosSiteApp')
 
 
 
-    $scope.executeIsotope = function(){
-
-    }
-  })
-  .directive('isotopeAction', function() {
-  return function(scope, element, attrs) {
-          console.log("executeIsotope");
-          var $container = $('#isotopeContainer').isotope({
-          itemSelector: '.item'
+    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+      var $container = $('#isotopeContainer').isotope({
+            itemSelector: '.item'
           });
 
           var $output = $('#output');
@@ -376,9 +370,35 @@ angular.module('compromisosSiteApp')
             $output.text( filterValue );
              $container.isotope({ filter: filterValue })
             });
+            $('.checkMyCheck').change(function () {
+                    if($(this).parent().hasClass('active'))
+                    {
+                      $(this).parent().addClass('inactive');
+                      $(this).parent().removeClass('active');
+                    }
+                    else{
+                      $(this).parent().addClass('active');
+                      $(this).parent().removeClass('inactive');
+                    
+                  }
 
-           
-  };
-})
+            });
+      });
+  
+
+  })
+  .directive('onFinishRender', function ($timeout) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attr) {
+            if (scope.$last === true) {
+                $timeout(function () {
+                    scope.$emit(attr.onFinishRender);
+                });
+            }
+        }
+    }
+  });
+
 
 
