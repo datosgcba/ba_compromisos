@@ -19,7 +19,7 @@ html {
   outline: 0;
 }
 .upper{
-	text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 .progress{
@@ -144,7 +144,7 @@ html {
 
 /*compromiso home*/
 .compromiso-label{
-	cursor: pointer;
+  cursor: pointer;
 }
 
 #compromiso-detail{
@@ -165,11 +165,9 @@ html {
     margin-top: 0px;
     margin-bottom: 0px;
 }
-#compromiso-detail h3{
-  font-size: 
-}
+
 #compromiso-detail img{
-	max-width: 100%;
+  max-width: 100%;
 }
 #compromiso-detail img.photo{
     max-width: 100%;
@@ -180,17 +178,16 @@ html {
      margin-left: 0;
     padding-left: 0;
 }
-}
 #compromiso-detail .progress-bar span{
-	color: #FFFFFF;
+  color: #FFFFFF;
   float: right;
   padding-right: 10px;
 }
 
 .compromiso-action{
-	stroke:#fff;
-	stroke-width:1;
-	cursor: pointer;
+  stroke:#fff;
+  stroke-width:1;
+  cursor: pointer;
 }
 
 #menu_chart .compromiso-icon svg{
@@ -199,7 +196,7 @@ html {
 }
 
 .compromiso-action:hover{
-	stroke:#ccc;
+  stroke:#ccc;
 }
 
 .categoria-creatividad .compromiso-label text,
@@ -270,7 +267,6 @@ html {
 #menu_chart .label-group-text text{
   fill: #a6a9ad;
 }
-//bubble
 
 div#category_chart {
   fill: #ff7f0e;
@@ -286,7 +282,7 @@ div#category_chart {
 }
 
 .bubble-container .label-group{
-	fill:#000;
+  fill:#000;
 }
 .bubble-container .categories > circle {
     fill-opacity: 0;
@@ -764,8 +760,8 @@ label{
   color: gray;
 }
 #form-ui-1 input[type=radio], #form-ui-1 input[type=checkbox] {
-		display:none;
-	}
+    display:none;
+  }
 #form-ui-1 label {
   text-transform: capitalize;
   font-family: 'OpenSans';
@@ -955,12 +951,11 @@ h3{
 .close a:hover{
   color:white;
 }
-.close a:{
-  color:white;
-}
+
 .white{
  color:white !important; 
 }
+
 .close .glyphicon {color:white !important;}
 
 #form-ui-1 label.inactive{
@@ -979,3 +974,77 @@ hr {
     border-top: 2px solid #eee;
     border-bottom: 1px solid #fff;
 }
+
+
+.item {
+  width: 150px;
+  height: auto;
+  min-height: 150px;
+  max-height: 150px;
+  margin: 3px;
+  float: left;
+  text-align: center;
+}
+ul {
+  margin-left: 0 !important;
+}
+.item.next {
+width: 60px;
+height: 60px;
+border: 5px solid black;
+border-radius: 35px;
+}
+
+.red { background: red; }
+.blue { background: blue; }
+.green { background: green; }
+.yellow { background: yellow; }
+
+/* Start: Recommended Isotope styles */
+
+/**** Isotope Filtering ****/
+#isotopeContainer {
+  /*margin-top: 10rem;*/
+}
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+pointer-events: none;
+z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+
+.isotope,
+.isotope .isotope-item {
+-webkit-transition-duration: 0.8s;
+   -moz-transition-duration: 0.8s;
+        transition-duration: 0.8s;
+}
+
+.isotope {
+-webkit-transition-property: height, width;
+   -moz-transition-property: height, width;
+        transition-property: height, width;
+}
+
+.isotope .isotope-item {
+-webkit-transition-property: -webkit-transform, opacity;
+   -moz-transition-property:    -moz-transform, opacity;
+        transition-property:         transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+-webkit-transition-duration: 0s;
+   -moz-transition-duration: 0s;
+        transition-duration: 0s;
+}
+
+/* End: Recommended Isotope styles */
