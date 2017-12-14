@@ -302,17 +302,17 @@ angular.module('compromisosSiteApp')
     }
 
     var refreshGrid = function(){
-            var $text = $('#searchTextInput').val();
-            var keys = $text.toLowerCase().split(' ');
             // map input values to an array
             var exclusives = [];
             var inclusives = [];
-            for (var i = 0; i < keys.length; i++) {
-              var val = keys[i];
-              if (val !== ''){
-                inclusives.push('.' + val);  
-              }
-            }
+            
+
+ 
+            var ww = $('#searchTextInput').val().toLowerCase().split(' ');
+            
+            
+
+           
             
             // exclusive filters from selects
             $selects.each( function( i, elem ) {
@@ -328,7 +328,7 @@ angular.module('compromisosSiteApp')
               }
             });
             $percent.each( function( i, elem ) {
-              // if checkbox, use value if checked
+               // if checkbox, use value if checked
               if ( elem.checked ) {
                 exclusives.push( elem.value );
               }
@@ -356,8 +356,18 @@ angular.module('compromisosSiteApp')
             } else {
               filterValue = exclusives;
             }
-            console.log( filterValue );
-            $container.isotope({ filter: filterValue })
+
+
+            $container.isotope({ filter: function() {
+              var $this = $(this);
+              var searchResult = true; 
+              for (var i = 0; i < ww.length; i++) {
+                searchResult = $this.text().toLowerCase().indexOf(ww) > -1;
+              }
+              var buttonResult = filterValue ? $this.is( filterValue ) : true;
+              return searchResult && buttonResult;
+            } 
+          })
 
             
 
