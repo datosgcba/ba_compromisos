@@ -303,77 +303,14 @@ angular.module('compromisosSiteApp')
 
 
     }
-    // $scope.executeIsotope2 = function(){
-    //   console.log("executeIsotope");
-    //   $(function(){
-    //
-    //   var $container = $('#isotopeHomeContainer'),
-    //   $checkboxes = $('#filters input'),
-    //   qsRegex;
-    //
-    //   $container.isotope({
-    //   itemSelector: '.item',
-    //   layoutMode: 'fitRows'
-    //   });
-    //
-    //
-    //   // get Isotope instance
-    //   var isotope = $container.data('isotope');
-    //
-    //   // add even classes to every other visible item, in current order
-    //   function addEvenClasses() {
-    //     isotope.$filteredAtoms.each( function( i, elem ) {
-    //     $(elem)[ ( i % 2 ? 'addClass' : 'removeClass' ) ]('even')
-    //     });
-    //   }
-    //
-    //
-    //   $checkboxes.change(function(){
-    //     var filters = [];
-    //     // get checked checkboxes values
-    //     $checkboxes.filter(':checked').each(function(){
-    //     filters.push( this.value );
-    //     });
-    //
-    //
-    //     var searchResult = qsRegex ? $inputSearch.text().match( qsRegex ) : true;
-    //
-    //     filters = filters.join(', ');
-    //     $container.isotope({ filter: filters, searchResult });
-    //     addEvenClasses();
-    //   });
-    //
-    //
-    //
-    //   $('#shuffle').click(function(){
-    //   $container.isotope('shuffle');
-    //   addEvenClasses();
-    //   });
-    //
-    //   // debounce so filtering doesn't happen every millisecond
-    //   function debounce( fn, threshold ) {
-    //     var timeout;
-    //     return function debounced() {
-    //       if ( timeout ) {
-    //         clearTimeout( timeout );
-    //       }
-    //       function delayed() {
-    //         fn();
-    //         timeout = null;
-    //       }
-    //       setTimeout( delayed, threshold || 100 );
-    //     };
-    //   }
-    //
-    //   });
-    // }
+
 
 
     $scope.executeIsotope = function(){
 
     }
   })
-  .directive('myRepeatDirective', function() {
+  .directive('isotopeAction', function() {
   return function(scope, element, attrs) {
           console.log("executeIsotope");
           var $container = $('#isotopeContainer').isotope({
@@ -384,9 +321,9 @@ angular.module('compromisosSiteApp')
 
           // filter with selects and checkboxes
           var $selects = $('#form-ui select');
-          var $checkboxes = $('#form-ui #categories');
-          var $years = $('#form-ui #years');
-          var $percent = $('#form-ui .percent');
+          var $checkboxes = $('.homeAreaContainer .categories');
+          var $years = $('#homeYearContainer .years');
+          var $percent = $('#homePercentContainer .percent');
 
           $years.add( $checkboxes ).add( $percent).change( function() {
             // map input values to an array
@@ -437,23 +374,11 @@ angular.module('compromisosSiteApp')
             }
 
             $output.text( filterValue );
-            $container.isotope({ filter: filterValue })
+             $container.isotope({ filter: filterValue })
             });
 
-            $('.checkboxCheck').change(function () {
-                    if($(this).hasClass('ckecked'))
-                    {
-                      $(this).removeClass('checked');
-                    }else{
-                    $(this).addClass('checked')
-                  }
-
-            });
+           
   };
 })
 
-// $('.checkboxCheck').change(function () {
-//   console.log("holaaaa");
-//         $('label').next().removeClass('checked');
-//         $(this).next().addClass('checked');
-// });
+
