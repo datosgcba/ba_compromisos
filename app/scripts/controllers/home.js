@@ -191,13 +191,14 @@ angular.module('compromisosSiteApp')
 
 
         var someElement = angular.element(document.getElementById('compromiso-detail'));
+        var filler = pos + popupH - docH + fillerH;
         if(filler>0){
           d3.select('#filler').style('height',filler+'px');
         }
         else {
          d3.select('#filler').style('height',0+'px');
         }
-         var filler = pos + popupH - docH + fillerH;
+         
 
 
 
@@ -385,16 +386,12 @@ angular.module('compromisosSiteApp')
           });
 
            $output = $('#output');
-
           // filter with selects and checkboxes
            $selects = $('#form-ui select');
            $checkboxes = $('.homeAreaContainer .categories');
            $years = $('#homeYearContainer .years');
            $percent = $('#homePercentContainer .percent');
-
           $years.add( $checkboxes ).add( $percent).change(refreshGrid);
-
-
 
             $('.checkMyCheck').change(function () {
                     if($(this).parent().hasClass('active'))
