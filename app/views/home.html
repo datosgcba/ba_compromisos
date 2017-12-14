@@ -1,4 +1,4 @@
-<div id="form-ui" class="row">
+<div id="form-ui" class="row" ng-cloak ng-hide="loading">
    <div class="row filters padding">
       <h3>Explorador de compromisos</h3>
       <p class="col-xs-12 col-sm-6">Filtrar por área:</p>
@@ -50,8 +50,8 @@
 </div>
 
 <ul id="isotopeContainer" isotope-container="isotope-container" class="compromisos-container">
-  <!-- <li ng-repeat="d in data | filter:search" isotope-item="isotope-item" class="compromiso-row {{d.slug}} {{d.cumplimiento}} {{d.porcentaje_completado}} {{d.area1.toLowerCase().split(' ').join('-')}} {{d.area2.toLowerCase().split(' ').join('-')}} {{d.area3.toLowerCase().split(' ').join('-')}} {{d.area4.toLowerCase().split(' ').join('-')}} col-xs-3 item {{d.classPercent}} allFilters" -->
-  <li ng-repeat="d in data | filter:search" isotope-item="isotope-item" class="compromiso-row {{d.slug}} {{d.cumplimiento}} {{d.porcentaje_completado}} {{d.area1.toLowerCase().split(' ').join('-')}} {{d.area2.toLowerCase().split(' ').join('-')}} {{d.area3.toLowerCase().split(' ').join('-')}} {{d.area4.toLowerCase().split(' ').join('-')}} col-xs-3 item {{d.classPercent}} allFilters"
+  <li ng-repeat="d in data" isotope-item="isotope-item" class="compromiso-row {{d.slug}} {{d.cumplimiento}} {{d.porcentaje_completado}} {{d.area1.toLowerCase().split(' ').join('-')}} {{d.area2.toLowerCase().split(' ').join('-')}} {{d.area3.toLowerCase().split(' ').join('-')}}  {{d.titulo.toLowerCase().split(' ').join(' ')}}   
+  {{d.area4.toLowerCase().split(' ').join('-')}} col-xs-3 item {{d.classPercent}} allFilters"
       ng-mouseover="showCompromisoDetail(d,$event)">
       <img class="icon-svg-container compromiso-icon" ng-src="{{d.iconSVG}}">
       <h4 class="titulo">{{d.titulo}}</h4>

@@ -302,10 +302,18 @@ angular.module('compromisosSiteApp')
     }
 
     var refreshGrid = function(){
+            var $text = $('#searchTextInput').val();
+            var keys = $text.toLowerCase().split(' ');
             // map input values to an array
             var exclusives = [];
             var inclusives = [];
-
+            for (var i = 0; i < keys.length; i++) {
+              var val = keys[i];
+              if (val !== ''){
+                inclusives.push('.' + val);  
+              }
+            }
+            
             // exclusive filters from selects
             $selects.each( function( i, elem ) {
               if ( elem.value ) {
@@ -348,8 +356,10 @@ angular.module('compromisosSiteApp')
             } else {
               filterValue = exclusives;
             }
-            $output.text( filterValue );
+            console.log( filterValue );
             $container.isotope({ filter: filterValue })
+
+            
 
     };
     $scope.setTextFilter = function(){
@@ -366,8 +376,10 @@ angular.module('compromisosSiteApp')
         $(this).prop('checked', false);
       });
       refreshGrid();
+      $scope.closeDetail();
     };
     $scope.removeAllFilters = function(){
+      $('#searchTextInput').val('');
       $('.checkMyCheck').each(function(){
           $(this).parent().removeClass('active');
           $(this).parent().addClass('inactive');
@@ -377,6 +389,7 @@ angular.module('compromisosSiteApp')
         $(this).prop('checked', false);
       });
       refreshGrid();
+      $scope.closeDetail();
     };
     var $container,$output, $selects ,$checkboxes,$years,$percent;
 
@@ -388,10 +401,16 @@ angular.module('compromisosSiteApp')
            $output = $('#output');
           // filter with selects and checkboxes
            $selects = $('#form-ui select');
+
            $checkboxes = $('.homeAreaContainer .categories');
            $years = $('#homeYearContainer .years');
            $percent = $('#homePercentContainer .percent');
-          $years.add( $checkboxes ).add( $percent).change(refreshGrid);
+          $years.add( $checkboxes ).add( $percent).change(function(){
+            refreshGrid();
+            $scope.$apply(function(){
+              $scope.closeDetail();
+            });
+          });
 
             $('.checkMyCheck').change(function () {
                     if($(this).parent().hasClass('active'))
