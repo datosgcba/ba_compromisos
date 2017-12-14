@@ -297,14 +297,8 @@ angular.module('compromisosSiteApp')
       }
 
     function createCompromisos( ){
-
-
-
-
-
+      
     }
-
-
 
     $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
       var $container = $('#isotopeContainer').isotope({
@@ -334,13 +328,13 @@ angular.module('compromisosSiteApp')
             $years.each( function( i, elem ) {
               // if checkbox, use value if checked
               if ( elem.checked ) {
-                inclusives.push( elem.value );
+                exclusives.push( elem.value );
               }
             });
             $percent.each( function( i, elem ) {
               // if checkbox, use value if checked
               if ( elem.checked ) {
-                inclusives.push( elem.value );
+                exclusives.push( elem.value );
               }
             });
             // inclusive filters from checkboxes

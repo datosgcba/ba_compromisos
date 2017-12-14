@@ -1,5 +1,4 @@
 <div id="form-ui">
-   
    <div class="row filters">
       <h3>Explorador de compromisos</h3>
       <p class="col-xs-12 col-sm-6">Filtrar por área:</p>
@@ -32,16 +31,22 @@
       <div id="homeYearContainer" class="col-xs-12 col-sm-4 filters" >
          <p>Filtrar por año de cumplimiento:</p>
          <div class="">
-            <label ng-repeat="cump in cumplimiento | orderBy: cump"><input class="years" id="years" type="checkbox" value=".{{cump}}" /> {{cump}}</label>
+         
+               <label ng-repeat="cump in cumplimiento | orderBy: cump">
+                  <input type="radio" class="years" value=".{{cump}}" name=".years" />
+            {{cump}}</label>
+         
          </div>
       </div>
       <div id="homePercentContainer" class="col-xs-12 col-sm-4 filters">
          <p>Filtrar por avance:</p>
          <div >
-            <label><input class="percent" type="checkbox" value=".very-low" /> 0-25%</label>
-            <label><input class="percent" type="checkbox" value=".low" /> 25-50%</label>
-            <label><input class="percent" type="checkbox" value=".high" /> 50-75%</label>
-            <label><input class="percent" type="checkbox" value=".very-high" /> 75-100%</label>
+            <label><input type="radio" class="percent" value=".very-low" name="percentage" />0%-25%</label>
+            <label><input type="radio" class="percent" value=".low" name="percentage" />25%-50%</label>
+            <label><input type="radio" class="percent" value=".high" name="percentage" />50%-75%</label>
+            <label><input type="radio" class="percent" value=".very-high" name="percentage" />75%-100%</label>
+
+            
          </div>
          </div>
    </div>
