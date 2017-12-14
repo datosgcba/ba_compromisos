@@ -1,4 +1,4 @@
-<div id="form-ui">
+<div id="form-ui" class="row">
    <div class="row filters">
       <h3>Explorador de compromisos</h3>
       <p class="col-xs-12 col-sm-6">Filtrar por área:</p>
@@ -13,8 +13,7 @@
             </div>
          </div>
       </div>
-   </div>
-   <div class="row">
+   <div class="row filters">
       <div class="homeAreaContainer">
          <p id="form-ui-1">
             <label id="checkboxButton" ng-repeat="area in areas" on-finish-render="ngRepeatFinished" class="inactive" >
@@ -23,7 +22,7 @@
          </p>
       </div>
    </div>
-   <div class="row">
+   <div class="row filters">
       <div id="homeTextContainer" class="col-xs-12 col-sm-4 filters" >
          <p>Buscar por palabra clave:</p>
          <input id="searchTextInput" type="text" ng-model="search.titulo">
