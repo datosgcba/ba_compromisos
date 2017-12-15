@@ -1086,3 +1086,14 @@ text-align: right;
   padding: 1%;
 
 }
+.header-map{
+    margin: 0;
+    padding: 0;
+    color: white;
+    background: #5f5d60;
+    padding: 4px;
+    padding-left: 14px;
+    color: white;
+    margin-top: 16px;
+
+}
