@@ -6,21 +6,6 @@
 
 
   <div class="row">
-    <div ng-if="data.detalle_1" class="col-md-12 text-center">
-       <smart-content
-        url="data.detalle_1"
-        prepare-callback="prepareData"
-        config-callback="completeConfig"
-        ready-callback="chartReady"
-        titulo="data.detalle_1_nombre"
-        nota="data.detalle_1_nota"
-        fuente="data.detalle_1_fuente"
-        descripcion="data.detalle_1_descripcion"
-        ></smart-content>
-    </div>
-  </div>
-
-  <div class="row">
     <div ng-if="data.detalle_3" class="col-md-6 text-center">
        <smart-content
         url="data.detalle_3"
@@ -44,6 +29,20 @@
       ></smart-content>
     </div>
 </div>
+ <div class="row">
+    <div ng-if="data.detalle_1" class="col-md-12 text-center">
+       <smart-content
+        url="data.detalle_1"
+        prepare-callback="prepareData"
+        config-callback="completeConfig"
+        ready-callback="chartReady"
+        titulo="data.detalle_1_nombre"
+        nota="data.detalle_1_nota"
+        fuente="data.detalle_1_fuente"
+        descripcion="data.detalle_1_descripcion"
+        ></smart-content>
+    </div>
+  </div>
 
 
 </div>

@@ -57,7 +57,7 @@ angular.module('compromisosSiteApp')
             x: 'mes_date'
           },
           names: {
-            avance: 'Centros Comerciales',
+            avance: 'Avance de Obra',
             meta: 'Meta'
           },
           colors: {
