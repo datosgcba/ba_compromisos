@@ -1,3 +1,4 @@
+<div ng-click="closeDetail()">
 <div id="form-ui" class="row" ng-cloak ng-hide="loading">
    <div class="row filters padding">
       <h3>Explorador de compromisos</h3>
@@ -49,7 +50,7 @@
    <hr/>
 </div>
 
-<ul id="isotopeContainer" isotope-container="isotope-container" class="compromisos-container">
+<ul id="isotopeContainer" ng-click="closeDetail()" isotope-container="isotope-container" class="compromisos-container">
   <li ng-repeat="d in data" isotope-item="isotope-item" class="compromiso-row {{d.slug}} {{d.cumplimiento}} {{d.porcentaje_completado}} {{d.area1.toLowerCase().split(' ').join('-')}} {{d.area2.toLowerCase().split(' ').join('-')}} {{d.area3.toLowerCase().split(' ').join('-')}}  {{d.titulo.toLowerCase().split(' ').join(' ')}}
   {{d.area4.toLowerCase().split(' ').join('-')}} col-xs-3 item {{d.classPercent}} allFilters"
       ng-mouseover="showCompromisoDetail(d,$event)">
@@ -120,4 +121,5 @@
       </div>
    </div>
    <div id="filler"></div>
+</div>
 </div>
