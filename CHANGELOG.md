@@ -2,6 +2,14 @@
 Todos los cambios notables del proyecto a partir de la version 0.1.0 seran documentados en este archivo.
 
 El formato esta basado en [Keep a Changelog](http://keepachangelog.com/) y este proyecto se adhiere a  [Semantic Versioning](http://semver.org/).
+
+## v1.4.4.6
+### Added 
+- c42 Corregimos la descripcion del gráfico.
+- c43 Reordenamos la grilla de contenidos
+- Home nueva grilla home con filtros y mapas.
+
+
 ## [Unreleased]
 ### Added
 - c43 agregamos segundo porcentaje.
