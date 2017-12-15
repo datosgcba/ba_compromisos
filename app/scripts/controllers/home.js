@@ -207,7 +207,11 @@ angular.module('compromisosSiteApp')
     $scope.redirectParent = function(url){
       $scope.pymChild.navigateParentTo(url);
     };
-
+    $scope.forceCloseDetail = function(){
+      if (!window.mobileAndTabletcheck()){
+        $scope.closeDetail();
+      }
+    }
     $scope.closeDetail = function(){
        //Agregamos opacity animation
       // d3.selectAll('.menu_chart rect').transition().style('fill','rgba(255, 255, 255, 0)');
@@ -215,10 +219,14 @@ angular.module('compromisosSiteApp')
 
       // deselectTitle();
       // defaultChartColors();
-      $scope.currentCompromise = null;
-      d3.select('#filler').style('height','0px');
+      if ($scope.currentCompromise){
+
+       $scope.currentCompromise = null;
+       d3.select('#filler').style('height','0px');
 
       $scope.selectedCategory = '';
+      }
+      
     };
 
     function renderDateChart(){
