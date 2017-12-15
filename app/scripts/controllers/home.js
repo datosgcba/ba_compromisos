@@ -8,7 +8,7 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('HomeCtrl', function ($scope,$timeout,$document,$http,UrlService,GetSVGNameService, SlugColorService,LoadSVGService) {
+  .controller('HomeCtrl', function ($scope,$timeout,$document,$http,UrlService,GetSVGNameService, SlugColorService,LoadSVGService,$sce) {
 
     $scope.pymChild = new pym.Child({ polling: 1000 });
     $scope.pymChild.sendHeight();
@@ -198,7 +198,7 @@ angular.module('compromisosSiteApp')
         else {
          d3.select('#filler').style('height',0+'px');
         }
-         
+
 
 
 
@@ -305,15 +305,15 @@ angular.module('compromisosSiteApp')
             // map input values to an array
             var exclusives = [];
             var inclusives = [];
-            
 
- 
+
+
             var ww = $('#searchTextInput').val().toLowerCase().split(' ');
-            
-            
 
-           
-            
+
+
+
+
             // exclusive filters from selects
             $selects.each( function( i, elem ) {
               if ( elem.value ) {
@@ -360,16 +360,16 @@ angular.module('compromisosSiteApp')
 
             $container.isotope({ filter: function() {
               var $this = $(this);
-              var searchResult = true; 
+              var searchResult = true;
               for (var i = 0; i < ww.length; i++) {
                 searchResult = $this.text().toLowerCase().indexOf(ww) > -1;
               }
               var buttonResult = filterValue ? $this.is( filterValue ) : true;
               return searchResult && buttonResult;
-            } 
+            }
           })
 
-            
+
 
     };
     $scope.setTextFilter = function(){
@@ -437,8 +437,18 @@ angular.module('compromisosSiteApp')
             });
       });
 
+      // $scope.trustSrc = function(src) {
+      //   console.log("trustAsResourceUrl");
+      //   console.log($sce.trustAsResourceUrl(src));
+      //   return $sce.trustAsResourceUrl(src);
+      // }
 
   })
+  .filter('trustAsResourceUrl', ['$sce', function($sce) {
+    return function(val) {
+        return $sce.trustAsResourceUrl(val);
+    };
+}])
   .directive('onFinishRender', function ($timeout) {
     return {
         restrict: 'A',

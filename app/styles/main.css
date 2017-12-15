@@ -660,6 +660,9 @@ div#category_chart {
   #selectsContainer{
     display: none;
   }
+  .map-container{
+    padding: 4% !important;
+  }
 }
 
 /* Custom, iPhone Retina */
@@ -780,7 +783,6 @@ label{
 }
 #form-ui-1 label+input[type="radio"]:checked{
 
-  border:1px solid red;
   background: red;
   color: white;
 
@@ -849,7 +851,7 @@ label{
 #searchTextInput {
   border: 1px solid lightgray;
 font-family: 'OpenSans';
-  background: url('/images/search-icon.png') no-repeat scroll -15px 5px;
+  background: url('/images/iconos_v2/search-icon.png') no-repeat scroll -15px 5px;
   background-size: 20px;
   background-position: 99%;
 }
@@ -869,7 +871,6 @@ font-family: 'OpenSans';
     border: 1px solid #f90;
 }
 .inactive {
-    border: 1px solid red;
 }
 hr.lineShadow {
     border: 0;
@@ -1021,10 +1022,10 @@ border-radius: 35px;
 
 /**** Isotope Filtering ****/
 #isotopeContainer {
-  
+
     margin: auto 0;
     width: 95%;
-  
+
 }
 
 .isotope-item {
@@ -1079,4 +1080,10 @@ text-align: right;
   color: gray;
   text-decoration: none;
   font-style: normal;
+}
+
+.map-container{
+  margin-top: 1rem;
+  padding: 1%;
+
 }

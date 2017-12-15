@@ -50,7 +50,7 @@
 </div>
 
 <ul id="isotopeContainer" isotope-container="isotope-container" class="compromisos-container">
-  <li ng-repeat="d in data" isotope-item="isotope-item" class="compromiso-row {{d.slug}} {{d.cumplimiento}} {{d.porcentaje_completado}} {{d.area1.toLowerCase().split(' ').join('-')}} {{d.area2.toLowerCase().split(' ').join('-')}} {{d.area3.toLowerCase().split(' ').join('-')}}  {{d.titulo.toLowerCase().split(' ').join(' ')}}   
+  <li ng-repeat="d in data" isotope-item="isotope-item" class="compromiso-row {{d.slug}} {{d.cumplimiento}} {{d.porcentaje_completado}} {{d.area1.toLowerCase().split(' ').join('-')}} {{d.area2.toLowerCase().split(' ').join('-')}} {{d.area3.toLowerCase().split(' ').join('-')}}  {{d.titulo.toLowerCase().split(' ').join(' ')}}
   {{d.area4.toLowerCase().split(' ').join('-')}} col-xs-3 item {{d.classPercent}} allFilters"
       ng-mouseover="showCompromisoDetail(d,$event)">
       <img class="icon-svg-container compromiso-icon" ng-src="{{d.iconSVG}}">
@@ -112,6 +112,11 @@
                </div>
             </div>
          </div>
+
+           <div ng-if="currentCompromise.embed_map_url" class="col-xs-12 map-container">
+             <iframe width="100%" height="385"  src="{{currentCompromise.embed_map_url | trustAsResourceUrl}}"  frameborder="0">
+         </iframe>
+           </div>
       </div>
    </div>
    <div id="filler"></div>
