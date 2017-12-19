@@ -133,6 +133,7 @@ angular.module('compromisosSiteApp')
 
     $scope.showCompromisoDetail = function(d,$event){
       console.log("hola");
+      console.log($event);
 
                   // d3.selectAll('.menu_chart rect').transition().style('fill','rgba(255, 255, 255, 0)');
                   // // //Agregamos opacity animation
@@ -145,13 +146,13 @@ angular.module('compromisosSiteApp')
 
                       $scope.selectedCategory = d.slug;
 
-                  // if($scope.currentCompromise && ($scope.currentCompromise.numero == d.numero) ){
+                 if($scope.currentCompromise && ($scope.currentCompromise.numero == d.numero) ){
 
-                  //     $scope.closeDetail();
+                     $scope.closeDetail();
 
-                  // } else {
+                 } else {
                     showDetail(d,$event,d3.event);
-                  // }
+                 }
     };
 
     $scope.renderCharts = function(){
