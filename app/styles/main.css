@@ -34,6 +34,7 @@ html {
   box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
 }
 #compromiso-detail p{
+  font-family: "OpenSans", Helvetica, Arial, sans-serif;
     font-size: 12px;
 }
 .right{
