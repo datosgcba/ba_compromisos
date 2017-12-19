@@ -132,6 +132,7 @@ angular.module('compromisosSiteApp')
     }
 
     $scope.showCompromisoDetail = function(d,$event){
+      console.log("hola");
 
                   // d3.selectAll('.menu_chart rect').transition().style('fill','rgba(255, 255, 255, 0)');
                   // // //Agregamos opacity animation
@@ -226,7 +227,7 @@ angular.module('compromisosSiteApp')
 
       $scope.selectedCategory = '';
       }
-      
+
     };
 
     function renderDateChart(){
