@@ -1,5 +1,5 @@
-<div ng-click="forceCloseDetail()">
-<div id="form-ui" class="row" ng-cloak ng-hide="loading">
+<!-- <div ng-click="forceCloseDetail()"> -->
+<div id="form-ui" class="row" ng-cloak ng-hide="loading" ng-click="forceCloseDetail()">
    <div class="row filters padding">
       <h3>Explorador de compromisos</h3>
       <p class="col-xs-12 col-sm-6">Filtrar por área:</p>
@@ -50,10 +50,11 @@
    <hr/>
 </div>
 
-<ul id="isotopeContainer" ng-click="forceCloseDetail()"isotope-container="isotope-container" class="compromisos-container">
+<ul id="isotopeContainer" ng-click="forceCloseDetail();$event.stopPropagation();"isotope-container="isotope-container" class="compromisos-container">
+  <!-- <ul id="isotopeContainer" isotope-container="isotope-container" class="compromisos-container"> -->
   <li ng-repeat="d in data" isotope-item="isotope-item" class="compromiso-row {{d.slug}} {{d.cumplimiento}} {{d.porcentaje_completado}} {{d.area1.toLowerCase().split(' ').join('-')}} {{d.area2.toLowerCase().split(' ').join('-')}} {{d.area3.toLowerCase().split(' ').join('-')}}  {{d.titulo.toLowerCase().split(' ').join(' ')}}
   {{d.area4.toLowerCase().split(' ').join('-')}} col-xs-3 item {{d.classPercent}} allFilters"
-      ng-mouseover="showCompromisoDetail(d,$event)">
+      ng-click="showCompromisoDetail(d,$event);$event.stopPropagation();">
       <img class="icon-svg-container compromiso-icon" ng-src="{{d.iconSVG}}">
       <h4 class="titulo">{{d.titulo}}</h4>
    </li>
@@ -116,14 +117,14 @@
             <div class="col-xs-12 label-text header-map" ng-if="currentCompromise.embed_map_titulo" >
                   <h6>{{currentCompromise.embed_map_titulo}}</h6>
                </div>
-         
+
            <div ng-if="currentCompromise.embed_map_url" class="col-xs-12 map-container">
              <iframe width="100%" height="385"  src="{{currentCompromise.embed_map_url | trustAsResourceUrl}}"  frameborder="0">
 
               </iframe>
            </div>
       </div>
-   </div>
+   <!-- </div> -->
    <div id="filler"></div>
 </div>
 </div>
