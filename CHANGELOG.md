@@ -2,8 +2,9 @@
 Todos los cambios notables del proyecto a partir de la version 0.1.0 seran documentados en este archivo.
 
 El formato esta basado en [Keep a Changelog](http://keepachangelog.com/) y este proyecto se adhiere a  [Semantic Versioning](http://semver.org/).
+
 ## v1.5.0.2
-- En grilla principal de compromisos, se pone en negrita la accion "Seleccionar Todos/Deselecionar Todos".
+- En grilla principal de compromisos, se pone en negrita la acción "Seleccionar Todos/Deselecionar Todos".
 
 ## v1.5.0.1
 - Se corrigen fuentes en el detalle de compromisos en la grilla principal.
