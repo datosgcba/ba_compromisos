@@ -51,16 +51,11 @@ angular.module('compromisosSiteApp')
       })
       $scope.areas = Array.from(new Set(areas))
       $scope.cumplimiento = Array.from(new Set(cumplimiento))
-      console.log($scope.areas);
-      console.log($scope.cumplimiento);
-
-
-
-      console.log($scope.data);
       $scope.loading = false;
       // $scope.executeIsotope()
       $scope.groupData();
       $scope.renderCharts();
+      $scope.usigMaps($)
     });
 
     $scope.groupData= function(){
@@ -355,7 +350,8 @@ angular.module('compromisosSiteApp')
 
             // first combine exclusives
             exclusives = exclusives.join('');
-
+            console.log("inclusives");
+            console.log(inclusives);
             var filterValue;
             if ( inclusives.length ) {
               // map inclusives with exclusives for
@@ -452,6 +448,92 @@ angular.module('compromisosSiteApp')
       //   console.log($sce.trustAsResourceUrl(src));
       //   return $sce.trustAsResourceUrl(src);
       // }
+
+
+      $scope.usigMaps = function($){
+        console.log("usigMaps");
+        //Usig maps
+      // $.noConflict();
+      var selectedOption = null;
+
+
+      function afterGeoCoding(pt) {
+        if (pt instanceof usig.Punto) {
+          if (selectedOption instanceof usig.Direccion) {
+            selectedOption.setCoordenadas(pt);
+          }
+
+          var iconUrl = 'images/punto.png',
+            iconSize = new OpenLayers.Size(20, 22),
+            customMarker = new OpenLayers.Marker(new OpenLayers.LonLat(pt.x,pt.y),new OpenLayers.Icon(iconUrl, iconSize));
+          customMarker.dir = selectedOption;
+
+          var markerId = miMapa.addMarker(customMarker, true, function(ev, marker) {
+              alert('Click en '+marker.dir.toString());
+            }, { popup: false });
+
+        }
+      }
+
+      var ac = new usig.AutoCompleter('search', {
+            skin: 'usig2',
+            onReady: function() {
+              $('#search').val('').removeAttr('disabled').focus();
+            },
+            afterSelection: function(option) {
+              if (option instanceof usig.Direccion || option instanceof usig.inventario.Objeto) {
+                selectedOption = option;
+              }
+            },
+            afterGeoCoding: afterGeoCoding
+          });
+
+      $('#mainForm').bind("submit", function () {
+        return false;
+      });
+
+      $('#mapa').css('width', 600).css('height', 450);
+
+      var miMapa = new usig.MapaInteractivo('mapa', {
+        onReady: function() {
+
+          var iconSize = new OpenLayers.Size(41, 41)
+
+          // markers.map(function(elem){
+          //   console.log(elem.long);
+          //   var customMarker = new OpenLayers.Marker(new OpenLayers.LonLat(elem.long,elem.lat),new OpenLayers.Icon(elem.iconUrl, iconSize));
+          //   var markerId = miMapa.addMarker(customMarker, true, "<b>"+elem.detail+"</b>");
+          // })
+
+          // TODOS LOS COMPROMISOS CON UNA IMAGEN Y SU TITULO
+          // $scope.data.map(function(elem){
+          //   var lat = 102224.9040681 + Math.floor(Math.random()*(2000-0+1)+0);
+          //   var long = 103284.11371559 + Math.floor(Math.random()*(2000-0+1)+0);
+          //   var customMarker = new OpenLayers.Marker(new OpenLayers.LonLat(lat,long),new OpenLayers.Icon(elem.imagen, iconSize));
+          //   var markerId = miMapa.addMarker(customMarker, true, "<img src="+elem.imagen+" style='max-width:150px'><br><p>"+elem.compromiso+"</p>");
+          // })
+
+          //IMPORTAR, PARA UN COMPROMISO TODOS SUS PUNTOS GEOGRAFICOS
+          $http.get('usig-maps.json')
+         .then(function(res){
+            $scope.usigCompromiso = res.data
+            console.log("usig Compromiso");
+            console.log($scope.usigCompromiso);
+          $scope.usigCompromiso.map(function(elem){
+            var customMarker = new OpenLayers.Marker(new OpenLayers.LonLat(elem.long,elem.lat),new OpenLayers.Icon(elem.iconUrl, iconSize));
+            var markerId = miMapa.addMarker(customMarker, true, "<img src="+elem.iconUrl+" style='max-width:150px'><br><p>"+elem.detail+"</p>");
+          })
+          });
+
+          console.log($scope.data);
+        },
+        debug: true
+      });
+
+      }
+
+
+
 
   })
   .filter('trustAsResourceUrl', ['$sce', function($sce) {
