@@ -8,9 +8,11 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('HomeCtrl', function ($scope,$timeout,$document,$http,UrlService,GetSVGNameService, SlugColorService,LoadSVGService,$sce) {
+  .controller('HomeCtrl', function($scope, $timeout, $document, $http, UrlService, GetSVGNameService, SlugColorService, LoadSVGService, $sce) {
 
-    $scope.pymChild = new pym.Child({ polling: 1000 });
+    $scope.pymChild = new pym.Child({
+      polling: 1000
+    });
     $scope.pymChild.sendHeight();
 
     $scope.data = [];
@@ -22,81 +24,97 @@ angular.module('compromisosSiteApp')
     var url = UrlService.getUrlByPage('home');
 
     $http.jsonp(url)
-    .success(function(data){
-      $scope.data = data.map(function(c){
-        c.slug = c.slug.trim();
-        c.categoria = c.categoria.trim();
-        c.iconSVG = GetSVGNameService.getUrl(c.numero);
-        return c;
+      .success(function(data) {
+        $scope.data = data.map(function(c) {
+          c.slug = c.slug.trim();
+          c.categoria = c.categoria.trim();
+          c.iconSVG = GetSVGNameService.getUrl(c.numero);
+          return c;
+        });
+        $scope.data = $scope.data.sort(function(a, b) {
+          var upA = a.titulo.toUpperCase();
+          var upB = b.titulo.toUpperCase();
+          return (upA < upB) ? -1 : (upA > upB) ? 1 : 0;
+        });
+        var areas = []
+        var cumplimiento = []
+        $scope.data.map(function(elem) {
+          if (elem.porcentaje_completado <= 25) elem.classPercent = "very-low"
+          if ((elem.porcentaje_completado > 25) && (elem.porcentaje_completado <= 50)) elem.classPercent = "low"
+          if ((elem.porcentaje_completado > 50) && (elem.porcentaje_completado <= 75)) elem.classPercent = "high"
+          if (elem.porcentaje_completado > 75) elem.classPercent = "very-high"
+
+          if (elem.cumplimiento != undefined) cumplimiento.push(elem.cumplimiento)
+
+          if (elem.area1 != undefined) areas.push(elem.area1.toLowerCase().replace(/ /g, "-"))
+          if (elem.area2 != undefined) areas.push(elem.area2.toLowerCase().replace(/ /g, "-"))
+          if (elem.area3 != undefined) areas.push(elem.area3.toLowerCase().replace(/ /g, "-"))
+          if (elem.area4 != undefined) areas.push(elem.area4.toLowerCase().replace(/ /g, "-"))
+        })
+        $scope.areas = Array.from(new Set(areas))
+        $scope.cumplimiento = Array.from(new Set(cumplimiento))
+        $scope.loading = false;
+        // $scope.executeIsotope()
+        $scope.groupData();
+        $scope.renderCharts();
+        $scope.usigMaps($)
       });
-      $scope.data = $scope.data.sort(function(a,b){
-        var upA = a.titulo.toUpperCase();
-        var upB = b.titulo.toUpperCase();
-        return (upA < upB) ? -1 : (upA > upB) ? 1 : 0;
-      });
-      var areas = []
-      var cumplimiento = []
-      $scope.data.map(function(elem){
-        if(elem.porcentaje_completado <= 25) elem.classPercent = "very-low"
-        if((elem.porcentaje_completado  >25)&&(elem.porcentaje_completado  <= 50)) elem.classPercent = "low"
-        if((elem.porcentaje_completado  >50)&&(elem.porcentaje_completado  <= 75)) elem.classPercent = "high"
-        if(elem.porcentaje_completado > 75) elem.classPercent = "very-high"
 
-        if(elem.cumplimiento != undefined) cumplimiento.push(elem.cumplimiento)
-
-        if(elem.area1 != undefined) areas.push(elem.area1.toLowerCase().replace(/ /g,"-"))
-        if(elem.area2 != undefined) areas.push(elem.area2.toLowerCase().replace(/ /g,"-"))
-        if(elem.area3 != undefined) areas.push(elem.area3.toLowerCase().replace(/ /g,"-"))
-        if(elem.area4 != undefined) areas.push(elem.area4.toLowerCase().replace(/ /g,"-"))
-      })
-      $scope.areas = Array.from(new Set(areas))
-      $scope.cumplimiento = Array.from(new Set(cumplimiento))
-      $scope.loading = false;
-      // $scope.executeIsotope()
-      $scope.groupData();
-      $scope.renderCharts();
-      $scope.usigMaps($)
-    });
-
-    $scope.groupData= function(){
+    $scope.groupData = function() {
       $scope.categoriesGroup = d3.nest()
-        .key(function(d) { return d.slug; })
+        .key(function(d) {
+          return d.slug;
+        })
         .entries($scope.data);
 
       $scope.categoriesGroupText = d3.nest()
-        .key(function(d) { return d.categoria; })
+        .key(function(d) {
+          return d.categoria;
+        })
         .entries($scope.data);
 
       $scope.availableCategories = [];
-        angular.forEach($scope.categoriesGroup, function(g){
-           $scope.availableCategories.push(g.key);
-        });
-      angular.forEach($scope.categoriesGroup, function(g){
+      angular.forEach($scope.categoriesGroup, function(g) {
+        $scope.availableCategories.push(g.key);
+      });
+      angular.forEach($scope.categoriesGroup, function(g) {
 
-          g.finishedYearsGroup = d3.nest()
-          .key(function(d) { return d.cumplimiento; })
-          .rollup(function(leaves) { return leaves.length; })
+        g.finishedYearsGroup = d3.nest()
+          .key(function(d) {
+            return d.cumplimiento;
+          })
+          .rollup(function(leaves) {
+            return leaves.length;
+          })
           .entries(g.values);
       });
 
       $scope.finishedYearsGroup = d3.nest()
-        .key(function(d) { return d.cumplimiento; })
+        .key(function(d) {
+          return d.cumplimiento;
+        })
         .entries($scope.data);
 
-      angular.forEach($scope.finishedYearsGroup, function(g){
-         g.categoryGroup = d3.nest()
-          .key(function(d) { return d.slug; })
-          .rollup(function(leaves) { return leaves.length; })
+      angular.forEach($scope.finishedYearsGroup, function(g) {
+        g.categoryGroup = d3.nest()
+          .key(function(d) {
+            return d.slug;
+          })
+          .rollup(function(leaves) {
+            return leaves.length;
+          })
           .entries(g.values);
       });
       $scope.availableYears = [];
-      angular.forEach($scope.finishedYearsGroup, function(g){
-         $scope.availableYears.push(g.key);
+      angular.forEach($scope.finishedYearsGroup, function(g) {
+        $scope.availableYears.push(g.key);
       });
       $scope.availableYears = $scope.availableYears.sort();
 
       $scope.finishedPercentageGroup = d3.nest()
-        .key(function(d) { return getPercentageGroup(d);})
+        .key(function(d) {
+          return getPercentageGroup(d);
+        })
         .entries($scope.data);
 
       /*console.log($scope.categoriesGroup);
@@ -105,20 +123,32 @@ angular.module('compromisosSiteApp')
 
     };
 
-    var groups=[];
+    var groups = [];
 
-    groups.push({from:100,to:75});
-    groups.push({from:75,to:50});
-    groups.push({from:50,to:25});
-    groups.push({from:25,to:0});
+    groups.push({
+      from: 100,
+      to: 75
+    });
+    groups.push({
+      from: 75,
+      to: 50
+    });
+    groups.push({
+      from: 50,
+      to: 25
+    });
+    groups.push({
+      from: 25,
+      to: 0
+    });
 
-    function getPercentageGroup(d){
+    function getPercentageGroup(d) {
       var group = 3;
       for (var i = 0; i < groups.length; i++) {
         var g = groups[i];
         var p = parseInt(d.porcentaje_completado);
-        if (p <= g.from &&  p > g.to){
-          group= i;
+        if (p <= g.from && p > g.to) {
+          group = i;
           break;
         }
       }
@@ -126,31 +156,31 @@ angular.module('compromisosSiteApp')
       return group;
     }
 
-    $scope.showCompromisoDetail = function(d,$event){
+    $scope.showCompromisoDetail = function(d, $event) {
       console.log("hola");
       console.log($event);
 
-                  // d3.selectAll('.menu_chart rect').transition().style('fill','rgba(255, 255, 255, 0)');
-                  // // //Agregamos opacity animation
-                  // // d3.selectAll('.menu_chart g.categoria-unselected rect').transition().style('fill','rgba(255, 255, 255, 0.83)');
+      // d3.selectAll('.menu_chart rect').transition().style('fill','rgba(255, 255, 255, 0)');
+      // // //Agregamos opacity animation
+      // // d3.selectAll('.menu_chart g.categoria-unselected rect').transition().style('fill','rgba(255, 255, 255, 0.83)');
 
 
-                  // // selectTitle(d.slug);
-                  // // selectCategoryChart(d.slug);
-                  // // hoverCompromisoItem(d.numero);
+      // // selectTitle(d.slug);
+      // // selectCategoryChart(d.slug);
+      // // hoverCompromisoItem(d.numero);
 
-                      $scope.selectedCategory = d.slug;
+      $scope.selectedCategory = d.slug;
 
-                 if($scope.currentCompromise && ($scope.currentCompromise.numero == d.numero) ){
+      if ($scope.currentCompromise && ($scope.currentCompromise.numero == d.numero)) {
 
-                     $scope.closeDetail();
+        $scope.closeDetail();
 
-                 } else {
-                    showDetail(d,$event,d3.event);
-                 }
+      } else {
+        showDetail(d, $event, d3.event);
+      }
     };
 
-    $scope.renderCharts = function(){
+    $scope.renderCharts = function() {
 
       // bindEvents();
       renderDateChart();
@@ -164,295 +194,294 @@ angular.module('compromisosSiteApp')
 
     };
 
-    function showDetail(c,localEvent,mouseEvent){
+    function showDetail(c, localEvent, mouseEvent) {
 
       var menu_chartRowSize = 150;
       $scope.currentCompromise = c;
 
 
-      var popupH = parseInt( d3.select('#compromiso-detail').style('height').replace('px','') );
-      var fillerH = parseInt( d3.select('#filler').style('height').replace('px','') );
+      var popupH = parseInt(d3.select('#compromiso-detail').style('height').replace('px', ''));
+      var fillerH = parseInt(d3.select('#filler').style('height').replace('px', ''));
 
-      var docH = parseInt( $(window).height() );
-      var yOffset = parseInt ( localEvent.clientY );
+      var docH = parseInt($(window).height());
+      var yOffset = parseInt(localEvent.clientY);
       var eTop = $('#form-ui').offset().top; //get the offset top of the element
       var finalTop = eTop - $(window).scrollTop(); //position of the ele w.r.t window
-      var mouseOffset = Math.floor((localEvent.clientY-eTop) / menu_chartRowSize) * menu_chartRowSize;
+      var mouseOffset = Math.floor((localEvent.clientY - eTop) / menu_chartRowSize) * menu_chartRowSize;
 
       console.log(eTop, localEvent.clientY, mouseOffset);
       var pos = mouseOffset + eTop + 150;
       d3.select('#compromiso-detail')
         .transition()
-        .style('top',pos+'px');
+        .style('top', pos + 'px');
 
 
 
-        var someElement = angular.element(document.getElementById('compromiso-detail'));
-        var filler = pos + popupH - docH + fillerH;
-        if(filler>0){
-          d3.select('#filler').style('height',filler+'px');
-        }
-        else {
-         d3.select('#filler').style('height',0+'px');
-        }
+      var someElement = angular.element(document.getElementById('compromiso-detail'));
+      var filler = pos + popupH - docH + fillerH;
+      if (filler > 0) {
+        d3.select('#filler').style('height', filler + 'px');
+      } else {
+        d3.select('#filler').style('height', 0 + 'px');
+      }
 
 
 
 
     }
 
-    $scope.redirectParent = function(url){
+    $scope.redirectParent = function(url) {
       $scope.pymChild.navigateParentTo(url);
     };
-    $scope.forceCloseDetail = function(){
-      if (!window.mobileAndTabletcheck()){
+    $scope.forceCloseDetail = function() {
+      if (!window.mobileAndTabletcheck()) {
         $scope.closeDetail();
       }
     }
-    $scope.closeDetail = function(){
-       //Agregamos opacity animation
+    $scope.closeDetail = function() {
+      //Agregamos opacity animation
       // d3.selectAll('.menu_chart rect').transition().style('fill','rgba(255, 255, 255, 0)');
 
 
       // deselectTitle();
       // defaultChartColors();
-      if ($scope.currentCompromise){
+      if ($scope.currentCompromise) {
 
-       $scope.currentCompromise = null;
-       d3.select('#filler').style('height','0px');
+        $scope.currentCompromise = null;
+        d3.select('#filler').style('height', '0px');
 
-      $scope.selectedCategory = '';
+        $scope.selectedCategory = '';
       }
 
     };
 
-    function renderDateChart(){
+    function renderDateChart() {
 
 
     }
 
-    function renderStateChart(){
-          //Get Years
-          var mainColumns= ['x', '75-100%','50-75%','25-50%','0-25%'];
+    function renderStateChart() {
+      //Get Years
+      var mainColumns = ['x', '75-100%', '50-75%', '25-50%', '0-25%'];
 
     }
 
-    function defaultChartColors(){
+    function defaultChartColors() {
       changeChartColors(SlugColorService.getColorBySlug());
     }
 
-    function changeChartColors(colors){
+    function changeChartColors(colors) {
       $scope.charts.state_chart.data.colors(colors);
       $scope.charts.date_chart.data.colors(colors);
 
-      angular.forEach(colors,function(e,k){
-        d3.selectAll('.leaf.'+k+' circle').style('fill',e);
+      angular.forEach(colors, function(e, k) {
+        d3.selectAll('.leaf.' + k + ' circle').style('fill', e);
       });
     }
 
-    function selectCategoryChart(slug){
+    function selectCategoryChart(slug) {
       var colors = {
-        'social':"#e6e6e6",
-        'disfrute':"#e6e6e6",
-        'creatividad':"#e6e6e6",
-        'humana':"#e6e6e6"
+        'social': "#e6e6e6",
+        'disfrute': "#e6e6e6",
+        'creatividad': "#e6e6e6",
+        'humana': "#e6e6e6"
       };
       colors[slug] = SlugColorService.getColorBySlug(slug);
       changeChartColors(colors);
     }
 
-    function renderCategoryChart(){
+    function renderCategoryChart() {
 
     }
 
     //Render & interact menu chart
-    $scope.onChangeCategory = function(){
+    $scope.onChangeCategory = function() {
 
     };
-    $scope.onChangeGroup = function(){
+    $scope.onChangeGroup = function() {
       $scope.groupMenu($scope.selectedGroup);
     };
-    $scope.groupMenu = function(type){
-      if($scope.currentCompromise){
+    $scope.groupMenu = function(type) {
+      if ($scope.currentCompromise) {
         $scope.closeDetail();
       }
       $scope.selectedGroup = type;
       $scope.charts.menu_chart.api.group($scope.selectedGroup);
     };
-    function renderMenuChart(){
 
+    function renderMenuChart() {
 
-      }
-
-      function groupByCategory(){
-
-
-
-      }
-
-      function groupByDate(){
-
-
-
-      }
-
-      function updateLabels(data){
-
-
-
-      }
-
-    function createCompromisos( ){
 
     }
 
-    var refreshGrid = function(){
-            // map input values to an array
-            var exclusives = [];
-            var inclusives = [];
+    function groupByCategory() {
 
 
 
-            var ww = $('#searchTextInput').val().toLowerCase().split(' ');
+    }
+
+    function groupByDate() {
+
+
+
+    }
+
+    function updateLabels(data) {
+
+
+
+    }
+
+    function createCompromisos() {
+
+    }
+
+    var refreshGrid = function() {
+      // map input values to an array
+      var exclusives = [];
+      var inclusives = [];
+
+
+
+      var ww = $('#searchTextInput').val().toLowerCase().split(' ');
 
 
 
 
 
-            // exclusive filters from selects
-            $selects.each( function( i, elem ) {
-              if ( elem.value ) {
-                exclusives.push( elem.value );
-              }
-            });
-            // inclusive filters from checkboxes
-            $years.each( function( i, elem ) {
-              // if checkbox, use value if checked
-              if ( elem.checked ) {
-                exclusives.push( elem.value );
-              }
-            });
-            $percent.each( function( i, elem ) {
-               // if checkbox, use value if checked
-              if ( elem.checked ) {
-                exclusives.push( elem.value );
-              }
-            });
-            // inclusive filters from checkboxes
-            $checkboxes.each( function( i, elem ) {
-              // if checkbox, use value if checked
-              if ( elem.checked ) {
-                inclusives.push( elem.value );
-              }
-            });
+      // exclusive filters from selects
+      $selects.each(function(i, elem) {
+        if (elem.value) {
+          exclusives.push(elem.value);
+        }
+      });
+      // inclusive filters from checkboxes
+      $years.each(function(i, elem) {
+        // if checkbox, use value if checked
+        if (elem.checked) {
+          exclusives.push(elem.value);
+        }
+      });
+      $percent.each(function(i, elem) {
+        // if checkbox, use value if checked
+        if (elem.checked) {
+          exclusives.push(elem.value);
+        }
+      });
+      // inclusive filters from checkboxes
+      $checkboxes.each(function(i, elem) {
+        // if checkbox, use value if checked
+        if (elem.checked) {
+          inclusives.push(elem.value);
+        }
+      });
 
-            // combine exclusive and inclusive filters
+      // combine exclusive and inclusive filters
 
-            // first combine exclusives
-            exclusives = exclusives.join('');
-            console.log("inclusives");
-            console.log(inclusives);
-            var filterValue;
-            if ( inclusives.length ) {
-              // map inclusives with exclusives for
-              filterValue = $.map( inclusives, function( value ) {
-                return value + exclusives;
-              });
-              filterValue = filterValue.join(', ');
-            } else {
-              filterValue = exclusives;
-            }
+      // first combine exclusives
+      exclusives = exclusives.join('');
+      console.log("inclusives");
+      console.log(inclusives);
+      var filterValue;
+      if (inclusives.length) {
+        // map inclusives with exclusives for
+        filterValue = $.map(inclusives, function(value) {
+          return value + exclusives;
+        });
+        filterValue = filterValue.join(', ');
+      } else {
+        filterValue = exclusives;
+      }
 
 
-            $container.isotope({ filter: function() {
-              var $this = $(this);
-              var searchResult = true;
-              for (var i = 0; i < ww.length; i++) {
-                searchResult = $this.text().toLowerCase().indexOf(ww) > -1;
-              }
-              var buttonResult = filterValue ? $this.is( filterValue ) : true;
-              return searchResult && buttonResult;
-            }
-          })
+      $container.isotope({
+        filter: function() {
+          var $this = $(this);
+          var searchResult = true;
+          for (var i = 0; i < ww.length; i++) {
+            searchResult = $this.text().toLowerCase().indexOf(ww) > -1;
+          }
+          var buttonResult = filterValue ? $this.is(filterValue) : true;
+          return searchResult && buttonResult;
+        }
+      })
 
 
 
     };
-    $scope.setTextFilter = function(){
+    $scope.setTextFilter = function() {
       refreshGrid();
     }
 
-    $scope.setAllFilters = function(){
-      $('.checkMyCheck').each(function(){
-          $(this).parent().removeClass('inactive');
-          $(this).parent().addClass('active');
-          $(this).prop('checked', true);
+    $scope.setAllFilters = function() {
+      $('.checkMyCheck').each(function() {
+        $(this).parent().removeClass('inactive');
+        $(this).parent().addClass('active');
+        $(this).prop('checked', true);
       })
-      $years.add( $percent).each(function(){
+      $years.add($percent).each(function() {
         $(this).prop('checked', false);
       });
       refreshGrid();
       $scope.closeDetail();
     };
-    $scope.removeAllFilters = function(){
+    $scope.removeAllFilters = function() {
       $('#searchTextInput').val('');
-      $('.checkMyCheck').each(function(){
-          $(this).parent().removeClass('active');
-          $(this).parent().addClass('inactive');
-          $(this).prop('checked', false);
+      $('.checkMyCheck').each(function() {
+        $(this).parent().removeClass('active');
+        $(this).parent().addClass('inactive');
+        $(this).prop('checked', false);
       })
-      $years.add( $percent).each(function(){
+      $years.add($percent).each(function() {
         $(this).prop('checked', false);
       });
       refreshGrid();
       $scope.closeDetail();
     };
-    var $container,$output, $selects ,$checkboxes,$years,$percent;
+    var $container, $output, $selects, $checkboxes, $years, $percent;
 
     $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
-          $container = $('#isotopeContainer').isotope({
-            itemSelector: '.item'
-          });
-
-           $output = $('#output');
-          // filter with selects and checkboxes
-           $selects = $('#form-ui select');
-
-           $checkboxes = $('.homeAreaContainer .categories');
-           $years = $('#homeYearContainer .years');
-           $percent = $('#homePercentContainer .percent');
-          $years.add( $checkboxes ).add( $percent).change(function(){
-            refreshGrid();
-            $scope.$apply(function(){
-              $scope.closeDetail();
-            });
-          });
-
-            $('.checkMyCheck').change(function () {
-                    if($(this).parent().hasClass('active'))
-                    {
-                      $(this).parent().addClass('inactive');
-                      $(this).parent().removeClass('active');
-                    }
-                    else{
-                      $(this).parent().addClass('active');
-                      $(this).parent().removeClass('inactive');
-
-                  }
-
-            });
+      $container = $('#isotopeContainer').isotope({
+        itemSelector: '.item'
       });
 
-      // $scope.trustSrc = function(src) {
-      //   console.log("trustAsResourceUrl");
-      //   console.log($sce.trustAsResourceUrl(src));
-      //   return $sce.trustAsResourceUrl(src);
-      // }
+      $output = $('#output');
+      // filter with selects and checkboxes
+      $selects = $('#form-ui select');
+
+      $checkboxes = $('.homeAreaContainer .categories');
+      $years = $('#homeYearContainer .years');
+      $percent = $('#homePercentContainer .percent');
+      $years.add($checkboxes).add($percent).change(function() {
+        refreshGrid();
+        $scope.$apply(function() {
+          $scope.closeDetail();
+        });
+      });
+
+      $('.checkMyCheck').change(function() {
+        if ($(this).parent().hasClass('active')) {
+          $(this).parent().addClass('inactive');
+          $(this).parent().removeClass('active');
+        } else {
+          $(this).parent().addClass('active');
+          $(this).parent().removeClass('inactive');
+
+        }
+
+      });
+    });
+
+    // $scope.trustSrc = function(src) {
+    //   console.log("trustAsResourceUrl");
+    //   console.log($sce.trustAsResourceUrl(src));
+    //   return $sce.trustAsResourceUrl(src);
+    // }
 
 
-      $scope.usigMaps = function($){
-        console.log("usigMaps");
-        //Usig maps
+    $scope.usigMaps = function($) {
+      console.log("usigMaps");
+      //Usig maps
       // $.noConflict();
       var selectedOption = null;
 
@@ -465,30 +494,32 @@ angular.module('compromisosSiteApp')
 
           var iconUrl = 'images/punto.png',
             iconSize = new OpenLayers.Size(20, 22),
-            customMarker = new OpenLayers.Marker(new OpenLayers.LonLat(pt.x,pt.y),new OpenLayers.Icon(iconUrl, iconSize));
+            customMarker = new OpenLayers.Marker(new OpenLayers.LonLat(pt.x, pt.y), new OpenLayers.Icon(iconUrl, iconSize));
           customMarker.dir = selectedOption;
 
           var markerId = miMapa.addMarker(customMarker, true, function(ev, marker) {
-              alert('Click en '+marker.dir.toString());
-            }, { popup: false });
+            alert('Click en ' + marker.dir.toString());
+          }, {
+            popup: false
+          });
 
         }
       }
 
       var ac = new usig.AutoCompleter('search', {
-            skin: 'usig2',
-            onReady: function() {
-              $('#search').val('').removeAttr('disabled').focus();
-            },
-            afterSelection: function(option) {
-              if (option instanceof usig.Direccion || option instanceof usig.inventario.Objeto) {
-                selectedOption = option;
-              }
-            },
-            afterGeoCoding: afterGeoCoding
-          });
+        skin: 'usig2',
+        onReady: function() {
+          $('#search').val('').removeAttr('disabled').focus();
+        },
+        afterSelection: function(option) {
+          if (option instanceof usig.Direccion || option instanceof usig.inventario.Objeto) {
+            selectedOption = option;
+          }
+        },
+        afterGeoCoding: afterGeoCoding
+      });
 
-      $('#mainForm').bind("submit", function () {
+      $('#mainForm').bind("submit", function() {
         return false;
       });
 
@@ -515,22 +546,27 @@ angular.module('compromisosSiteApp')
 
           //IMPORTAR, PARA UN COMPROMISO TODOS SUS PUNTOS GEOGRAFICOS
           $http.get('usig-maps.json')
-         .then(function(res){
-            $scope.usigCompromiso = res.data
-            console.log("usig Compromiso");
-            console.log($scope.usigCompromiso);
-          $scope.usigCompromiso.map(function(elem){
-            var customMarker = new OpenLayers.Marker(new OpenLayers.LonLat(elem.long,elem.lat),new OpenLayers.Icon(elem.iconUrl, iconSize));
-            var markerId = miMapa.addMarker(customMarker, true, "<img src="+elem.iconUrl+" style='max-width:150px'><br><p>"+elem.detail+"</p>");
-          })
-          });
+            .then(function(res) {
+              $scope.usigCompromiso = res.data
+              console.log("usig Compromiso");
+              console.log($scope.usigCompromiso);
+              $scope.usigCompromiso = $scope.usigCompromiso.filter(function(point) {
+                return (point.category == "1");
+              });
+              console.log("usig Compromiso");
+              console.log($scope.usigCompromiso);
+              $scope.usigCompromiso.map(function(elem) {
+                var customMarker = new OpenLayers.Marker(new OpenLayers.LonLat(elem.long, elem.lat), new OpenLayers.Icon(elem.iconUrl, iconSize));
+                var markerId = miMapa.addMarker(customMarker, true, "<img src=" + elem.iconUrl + " style='max-width:150px'><br><p>" + elem.detail + "</p>");
+              })
+            });
 
           console.log($scope.data);
         },
         debug: true
       });
 
-      }
+    }
 
 
 
@@ -538,18 +574,18 @@ angular.module('compromisosSiteApp')
   })
   .filter('trustAsResourceUrl', ['$sce', function($sce) {
     return function(val) {
-        return $sce.trustAsResourceUrl(val);
+      return $sce.trustAsResourceUrl(val);
     };
-}])
-  .directive('onFinishRender', function ($timeout) {
+  }])
+  .directive('onFinishRender', function($timeout) {
     return {
-        restrict: 'A',
-        link: function (scope, element, attr) {
-            if (scope.$last === true) {
-                $timeout(function () {
-                    scope.$emit(attr.onFinishRender);
-                });
-            }
+      restrict: 'A',
+      link: function(scope, element, attr) {
+        if (scope.$last === true) {
+          $timeout(function() {
+            scope.$emit(attr.onFinishRender);
+          });
         }
+      }
     }
   });

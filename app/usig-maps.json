@@ -1,5 +1,5 @@
 [
-  {"long": 102224.9040681,"lat":103284.11371559,"detail":"texto1","iconUrl":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/agencias_de_viajes.png","detail":"soy el detalle 1"},
-  {"long": 102223.9040681,"lat":103252.11371559,"detail":"texto2","iconUrl":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/agencias_de_viajes.png","detail":"soy el detalle 2"},
-  {"long": 102222.9040681,"lat":103234.11371559,"detail":"texto3","iconUrl":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/agencias_de_viajes.png","detail":"soy el detalle 3"}
+  {"category":"1","long": 102224.9040681,"lat":103284.11371559,"detail":"texto1","iconUrl":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/agencias_de_viajes.png","detail":"soy el detalle 1"},
+  {"category":"1","long": 102223.9040681,"lat":103252.11371559,"detail":"texto2","iconUrl":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/agencias_de_viajes.png","detail":"soy el detalle 2"},
+  {"category":"2","long": 102222.9040681,"lat":103234.11371559,"detail":"texto3","iconUrl":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/agencias_de_viajes.png","detail":"soy el detalle 3"}
 ]

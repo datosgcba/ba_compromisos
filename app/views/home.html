@@ -5,10 +5,25 @@
     <label for="search">Buscar</label>
   <input type="text" size="40" name="search" id="search" title="Lugar a buscar" class="text"/>
   <span id="ejemplo">ej.: Callao y Corrientes, Florida 550, Teatro San Martín, etc.</span>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" value="1" name="usigCategories" checked>
+      Uno
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" value="2" name="usigCategories" checked>
+      Uno
+    </label>
+  </div>
   <div id="mapa"></div>
    </form>
   </div>
 </div>
+
+
+
 <div id="form-ui" class="row" ng-cloak ng-hide="loading" ng-click="forceCloseDetail()">
    <div class="row filters padding">
       <h3>Explorador de compromisos</h3>
