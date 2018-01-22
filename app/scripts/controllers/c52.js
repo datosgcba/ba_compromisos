@@ -8,9 +8,9 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('Compromiso52Ctrl', function ($rootScope, UrlService, $scope, $http,SlugColorService,LoadSVGService,$sce,$compile,$templateRequest) {
+  .controller('Compromiso52Ctrl', function (UrlService, $scope,$rootScope, $http,SlugColorService,LoadSVGService,$sce,$compile,$templateRequest) {
 
-  	var url = UrlService.getUrlByPage('home');
+    var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({ polling: 1000 });
     pymChild.sendHeight();
     var _ = window._;
@@ -32,7 +32,7 @@ angular.module('compromisosSiteApp')
      $scope.prepareData1 = function(data){
       data.map(function(d){
         d.mes += '-01';
-        d.porcentaje_avance = (d.porcentaje_avance)?parseInt(d.porcentaje_avance):0;
+        d.avance = (d.avance)?parseInt(d.avance):0;
       });
       return data;
     };
@@ -41,17 +41,14 @@ angular.module('compromisosSiteApp')
       return angular.merge(config,{
         data:{
           keys: {
-              value: ['porcentaje_avance'],
+              value: ['avance'],
               x: 'mes'
           },
-          types: {
-            porcentaje_avance : 'line'
-          },
           names:{
-            'porcentaje_avance':'Avance'
+            'avance':'Avance'
           },
           colors: {
-            'porcentaje_avance': $scope.currentCompromise.color
+            'avance': $scope.currentCompromise.color
             }
         },
         size: {
@@ -65,7 +62,7 @@ angular.module('compromisosSiteApp')
         },
         axis: {
           x: {
-              type:'mes',
+              type:'timeseries',
               show:true,
               tick: {
                   fit: true,
@@ -76,6 +73,7 @@ angular.module('compromisosSiteApp')
           y: {
               show:true,
               min: 0,
+              max:100,
               padding: 5,
               tick:{
                 format:function(y){
@@ -91,8 +89,20 @@ angular.module('compromisosSiteApp')
     };
 
     $scope.chartReady1 = function(){
-      return
+
     };
+
+
+
+    var id;
+    $(window).resize(function() {
+        clearTimeout(id);
+        id = setTimeout(function(){
+          // if(chart1){
+          //   createCustomChart1();
+          // }
+        }, 500);
+    });
 
 
   });

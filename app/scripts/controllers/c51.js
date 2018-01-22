@@ -32,7 +32,7 @@ angular.module('compromisosSiteApp')
      $scope.prepareData1 = function(data){
       data.map(function(d){
         d.mes += '-01';
-        d.porcentaje_avance = (d.porcentaje_avance)?parseInt(d.porcentaje_avance):0;
+        d.avance = (d.avance)?parseInt(d.avance):0;
       });
       return data;
     };
@@ -73,6 +73,7 @@ angular.module('compromisosSiteApp')
           y: {
               show:true,
               min: 0,
+              max: 100,
               padding: 5,
               tick:{
                 format:function(y){
