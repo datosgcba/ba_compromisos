@@ -3,6 +3,9 @@ Todos los cambios notables del proyecto a partir de la version 0.1.0 seran docum
 
 El formato esta basado en [Keep a Changelog](http://keepachangelog.com/) y este proyecto se adhiere a  [Semantic Versioning](http://semver.org/).
 
+## v1.6
+- Nuevo compromisos c51 y c52.
+
 ## v1.5.0.2
 - En grilla principal de compromisos, se pone en negrita la acción "Seleccionar Todos/Deselecionar Todos".
 
