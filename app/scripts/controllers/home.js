@@ -8,7 +8,7 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('HomeCtrl', function($scope, $timeout, $document, $http, UrlService, GetSVGNameService, SlugColorService, LoadSVGService, $sce) {
+  .controller('HomeCtrl', function($scope, $timeout, $document, $http,$filter, UrlService, GetSVGNameService, SlugColorService, LoadSVGService, $sce) {
 
     $scope.pymChild = new pym.Child({
       polling: 1000
@@ -479,94 +479,200 @@ angular.module('compromisosSiteApp')
     // }
 
 
-    $scope.usigMaps = function($) {
-      console.log("usigMaps");
-      //Usig maps
-      // $.noConflict();
-      var selectedOption = null;
 
 
-      function afterGeoCoding(pt) {
-        if (pt instanceof usig.Punto) {
-          if (selectedOption instanceof usig.Direccion) {
-            selectedOption.setCoordenadas(pt);
-          }
 
-          var iconUrl = 'images/punto.png',
-            iconSize = new OpenLayers.Size(20, 22),
-            customMarker = new OpenLayers.Marker(new OpenLayers.LonLat(pt.x, pt.y), new OpenLayers.Icon(iconUrl, iconSize));
-          customMarker.dir = selectedOption;
 
-          var markerId = miMapa.addMarker(customMarker, true, function(ev, marker) {
-            alert('Click en ' + marker.dir.toString());
-          }, {
-            popup: false
-          });
+var miMapa
+var vector = []
+var actividades = $("input[name=actividades]")
 
-        }
-      }
+    $scope.usig = {
+      createMap : function(){
+        console.log("CREATE MAP");
+        var selectedOption = null;
 
-      var ac = new usig.AutoCompleter('search', {
-        skin: 'usig2',
-        onReady: function() {
-          $('#search').val('').removeAttr('disabled').focus();
-        },
-        afterSelection: function(option) {
-          if (option instanceof usig.Direccion || option instanceof usig.inventario.Objeto) {
-            selectedOption = option;
-          }
-        },
-        afterGeoCoding: afterGeoCoding
-      });
 
-      $('#mainForm').bind("submit", function() {
-        return false;
-      });
+        function afterGeoCoding(pt) {
+          if (pt instanceof usig.Punto) {
+            if (selectedOption instanceof usig.Direccion) {
+              selectedOption.setCoordenadas(pt);
+            }
 
-      $('#mapa').css('width', 600).css('height', 450);
+            var iconUrl = 'images/punto.png',
+              iconSize = new OpenLayers.Size(20, 22),
+              customMarker = new OpenLayers.Marker(new OpenLayers.LonLat(pt.x, pt.y), new OpenLayers.Icon(iconUrl, iconSize));
+            customMarker.dir = selectedOption;
 
-      var miMapa = new usig.MapaInteractivo('mapa', {
-        onReady: function() {
-
-          var iconSize = new OpenLayers.Size(41, 41)
-
-          // markers.map(function(elem){
-          //   console.log(elem.long);
-          //   var customMarker = new OpenLayers.Marker(new OpenLayers.LonLat(elem.long,elem.lat),new OpenLayers.Icon(elem.iconUrl, iconSize));
-          //   var markerId = miMapa.addMarker(customMarker, true, "<b>"+elem.detail+"</b>");
-          // })
-
-          // TODOS LOS COMPROMISOS CON UNA IMAGEN Y SU TITULO
-          // $scope.data.map(function(elem){
-          //   var lat = 102224.9040681 + Math.floor(Math.random()*(2000-0+1)+0);
-          //   var long = 103284.11371559 + Math.floor(Math.random()*(2000-0+1)+0);
-          //   var customMarker = new OpenLayers.Marker(new OpenLayers.LonLat(lat,long),new OpenLayers.Icon(elem.imagen, iconSize));
-          //   var markerId = miMapa.addMarker(customMarker, true, "<img src="+elem.imagen+" style='max-width:150px'><br><p>"+elem.compromiso+"</p>");
-          // })
-
-          //IMPORTAR, PARA UN COMPROMISO TODOS SUS PUNTOS GEOGRAFICOS
-          $http.get('usig-maps.json')
-            .then(function(res) {
-              $scope.usigCompromiso = res.data
-              console.log("usig Compromiso");
-              console.log($scope.usigCompromiso);
-              $scope.usigCompromiso = $scope.usigCompromiso.filter(function(point) {
-                return (point.category == "1");
-              });
-              console.log("usig Compromiso");
-              console.log($scope.usigCompromiso);
-              $scope.usigCompromiso.map(function(elem) {
-                var customMarker = new OpenLayers.Marker(new OpenLayers.LonLat(elem.long, elem.lat), new OpenLayers.Icon(elem.iconUrl, iconSize));
-                var markerId = miMapa.addMarker(customMarker, true, "<img src=" + elem.iconUrl + " style='max-width:150px'><br><p>" + elem.detail + "</p>");
-              })
+            var markerId = miMapa.addMarker(customMarker, true, function(ev, marker) {
+              alert('Click en ' + marker.dir.toString());
+            }, {
+              popup: false
             });
 
-          console.log($scope.data);
-        },
-        debug: true
-      });
+          }
+        }
+
+        var ac = new usig.AutoCompleter('search', {
+          skin: 'usig2',
+          onReady: function() {
+            $('#search').val('').removeAttr('disabled').focus();
+          },
+          afterSelection: function(option) {
+            if (option instanceof usig.Direccion || option instanceof usig.inventario.Objeto) {
+              selectedOption = option;
+            }
+          },
+          afterGeoCoding: afterGeoCoding
+        });
+
+        $('#mainForm').bind("submit", function() {
+          return false;
+        });
+
+        $('#mapa').css('width', 600).css('height', 450);
+
+
+        miMapa = new usig.MapaInteractivo('mapa', {
+          onReady: function() {
+
+            var iconSize = new OpenLayers.Size(41, 41)
+            //IMPORTAR, PARA UN COMPROMISO TODOS SUS PUNTOS GEOGRAFICOS
+            $http.get('usig-maps.json')
+              .then(function(res) {
+                var iconUrl = "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/agencias_de_viajes.png"
+
+                $scope.usigCompromiso = res.data
+                $scope.usigCompromiso.features.map(function(elem) {
+                  var customMarker = new OpenLayers.Marker(new OpenLayers.LonLat(elem.geometry.coordinates[0], elem.geometry.coordinates[1]), new OpenLayers.Icon(iconUrl, iconSize));
+                  var markerId = miMapa.addMarker(customMarker, true, "<img src=" + iconUrl + " style='max-width:150px'><br><p>" + elem.properties.nombre + "</p>");
+                  vector.push(markerId)
+
+                })
+                $scope.usig.removeMarkers()
+              })
+          },
+          debug: true
+        });
+      },
+      removeMarkers : function(){
+          vector.map(function(elem){
+              miMapa.removeMarker(elem)
+          })
+      },
+      addMarkers : function(val){
+        // $scope.usig.removeMarkers()
+        // $scope.usig.removeMarkers(val)
+        console.log("empieza");
+      	actividades.each(function(k, v){
+          console.log("hola");
+          console.log(val);
+          // console.log(val);
+          var iconSize = new OpenLayers.Size(41, 41)
+          $scope.usigCompromiso.features.map(function(elem) {
+            if(elem.properties.compromiso === val){
+              console.log("agrega");
+              var customMarker = new OpenLayers.Marker(new OpenLayers.LonLat(elem.geometry.coordinates[0], elem.geometry.coordinates[1]), new OpenLayers.Icon(elem.properties.icon, iconSize));
+              var markerId = miMapa.addMarker(customMarker, true, "<img src=" + elem.properties.icon + " style='max-width:150px'><br><p>" + elem.properties.nombre + "</p>");
+              vector.push(markerId)
+            }else{
+              console.log("no pasa nada");
+            }
+
+          })
+
+      	});
+      }
+  }
+
+    $scope.usig.createMap()
+
+
+    $scope.usigMaps = function($) {
+      //Usig maps
+      // $.noConflict();
+      // var selectedOption = null;
+      //
+      //
+      // function afterGeoCoding(pt) {
+      //   if (pt instanceof usig.Punto) {
+      //     if (selectedOption instanceof usig.Direccion) {
+      //       selectedOption.setCoordenadas(pt);
+      //     }
+      //
+      //     var iconUrl = 'images/punto.png',
+      //       iconSize = new OpenLayers.Size(20, 22),
+      //       customMarker = new OpenLayers.Marker(new OpenLayers.LonLat(pt.x, pt.y), new OpenLayers.Icon(iconUrl, iconSize));
+      //     customMarker.dir = selectedOption;
+      //
+      //     var markerId = miMapa.addMarker(customMarker, true, function(ev, marker) {
+      //       alert('Click en ' + marker.dir.toString());
+      //     }, {
+      //       popup: false
+      //     });
+      //
+      //   }
+      // }
+      //
+      // var ac = new usig.AutoCompleter('search', {
+      //   skin: 'usig2',
+      //   onReady: function() {
+      //     $('#search').val('').removeAttr('disabled').focus();
+      //   },
+      //   afterSelection: function(option) {
+      //     if (option instanceof usig.Direccion || option instanceof usig.inventario.Objeto) {
+      //       selectedOption = option;
+      //     }
+      //   },
+      //   afterGeoCoding: afterGeoCoding
+      // });
+      //
+      // $('#mainForm').bind("submit", function() {
+      //   return false;
+      // });
+      //
+      // $('#mapa').css('width', 600).css('height', 450);
+      //
+      //
+      // var miMapa = new usig.MapaInteractivo('mapa', {
+      //   onReady: function() {
+      //
+      //     var iconSize = new OpenLayers.Size(41, 41)
+      //     var vector = []
+      //
+      //     //IMPORTAR, PARA UN COMPROMISO TODOS SUS PUNTOS GEOGRAFICOS
+      //     $http.get('usig-maps.json')
+      //       .then(function(res) {
+      //         var iconUrl = "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/agencias_de_viajes.png"
+      //
+      //         $scope.usigCompromiso = res.data
+      //         console.log("usig Compromiso");
+      //         console.log($scope.usigCompromiso);
+      //
+      //         console.log("usig Compromiso");
+      //         console.log($scope.usigCompromiso);
+      //         $scope.usigCompromiso.features.map(function(elem) {
+      //           var customMarker = new OpenLayers.Marker(new OpenLayers.LonLat(elem.geometry.coordinates[0], elem.geometry.coordinates[1]), new OpenLayers.Icon(iconUrl, iconSize));
+      //           var markerId = miMapa.addMarker(customMarker, true, "<img src=" + iconUrl + " style='max-width:150px'><br><p>" + elem.properties.nombre + "</p>");
+      //           vector.push(markerId)
+      //
+      //         })
+      //       }).then(function(){
+      //         console.log("vector");
+      //         console.log(vector);
+      //
+      //         vector.map(function(elem){
+      //           console.log(elem)
+      //           miMapa.removeMarker(elem)
+      //         })
+      //       });
+      //     console.log($scope.data);
+      //   },
+      //   debug: true
+      // });
 
     }
+
 
 
 

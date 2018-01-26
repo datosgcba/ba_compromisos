@@ -4,18 +4,38 @@
    <form id="mainForm" accept-charset="utf-8">
     <label for="search">Buscar</label>
   <input type="text" size="40" name="search" id="search" title="Lugar a buscar" class="text"/>
+  <br>
   <span id="ejemplo">ej.: Callao y Corrientes, Florida 550, Teatro San Martín, etc.</span>
+  <br>
+  <!-- <button type="button" name="button" ng-click='usig.addMarkers()'>ADD</button> -->
+  <button type="button" name="button" ng-click='usig.removeMarkers()'>REMOVE</button>
   <div class="checkbox">
-    <label>
-      <input type="checkbox" value="1" name="usigCategories" checked>
-      Uno
-    </label>
+      <label>
+        <input ng-model="valor" type="checkbox" name="actividades"
+             ng-change='usig.addMarkers(valor)' ng-true-value="1" ng-false-value="0">
+        Cines
+      </label>
   </div>
   <div class="checkbox">
-    <label>
-      <input type="checkbox" value="2" name="usigCategories" checked>
-      Uno
-    </label>
+      <label>
+        <input ng-model="valor2" type="checkbox" name="actividades"
+             ng-change='usig.addMarkers(valor2)' ng-true-value="2" ng-false-value="0">
+        perros
+      </label>
+  </div>
+  <div class="checkbox">
+      <label>
+        <input ng-model="valor3" type="checkbox" name="actividades"
+             ng-change='usig.addMarkers(valor3)' ng-true-value="3" ng-false-value="0">
+        reciclaje
+      </label>
+  </div>
+  <div class="checkbox">
+      <label>
+        <input ng-model="valor4" type="checkbox" name="actividades"
+             ng-change='usig.addMarkers(valor4)' ng-true-value="4" ng-false-value="0">
+        centros
+      </label>
   </div>
   <div id="mapa"></div>
    </form>
@@ -29,10 +49,8 @@
       <h3>Explorador de compromisos</h3>
       <p class="col-xs-12 col-sm-6">Filtrar por área:</p>
       <div id="selectsContainer" class="col-xs-12 col-sm-6">
-
               <a class="action" ng-click="setAllFilters()">Seleccionar todos  - </a>
-
-                <a class="action" ng-click="removeAllFilters()">Deseleccionar todos  </a>
+              <a class="action" ng-click="removeAllFilters()">Deseleccionar todos  </a>
          </div>
       </div>
    <div class="row filters">
