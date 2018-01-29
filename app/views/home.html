@@ -11,19 +11,26 @@
   <button type="button" name="button" ng-click='usig.removeMarkers()'>REMOVE</button>
   <div class="checkbox">
       <label>
-        <input ng-model="valor" type="checkbox" name="actividades"
-             ng-change='usig.addMarkers(valor)' ng-true-value="1" ng-false-value="0">
-        Cines
+        <input ng-model="valor" value="1" type="checkbox" name="actividades"
+             ng-change='usig.addMarkers()' ng-true-value="1" ng-false-value="0">
+        Escuelas infantiles
       </label>
   </div>
   <div class="checkbox">
       <label>
-        <input ng-model="valor2" type="checkbox" name="actividades"
-             ng-change='usig.addMarkers(valor2)' ng-true-value="2" ng-false-value="0">
-        plazas
+        <input ng-model="valor2" value="2" type="checkbox" name="actividades"
+             ng-change='usig.addMarkers()' ng-true-value="2" ng-false-value="0">
+        Centros de reciclado
       </label>
   </div>
   <div class="checkbox">
+      <label>
+        <input ng-model="valor3" value="3" type="checkbox" name="actividades"
+             ng-change='usig.addMarkers()' ng-true-value="2" ng-false-value="0">
+        Puestos de recolección
+      </label>
+  </div>
+  <!-- <div class="checkbox">
       <label>
         <input ng-model="valor3" type="checkbox" name="actividades"
              ng-change='usig.addMarkers(valor3)' ng-true-value="3" ng-false-value="0">
@@ -43,7 +50,7 @@
              ng-change='usig.addMarkers(valor5)' ng-true-value="5" ng-false-value="0">
         bajo nivel
       </label>
-  </div>
+  </div> -->
   <div id="mapa"></div>
    </form>
   </div>

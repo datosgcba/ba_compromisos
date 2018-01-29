@@ -1,431 +1,580 @@
 {
   "type": "FeatureCollection",
-
   "features": [{
       "type": "Feature",
       "properties": {
-        "compromiso":1,
-        "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/agencias_de_viajes.png",
-        "id": 170,
-        "nombre": "CIM Pepa Gaitán",
-        "telefono": null,
-        "mail": "cim_pepagaitan@buenosaires.gob.ar",
-        "nombre_map": null,
-        "funcion": null,
-        "centro": null,
-        "tipo": "Centro Integral de la Mujer",
-        "calle": "Pichincha",
-        "altura": 1765,
-        "calle2": null,
-        "direccion": "PICHINCHA AV. 1765",
-        "piso_depto": null,
-        "timestamp_": "2017-11-17 09:20:42.972824",
-        "timestam_1": "2017-11-17 12:58:51.244364",
-        "observacio": "Lunes a viernes de 11:00 a 19:00hs.",
-        "observac_1": null,
-        "publicable": "True",
-        "verificado": "True"
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Siglo XXI - Inicial",
+        "Direccion": "P. I. Rivera 4221 \/4253",
+        "Etapa": "FINALIZADA",
+        "Latitud": -34.567110,
+        "Longitud": "-5847909",
+        "Dire_Norm": "RIVERA, PEDRO I., DR. 4221",
+        "Dire_GIS": "4221 RIVERA, PEDRO I., DR.",
+        "Porc_avanc": "100%"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [106131.36824, 99916.912293500005]
+        "coordinates": [98533.920513145626, 106905.8837657012]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "compromiso":2,
-        "id": 169,
-        "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/arbolado.png",
-        "nombre": "CIM Trayectoria por una Vida sin Violencia",
-        "telefono": "2108-5782",
-        "mail": null,
-        "nombre_map": null,
-        "funcion": null,
-        "centro": null,
-        "tipo": "Centro Integral de la Mujer",
-        "calle": "Zapiola",
-        "altura": 4583,
-        "calle2": null,
-        "direccion": "ZAPIOLA 4583",
-        "piso_depto": null,
-        "timestamp_": "2017-10-24 14:57:20.706115",
-        "timestam_1": "2017-10-24 14:57:53.488102",
-        "observacio": "Lunes y jueves de 13 a 20hs; martes, miércoles y viernes de 8 a 15hs.",
-        "observac_1": null,
-        "publicable": "True",
-        "verificado": "True"
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Jard�n de Infantes Integral Nro 9",
+        "Direccion": "Olascoaga 5001",
+        "Etapa": "FINALIZADA",
+        "Latitud": -34.684049,
+        "Longitud": "-58,466358",
+        "Dire_Norm": "OLASCOAGA, MANUEL JOSE, CNEL. 5001",
+        "Dire_GIS": "5001 OLASCOAGA, MANUEL JOSE, CNEL.",
+        "Porc_avanc": "100%"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [98563.287580400007, 109411.77361]
+        "coordinates": [99716.872928838246, 93935.359349806793]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "compromiso":2,
-        "id": 167,
-"icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/arbolado.png",
-        "nombre": "CIM Lugar de Mujer",
-        "telefono": "4431-9325",
-        "mail": null,
-        "nombre_map": null,
-        "funcion": null,
-        "centro": null,
-        "tipo": "Centro Integral de la Mujer",
-        "calle": "Fragata Presidente Sarmiento",
-        "altura": 889,
-        "calle2": null,
-        "direccion": "FRAGATA PRES. SARMIENTO 889",
-        "piso_depto": null,
-        "timestamp_": "2017-07-03 13:43:54.626853",
-        "timestam_1": "2017-08-04 11:42:15.999954",
-        "observacio": "Lunes a viernes de 10 a 17hs.",
-        "observac_1": null,
-        "publicable": "True",
-        "verificado": "True"
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Jard�n de Infantes Integral Nro 3",
+        "Direccion": "Besares 4327\/4333",
+        "Etapa": "FINALIZADA",
+        "Latitud": -34.553087,
+        "Longitud": "-58,489276",
+        "Dire_Norm": "BESARES 4327",
+        "Dire_GIS": "4327 BESARES",
+        "Porc_avanc": "100%"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [100921.16942299996, 101706.38566799997]
+        "coordinates": [97633.041737565771, 108455.12512064073]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "compromiso":2,
-        "id": 160,
-"icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/arbolado.png",
-        "nombre": "CMI DIGNXS DE SER",
-        "telefono": "4634-1410",
-        "mail": null,
-        "nombre_map": null,
-        "funcion": null,
-        "centro": null,
-        "tipo": "Centro Integral de la Mujer",
-        "calle": "Lautaro",
-        "altura": 188,
-        "calle2": null,
-        "direccion": "LAUTARO 188",
-        "piso_depto": null,
-        "timestamp_": "2017-04-07 09:15:34.126763",
-        "timestam_1": "2017-09-05 09:22:27.648261",
-        "observacio": "Lunes a viernes de 13.00 a 20.00 hs.",
-        "observac_1": null,
-        "publicable": "True",
-        "verificado": "True"
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Escuela Infantil N� 07",
+        "Direccion": "Palos, Blanes y Villlafa�e (Casa Amarilla)",
+        "Etapa": "FINALIZADA",
+        "Latitud": -34.633187,
+        "Longitud": "-58,363795",
+        "Dire_Norm": "BLANES, JUAN MANUEL y PALOS",
+        "Dire_GIS": "BLANES, JUAN MANUEL & PALOS",
+        "Porc_avanc": "100%"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [100615.322258, 99980.514569100007]
+        "coordinates": [109126.48404027503, 99588.818517035921]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "compromiso":2,
-        "id": 158,
-"icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/arbolado.png",
-        "nombre": "CIM MINERVA MIRABAL",
-        "telefono": "4933-9530",
-        "mail": "cim_vlugano@buenosaires.gob.ar",
-        "nombre_map": null,
-        "funcion": null,
-        "centro": null,
-        "tipo": "Centro Integral de la Mujer",
-        "calle": "Av. Fernández de la Cruz",
-        "altura": 4428,
-        "calle2": null,
-        "direccion": "FERNANDEZ DE LA CRUZ, F., GRAL. AV. 4428",
-        "piso_depto": null,
-        "timestamp_": "2016-09-20 12:23:16.307173",
-        "timestam_1": "2016-12-20 11:30:38.756026",
-        "observacio": "Lunes a viernes de 8:30hs a 15:30hs.",
-        "observac_1": null,
-        "publicable": "True",
-        "verificado": "True"
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Jard�n de Infantes Integral N� 14",
+        "Direccion": "Manuel Garc�a 370",
+        "Etapa": "FINALIZADA",
+        "Latitud": -34.640163,
+        "Longitud": "-58,395403",
+        "Dire_Norm": "GARCIA, MANUEL 370",
+        "Dire_GIS": "370 GARCIA, MANUEL",
+        "Porc_avanc": "100%"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [100588.087587, 95295.336345100004]
+        "coordinates": [106212.21629372146, 98799.940679273568]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "compromiso":2,
-        "id": 155,
-"icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/arbolado.png",
-        "nombre": "CENTRO INTEGRAL DE LA MUJER DE VILLA LUGANO",
-        "telefono": "4605-5059",
-        "mail": "cim_vlugano@buenosaires.gob.ar",
-        "nombre_map": null,
-        "funcion": null,
-        "centro": null,
-        "tipo": "Centro Integral de la Mujer",
-        "calle": "Av. Escalada",
-        "altura": 4502,
-        "calle2": null,
-        "direccion": "ESCALADA AV. 4502",
-        "piso_depto": null,
-        "timestamp_": "2014-11-27 12:07:15.569026",
-        "timestam_1": "2016-09-20 12:58:21.659604",
-        "observacio": "Lunes a viernes de 8:30 a 15:30 hs.",
-        "observac_1": "Se despublica (Sep\/2016) por actualización en web (http:\/\/www.buenosaires.gob.ar\/desarrollohumanoyhabitat\/mujer\/hogares-y-centros-integrales-de-la-mujer\/centros-integrales-de-la-mujer)",
-        "publicable": "False",
-        "verificado": "True"
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Jard�n de Infantes Integral N� 13",
+        "Direccion": "Varela 1802",
+        "Etapa": "FINALIZADA",
+        "Latitud": -34.647254,
+        "Longitud": "-58,449206",
+        "Dire_Norm": "VARELA AV. 1802",
+        "Dire_GIS": "1802 VARELA AV.",
+        "Porc_avanc": "100%"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [100844.172416, 94763.575705834999]
+        "coordinates": [101320.62813087087, 98004.450937492773]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "compromiso":2,
-        "id": 153,
-"icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/arbolado.png",
-        "nombre": "CIM ISABEL CALVO",
-        "telefono": "4307-3187",
-        "mail": "cim_icalvo@buenosaires.gob.ar",
-        "nombre_map": null,
-        "funcion": null,
-        "centro": null,
-        "tipo": "Centro Integral de la Mujer",
-        "calle": "Piedras",
-        "altura": 1281,
-        "calle2": null,
-        "direccion": "PIEDRAS 1281",
-        "piso_depto": null,
-        "timestamp_": "2014-11-27 11:22:00.186881",
-        "timestam_1": "2016-09-20 10:32:10.578034",
-        "observacio": "Lunes a Viernes de 9.30 a 16.30",
-        "observac_1": null,
-        "publicable": "True",
-        "verificado": "True"
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Sin nombre definido",
+        "Direccion": "Corporaci�n Puerto Madero",
+        "Etapa": "EN PROYECTO",
+        "Latitud": -34.618580,
+        "Longitud": "-58,35757",
+        "Dire_Norm": null,
+        "Dire_GIS": null,
+        "Porc_avanc": "5%"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [107899.351025, 100672.322522]
+        "coordinates": [109539.75467204637, 101949.62737878693]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "compromiso":2,
-        "id": 63,
-"icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/arbolado.png",
-        "nombre": "CIM MARÍA GALLEGO",
-        "telefono": "4568-1245",
-        "mail": "cim_mgallego@buenosaires.gob.ar",
-        "nombre_map": null,
-        "funcion": null,
-        "centro": null,
-        "tipo": "Centro Integral de la Mujer",
-        "calle": "BEIRO FRANCISCO",
-        "altura": 5229,
-        "calle2": null,
-        "direccion": "BEIRO, FRANCISCO AV. 5229",
-        "piso_depto": null,
-        "timestamp_": "2013-05-02 19:15:04",
-        "timestam_1": "2016-09-20 10:35:55.972153",
-        "observacio": "Lunes a viernes de 8:00 a 17:00 hs",
-        "observac_1": null,
-        "publicable": "True",
-        "verificado": "True"
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Sin nombre definido",
+        "Direccion": "Pepir� 185",
+        "Etapa": "EN PROYECTO",
+        "Latitud": -34.639960,
+        "Longitud": "�-58,40887",
+        "Dire_Norm": "PEPIRI 185",
+        "Dire_GIS": "185 PEPIRI",
+        "Porc_avanc": "5%"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [94418.281504600003, 101767.600445]
+        "coordinates": [104974.31535056792, 98812.824745315127]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "compromiso":2,
-        "id": 62,
-"icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/arbolado.png",
-        "nombre": "CIM MARGARITA MALHARRO",
-        "telefono": "4931-6296",
-        "mail": "cim_malharro@buenosaires.gob.ar",
-        "nombre_map": null,
-        "funcion": null,
-        "centro": null,
-        "tipo": "Centro Integral de la Mujer",
-        "calle": "24 DE NOVIEMBRE",
-        "altura": 113,
-        "calle2": null,
-        "direccion": "24 DE NOVIEMBRE 113",
-        "piso_depto": null,
-        "timestamp_": "2013-05-02 19:15:04",
-        "timestam_1": "2017-06-01 14:17:45.925420",
-        "observacio": "Lunes a viernes las 24hs",
-        "observac_1": null,
-        "publicable": "True",
-        "verificado": "True"
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Sin nombre definido",
+        "Direccion": "Fern�ndez de la Cruz  y Escalada (Villa Ol�mpica)",
+        "Etapa": "EN PROYECTO",
+        "Latitud": -34.676206,
+        "Longitud": "-58,454757",
+        "Dire_Norm": "FERNANDEZ DE LA CRUZ, F., GRAL. AV. y ESCALADA AV.",
+        "Dire_GIS": "FERNANDEZ DE LA CRUZ, F., GRAL. AV. & ESCALADA AV.",
+        "Porc_avanc": "5%"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [104735.84107699998, 101894.57323400013]
+        "coordinates": [100376.25864843442, 95245.77229617002]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "compromiso":2,
-        "id": 61,
-"icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/arbolado.png",
-        "nombre": "CIM ELVIRA RAWSON",
-        "telefono": "4867-0163",
-        "mail": "cim_erawson@buenosaires.gob.ar",
-        "nombre_map": null,
-        "funcion": null,
-        "centro": null,
-        "tipo": "Centro Integral de la Mujer",
-        "calle": "SALGUERO JERONIMO",
-        "altura": 765,
-        "calle2": null,
-        "direccion": "SALGUERO, JERONIMO 765",
-        "piso_depto": null,
-        "timestamp_": "2013-05-02 19:15:04",
-        "timestam_1": "2016-09-20 10:42:20.591852",
-        "observacio": "Lunes a viernes de 12:00 a 19:00 hs",
-        "observac_1": null,
-        "publicable": "True",
-        "verificado": "True"
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Sin nombre definido",
+        "Direccion": "Varela y Fern�ndez de la Cruz",
+        "Etapa": "EN PROYECTO",
+        "Latitud": -34.655530,
+        "Longitud": "-58,43851",
+        "Dire_Norm": "VARELA AV. y FERNANDEZ DE LA CRUZ, F., GRAL. AV.",
+        "Dire_GIS": "VARELA AV. & FERNANDEZ DE LA CRUZ, F., GRAL. AV.",
+        "Porc_avanc": "5%"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [104046.830604, 103106.880767]
+        "coordinates": [102237.97961392302, 97082.401964200355]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "compromiso":2,
-        "id": 60,
-"icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/arbolado.png",
-        "nombre": "CIM ARMINDA ABERASTURY",
-        "telefono": "4956-1768",
-        "mail": "cim_aberastury@buenosaires.gob.ar",
-        "nombre_map": null,
-        "funcion": null,
-        "centro": null,
-        "tipo": "Centro Integral de la Mujer",
-        "calle": "YRIGOYEN HIPOLITO",
-        "altura": 3202,
-        "calle2": null,
-        "direccion": "YRIGOYEN, HIPOLITO 3202",
-        "piso_depto": null,
-        "timestamp_": "2013-05-02 19:15:03",
-        "timestam_1": "2017-06-01 14:17:25.418586",
-        "observacio": "Lunes a viernes de 8:00 a 14:00 hs",
-        "observac_1": null,
-        "publicable": "True",
-        "verificado": "True"
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Sin nombre definido",
+        "Direccion": "Catamarca y Belgrano - Manzana 66",
+        "Etapa": "EN PROYECTO",
+        "Latitud": -34.614790,
+        "Longitud": "-58,40619",
+        "Dire_Norm": "CATAMARCA y BELGRANO AV.",
+        "Dire_GIS": "CATAMARCA & BELGRANO AV.",
+        "Porc_avanc": "5%"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [104715.300429, 101915.157199]
+        "coordinates": [105244.9017625031, 101626.25301293825]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "compromiso":2,
-        "id": 59,
-"icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/arbolado.png",
-        "nombre": "CIM ALICIA MOREAU",
-        "telefono": "4300-7775",
-        "mail": "cim_amoreau@buenosaires.gob.ar",
-        "nombre_map": null,
-        "funcion": null,
-        "centro": null,
-        "tipo": "Centro Integral de la Mujer",
-        "calle": "HUMBERTO 1°",
-        "altura": 470,
-        "calle2": null,
-        "direccion": "HUMBERTO 1° 470",
-        "piso_depto": "1º",
-        "timestamp_": "2013-05-02 19:15:03",
-        "timestam_1": "2016-09-20 10:34:09.693539",
-        "observacio": "Lunes a viernes de 12.00 a 19.00 hs.",
-        "observac_1": null,
-        "publicable": "True",
-        "verificado": "True"
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Sin nombre definido",
+        "Direccion": "Almafuerte y Ferreyra",
+        "Etapa": "EN PROYECTO",
+        "Latitud": -34.644550,
+        "Longitud": "�-58,41394",
+        "Dire_Norm": "ALMAFUERTE AV. y FERREYRA, ANDRES",
+        "Dire_GIS": "ALMAFUERTE AV. & FERREYRA, ANDRES",
+        "Porc_avanc": "5%"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [108329.843243, 100942.904417]
+        "coordinates": [104558.65356972176, 98320.864687703899]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "compromiso":2,
-        "id": 57,
-"icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/arbolado.png",
-        "nombre": "HOGAR PARA MADRES ADOLESCENTES EVA DUARTE",
-        "telefono": "4785-9381",
-        "mail": null,
-        "nombre_map": null,
-        "funcion": null,
-        "centro": null,
-        "tipo": "Centro Integral de la Mujer",
-        "calle": "LA PAMPA",
-        "altura": 750,
-        "calle2": null,
-        "direccion": "LA PAMPA 750",
-        "piso_depto": null,
-        "timestamp_": "2013-05-02 19:15:03",
-        "timestam_1": "2016-10-26 12:37:33.854558",
-        "observacio": null,
-        "observac_1": "Se despublica (10\/2016) por actualización enviada por el Sr. Emiliano Martinez Royano de la Dirección General de Gestión Estratégica (Compromisos, Sec. Gral) y validada por Lucila Biasco <lbiasco@buenosaires.gob.ar>, Jefa de Prensa y Comunicación de",
-        "publicable": "False",
-        "verificado": "True"
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Sin nombre definido",
+        "Direccion": "Basualdo 1700 - Los Bajitos",
+        "Etapa": "EN PROYECTO",
+        "Latitud": -34.653290,
+        "Longitud": "-58,4878",
+        "Dire_Norm": "BASUALDO 1700",
+        "Dire_GIS": "1700 BASUALDO",
+        "Porc_avanc": "5%"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [102355.310005, 108230.119309]
+        "coordinates": [97752.531435296871, 97361.599060137756]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "compromiso":2,
-        "id": 56,
-"icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/arbolado.png",
-        "nombre": "DIRECCION GRAL. DE LA MUJER",
-        "telefono": "4393 6466",
-        "mail": null,
-        "nombre_map": null,
-        "funcion": null,
-        "centro": null,
-        "tipo": "Centro Integral de la Mujer",
-        "calle": "PELLEGRINI CARLOS",
-        "altura": 211,
-        "calle2": null,
-        "direccion": "PELLEGRINI, CARLOS 211",
-        "piso_depto": null,
-        "timestamp_": "2013-05-02 19:15:02",
-        "timestam_1": "2016-10-26 12:37:12.694405",
-        "observacio": null,
-        "observac_1": "Se despublica (10\/2016) por actualización enviada por el Sr. Emiliano Martinez Royano de la Dirección General de Gestión Estratégica (Compromisos, Sec. Gral) y validada por Lucila Biasco <lbiasco@buenosaires.gob.ar>, Jefa de Prensa y Comunicación de",
-        "publicable": "False",
-        "verificado": "True"
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Sin nombre definido",
+        "Direccion": "Pichincha 1152",
+        "Etapa": "EN PROYECTO",
+        "Latitud": -34.622480,
+        "Longitud": "-58,39784",
+        "Dire_Norm": "PICHINCHA 1152",
+        "Dire_GIS": "1152 PICHINCHA",
+        "Porc_avanc": "5%"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [107565.856288, 102633.878233]
+        "coordinates": [106007.0499996217, 100745.23128313944]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Sin nombre definido",
+        "Direccion": "Lagos 2929",
+        "Etapa": "EN PROYECTO",
+        "Latitud": -34.642500,
+        "Longitud": "-5840318",
+        "Dire_Norm": "LAGOS 2929",
+        "Dire_GIS": "2929 LAGOS",
+        "Porc_avanc": "5%"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [105510.62669473421, 98547.348025287502]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Sin nombre definido",
+        "Direccion": "Ram�n Lista 5448",
+        "Etapa": "EN PROYECTO",
+        "Latitud": -34.615845,
+        "Longitud": "-58525644",
+        "Dire_Norm": "LISTA, RAMON, CORONEL 5448",
+        "Dire_GIS": "5448 LISTA, RAMON, CORONEL",
+        "Porc_avanc": "5%"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [94277.02663251292, 101455.3170058988]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Sin nombre definido",
+        "Direccion": "Eva Per�n 7449",
+        "Etapa": "EN LICITACION",
+        "Latitud": -34.673681,
+        "Longitud": "-58,501165",
+        "Dire_Norm": "PERON, EVA AV. 7449",
+        "Dire_GIS": "7449 PERON, EVA AV.",
+        "Porc_avanc": "10%"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [96520.059713795781, 95085.110955161974]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Sin nombre definido",
+        "Direccion": "Bermejo 6675",
+        "Etapa": "EN LICITACION",
+        "Latitud": -34.640640,
+        "Longitud": "-58,52231",
+        "Dire_Norm": "BERMEJO, ANTONIO DR. 6675",
+        "Dire_GIS": "6675 BERMEJO, ANTONIO DR.",
+        "Porc_avanc": "10%"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [97958.215095628053, 94144.298196596093]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Sin nombre definido",
+        "Direccion": "Lafayette 601",
+        "Etapa": "EN LICITACION",
+        "Latitud": -34.642120,
+        "Longitud": "-58,39142",
+        "Dire_Norm": "LAFAYETTE 601",
+        "Dire_GIS": "601 LAFAYETTE",
+        "Porc_avanc": "10%"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [106547.38813043387, 98493.642877144157]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Sin nombre definido",
+        "Direccion": "Lafayette 601",
+        "Etapa": "EN LICITACION",
+        "Latitud": -34.642120,
+        "Longitud": "-58,39142",
+        "Dire_Norm": "LAFAYETTE 601",
+        "Dire_GIS": "601 LAFAYETTE",
+        "Porc_avanc": "10%"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [106535.00970649428, 98488.995800154138]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Polo Mar�a Elena Walsh",
+        "Direccion": "Emprendimiento Barrio 31",
+        "Etapa": "EN LICITACION",
+        "Latitud": -34.581181,
+        "Longitud": "-58,381573",
+        "Dire_Norm": null,
+        "Dire_GIS": null,
+        "Porc_avanc": "10%"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [107309.76272326628, 105492.79213131547]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Sin nombre definido",
+        "Direccion": "Larrazabal 5430",
+        "Etapa": "EN OBRA",
+        "Latitud": -34.685530,
+        "Longitud": "-58,458406",
+        "Dire_Norm": "LARRAZABAL AV 5430",
+        "Dire_GIS": "5430 LARRAZABAL AV",
+        "Porc_avanc": "85%"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [100506.83335916893, 93716.738532789052]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Inicial Polo Mataderos",
+        "Direccion": "Murguiondo y Directorio",
+        "Etapa": "EN OBRA",
+        "Latitud": -34.658550,
+        "Longitud": "-58,4996",
+        "Dire_Norm": "MURGUIONDO y DIRECTORIO AV.",
+        "Dire_GIS": "MURGUIONDO & DIRECTORIO AV.",
+        "Porc_avanc": "59%"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [96657.366673407902, 96766.941804112037]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Sin nombre definido",
+        "Direccion": "Venezuela 3269",
+        "Etapa": "EN OBRA",
+        "Latitud": -34.616394,
+        "Longitud": "-58,412163",
+        "Dire_Norm": "REPUBLICA BOLIVARIANA DE VENEZUELA 3269",
+        "Dire_GIS": "3269 REPUBLICA BOLIVARIANA DE VENEZUELA",
+        "Porc_avanc": "36%"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [104688.96140809823, 101421.28399478551]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Sin nombre definido",
+        "Direccion": "Per� 1236",
+        "Etapa": "EN OBRA",
+        "Latitud": -34.622468,
+        "Longitud": "-58,373772",
+        "Dire_Norm": "PERU 1236",
+        "Dire_GIS": "1236 PERU",
+        "Porc_avanc": "30%"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [108195.34407936409, 100756.51102009043]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Sin nombre definido",
+        "Direccion": "Chorroar�n 305",
+        "Etapa": "EN OBRA",
+        "Latitud": -34.595032,
+        "Longitud": "-58,477036",
+        "Dire_Norm": "CHORROARIN AV. 305",
+        "Dire_GIS": "305 CHORROARIN AV.",
+        "Porc_avanc": "36%"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [98757.322884961031, 103801.77060012706]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Sin nombre definido",
+        "Direccion": "Fern�ndez de la Cruz y Escalada (Papa Francisco)",
+        "Etapa": "EN OBRA",
+        "Latitud": -34.673390,
+        "Longitud": "�-58,46121",
+        "Dire_Norm": "FERNANDEZ DE LA CRUZ, F., GRAL. AV. y ESCALADA AV.",
+        "Dire_GIS": "FERNANDEZ DE LA CRUZ, F., GRAL. AV. & ESCALADA AV.",
+        "Porc_avanc": "16%"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [100286.84376047812, 95084.021768518724]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Sin nombre definido",
+        "Direccion": "Casta�ares 6500",
+        "Etapa": "EN OBRA",
+        "Latitud": -34.679620,
+        "Longitud": "-58,48766",
+        "Dire_Norm": "CASTA�ARES AV. 6500",
+        "Dire_GIS": "6500 CASTA�ARES AV.",
+        "Porc_avanc": "16%"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [97763.534740798175, 94398.067103450187]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Sin nombre definido",
+        "Direccion": "Letonia y Ant�rtida Argentina",
+        "Etapa": "EN OBRA",
+        "Latitud": -34.589200,
+        "Longitud": "-58,37136",
+        "Dire_Norm": "LETONIA y ANTARTIDA ARGENTINA AV.",
+        "Dire_GIS": "LETONIA & ANTARTIDA ARGENTINA AV.",
+        "Porc_avanc": "16%"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [108473.82759471255, 104501.18287000258]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "compromiso": 1,
+        "icon": "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/establecimientos_educativos.png",
+        "Esc_Infant": "Sin nombre definido",
+        "Direccion": "Fonrouge y Barros Pazos",
+        "Etapa": "EN OBRA",
+        "Latitud": -34.676870,
+        "Longitud": "-58,46756",
+        "Dire_Norm": "FONROUGE y BARROS PAZOS, JOSE",
+        "Dire_GIS": "FONROUGE & BARROS PAZOS, JOSE",
+        "Porc_avanc": "33%"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [99628.926551748969, 94718.937733682178]
       }
     },
     {
         "type": "Feature",
         "properties": {
   "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/arbolado_14.png",
-  "compromiso":3,
+  "compromiso":2,
           "id": 10,
           "nombre": "Centro de Reciclado Yerbal",
           "tipo": "Fijo",
@@ -451,7 +600,7 @@
         "type": "Feature",
         "properties": {
   "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/arbolado_14.png",
-  "compromiso":3,
+  "compromiso":2,
           "id": 9,
           "nombre": "Centro de Reciclado Cortejarena",
           "tipo": "Fijo",
@@ -477,7 +626,7 @@
         "type": "Feature",
         "properties": {
   "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/arbolado_14.png",
-  "compromiso":3,
+  "compromiso":2,
           "id": 8,
           "nombre": "Centro de Reciclado Constituyentes",
           "tipo": "Fijo",
@@ -503,7 +652,7 @@
         "type": "Feature",
         "properties": {
   "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/arbolado_14.png",
-  "compromiso":3,
+  "compromiso":2,
           "id": 7,
           "nombre": "Centro de Reciclado Nuñez",
           "tipo": "Fijo",
@@ -529,7 +678,7 @@
         "type": "Feature",
         "properties": {
   "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/arbolado_14.png",
-  "compromiso":3,
+  "compromiso":2,
           "id": 6,
           "nombre": "Centro de Reciclado Retiro",
           "tipo": "Fijo",
@@ -555,7 +704,7 @@
         "type": "Feature",
         "properties": {
   "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/arbolado_14.png",
-  "compromiso":3,
+  "compromiso":2,
           "id": 5,
           "nombre": "Centro de Reciclado Varela",
           "tipo": "Fijo",
@@ -581,7 +730,7 @@
         "type": "Feature",
         "properties": {
   "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/arbolado_14.png",
-  "compromiso":3,
+  "compromiso":2,
           "id": 4,
           "nombre": "Centro de Reciclado Barros Pazos",
           "tipo": "Fijo",
@@ -607,7 +756,7 @@
         "type": "Feature",
         "properties": {
   "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/arbolado_14.png",
-  "compromiso":3,
+  "compromiso":2,
           "id": 3,
           "nombre": "Centro de Reciclado Chilavert",
           "tipo": "Fijo",
@@ -633,7 +782,7 @@
         "type": "Feature",
         "properties": {
   "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/arbolado_14.png",
-  "compromiso":3,
+  "compromiso":2,
           "id": 2,
           "nombre": "Centro Verde Villa Pueyrredón",
           "tipo": "Fijo",
@@ -659,7 +808,7 @@
         "type": "Feature",
         "properties": {
   "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/arbolado_14.png",
-  "compromiso":3,
+  "compromiso":2,
           "id": 1,
           "nombre": "Centro de Reciclado Barracas",
           "tipo": "Fijo",
@@ -680,12 +829,11 @@
           "type": "Point",
           "coordinates": [108186.3507000003, 97595.088000000454]
         }
-      },
-      {
+      },{
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 1,
             "plaza": "Plaza Castelli",
             "tipo": "Punto Verde Con Atención",
@@ -717,7 +865,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 2,
             "plaza": "Plaza Armenia",
             "tipo": "Punto Verde Con Atención",
@@ -749,7 +897,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 3,
             "plaza": "Plaza Balcarce",
             "tipo": "Punto Verde Con Atención",
@@ -781,7 +929,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 4,
             "plaza": "Plaza Leandro N. Alem",
             "tipo": "Punto Verde Con Atención",
@@ -813,7 +961,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 5,
             "plaza": "Plaza Vélez Sarfield",
             "tipo": "Punto Verde Con Atención",
@@ -845,7 +993,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 6,
             "plaza": "Parque Santojanni",
             "tipo": "Punto Verde Con Atención",
@@ -877,7 +1025,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 7,
             "plaza": "Estación Villa Soldati",
             "tipo": "Punto Verde Con Atención",
@@ -909,7 +1057,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 8,
             "plaza": "Parque Chacabuco",
             "tipo": "Punto Verde Con Atención",
@@ -941,7 +1089,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 9,
             "plaza": "Plaza Almagro",
             "tipo": "Punto Verde Con Atención",
@@ -973,7 +1121,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 10,
             "plaza": "Plaza Colombia",
             "tipo": "Punto Verde Con Atención",
@@ -1005,7 +1153,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 11,
             "plaza": "Plaza Dr J.M Velazco Ibarra",
             "tipo": "Punto Verde Con Atención",
@@ -1037,7 +1185,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 12,
             "plaza": "Plazoleta Reino de Tailandia",
             "tipo": "Punto Verde Con Atención",
@@ -1069,7 +1217,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 13,
             "plaza": "Plaza Rosario Vera Peñaloza",
             "tipo": "Punto Verde Con Atención",
@@ -1101,7 +1249,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 14,
             "plaza": "Punto Verde Especial - Parque Centenario",
             "tipo": "Punto Verde Especial",
@@ -1133,7 +1281,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 15,
             "plaza": "Parque Saavedra",
             "tipo": "Punto Verde Con Atención",
@@ -1165,7 +1313,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 16,
             "plaza": "Plaza 25 de Agosto",
             "tipo": "Punto Verde Con Atención",
@@ -1197,7 +1345,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 17,
             "plaza": "Plaza Monseñor de Andrea",
             "tipo": "Punto Verde Con Atención",
@@ -1229,7 +1377,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 18,
             "plaza": "Plaza Aristóbulo del Valle",
             "tipo": "Punto Verde Con Atención",
@@ -1261,7 +1409,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 19,
             "plaza": "Plaza 1ro de Mayo",
             "tipo": "Punto Verde Con Atención",
@@ -1293,7 +1441,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 20,
             "plaza": "Plaza Boedo",
             "tipo": "Punto Verde Con Atención",
@@ -1325,7 +1473,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 21,
             "plaza": "Plaza Sudamérica",
             "tipo": "Punto Verde Con Atención",
@@ -1357,7 +1505,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 22,
             "plaza": "Parque Los Andes",
             "tipo": "Punto Verde Con Atención",
@@ -1389,7 +1537,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 23,
             "plaza": "Plaza Güemes",
             "tipo": "Punto Verde Especial",
@@ -1421,7 +1569,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 24,
             "plaza": "Plaza Gral. Manuel Belgrano",
             "tipo": "Punto Verde Con Atención",
@@ -1453,7 +1601,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 25,
             "plaza": "Punto Verde Especial - Plaza Arenales",
             "tipo": "Punto Verde Especial",
@@ -1485,7 +1633,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 26,
             "plaza": "Plaza Don Bosco",
             "tipo": "Punto Verde Con Atención",
@@ -1517,7 +1665,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 27,
             "plaza": "Parque Avellaneda",
             "tipo": "Punto Verde Con Atención",
@@ -1549,7 +1697,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 28,
             "plaza": "Plaza Pueyrredón",
             "tipo": "Punto Verde Con Atención",
@@ -1581,7 +1729,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 29,
             "plaza": "Parque Rivadavia",
             "tipo": "Punto Verde Con Atención",
@@ -1613,7 +1761,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 30,
             "plaza": "Parque Patricios",
             "tipo": "Punto Verde Con Atención",
@@ -1645,7 +1793,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 31,
             "plaza": "Puerto Madero",
             "tipo": "Punto Verde Con Atención",
@@ -1677,7 +1825,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 32,
             "plaza": "Plaza San Martín",
             "tipo": "Punto Verde Con Atención",
@@ -1709,7 +1857,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 33,
             "plaza": "Plaza Vea",
             "tipo": "Punto Verde Con Atención",
@@ -1741,7 +1889,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 34,
             "plaza": "Villa 20",
             "tipo": "Punto Verde Con Atención",
@@ -1773,7 +1921,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 35,
             "plaza": "Plaza Irlanda",
             "tipo": "Punto Verde Con Atención",
@@ -1805,7 +1953,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 36,
             "plaza": "Plaza Alberdi",
             "tipo": "Punto Verde Con Atención",
@@ -1837,7 +1985,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 37,
             "plaza": "Estación Medalla Milagrosa (Subte E)",
             "tipo": "Punto Verde Con Atención",
@@ -1869,7 +2017,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 38,
             "plaza": "Plaza Ciudad de Banff",
             "tipo": "Punto Verde Con Atención",
@@ -1901,7 +2049,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 39,
             "plaza": "Plaza de Roque Saenz Peña (Pappo)",
             "tipo": "Punto Verde Con Atención",
@@ -1933,7 +2081,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 40,
             "plaza": "Racing Club Sede Villa del Parque",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -1965,7 +2113,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 41,
             "plaza": "Mercado de Pulgas",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -1997,7 +2145,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 42,
             "plaza": "Mercado de Belgrano",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -2029,7 +2177,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 43,
             "plaza": "Mercado de Bonpland",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -2061,7 +2209,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 44,
             "plaza": "Mercado de San Nicolas",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -2093,7 +2241,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 45,
             "plaza": "CMD",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -2125,7 +2273,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 46,
             "plaza": "Ministerio del Interior",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -2157,7 +2305,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 47,
             "plaza": "Sede Comuna 10",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -2189,7 +2337,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 48,
             "plaza": "Plaza Ejército de los Andes",
             "tipo": "Punto Verde Con Atención",
@@ -2221,7 +2369,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 49,
             "plaza": "Sede comuna 6",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -2253,7 +2401,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 50,
             "plaza": "sede comuna 14",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -2285,7 +2433,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 51,
             "plaza": "Mercado del Progreso",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -2317,7 +2465,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 52,
             "plaza": "Palacio Lezama",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -2349,7 +2497,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 53,
             "plaza": "Barrio chino 2",
             "tipo": "Punto Verde Compactador",
@@ -2381,7 +2529,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 54,
             "plaza": "Diagonal Norte y Florida",
             "tipo": "Punto Verde Compactador",
@@ -2413,7 +2561,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 55,
             "plaza": "Facultad de Derecho",
             "tipo": "Punto Verde Compactador",
@@ -2445,7 +2593,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 56,
             "plaza": "Restaurant LA BIELA",
             "tipo": "Punto Verde Compactador",
@@ -2477,7 +2625,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 57,
             "plaza": "MALBA",
             "tipo": "Punto Verde Compactador",
@@ -2509,7 +2657,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 58,
             "plaza": "Plaza San Martín",
             "tipo": "Punto Verde Compactador",
@@ -2541,7 +2689,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 59,
             "plaza": "UCA",
             "tipo": "Punto Verde Compactador",
@@ -2573,7 +2721,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 60,
             "plaza": "Plaza de los Periodistas",
             "tipo": "Punto Verde Con Atención",
@@ -2605,7 +2753,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 61,
             "plaza": "Plaza Nobel",
             "tipo": "Punto Verde Con Atención",
@@ -2637,7 +2785,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 62,
             "plaza": "Club All Boys",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -2669,7 +2817,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 63,
             "plaza": "Sede Comuna 4",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -2701,7 +2849,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 64,
             "plaza": "Puente de la Mujer",
             "tipo": "Punto Verde Compactador",
@@ -2733,7 +2881,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 65,
             "plaza": "Club Vélez Sarsfield",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -2765,7 +2913,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 66,
             "plaza": "Plaza Malaver",
             "tipo": "Punto Verde Con Atención",
@@ -2797,7 +2945,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 67,
             "plaza": "Parque Alberdi",
             "tipo": "Punto Verde Con Atención",
@@ -2829,7 +2977,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 68,
             "plaza": "Sede Comuna 2",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -2861,7 +3009,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 69,
             "plaza": "Plaza Benito Nazar",
             "tipo": "Punto Verde Con Atención",
@@ -2893,7 +3041,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 70,
             "plaza": "Polidep. Parque Avellaneda",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -2925,7 +3073,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 71,
             "plaza": "Polidep. Pomar\/Floresta",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -2957,7 +3105,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 72,
             "plaza": "Polidep. Chacabuco",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -2989,7 +3137,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 73,
             "plaza": "Polidep. Colegiales",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -3021,7 +3169,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 74,
             "plaza": "Sede Comuna 15",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -3053,7 +3201,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 75,
             "plaza": "Polidep. Don Pepe",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -3085,7 +3233,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 76,
             "plaza": "Polidep. Pereyra",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -3117,7 +3265,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 77,
             "plaza": "Plaza Echeverria",
             "tipo": "Punto Verde Con Atención",
@@ -3149,7 +3297,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 78,
             "plaza": "Plaza Rómulo Zabala",
             "tipo": "Punto Verde Con Atención",
@@ -3181,7 +3329,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 79,
             "plaza": "Sede Comuna 12",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -3213,7 +3361,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 80,
             "plaza": "Polidep. Patricios",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -3245,7 +3393,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 81,
             "plaza": "Polidep. Martin Fierro",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -3277,7 +3425,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 82,
             "plaza": "Polidep. Manuel Belgrano",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -3309,7 +3457,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 83,
             "plaza": "Plaza Domingo Olivera",
             "tipo": "Punto Verde Con Atención",
@@ -3341,7 +3489,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 84,
             "plaza": "Ministerio de Desarrollo Social",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -3373,7 +3521,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 85,
             "plaza": "Subsede Comuna 4",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -3405,7 +3553,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 86,
             "plaza": "Licencias",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -3437,7 +3585,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 87,
             "plaza": "FADU\/Ciudad Universitaria",
             "tipo": "Punto Verde Con Atención",
@@ -3469,7 +3617,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 88,
             "plaza": "Barrio chino",
             "tipo": "Punto Verde Compactador",
@@ -3501,7 +3649,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 89,
             "plaza": "Parque Lezama",
             "tipo": "Punto Verde Compactador",
@@ -3533,7 +3681,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 90,
             "plaza": "Plaza Armenia",
             "tipo": "Punto Verde Compactador",
@@ -3565,7 +3713,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 91,
             "plaza": "Club Ferro Carril Oeste",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -3597,7 +3745,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 92,
             "plaza": "Subsede Comuna 2",
             "tipo": "Punto Verde De Interior (Totem)",
@@ -3629,7 +3777,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 93,
             "plaza": "Metrobus",
             "tipo": "Totem Via Publica",
@@ -3661,7 +3809,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 94,
             "plaza": "Plaza Emilio Mitre",
             "tipo": "Punto Verde Especial",
@@ -3693,7 +3841,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 95,
             "plaza": "Plaza Petrolina Rodriguez",
             "tipo": "Punto Verde Con Atención",
@@ -3725,7 +3873,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 96,
             "plaza": "Plaza Martin Fierro",
             "tipo": "Punto Verde Especial",
@@ -3757,7 +3905,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 97,
             "plaza": "Polo Circo",
             "tipo": "Punto Verde Especial",
@@ -3789,7 +3937,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 98,
             "plaza": "Parque Leonardo Pereyra",
             "tipo": "Punto Verde Con Atención",
@@ -3821,7 +3969,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 100,
             "plaza": "Plaza Ángel Gris",
             "tipo": "Punto Verde Con Atención",
@@ -3853,7 +4001,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 101,
             "plaza": "Plaza Martín Rodríguez",
             "tipo": "Punto Verde Con Atención",
@@ -3885,7 +4033,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 102,
             "plaza": "Plaza Zapiola",
             "tipo": "Punto Verde Con Atención",
@@ -3917,7 +4065,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 103,
             "plaza": "Plaza Mafalda",
             "tipo": "Punto Verde Con Atención",
@@ -3949,7 +4097,7 @@
           "type": "Feature",
           "properties": {
             "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/casa_de_la_lectura.png",
-            "compromiso":4,
+            "compromiso":3,
             "id": 104,
             "plaza": "Plaza República de Perú",
             "tipo": "Punto Verde Con Atención",
@@ -3976,816 +4124,6 @@
             "type": "Point",
             "coordinates": [105385.37250824003, 105855.47155228895]
           }
-        },
-        {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 31,
-              "nombre": "Av. Dr. Ricardo Balbín y vías del FFCC Mitre - Ramal Mitre",
-              "leyenda": null,
-              "estado": "En Construcción",
-              "calle": "Av. Ricardo Balbín",
-              "altura": 4001,
-              "calle2": null,
-              "entre_call": "entre Tronador y Holmberg",
-              "direccion_": "Av. Dr. Ricardo Balbín 4001",
-              "direccion": "BALBIN, RICARDO, DR. AV. 4001",
-              "timestamp_": "2016-11-01 11:41:34.682633",
-              "timestam_1": "2016-11-01 11:42:22.447369",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [97872.241632299963, 108249.428664]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 30,
-              "nombre": "Av. Nazca y vías del FFCC San Martín",
-              "leyenda": null,
-              "estado": "En Construcción",
-              "calle": "Av. Nazca",
-              "altura": 3060,
-              "calle2": null,
-              "entre_call": "entre Melincué y Nogoyá",
-              "direccion_": "Av. Nazca 3060",
-              "direccion": "NAZCA AV. 3060",
-              "timestamp_": "2016-10-19 12:25:21.467792",
-              "timestam_1": "2016-10-19 12:49:37.483725",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [97538.128446500006, 103120.69359]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 29,
-              "nombre": "Túneles del Metrobus 9 de Julio",
-              "leyenda": "Conectan la Av. 9 de Julio con Plaza Constitución. La obra amplía la capacidad operativa de esta vía de tránsito rápido, mejora la seguridad vial y disminuye los tiempos de viaje en una de las zonas de mayor densidad de tránsito de la Ciudad. Los n",
-              "estado": "Finalizado",
-              "calle": "9 DE JULIO AV.",
-              "altura": null,
-              "calle2": "san juan",
-              "entre_call": null,
-              "direccion_": "Avenida 9 de Julio y Av. San Juan, hasta  Lima – Cochabamba y Bernardo de Irigoyen – Cochabamba",
-              "direccion": "9 DE JULIO AV. y SAN JUAN AV.",
-              "timestamp_": "2015-06-24 15:14:02.480255",
-              "timestam_1": "2015-06-24 15:20:04.987479",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [107577.359375, 100705.2265625]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 28,
-              "nombre": "Av. Congreso y vías del FFCC Mitre – Ramal Tigre",
-              "leyenda": "Es par vial del ya inaugurado PBN Iberá. La obra se basó en un paso bajo nivel de un solo carril con dirección hacia la avenida Del Libertador. Su altura es de 3,60 metros permite el paso de vehículos pequeños y del transporte público de pasajeros.",
-              "estado": "Finalizado",
-              "calle": "Congreso",
-              "altura": 1901,
-              "calle2": null,
-              "entre_call": "entre O’Higgins y 3 de Febrero",
-              "direccion_": "Congreso 1901",
-              "direccion": "CONGRESO 1901",
-              "timestamp_": "2015-06-24 15:09:11.772849",
-              "timestam_1": "2015-07-03 09:06:58.160201",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [100468.516847, 108438.08019199999]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 27,
-              "nombre": "Av. Congreso y vías del FFCC Mitre – Ramal Mitre",
-              "leyenda": "Su actual construcción tiene como objetivo agilizar el tránsito en la Av. Congreso. El mismo contará con dos carriles, uno por cada sentido de circulación: este-este y oeste-este. Su altura de 4,20 metros permitirá el paso de vehículos livianos, ut",
-              "estado": "Finalizado",
-              "calle": "Congreso",
-              "altura": 4015,
-              "calle2": null,
-              "entre_call": "entre Plaza y Tronador",
-              "direccion_": "Av. Congreso 4015",
-              "direccion": "CONGRESO AV. 4015",
-              "timestamp_": "2015-06-24 15:08:17.978469",
-              "timestam_1": "2016-10-19 12:17:30.081782",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [98568.989001199938, 107255.367059]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 26,
-              "nombre": "Av. Beiró y vías del FFCC Urquiza",
-              "leyenda": "Este Paso Bajo Nivel permite eliminar las demoras e interrupciones del tránsito que circula entre los barrios de Agronomía y Villa Devoto. Su túnel tiene una altura de 5,10 metros y cuenta con cuatro carriles de circulación, dos por sentido. La obra",
-              "estado": "Finalizado",
-              "calle": "Av. Francisco Beiró",
-              "altura": null,
-              "calle2": "Estado Plurinacional de Bolivia",
-              "entre_call": null,
-              "direccion_": "Av. Francisco Beiró y Estado Plurinacional de Bolivia",
-              "direccion": "BEIRO, FRANCISCO AV. y ESTADO PLURINACIONAL DE BOLIVIA",
-              "timestamp_": "2015-06-24 15:06:32.434474",
-              "timestam_1": "2017-03-15 10:08:36.407868",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [97477.790624999878, 104037.4375]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 25,
-              "nombre": "Av. de los Constituyentes y vías del FFCC Mitre – Ramal José León Suárez",
-              "leyenda": "Su construcción se está realizando en la Avenida Constituyentes, entre las calles Monroe y Roosevelt, bajo las vías del ferrocarril Mitre. El túnel tendrá cuatro carriles de circulación, dos por mano, y una altura libre de paso de 5,10 metros, lo q",
-              "estado": "Finalizado",
-              "calle": "de los Constituyentes",
-              "altura": 4915,
-              "calle2": null,
-              "entre_call": "entre Griveo y Ladines",
-              "direccion_": "Av. de los Constituyentes 4915",
-              "direccion": "DE LOS CONSTITUYENTES AV. 4915",
-              "timestamp_": "2015-06-24 14:58:42.433715",
-              "timestam_1": "2016-10-19 12:18:08.652863",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [97015.60157949994, 105566.02065399991]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 24,
-              "nombre": "Av. San Martín y vías del FFCC Urquiza",
-              "leyenda": "Su construcción beneficiará la circulación de la zona y será apto para todo tipo de tránsito, gracias a su altura de 5,10 metros. El túnel contará con cuatro carriles, dos por sentido de circulación: este-oeste y oeste-este. La obra se complement",
-              "estado": "Finalizado",
-              "calle": "san martin",
-              "altura": 6271,
-              "calle2": null,
-              "entre_call": "entre Nueva York y Av. Salvador María del Carril",
-              "direccion_": "Av. San Martín 6271",
-              "direccion": "SAN MARTIN AV. 6271",
-              "timestamp_": "2015-06-24 14:57:02.901233",
-              "timestam_1": "2016-10-19 12:18:37.365782",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [96323.67037219982, 103855.190179]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 23,
-              "nombre": "Altolaguirre y vías del FFCC Mitre",
-              "leyenda": "Cruce vehicular y peatonal bajo nivel de 2,80 metros de altura y apto para el paso de vehículos livianos y ambulancias. Esto permite mantener una circulación barrial libre de tránsito pesado. Cuenta con un carril en sentido único de circulación hac",
-              "estado": "Finalizado",
-              "calle": "Altolaguirre",
-              "altura": 2401,
-              "calle2": null,
-              "entre_call": null,
-              "direccion_": "Altolaguirre 2401",
-              "direccion": "ALTOLAGUIRRE 2401",
-              "timestamp_": "2013-10-22 16:25:09.687590",
-              "timestam_1": "2013-12-20 09:52:29.196890",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [97461.948113199993, 105813.76902199999]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 22,
-              "nombre": "Puente Pacífico",
-              "leyenda": "El objetivo de la obra fue mejorar el flujo vehicular en la Avenida Santa Fe en sentido Norte, disminuyendo tiempos de recorrido y descongestionando arterias. Se reordenó el tránsito a favor de los vecinos, se optimizó el transporte público y se puso",
-              "estado": "Finalizado",
-              "calle": "Avenida Santa Fe",
-              "altura": 4701,
-              "calle2": null,
-              "entre_call": null,
-              "direccion_": "Avenida Santa Fe  4701",
-              "direccion": "SANTA FE AV. 4701",
-              "timestamp_": "2013-10-22 15:21:20.357752",
-              "timestam_1": "2013-10-23 12:34:26.229296",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [103334.388359, 105709.950113]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 21,
-              "nombre": "Zamudio y vías del FFCC Mitre ramal José León Suárez",
-              "leyenda": "Tiene una altura libre de paso de 2,80 metros, lo que permite el tránsito de autos y utilitarios, pero impide que pasen camiones y colectivos.También cuenta con pasarelas peatonales bajo nivel, escaleras y rampas para el acceso de personas con movilida",
-              "estado": "Finalizado",
-              "calle": "Zamudio",
-              "altura": 5000,
-              "calle2": null,
-              "entre_call": "entre Griveo y J.L. Cabezón",
-              "direccion_": "Zamudio 5000",
-              "direccion": "ZAMUDIO 5000",
-              "timestamp_": "2013-04-17 10:42:12",
-              "timestam_1": "2013-10-16 11:01:52.624185",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [96722.226818141819, 105460.66431771588]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 19,
-              "nombre": "Ceretti y vías del FFCC Mitre ramal José León Suárez",
-              "leyenda": "Permite el paso de peatones y vehículos livianos. Tiene un carril único con sentido de circulación hacia el Norte, además de cordones de seguridad, escalera y rampas.",
-              "estado": "Finalizado",
-              "calle": "Ceretti",
-              "altura": 2401,
-              "calle2": null,
-              "entre_call": "entre Monroe y Roosevelt",
-              "direccion_": "Ceretti 2401",
-              "direccion": "CERETTI 2401",
-              "timestamp_": "2013-04-17 10:42:11",
-              "timestam_1": "2013-10-23 16:05:28.020939",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [97243.43026539628, 105700.25107242686]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 18,
-              "nombre": "Superí y vías del FFCC Mitre ramal Tigre",
-              "leyenda": "Puente Ferroviario que rectificó el trazado de la calle Superí -antes angosto y sinuoso- ampliando las veredas y aumentando la seguridad peatonal. El objetivo fue agilizar el tránsito y reducir recorridos en una zona compleja por encontrarse cercana a",
-              "estado": "Finalizado",
-              "calle": "Superí",
-              "altura": 2201,
-              "calle2": null,
-              "entre_call": "entre Mendoza y Olazábal",
-              "direccion_": "Superí 2201",
-              "direccion": "SUPERI 2201",
-              "timestamp_": "2013-04-17 10:42:11",
-              "timestam_1": "2013-11-01 16:41:10.597377",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [99576.056862102996, 106990.54267887534]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 17,
-              "nombre": "Pacheco y vías del ex FFCC Mitre ramal José León Suárez",
-              "leyenda": "Se construyó un paso bajo nivel con sentido único de circulación hacia el Norte sólo para tránsito liviano de autos y ambulancias. El proyecto incluyó cruces peatonales con escaleras y rampas para personas con movilidad reducida y la construcción",
-              "estado": "Finalizado",
-              "calle": "Pacheco",
-              "altura": 2401,
-              "calle2": null,
-              "entre_call": "entre Monroe y Cullen",
-              "direccion_": "Pacheco 2401",
-              "direccion": "PACHECO 2401",
-              "timestamp_": "2013-04-17 10:42:10",
-              "timestam_1": "2013-10-23 16:06:48.403972",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [98029.944735160432, 106301.75195808451]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 16,
-              "nombre": "Donado y vías del ex FFCC Mitre ramal José León Suárez",
-              "leyenda": "El cruce tiene un único sentido de circulación hacia el Sur para el paso de automóviles particulares y ambulancias. Tiene sendas peatonales con escaleras y rampas para personas con movilidad reducida. El objetivo fue aumentar la seguridad peatonal, mi",
-              "estado": "Finalizado",
-              "calle": "Donado",
-              "altura": 2601,
-              "calle2": null,
-              "entre_call": "entre Monroe y Rivera",
-              "direccion_": "Donado 2601",
-              "direccion": "DONADO 2601",
-              "timestamp_": "2013-04-17 10:42:10",
-              "timestam_1": "2013-10-23 16:08:00.712925",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [98553.8859317756, 106745.4478599068]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 15,
-              "nombre": "Iberá y vías del FFCC Mitre ramal Tigre",
-              "leyenda": "Este cruce bajo nivel permite el paso de vehículos livianos y peatones bajo las vías del tren, con mayor seguridad vial y evitando demoras por los tiempos de barrera baja que se generaban al pasar el ferrocarril. Tiene una altura de 2,80 metros, lo que",
-              "estado": "Finalizado",
-              "calle": "Iberá",
-              "altura": 2001,
-              "calle2": null,
-              "entre_call": "entre OHiggins y Grecia",
-              "direccion_": "Iberá 2001",
-              "direccion": "IBERA 2001",
-              "timestamp_": "2013-04-17 10:42:10",
-              "timestam_1": "2013-10-23 15:59:38.138775",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [100276.55125050395, 108643.48082875476]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 14,
-              "nombre": "Lacroze y vías del FFCC Mitre.",
-              "leyenda": "Tiene cuatro carriles, dos por sentido de circulación. Su altura libre de paso es de 4,30 metros, lo que permite la circulación de todo tipo de vehículos incluso colectivos. Su longitud total es de 267 metros y cuenta con pasos peatonales bajo nivel c",
-              "estado": "Finalizado",
-              "calle": "Lacroze",
-              "altura": 2790,
-              "calle2": null,
-              "entre_call": "entre Conesa y Amenabar",
-              "direccion_": "Lacroze 2790",
-              "direccion": "LACROZE, FEDERICO AV. 2790",
-              "timestamp_": "2013-04-17 10:42:09",
-              "timestam_1": "2013-10-16 09:54:04.761740",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [101511.2076, 106193.50765499999]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 13,
-              "nombre": "Olazábal y vías del FFCC Mitre.",
-              "leyenda": "Puente ferroviario de tres carriles con sentido hacia el Noreste que da continuidad a Olazábal por debajo de las vías del tren. Esto agiliza el tránsito, reduce accidentes, recorridos y tiempos de viaje.",
-              "estado": "Finalizado",
-              "calle": "Olazábal",
-              "altura": 3399,
-              "calle2": null,
-              "entre_call": "entre Melián y Conde",
-              "direccion_": "Olazábal 3399",
-              "direccion": "OLAZABAL 3399",
-              "timestamp_": "2013-04-17 10:42:09",
-              "timestam_1": "2013-10-16 10:10:22.862466",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [99563.926142, 107033.808955]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 12,
-              "nombre": "Holmberg y vías del ex FFCC Mitre ramal José León Suárez",
-              "leyenda": "El cruce tiene un sentido único de circulación hacia el Norte para el paso de automóviles particulares y ambulancias. Cuenta con sendas peatonales con escaleras y rampas para personas con movilidad reducida. El objetivo fue aumentar la seguridad peato",
-              "estado": "Finalizado",
-              "calle": "Holmberg",
-              "altura": 2601,
-              "calle2": null,
-              "entre_call": "entre Monroe y Rivera",
-              "direccion_": "Holmberg 2601",
-              "direccion": "HOLMBERG 2601",
-              "timestamp_": "2013-04-17 10:42:08",
-              "timestam_1": "2013-10-23 16:09:17.388236",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [98648.281779299636, 106790.36416379153]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 11,
-              "nombre": "Manuela Pedraza y vías del FFCC Mitre ramal Tigre",
-              "leyenda": "Se construyó un cruce vehicular bajo nivel de un carril y con sentido único de circulación. La obra incluyó calles colectoras que permiten el acceso a los frentistas y mantienen la conectividad entre ambos lados de las calles Grecia y O’Higgins.",
-              "estado": "Finalizado",
-              "calle": "Manuela Pedraza",
-              "altura": 1901,
-              "calle2": null,
-              "entre_call": "entre Grecia y OHiggins",
-              "direccion_": "Manuela Pedraza 1901",
-              "direccion": "PEDRAZA, MANUELA 1901",
-              "timestamp_": "2013-04-17 10:42:08",
-              "timestam_1": "2013-10-16 12:20:12.434192",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [100099.5195089238, 108883.04143432615]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 10,
-              "nombre": "Mosconi y vías del FFCC Urquiza",
-              "leyenda": "El nuevo paso tiene dos carriles de 3,40 metros de ancho, uno en casa sentido, veredas de seguridad, pasarela peatonal, escaleras y rampas para personas con movilidad reducida.",
-              "estado": "Finalizado",
-              "calle": "Av. Mosconi",
-              "altura": 4301,
-              "calle2": null,
-              "entre_call": "entre Segurola y Gualeguaychú",
-              "direccion_": "Av. Mosconi 4301",
-              "direccion": "MOSCONI GENERAL AV. 4301",
-              "timestamp_": "2013-04-17 10:42:07",
-              "timestam_1": "2013-10-16 09:46:33.164597",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [94847.220705028114, 103583.37376874594]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 9,
-              "nombre": "Crisólogo Larralde y vías del FFCC Tigre ramal Tigre",
-              "leyenda": "Se construyó un cruce vehicular bajo nivel de un carril, con un único sentido de circulación, paso peatonal, calles colectoras, veredas y rampas para la circulación de personas con movilidad reducida.",
-              "estado": "Finalizado",
-              "calle": "Crisólogo Larralde",
-              "altura": 1901,
-              "calle2": null,
-              "entre_call": "entre Grecia y OHiggins",
-              "direccion_": "Crisólogo Larralde 1901",
-              "direccion": "LARRALDE, CRISOLOGO AV. 1901",
-              "timestamp_": "2013-04-17 10:42:07",
-              "timestam_1": "2013-10-16 14:12:06.468783",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [99947.785022542099, 109152.6588105172]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 8,
-              "nombre": "Besares y vías del FFCC Mitre ramal Tigre",
-              "leyenda": "Cruce bajo nivel para permitir el paso de vehículos livianos y peatones bajo las vías del tren, garantizando de este modo menos demoras en la circulación y mayor seguridad vial. Tiene una altura de 2,80 metros.",
-              "estado": "Finalizado",
-              "calle": "Besares",
-              "altura": 1871,
-              "calle2": null,
-              "entre_call": "entre Grecia y 3 de Febrero",
-              "direccion_": "Besares 1871",
-              "direccion": "BESARES 1871",
-              "timestamp_": "2013-04-17 10:42:06",
-              "timestam_1": "2013-10-16 12:10:55.256786",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [99786.436552187806, 109616.18263983488]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 7,
-              "nombre": "Arias y vías del FFCC Mitre",
-              "leyenda": "Tiene dos carriles de circulación con un único sentido hacia el Este y una altura libre de paso de 3,10 metros, lo que permite la circulación de autos y ambulancias, restringe el paso a camiones con el fin de asegurar un tránsito barrial.",
-              "estado": "Finalizado",
-              "calle": "Arias",
-              "altura": 1771,
-              "calle2": null,
-              "entre_call": "entre 3 de Febrero y 11 de Septiembre",
-              "direccion_": "Arias 1771",
-              "direccion": "ARIAS 1771",
-              "timestamp_": "2013-04-17 10:42:06",
-              "timestam_1": "2013-10-16 12:14:22.472029",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [99662.858777333167, 109996.68787922912]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 6,
-              "nombre": "Monroe y vías del FFCC Mitre ramal José León Suárez",
-              "leyenda": "Sobre las vías se construyó un cruce peatonal con indicación activa de aproximación de trenes mediante avisos acústicos y luminosos, señal sonora puntual, semáforo y laberinto apto para la circulación de sillas de ruedas, bicicletas y cochecitos",
-              "estado": "Finalizado",
-              "calle": "Av. Monroe",
-              "altura": 3701,
-              "calle2": null,
-              "entre_call": "entre Melián y Estomba",
-              "direccion_": "Av. Monroe 3701",
-              "direccion": "MONROE 3701",
-              "timestamp_": "2013-04-17 10:42:06",
-              "timestam_1": "2013-10-16 11:18:55.212135",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [99141.788929868053, 106989.21941703295]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 5,
-              "nombre": "Soler y vías del FFCC San Martín",
-              "leyenda": "El objetivo fue mejorar el flujo vehicular de los caminos laterales al ferrocarril, disminuir los tiempos de recorrido y la cantidad de viajes, descongestionar las arterias y mejorar las comunicaciones viales.",
-              "estado": "Finalizado",
-              "calle": "Soler",
-              "altura": 5401,
-              "calle2": null,
-              "entre_call": "entre Godoy Cruz y Juan B. Justo",
-              "direccion_": "Soler 5401",
-              "direccion": "SOLER 5401",
-              "timestamp_": "2013-04-17 10:42:05",
-              "timestam_1": "2013-10-16 11:25:58.676245",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [103016.20244857646, 105177.97990356485]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 4,
-              "nombre": "Punta Arenas y vías del FFCC Urquiza",
-              "leyenda": "El paso bajo nivel tiene dos carriles vehiculares, doble sentido de circulación, veredas de seguridad y una vereda peatonal bajo nivel de 1.20 metros de ancho. Se construyó para uso de tránsito liviano y transporte público.",
-              "estado": "Finalizado",
-              "calle": "Punta Arenas",
-              "altura": 1295,
-              "calle2": null,
-              "entre_call": "entre 14 de julio y Elcano",
-              "direccion_": "Punta Arenas 1295",
-              "direccion": "PUNTA ARENAS 1295",
-              "timestamp_": "2013-04-17 10:42:04",
-              "timestam_1": "2013-10-23 16:03:25.008720",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [99408.428046359521, 104104.32666611033]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 3,
-              "nombre": "Dorrego y vías del FFCC San Martín",
-              "leyenda": "Se construyó un paso bajo a nivel de dos carriles vehiculares, doble sentido de circulación, veredas de seguridad y una vereda peatonal bajo nivel de 1.20 metros de ancho. Es apto para uso de tránsito liviano y transporte público.",
-              "estado": "Finalizado",
-              "calle": "Dorrego",
-              "altura": 471,
-              "calle2": null,
-              "entre_call": "entre Iturri y Rodney",
-              "direccion_": "Dorrego 471",
-              "direccion": "DORREGO AV. 471",
-              "timestamp_": "2013-04-17 10:42:04",
-              "timestam_1": "2013-10-23 16:01:24.828980",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [101168.07170407903, 103868.78891220102]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 2,
-              "nombre": "Esteban Bonorino y vías del FFCC Belgrano Sur",
-              "leyenda": "El paso bajo nivel construido tiene dos carriles vehiculares, doble sentido de circulación, veredas de seguridad y vereda peatonal a nivel de calzada de 3 metros de ancho.",
-              "estado": "Finalizado",
-              "calle": "Bonorino",
-              "altura": 3001,
-              "calle2": null,
-              "entre_call": "entre General Fructuoso Rivera y Tabaré",
-              "direccion_": "Bonorino 3001",
-              "direccion": "BONORINO, ESTEBAN, Cnel. AV. 3001",
-              "timestamp_": "2013-04-17 10:42:03",
-              "timestam_1": "2013-10-16 13:07:40.793744",
-              "observacio": null,
-              "observac_1": null,
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [102953.21142846419, 97085.056356473448]
-            }
-          },
-          {
-            "type": "Feature",
-            "properties": {
-              "icon":"http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/puntos_copine_0.png",
-              "compromiso":5,
-              "id": 1,
-              "nombre": "Avenida Sarmiento y vías del FFCC Belgrano Norte",
-              "leyenda": "Con la construcción de este paso bajo a nivel de cinco carriles -tres en sentido de circulación hacia Costanera y dos en sentido opuesto- se redujeron los inconvenientes de transporte ferroviario, vial y peatonal.",
-              "estado": "Finalizado",
-              "calle": "Av. Sarmiento",
-              "altura": 4561,
-              "calle2": null,
-              "entre_call": null,
-              "direccion_": "Av. Sarmiento 4561",
-              "direccion": "SARMIENTO AV. 4561",
-              "timestamp_": "2013-04-17 10:42:03",
-              "timestam_1": "2013-10-16 10:42:15.717922",
-              "observacio": null,
-              "observac_1": "Sarmiento es el más difícil de ubicar, no hay calles. Corre paralelo a la autopista Illia, cercano a la Costanera.",
-              "publicable": "True",
-              "verificado": "True"
-            },
-            "geometry": {
-              "type": "Point",
-              "coordinates": [105099.48282860918, 106887.31391459343]
-            }
-          }
+        }
   ]
 }

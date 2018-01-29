@@ -556,32 +556,45 @@ var actividades = $("input[name=actividades]")
         });
       },
       removeMarkers : function(){
+        console.log("removeMarkers");
           vector.map(function(elem){
               miMapa.removeMarker(elem)
           })
       },
-      addMarkers : function(val){
-        // $scope.usig.removeMarkers()
-        // $scope.usig.removeMarkers(val)
-        console.log("empieza");
-      	actividades.each(function(k, v){
-          console.log("hola");
-          console.log(val);
-          // console.log(val);
-          var iconSize = new OpenLayers.Size(41, 41)
-          $scope.usigCompromiso.features.map(function(elem) {
-            if(elem.properties.compromiso === val){
-              console.log("agrega");
-              var customMarker = new OpenLayers.Marker(new OpenLayers.LonLat(elem.geometry.coordinates[0], elem.geometry.coordinates[1]), new OpenLayers.Icon(elem.properties.icon, iconSize));
-              var markerId = miMapa.addMarker(customMarker, true, "<img src=" + elem.properties.icon + " style='max-width:150px'><br><p>" + elem.properties.nombre + "</p>");
-              vector.push(markerId)
-            }else{
-              console.log("no pasa nada");
-            }
+      addMarkers : function(){
+        $scope.usig.removeMarkers()
+        var sValue = "";
+        var iconSize = new OpenLayers.Size(41, 41)
 
-          })
+actividades.each(function () {
+  if($(this).is(':checked')) {
+    sValue = parseInt($(this).val())
+    $scope.usigCompromiso.features.map(function(elem) {
+      if(elem.properties.compromiso === sValue){
+        var customMarker = new OpenLayers.Marker(new OpenLayers.LonLat(elem.geometry.coordinates[0], elem.geometry.coordinates[1]), new OpenLayers.Icon(elem.properties.icon, iconSize));
+        var markerId = miMapa.addMarker(customMarker, true, "<img src=" + elem.properties.icon + " style='max-width:150px'><br><p>" + elem.properties.nombre + "</p>");
+        vector.push(markerId)
+      }
+    })
+  }else{
+    console.log("NOT CHECKED");
+  }
 
-      	});
+
+});
+      	// actividades.each(function(k, v){
+        //
+        //   var iconSize = new OpenLayers.Size(41, 41)
+        //   $scope.usigCompromiso.features.map(function(elem) {
+        //     if(elem.properties.compromiso === val){
+        //       var customMarker = new OpenLayers.Marker(new OpenLayers.LonLat(elem.geometry.coordinates[0], elem.geometry.coordinates[1]), new OpenLayers.Icon(elem.properties.icon, iconSize));
+        //       var markerId = miMapa.addMarker(customMarker, true, "<img src=" + elem.properties.icon + " style='max-width:150px'><br><p>" + elem.properties.nombre + "</p>");
+        //       vector.push(markerId)
+        //     }
+        //
+        //   })
+        //
+      	// });
       }
   }
 
