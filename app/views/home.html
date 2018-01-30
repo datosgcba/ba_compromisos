@@ -2,13 +2,14 @@
 <div id="page">
   <div id="buscador">
    <form id="mainForm" accept-charset="utf-8">
-    <label for="search">Buscar</label>
+    <!-- <label for="search">Buscar</label>
   <input type="text" size="40" name="search" id="search" title="Lugar a buscar" class="text"/>
   <br>
   <span id="ejemplo">ej.: Callao y Corrientes, Florida 550, Teatro San Martín, etc.</span>
-  <br>
-  <!-- <button type="button" name="button" ng-click='usig.addMarkers()'>ADD</button> -->
-  <div class="checkbox">
+  <br> -->
+
+  <!-- MARKERS METHOD -->
+  <!-- <div class="checkbox">
       <label>
         <input ng-model="valor" value="1" type="checkbox" name="actividades"
              ng-change='usig.addMarkers()' ng-true-value="1" ng-false-value="0">
@@ -29,10 +30,77 @@
         Puestos de recolección
       </label>
   </div>
-  <div id="mapa"></div>
+  <div id="mapa"></div> -->
+
    </form>
   </div>
 </div>
+<div id="mapa"><p class="indicator">Cargando...</p></div>
+
+<div id="panel-informacion" class="informacion">
+	<div class="content">
+		<form role="form">
+			<div class="form-group">
+				<div class="checkbox">
+  					<label>
+    					<input ng-change='usigLayers.cargarLayers()' ng-model="valor1" type="checkbox" value="estaciones_de_bicicletas" name="actividades" checked>
+    					Ecobicis
+  					</label>
+				</div>
+        <div class="checkbox">
+  					<label>
+    					<input ng-change='usigLayers.cargarLayers()' ng-model="valor2" type="checkbox" value="servicios_sociales&tipo=11" name="actividades" checked>
+    					Centro integral de la mujer
+  					</label>
+				</div>
+        <div class="checkbox">
+            <label>
+              <input ng-change='usigLayers.cargarLayers()' ng-model="valor3" type="checkbox" value="puntos_wifi&etapa=Segunda+etapa+HRL&antena_principal=True" name="actividades" checked>
+              Wifi segunda etapa
+            </label>
+        </div>
+			</div>
+
+		</form>
+	</div>
+</div>
+
+<style>
+#panel-informacion .content:after {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #959595;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  content: "Dependencias Culturales";
+}
+</style>
+<script type="text/javascript">
+
+  // Definicion del namespace
+  var usig = usig || {};
+  usig.App = usig.App || {};
+
+  usig.App.config = {
+  	server_url: '//epok.buenosaires.gob.ar/',
+  	symbols_url: '//static.mapa.buenosaires.gob.ar/symbols/',
+  	backgrounds_url: '//static.mapa.buenosaires.gob.ar/images/markers/fondos/',
+  	baseLayer: "mapabsas_informacion_basica",
+  	initBounds: [85000,96750,112000,106750],
+  	pointRadius: 18,
+  	minPointRadius: 11,
+  	inverseIcons: [8, 9, 11, 12, 13, 15],
+  	layers: {
+      'estaciones_de_bicicletas': { name: 'Bibliotecas', icon: 'biblioteca', bg: '1'},
+      'servicios_sociales&tipo=11': { name: 'Centros integrales de la mujer', icon: 'centro_de_atencion_a_mujeres', bg: '2'},
+  		'puntos_wifi&etapa=Segunda+etapa+HRL&antena_principal=True': { name: 'Centros Culturales', icon: 'wifi', bg: '3'},
+  	}
+  };
+
+</script>
 
 
 

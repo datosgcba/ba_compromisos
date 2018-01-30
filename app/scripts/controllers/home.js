@@ -8,7 +8,7 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('HomeCtrl', function($scope, $timeout, $document, $http,$filter, UrlService, GetSVGNameService, SlugColorService, LoadSVGService, $sce) {
+  .controller('HomeCtrl', function($scope, $timeout, $document, $http, $filter, UrlService, GetSVGNameService, SlugColorService, LoadSVGService, $sce) {
 
     $scope.pymChild = new pym.Child({
       polling: 1000
@@ -481,14 +481,15 @@ angular.module('compromisosSiteApp')
 
 
 
+////////////////////////////////////////////////////////////////////////////////
+////////////////////// MARKERS METHOD //////////////////////////////////////////
 
-
-var miMapa
-var vector = []
-var actividades = $("input[name=actividades]")
+    var miMapa
+    var vector = []
+    var actividades = $("input[name=actividades]")
 
     $scope.usig = {
-      createMap : function(){
+      createMap: function() {
         console.log("CREATE MAP");
         var selectedOption = null;
 
@@ -537,7 +538,6 @@ var actividades = $("input[name=actividades]")
           onReady: function() {
 
             var iconSize = new OpenLayers.Size(41, 41)
-            //IMPORTAR, PARA UN COMPROMISO TODOS SUS PUNTOS GEOGRAFICOS
             $http.get('usig-maps.json')
               .then(function(res) {
                 var iconUrl = "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/agencias_de_viajes.png"
@@ -555,53 +555,208 @@ var actividades = $("input[name=actividades]")
           debug: true
         });
       },
-      removeMarkers : function(){
+      removeMarkers: function() {
         console.log("removeMarkers");
-          vector.map(function(elem){
-              miMapa.removeMarker(elem)
-          })
+        vector.map(function(elem) {
+          miMapa.removeMarker(elem)
+        })
       },
-      addMarkers : function(){
+      addMarkers: function() {
         $scope.usig.removeMarkers()
         var sValue = "";
         var iconSize = new OpenLayers.Size(41, 41)
 
-actividades.each(function () {
-  if($(this).is(':checked')) {
-    sValue = parseInt($(this).val())
-    $scope.usigCompromiso.features.map(function(elem) {
-      if(elem.properties.compromiso === sValue){
-        var customMarker = new OpenLayers.Marker(new OpenLayers.LonLat(elem.geometry.coordinates[0], elem.geometry.coordinates[1]), new OpenLayers.Icon(elem.properties.icon, iconSize));
-        var markerId = miMapa.addMarker(customMarker, true, "<img src=" + elem.properties.icon + " style='max-width:150px'><br><p>" + elem.properties.nombre + "</p>");
-        vector.push(markerId)
+        actividades.each(function() {
+          if ($(this).is(':checked')) {
+            sValue = parseInt($(this).val())
+            $scope.usigCompromiso.features.map(function(elem) {
+              if (elem.properties.compromiso === sValue) {
+                var customMarker = new OpenLayers.Marker(new OpenLayers.LonLat(elem.geometry.coordinates[0], elem.geometry.coordinates[1]), new OpenLayers.Icon(elem.properties.icon, iconSize));
+                var markerId = miMapa.addMarker(customMarker, true, "<img src=" + elem.properties.icon + " style='max-width:150px'><br><p>" + elem.properties.nombre + "</p>");
+                vector.push(markerId)
+              }
+            })
+          } else {
+            console.log("NOT CHECKED");
+          }
+
+
+        });
       }
-    })
-  }else{
-    console.log("NOT CHECKED");
-  }
+    }
 
+////////////////////////////////////////////////////////////////////////////////
+////////////////////// MARKERS METHOD ACTIVE////////////////////////////////////
+  //  $scope.usig.createMap()
 
-});
-      	// actividades.each(function(k, v){
-        //
-        //   var iconSize = new OpenLayers.Size(41, 41)
-        //   $scope.usigCompromiso.features.map(function(elem) {
-        //     if(elem.properties.compromiso === val){
-        //       var customMarker = new OpenLayers.Marker(new OpenLayers.LonLat(elem.geometry.coordinates[0], elem.geometry.coordinates[1]), new OpenLayers.Icon(elem.properties.icon, iconSize));
-        //       var markerId = miMapa.addMarker(customMarker, true, "<img src=" + elem.properties.icon + " style='max-width:150px'><br><p>" + elem.properties.nombre + "</p>");
-        //       vector.push(markerId)
-        //     }
-        //
-        //   })
-        //
-      	// });
+////////////////////////////////////////////////////////////////////////////////
+////////////////////// LAYERS METHOD ///////////////////////////////////////////
+// Definicion del namespace
+var mapa = null, layers = [];
+
+$scope.usigLayers = {
+  redimensionarMapa : function(){
+    console.log("redimensionarMapa");
+      $('#mapa').css('width', $(window).width()).css('height', $(window).height()).css('margin', 0);
+      if (mapa) {
+          $('.olControlPanZoomBarUSIG').hide();
+          mapa.updateSize();
       }
+  },
+  reposicionarControles: function(){
+    console.log("reposicionarControles");
+      $('.olControlPanZoomBarUSIG').css('left', 'auto').css('top', 'auto').css('right', '15px').css('bottom', '15px').show();
+      $('#panel-informacion').css('height', $(window).height() - 30);
+  },
+  crearPanelInfo: function(){
+    console.log("crearPanelInfo");
+      // Panel de informacion
+      $('#mapa').append($('#template-panel-informacion').html());
+  },
+  clickHandler: function(e,popup) {
+    console.log("clickHandler");
+    console.log(e);
+    console.log(popup);
+    if (popup) {
+      popup.contentDiv.innerHTML = "<h3>" + e.feature.attributes['Nombre'] +"</h3><p class='indicator'>Buscando información...</p>";
+      popup.updateSize();
+      popup.show();
+      $.ajax({
+        url: "//epok.buenosaires.gob.ar/getObjectContent/?id="+e.feature.attributes['Id'],
+        dataType: 'jsonp',
+        success: function(data) {
+          console.log("succes ajax request");
+          if (popup != null && data.id==e.feature.attributes['Id']) {
+            $div = $(popup.contentDiv);
+                $('p.indicator', $div).remove();
+                var content = '<ul style="width: 300px; list-style-type: none; margin: 5px 0; padding: 0;">';
+                $.each(data.contenido, function(k, v) {
+                  if (v.nombreId != 'nombre' && v.valor != '') {
+                    content+='<li><b>'+v.nombre+'</b>: '+v.valor+'</li>';
+                  }
+                });
+                content+='</ul>';
+                $div.append(content);
+                popup.updateSize();
+          }
+        },
+        error: function(e) {
+          // usig.debug(e);
+          console.log("error ajax request");
+        }
+      });
+    }
+  },
+  removeLayers : function(){
+    console.log("removeLayers");
+    if (layers.length > 0) {
+      for(var i=0,l=layers.length;i<l;i++) {
+        try {
+          mapa.removeLayer(layers[i]);
+        } catch(e) {
+          console.log(e);
+        }
+      }
+      layers = [];
+    }
+  },
+  cargarLayers : function(){
+    console.log("cargarLayers");
+    var actividades = $("input[name=actividades]:checked"),
+      publico = $('#publico').val(),
+      sector = $('#sector').val();
+    $scope.usigLayers.removeLayers();
+    actividades.each(function(k, v){
+      console.log("hola");
+      var icon = usig.App.config.layers[$(this).val()].icon,
+        bgIndex = parseInt(usig.App.config.layers[$(this).val()].bg);
+      layers.push(mapa.addVectorLayer('Dependencias Culturales', {
+        // epok.buenosaires.gob.ar/getGeoLayer/?categoria=estaciones_de_bicicletas&estado=*&formato=geojson
+        url: "//epok.buenosaires.gob.ar/getGeoLayer/?categoria="+$(this).val()+"&formato=geojson",
+        // url: "//epok.buenosaires.gob.ar/getGeoLayer/?categoria=dependencias_culturales&formato=geojson&publico="+publico+"&actividades="+$(this).val()+"&sector="+sector,
+        format: 'geojson',
+      symbolizer: {
+          externalGraphic: usig.App.config.symbols_url+(usig.App.config.inverseIcons.indexOf(bgIndex)>=0?'n/':'b/')+icon+'.png',
+          backgroundGraphic: usig.App.config.backgrounds_url+bgIndex+'.png',
+          pointRadius: usig.App.config.pointRadius
+        },
+      minPointRadius: usig.App.config.minPointRadius,
+      popup: true,
+      onClick: $scope.usigLayers.clickHandler()
+      }));
+
+    });
+  },
+  stopPropagation : function (ev) {
+    console.log("stopPropagation");
+      if (ev.stopPropagation) {
+          ev.stopPropagation();
+      } else {
+          ev.cancelBubble = true;
+      }
+  },
+  inicializar : function () {
+    console.log("inicializar");
+
+      // Creacion de los elementos flotantes sobre el mapa
+      //$scope.usigLayers.crearPanelInfo();
+
+      // Cambia la ubicación del control de zoom y agranda el panel de info
+      //$scope.usigLayers.reposicionarControles();
+
+      // $(window).on('resize', function() {
+      //     $scope.usigLayers.redimensionarMapa();
+      //     $scope.usigLayers.reposicionarControles.defer(200);
+      // });
+
+      // Esto es para evitar que los clicks sobre los elementos flotantes sobre el
+      // mapa sean capturados por el mapa y generen movimientos no previstos
+      // $('#b, #mapSelector, #panel-informacion, .selectboxit-container')
+      //     .on('mousedown', $scope.usigLayers.stopPropagation())
+      //     .on('dblclick', $scope.usigLayers.stopPropagation());
+
+      // $("input[name=actividades]").change($scope.usigLayers.cargarLayers());
+
+      $scope.usigLayers.cargarLayers();
+  },
+  startUsig : function () {
+    console.log("USIG APP INIT");
+          // Elimino el "Cargando..."
+          $('#mapa').empty();
+
+          // El div del mapa tiene que ocupar toda la ventana
+          // $scope.usigLayers.redimensionarMapa();
+          $('#mapa').css('width', 600).css('height', 450);
+
+          var mapOptions = {
+              divId: 'mapa',
+            trackVisits: false,
+            includeToolbar: false,
+            zoomBar: false,
+            includeMapSwitcher: false,
+            goToZoomLevel: 7,
+              baseLayer: usig.App.config.baseLayer,
+              // Le cambio el extent inicial para que la Ciudad no quede tapada por el panel de info
+              initBounds: usig.App.config.initBounds,
+              onReady: function() {
+                $scope.usigLayers.inicializar(); // Esto es para que funcione en IE 10
+                // $scope.usigLayers.inicializar().defer(200, this, [onReady]); // Esto es para que funcione en IE 10
+              }
+          };
+
+          mapa = new usig.MapaInteractivo(mapOptions.divId, mapOptions);
   }
+}
 
-    $scope.usig.createMap()
+$scope.usigLayers.startUsig()
 
+////////////////////////////////////////////////////////////////////////////////
+/////////////////////////LAYERS METHOD ACTIVE///////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
     $scope.usigMaps = function($) {
+
       //Usig maps
       // $.noConflict();
       // var selectedOption = null;
