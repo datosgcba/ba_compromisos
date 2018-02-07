@@ -28,7 +28,7 @@ angular
     'duScroll',
     'ngSanitize',
     'ngYoutubeEmbed',
-    'iso.directives',
+    'iso.directives', 
     'hljs'
   ])
   .config(function ($routeProvider) {
@@ -132,7 +132,7 @@ angular
       if(!window.COMPROMISOS_CONFIG){
         console.error('Archivo de configuración inexistente, utilizando configuración default de desarrollo.');
         window.COMPROMISOS_CONFIG = {
-          BASE_URL: 'http://csv-to-api-compromisos.herokuapp.com/',
+          BASE_URL: 'http://api.topranking.link/',
           HOME_CSV: 'https://goo.gl/w0wnOj',
           /*HOME_CSV: 'https://goo.gl/Nj6FZm'*/
           /*

@@ -1074,7 +1074,7 @@ text-align: right;
 }
 #selectsContainer a {
   cursor: pointer;
-  font-family: 'OpenSansBold';
+  font-family: 'OpenSans';
   font-size: 12px;
   padding-left: 0;
   color: gray;
