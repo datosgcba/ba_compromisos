@@ -122,10 +122,17 @@ angular
     };
   })
   .service('GetSVGNameService', function () {
-    this.getUrl = function(name){
-      name = (name.length==1)?'0'+name:name;
-      var icon = 'images/iconos_v2/GCBA-compromisos-icons-'+name+'.svg';
-      return icon;
+    this.getUrl = function(name,param){
+      if(param){
+        name = (name.length==1)?'0'+name:name;
+        var icon = 'images/iconos_v2/GCBA-compromisos-icons-cumplido.svg';
+        return icon;
+      }else{
+        name = (name.length==1)?'0'+name:name;
+        var icon = 'images/iconos_v2/GCBA-compromisos-icons-'+name+'.svg';
+        return icon;
+      }
+
     };
   })
   .service('UrlService', function () {

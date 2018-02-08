@@ -26,7 +26,11 @@ angular.module('compromisosSiteApp')
       $scope.data = data.map(function(c){
         c.slug = c.slug.trim();
         c.categoria = c.categoria.trim();
-        c.iconSVG = GetSVGNameService.getUrl(c.numero);
+        if(c.porcentaje_completado === "100"){
+          c.iconSVG = GetSVGNameService.getUrl(c.numero,true);
+        }else{
+          c.iconSVG = GetSVGNameService.getUrl(c.numero,false);
+        }
         return c;
       });
       $scope.data = $scope.data.sort(function(a,b){

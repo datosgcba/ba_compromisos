@@ -30,7 +30,7 @@ angular.module('compromisosSiteApp')
       $scope.currentCompromise.color = SlugColorService.getColorBySlug($scope.currentCompromise.slug);
       $scope.loading = false;
       //console.log($scope.currentCompromise);;
-      LoadSVGService.loadIcon($scope.currentCompromise.numero,$scope.currentCompromise.porcentaje_completado,function(iconLoaded){
+      LoadSVGService.loadIcon($scope.currentCompromise.numero,function(iconLoaded){
 
         /*$(iconLoaded)
             .attr('width', 50)
