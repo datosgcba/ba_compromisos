@@ -116,7 +116,7 @@
               <p ng-cloak ng-show="currentCompromise.cumplimiento_2_label"> <strong>{{currentCompromise.cumplimiento_2_label}}</strong></p>
               <div class="progress">
                 <div class="progress-bar bg-color-{{currentCompromise.slug}}" role="progressbar" ng-style="{ 'width': currentCompromise.cumplimiento_2_porcentaje_completado + '%' }">
-                  <span class="progressbar-w" ng-hide="currentCompromise.cumplimiento_2_porcentaje_completado">{{currentCompromise.cumplimiento_2_porcentaje_completado}}% </span>
+                  <span class="progressbar-w" ng-hide="!currentCompromise.cumplimiento_2_porcentaje_completado">{{currentCompromise.cumplimiento_2_porcentaje_completado}}% </span>
                 </div>
                   <!-- <div class="progress-w" ng-show="!currentCompromise.cumplimiento_2_porcentaje_completado">
                     <p>-</p>
