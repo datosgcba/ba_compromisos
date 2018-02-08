@@ -10,7 +10,7 @@
 angular.module('compromisosSiteApp')
   .controller('HomeCtrl', function ($scope,$timeout,$document,$http,UrlService,GetSVGNameService, SlugColorService,LoadSVGService,$sce) {
 
-    $scope.pymChild = new pym.Child({ polling: 1000 });
+    $scope.pymChild = new pym.Child({ polling: 250 });
     $scope.pymChild.sendHeight();
 
     $scope.data = [];
@@ -170,10 +170,9 @@ angular.module('compromisosSiteApp')
     };
 
     function showDetail(c,localEvent,mouseEvent){
-
+  
       var menu_chartRowSize = 150;
       $scope.currentCompromise = c;
-
 
       var popupH = parseInt( d3.select('#compromiso-detail').style('height').replace('px','') );
       var fillerH = parseInt( d3.select('#filler').style('height').replace('px','') );
@@ -185,14 +184,18 @@ angular.module('compromisosSiteApp')
       var mouseOffset = Math.floor((localEvent.clientY-eTop) / menu_chartRowSize) * menu_chartRowSize;
 
       console.log(eTop, localEvent.clientY, mouseOffset);
-      var pos = mouseOffset + eTop + 150;
+      var pos = mouseOffset + eTop + menu_chartRowSize;
       d3.select('#compromiso-detail')
         .transition()
         .style('top',pos+'px');
 
-
-
-        var someElement = angular.element(document.getElementById('compromiso-detail'));
+      $timeout(function(){
+        
+        var popupH = $('#compromiso-detail').height();
+        var fillerH =$('#filler').height();
+        if (isNaN(popupH)){
+          popupH = 0;
+        }
         var filler = pos + popupH - docH + fillerH;
         if(filler>0){
           d3.select('#filler').style('height',filler+'px');
@@ -201,7 +204,10 @@ angular.module('compromisosSiteApp')
          d3.select('#filler').style('height',0+'px');
         }
 
+        $scope.pymChild.sendHeight();
 
+      },250)
+      
 
 
     }
