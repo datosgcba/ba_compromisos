@@ -3,7 +3,7 @@ Todos los cambios notables del proyecto a partir de la version 0.1.0 seran docum
 
 El formato esta basado en [Keep a Changelog](http://keepachangelog.com/) y este proyecto se adhiere a  [Semantic Versioning](http://semver.org/).
 
-## v1.7
+## v1.7.2
 - Se corrige tamaño automatico de pantalla iframe 
 - Se agrega de nuevo la segunda barra de comprosmisos
 - Los compromisos con 100% cambian su icono a la medalla.
