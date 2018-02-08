@@ -28,7 +28,8 @@ angular.module('compromisosSiteApp')
       $scope.currentCompromise.secondColor = '#fcc793';
       $scope.currentCompromise.grayColor = '#e6e7e9';
       $scope.loading = false;
-      LoadSVGService.loadIcon($scope.currentCompromise.numero,function(iconLoaded){
+      LoadSVGService.loadIcon($scope.currentCompromise.numero,$scope.currentCompromise.porcentaje_completado,function(iconLoaded){
+
         $('.icon-svg-container').html(iconLoaded.cloneNode(true));
       });
     });

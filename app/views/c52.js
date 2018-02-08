@@ -24,7 +24,8 @@ angular.module('compromisosSiteApp')
       $scope.currentCompromise.color = SlugColorService.getColorBySlug($scope.currentCompromise.slug);
       $scope.currentCompromise.secondColor = '#bdbec2';
       $scope.loading = false;
-      LoadSVGService.loadIcon($scope.currentCompromise.numero,function(iconLoaded){
+      LoadSVGService.loadIcon($scope.currentCompromise.numero,$scope.currentCompromise.porcentaje_completado,function(iconLoaded){
+
         $('.icon-svg-container').html(iconLoaded.cloneNode(true));
       });
     });

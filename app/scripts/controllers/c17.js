@@ -30,7 +30,8 @@ angular.module('compromisosSiteApp')
       $scope.currentCompromise.porcentaje_completado_2 = parseInt($scope.currentCompromise.cumplimiento_2_porcentaje_completado);
 
       $scope.loading = false;
-      LoadSVGService.loadIcon($scope.currentCompromise.numero,function(iconLoaded){
+      LoadSVGService.loadIcon($scope.currentCompromise.numero,$scope.currentCompromise.porcentaje_completado,function(iconLoaded){
+
         treeIcon = iconLoaded;
         $('.icon-svg-container').html(iconLoaded.cloneNode(true));
       });
