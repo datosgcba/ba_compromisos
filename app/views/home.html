@@ -88,6 +88,7 @@
         <div class="col-sm-12">
           <p class="upper"><strong>Estado del Compromiso</strong></p>
           <p ng-cloak ng-show="currentCompromise.metrica"> ¿Cómo lo medimos? <strong>{{currentCompromise.metrica}}</strong></p>
+          <p ng-cloak ng-show="currentCompromise.cumplimiento_label"> <strong>{{currentCompromise.cumplimiento_label}}</strong></p>
           <div class="progress">
             <div class="progress-bar bg-color-{{currentCompromise.slug}}" role="progressbar" ng-style="{ 'width': currentCompromise.porcentaje_completado + '%' }">
               <span class="progressbar-w" ng-hide="currentCompromise.porcentaje_completado<50">{{currentCompromise.porcentaje_completado}}% </span>
@@ -112,6 +113,7 @@
 
           <div ng-if="currentCompromise.cumplimiento_2">
           	<div class="col-sm-12">
+              <p ng-cloak ng-show="currentCompromise.cumplimiento_2_label"> <strong>{{currentCompromise.cumplimiento_2_label}}</strong></p>
               <div class="progress">
           			<div class="progress-bar bg-color-{{currentCompromise.slug}}" role="progressbar" ng-style="{ 'width': currentCompromise.porcentaje_completado_2 + '%' }">
           				<div class="progressbar-w" ng-show="!currentCompromise.porcentaje_completado_2">
