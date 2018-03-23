@@ -31,8 +31,8 @@ angular.module('compromisosSiteApp')
 
         treeIcon = iconLoaded;
         $(iconLoaded)
-            .attr('width', '100%')
-            .attr('height', '100%')
+            .attr('width', '90%')
+            .attr('height', '90%')
             .get(0);
         $('.icon-svg-container').html(iconLoaded.cloneNode(true));
       });
@@ -174,14 +174,16 @@ angular.module('compromisosSiteApp')
         .attr('width',barW-2);
 
       chart1.bars.selectAll('g.vertical-bar-icon svg')
-        .attr('width', barW)
-        .attr('height', barW);
+        .attr('width', barW/2)
+        .attr('height', barW/2)
+        .attr('x',barW/4)
+        .attr('y',h-(barW*2));
 
       chart1.bars.selectAll('rect.vertical-bar-fill')
         .attr('height',h-barW-barW/2)
         .attr('y',barW)
         .attr('x',pad)
-        .attr('width',barW-pad*2);
+        .attr('width',barW-pad*2)
 
       chart1.bars.selectAll('rect.vertical-bar-value')
         .attr('height',function(d){
