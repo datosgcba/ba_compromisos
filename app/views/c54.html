@@ -1,11 +1,7 @@
 <p class="text-center" ng-show="loading">Cargando...</p>
-
 <div ng-hide="loading">
-
   <div ng-include="'views/includes/detail.html'" ng-cloak ng-show="currentCompromise"></div>
-
   <div class="row">
-
     <div ng-if="data.detalle_1" class="col-md-6 text-center">
            <smart-content
             url="data.detalle_1"

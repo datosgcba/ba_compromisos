@@ -206,7 +206,7 @@ angular.module('compromisosSiteApp')
           },
           keys: {
               value: ['acumulado','nuevos'],
-              x:'semestre'
+              x:'trimestre'
           },
           names: {
             nuevos: 'Nuevos',
