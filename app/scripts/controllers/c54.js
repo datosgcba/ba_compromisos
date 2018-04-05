@@ -8,9 +8,9 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('Compromiso51Ctrl', function (UrlService,$compile,$templateRequest, $scope, $http,SlugColorService,LoadSVGService, $sce) {
+  .controller('Compromiso54Ctrl', function (UrlService,$rootScope, $compile,$templateRequest, $scope, $http,SlugColorService,LoadSVGService, $sce) {
 
-    var url = UrlService.getUrlByPage('home');
+  	var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({ polling: 1000 });
     pymChild.sendHeight();
     var _ = window._;
@@ -21,18 +21,17 @@ angular.module('compromisosSiteApp')
 
     $http.jsonp(url)
     .success(function(data){
-      $scope.currentCompromise = $scope.data = _.find(data, function(d){ return parseInt(d.numero) === 51; });
+      $scope.currentCompromise = $scope.data = _.find(data, function(d){ return parseInt(d.numero) === 54; });
       $scope.currentCompromise.color = SlugColorService.getColorBySlug($scope.currentCompromise.slug);
       $scope.currentCompromise.porcentaje_completado = parseInt($scope.currentCompromise.porcentaje_completado);
       $scope.currentCompromise.secondColor = '#ccc';
       $scope.loading = false;
-      console.log($scope.currentCompromise);
       LoadSVGService.loadIcon($scope.currentCompromise.numero,function(iconLoaded){
 
         treeIcon = iconLoaded;
         $(iconLoaded)
-            .attr('width', '90%')
-            .attr('height', '90%')
+            .attr('width', '100%')
+            .attr('height', '100%')
             .get(0);
         $('.icon-svg-container').html(iconLoaded.cloneNode(true));
       });
@@ -45,7 +44,6 @@ angular.module('compromisosSiteApp')
     $scope.dataLoaded = function(id,data){
       chart1Id = id;
       chart1Data = data;
-      console.log(data);
       setTimeout(function(){
         createCustomChart1();
       },1000);
@@ -148,7 +146,7 @@ angular.module('compromisosSiteApp')
                 $scope.selectedIcon = chart1Data[d.ix];
                 d3.selectAll('.vertical-bar-g').classed('categoria-unselected',true).classed('categoria-selected',false);
                 d3.selectAll('.vertical-bar-g#vertical-bar-g-'+d.ix).classed('categoria-unselected',false).classed('categoria-selected',true);
-                var templateUrl = $sce.getTrustedResourceUrl('views/includes/generalD3ColumnDetail.html');
+                var templateUrl = $sce.getTrustedResourceUrl('views/includes/peatonalDetail.html');
                 $templateRequest(templateUrl).then(function(template) {
                     $compile($('#vertical-bar-detail').html(template).contents())($scope);
                 }, function() {
@@ -174,16 +172,14 @@ angular.module('compromisosSiteApp')
         .attr('width',barW-2);
 
       chart1.bars.selectAll('g.vertical-bar-icon svg')
-        .attr('width', barW/2)
-        .attr('height', barW/2)
-        .attr('x',barW/4)
-        .attr('y',h-(barW*2));
+        .attr('width', barW)
+        .attr('height', barW);
 
       chart1.bars.selectAll('rect.vertical-bar-fill')
         .attr('height',h-barW-barW/2)
         .attr('y',barW)
         .attr('x',pad)
-        .attr('width',barW-pad*2)
+        .attr('width',barW-pad*2);
 
       chart1.bars.selectAll('rect.vertical-bar-value')
         .attr('height',function(d){
@@ -199,5 +195,77 @@ angular.module('compromisosSiteApp')
 
     }
 
+
+    $scope.completeConfig2 = function(config){
+      return angular.merge(config,{
+        data:{
+           //xFormat: '%Y-%m',
+           types: {
+            nuevos: 'bar',
+            acumulado: 'bar',
+          },
+          keys: {
+              value: ['acumulado','nuevos'],
+              x:'trimestre'
+          },
+          names: {
+            nuevos: 'Nuevos',
+            acumulado: 'Acumulado'
+          },
+          colors: {
+            'acumulado':$scope.currentCompromise.secondColor,
+            'nuevos':$scope.currentCompromise.color}
+        },
+        size: {
+            height: 300,
+        },
+        padding: {
+            top: 0,
+            right: 20,
+            bottom: 10,
+            left: 80,
+        },
+        axis: {
+           x: {
+              type: 'category',
+              show:true,
+              tick: {
+                rotate: 90,
+                multiline: false
+                  //format: function (d) { return "$" + d; }
+                  //format: $rootScope.d3Locale_ES.timeFormat("%b-%y")
+              }
+          },
+          y: {
+              show:true,
+              min: 0,
+              padding: 5,
+
+          }
+        },
+        legend: {
+            show: true
+        }
+      });
+    };
+    $scope.prepareData2 = function(data){
+      console.log(data);
+      return data;
+    };
+
+
+
+    $scope.chartReady2 = function(chart){
+
+    };
+    var id;
+    $(window).resize(function() {
+        clearTimeout(id);
+        id = setTimeout(function(){
+          if(chart1){
+            createCustomChart1();
+          }
+        }, 500);
+    });
 
   });
