@@ -3,6 +3,11 @@ Todos los cambios notables del proyecto a partir de la version 0.1.0 seran docum
 
 El formato esta basado en [Keep a Changelog](http://keepachangelog.com/) y este proyecto se adhiere a  [Semantic Versioning](http://semver.org/).
 
+
+## v1.7.4
+- Se corrigen bugs c51 y c52
+- Se ponen c53 y c54.
+
 ## v1.7.3
 - Las compromisos con dos barras muestran su porcentaje.
 
