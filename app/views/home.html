@@ -1,42 +1,5 @@
 <!-- <div ng-click="forceCloseDetail()"> -->
-<div id="page">
-  <div id="buscador">
-   <form id="mainForm" accept-charset="utf-8">
-    <!-- <label for="search">Buscar</label>
-  <input type="text" size="40" name="search" id="search" title="Lugar a buscar" class="text"/>
-  <br>
-  <span id="ejemplo">ej.: Callao y Corrientes, Florida 550, Teatro San Martín, etc.</span>
-  <br> -->
-
-  <!-- MARKERS METHOD -->
-  <!-- <div class="checkbox">
-      <label>
-        <input ng-model="valor" value="1" type="checkbox" name="actividades"
-             ng-change='usig.addMarkers()' ng-true-value="1" ng-false-value="0">
-        Escuelas infantiles
-      </label>
-  </div>
-  <div class="checkbox">
-      <label>
-        <input ng-model="valor2" value="2" type="checkbox" name="actividades"
-             ng-change='usig.addMarkers()' ng-true-value="2" ng-false-value="0">
-        Centros de reciclado
-      </label>
-  </div>
-  <div class="checkbox">
-      <label>
-        <input ng-model="valor3" value="3" type="checkbox" name="actividades"
-             ng-change='usig.addMarkers()' ng-true-value="2" ng-false-value="0">
-        Puestos de recolección
-      </label>
-  </div>
-  <div id="mapa"></div> -->
-
-   </form>
-  </div>
-</div>
-<div id="mapa"><p class="indicator">Cargando...</p></div>
-
+<!-- 
 <div id="panel-informacion" class="informacion">
 	<div class="content">
 		<form role="form">
@@ -63,7 +26,7 @@
 
 		</form>
 	</div>
-</div>
+</div> -->
 
 <style>
 #panel-informacion .content:after {
@@ -152,9 +115,50 @@
    </div>
    <hr/>
 </div>
+<h1 ng-click="mostrarIconos()"> <a href="">Ver Iconos</a> </h1>
+<h1 ng-click="mostrarMapa()"> <a href="">Ver Mapa</a> </h1>
+<div class="usig-map" ng-show="mapActive" >
 
-<ul id="isotopeContainer" ng-click="forceCloseDetail();$event.stopPropagation();"isotope-container="isotope-container" class="compromisos-container">
-  <!-- <ul id="isotopeContainer" isotope-container="isotope-container" class="compromisos-container"> -->
+<div id="page">
+  <div id="buscador">
+   <form id="mainForm" accept-charset="utf-8">
+    <label for="search">Buscar</label>
+  <input type="text" size="40" name="search" id="search" title="Lugar a buscar" class="text"/>
+    <!-- MARKERS METHOD -->
+  <div class="checkbox">
+      <label>
+        <input ng-model="valor" value="1" type="checkbox" name="actividades"
+             ng-change='usig.addMarkers()' ng-true-value="1" ng-false-value="0">
+        Escuelas infantiles
+      </label>
+  </div>
+  <div class="checkbox">
+      <label>
+        <input ng-model="valor2" value="2" type="checkbox" name="actividades"
+             ng-change='usig.addMarkers()' ng-true-value="2" ng-false-value="0">
+        Centros de reciclado
+      </label>
+  </div>
+  <div class="checkbox">
+      <label>
+        <input ng-model="valor3" value="3" type="checkbox" name="actividades"
+             ng-change='usig.addMarkers()' ng-true-value="2" ng-false-value="0">
+        Puestos de recolección
+      </label>
+  </div>
+  <div id="mapa"></div>
+  <div id="mapa"></div>
+   </form>
+  </div>
+</div>
+<div id="mapa"><p class="indicator">Cargando...</p></div>
+
+
+
+</div>
+
+<ul id="isotopeContainer" ng-show="iconsActive"  ng-click="forceCloseDetail();$event.stopPropagation();" isotope-container="isotope-container" class="compromisos-container">
+  
   <li ng-repeat="d in data" isotope-item="isotope-item" class="compromiso-row {{d.slug}} {{d.cumplimiento}} {{d.porcentaje_completado}} {{d.area1.toLowerCase().split(' ').join('-')}} {{d.area2.toLowerCase().split(' ').join('-')}} {{d.area3.toLowerCase().split(' ').join('-')}}  {{d.titulo.toLowerCase().split(' ').join(' ')}}
   {{d.area4.toLowerCase().split(' ').join('-')}} col-xs-3 item {{d.classPercent}} allFilters"
       ng-click="showCompromisoDetail(d,$event);$event.stopPropagation();">
