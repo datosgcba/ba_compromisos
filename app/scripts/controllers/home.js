@@ -633,7 +633,14 @@ $scope.usigLayers = {
                 var iconUrl = "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/agencias_de_viajes.png"
                 $scope.usigCompromiso = res.data
                 $scope.usigCompromiso.features.map(function(elem) {
-                  var customMarker = new OpenLayers.Marker(new OpenLayers.LonLat(elem.properties.longitude,elem.properties.latitude),new OpenLayers.Icon(iconUrl, iconSize));
+
+                    var  destProj = new proj4.Proj("EPSG:221951");
+                    var sourceProj= new proj4.Proj("EPSG:4326");
+                    var prom = proj4(sourceProj,destProj,[elem.properties.longitude, elem.properties.latitude]);
+
+
+                  var lonLat = new OpenLayers.LonLat(prom[0], prom[1]);
+                  var customMarker = new OpenLayers.Marker(lonLat,new OpenLayers.Icon(iconUrl, iconSize));
                   var markerId = mapa.addMarker(customMarker, true, "<img src="+iconUrl+" style='max-width:150px'><br><p>"+elem.properties.compromiso+"</p>");
                   vector.push(markerId)
 
