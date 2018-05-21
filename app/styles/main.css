@@ -1098,3 +1098,15 @@ text-align: right;
     margin-top: 16px;
 
 }
+#menu-selector h2 {
+    text-transform: capitalize;
+    font-family: 'OpenSans';
+    font-size: 12px;
+    display: inline-block;
+    margin: 5px;
+    padding: 2px 8px;
+    cursor: pointer;
+    border: 1px solid gray;
+    color: gray;
+    border-radius: 20px;
+}

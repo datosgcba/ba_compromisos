@@ -22,7 +22,7 @@ angular.module('compromisosSiteApp')
     $scope.selectedGroup = 'home';
 
     $scope.mapActive = true;
-    $scope.iconsActive = true;
+    $scope.iconsActive = false;
     $scope.mostrarMapa = function(){
       $scope.iconsActive = false;
       $scope.mapActive = true;
@@ -166,16 +166,7 @@ angular.module('compromisosSiteApp')
 
     $scope.showCompromisoDetail = function(d, $event) {
       
-      // d3.selectAll('.menu_chart rect').transition().style('fill','rgba(255, 255, 255, 0)');
-      // // //Agregamos opacity animation
-      // // d3.selectAll('.menu_chart g.categoria-unselected rect').transition().style('fill','rgba(255, 255, 255, 0.83)');
-
-
-      // // selectTitle(d.slug);
-      // // selectCategoryChart(d.slug);
-      // // hoverCompromisoItem(d.numero);
-
-      $scope.selectedCategory = d.slug;
+     $scope.selectedCategory = d.slug;
 
       if ($scope.currentCompromise && ($scope.currentCompromise.numero == d.numero)) {
 
@@ -193,8 +184,6 @@ angular.module('compromisosSiteApp')
       renderStateChart();
       renderCategoryChart();
       renderMenuChart();
-
-
 
 
 
@@ -396,7 +385,7 @@ angular.module('compromisosSiteApp')
         filterValue = exclusives;
       }
 
-
+      //Filter Grid.
       $container.isotope({
         filter: function() {
           var $this = $(this);
@@ -407,7 +396,12 @@ angular.module('compromisosSiteApp')
           var buttonResult = filterValue ? $this.is(filterValue) : true;
           return searchResult && buttonResult;
         }
-      })
+      });
+      //Filter Map.
+      var filtered = $container.isotope('getFilteredItemElements')
+      var currentCompromisos = filtered.map(function(e){return parseInt(e.attributes.compromiso.value);});
+      console.log(currentCompromisos);
+
 
 
 
@@ -484,27 +478,12 @@ angular.module('compromisosSiteApp')
                 selectedOption = option;
               }
             },
-            afterGeoCoding: afterGeoCoding
-          });
-        function afterGeoCoding(pt) {
-          if (pt instanceof usig.Punto) {
-            if (selectedOption instanceof usig.Direccion) {
-              selectedOption.setCoordenadas(pt);
+            afterGeoCoding: function(pt) {
+              if (pt instanceof usig.Punto) {
+                mapa.goTo(pt, true);
+              }             
             }
-
-            var iconUrl = 'images/punto.png',
-              iconSize = new OpenLayers.Size(20, 22),
-              customMarker = new OpenLayers.Marker(new OpenLayers.LonLat(pt.x, pt.y), new OpenLayers.Icon(iconUrl, iconSize));
-            customMarker.dir = selectedOption;
-
-            var markerId = mapa.addMarker(customMarker, true, function(ev, marker) {
-              alert('Click en ' + marker.dir.toString());
-            }, {
-              popup: false
-            });
-
-          }
-        }
+          });
     });
 
     
@@ -531,7 +510,7 @@ angular.module('compromisosSiteApp')
         $scope.usig.removeMarkers()
         var sValue = "";
         var iconSize = new OpenLayers.Size(41, 41)
-        var iconUrl = "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/bicicleteros.png";
+        var iconUrl = "images/punto.png";
         actividades.each(function() {
           if ($(this).is(':checked')) {
             sValue = parseInt($(this).val())
@@ -579,72 +558,43 @@ $scope.usigLayers = {
       // Panel de informacion
       $('#mapa').append($('#template-panel-informacion').html());
   },
-  clickHandler: function(e,popup) {
-    
-    if (popup) {
-      popup.contentDiv.innerHTML = "<h3>" + e.feature.attributes['Nombre'] +"</h3><p class='indicator'>Buscando información...</p>";
-      popup.updateSize();
-      popup.show();
-      $.ajax({
-        url: "//epok.buenosaires.gob.ar/getObjectContent/?id="+e.feature.attributes['Id'],
-        dataType: 'jsonp',
-        success: function(data) {
-          
-          if (popup != null && data.id==e.feature.attributes['Id']) {
-            $div = $(popup.contentDiv);
-                $('p.indicator', $div).remove();
-                var content = '<ul style="width: 300px; list-style-type: none; margin: 5px 0; padding: 0;">';
-                $.each(data.contenido, function(k, v) {
-                  if (v.nombreId != 'nombre' && v.valor != '') {
-                    content+='<li><b>'+v.nombre+'</b>: '+v.valor+'</li>';
-                  }
-                });
-                content+='</ul>';
-                $div.append(content);
-                popup.updateSize();
-          }
-        },
-        error: function(e) {
-          // usig.debug(e);
-          
-        }
-      });
-    }
-  },
+  
   removeLayers : function(){
     
-    if (layers.length > 0) {
-      for(var i=0,l=layers.length;i<l;i++) {
-        try {
-          mapa.removeLayer(layers[i]);
-        } catch(e) {
-          
-        }
-      }
-      layers = [];
+    mapa.removeMarker();
+    for (var i = 0; i < vector.length; i++) {
+      var cm = vector[i];
+      cm.data.compromiso
     }
   },
   cargarLayers : function(){
     
-
-       var iconSize = new OpenLayers.Size(41, 41)
+      $scope.loading = true;
+       var iconSize = new OpenLayers.Size(15, 16)
             $http.get("compromisos.geojson")
               .then(function(res) {
-                var iconUrl = "http://servicios.usig.buenosaires.gov.ar/symbols/mapabsas/agencias_de_viajes.png"
+                var iconUrl = "images/punto.png"
                 $scope.usigCompromiso = res.data
                 $scope.usigCompromiso.features.map(function(elem) {
 
-                    var  destProj = new proj4.Proj("EPSG:221951");
-                    var sourceProj= new proj4.Proj("EPSG:4326");
-                    var prom = proj4(sourceProj,destProj,[elem.properties.longitude, elem.properties.latitude]);
+                  var destProj = new proj4.Proj("EPSG:221951");
+                  var sourceProj= new proj4.Proj("EPSG:4326");
+                  elem.proj =  proj4(sourceProj,destProj,[elem.properties.longitude, elem.properties.latitude]);
 
 
-                  var lonLat = new OpenLayers.LonLat(prom[0], prom[1]);
+                  var lonLat = new OpenLayers.LonLat(elem.proj[0], elem.proj[1]);
                   var customMarker = new OpenLayers.Marker(lonLat,new OpenLayers.Icon(iconUrl, iconSize));
-                  var markerId = mapa.addMarker(customMarker, true, "<img src="+iconUrl+" style='max-width:150px'><br><p>"+elem.properties.compromiso+"</p>");
-                  vector.push(markerId)
+                  customMarker.data = elem;
 
-                })
+                  var markerId = mapa.addMarker(customMarker, true, function(ev, marker) {
+                      console.log(elem);
+                    }, { popup: false });
+
+                  vector.push(customMarker);
+
+                });
+                mapa.zoomToMarkers();
+                $scope.loading = false;
               })
 
   },
@@ -657,27 +607,6 @@ $scope.usigLayers = {
       }
   },
   inicializar : function () {
-    
-
-      // Creacion de los elementos flotantes sobre el mapa
-      //$scope.usigLayers.crearPanelInfo();
-
-      // Cambia la ubicación del control de zoom y agranda el panel de info
-      //$scope.usigLayers.reposicionarControles();
-
-      // $(window).on('resize', function() {
-      //     $scope.usigLayers.redimensionarMapa();
-      //     $scope.usigLayers.reposicionarControles.defer(200);
-      // });
-
-      // Esto es para evitar que los clicks sobre los elementos flotantes sobre el
-      // mapa sean capturados por el mapa y generen movimientos no previstos
-      // $('#b, #mapSelector, #panel-informacion, .selectboxit-container')
-      //     .on('mousedown', $scope.usigLayers.stopPropagation())
-      //     .on('dblclick', $scope.usigLayers.stopPropagation());
-
-      // $("input[name=actividades]").change($scope.usigLayers.cargarLayers());
-
       $scope.usigLayers.cargarLayers();
   },
   startUsig : function () {
@@ -687,24 +616,16 @@ $scope.usigLayers = {
 
           // El div del mapa tiene que ocupar toda la ventana
           // $scope.usigLayers.redimensionarMapa();
-          $('#mapa').css('width', 600).css('height', 450);
+          $('#mapa').css('width', '100wh').css('height', '80vh');
 
           var mapOptions = {
-              divId: 'mapa',
-            trackVisits: false,
-            includeToolbar: true,
-            zoomBar: true,
-            includeMapSwitcher: false,
-            goToZoomLevel: 1,
+            divId: 'mapa',
               baseLayer: usig.App.config.baseLayer,
-              // Le cambio el extent inicial para que la Ciudad no quede tapada por el panel de info
               initBounds: usig.App.config.initBounds,
               onReady: function() {
                 $scope.usigLayers.inicializar(); // Esto es para que funcione en IE 10
-                // $scope.usigLayers.inicializar().defer(200, this, [onReady]); // Esto es para que funcione en IE 10
               }
           };
-
           mapa = new usig.MapaInteractivo(mapOptions.divId, mapOptions);
           window.mapa = mapa;
   }

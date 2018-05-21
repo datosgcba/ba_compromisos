@@ -1,69 +1,4 @@
-<!-- <div ng-click="forceCloseDetail()"> -->
-<!-- 
-<div id="panel-informacion" class="informacion">
-	<div class="content">
-		<form role="form">
-			<div class="form-group">
-				<div class="checkbox">
-  					<label>
-    					<input ng-change='usigLayers.cargarLayers()' ng-model="valor1" type="checkbox" value="estaciones_de_bicicletas" name="actividades" checked>
-    					Ecobicis
-  					</label>
-				</div>
-        <div class="checkbox">
-  					<label>
-    					<input ng-change='usigLayers.cargarLayers()' ng-model="valor2" type="checkbox" value="servicios_sociales&tipo=11" name="actividades" checked>
-    					Centro integral de la mujer
-  					</label>
-				</div>
-        <div class="checkbox">
-            <label>
-              <input ng-change='usigLayers.cargarLayers()' ng-model="valor3" type="checkbox" value="puntos_wifi&etapa=Segunda+etapa+HRL&antena_principal=True" name="actividades" checked>
-              Wifi segunda etapa
-            </label>
-        </div>
-			</div>
 
-		</form>
-	</div>
-</div> -->
-
-<style>
-#panel-informacion .content:after {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  font-size: 12px;
-  font-weight: 700;
-  color: #959595;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  content: "Dependencias Culturales";
-}
-</style>
-<script type="text/javascript">
-
-  // Definicion del namespace
-  var usig = usig || {};
-  usig.App = usig.App || {};
-
-  usig.App.config = {
-  	server_url: '//epok.buenosaires.gob.ar/',
-  	symbols_url: '//static.mapa.buenosaires.gob.ar/symbols/',
-  	backgrounds_url: '//static.mapa.buenosaires.gob.ar/images/markers/fondos/',
-  	baseLayer: "mapabsas_informacion_basica",
-  	initBounds: [85000,96750,112000,106750],
-  	pointRadius: 18,
-  	minPointRadius: 11,
-  	inverseIcons: [8, 9, 11, 12, 13, 15],
-  	layers: {
-      'estaciones_de_bicicletas': { name: 'Bibliotecas', icon: 'biblioteca', bg: '1'},
-      'servicios_sociales&tipo=11': { name: 'Centros integrales de la mujer', icon: 'centro_de_atencion_a_mujeres', bg: '2'},
-  		'puntos_wifi&etapa=Segunda+etapa+HRL&antena_principal=True': { name: 'Centros Culturales', icon: 'wifi', bg: '3'},
-  	}
-  };
-
-</script>
 
 
 
@@ -115,51 +50,31 @@
    </div>
    <hr/>
 </div>
-<h1 ng-click="mostrarIconos()"> <a href="">Ver Iconos</a> </h1>
-<h1 ng-click="mostrarMapa()"> <a href="">Ver Mapa</a> </h1>
+<div id="menu-selector" class="row">
+  <div class="col-xs-12 col-md-6 right"> 
+    <h2 ng-click="mostrarIconos()"> <a href="">Ver Iconos</a> </h2>
+  </div>
+  <div class="col-xs-12 col-md-6 "> 
+    <h2 ng-click="mostrarMapa()"> <a href="">Ver Mapa</a> </h2>
+  </div>
+</div>
 <div class="usig-map" ng-show="mapActive" >
 
 <div id="page">
   <div id="buscador">
-   <form id="mainForm" accept-charset="utf-8">
-    <label for="search">Buscar</label>
-  <input type="text" size="40" name="search" id="search" title="Lugar a buscar" class="text"/>
-    <!-- MARKERS METHOD -->
-  <div class="checkbox">
-      <label>
-        <input ng-model="valor" value="1" type="checkbox" name="actividades"
-             ng-change='usig.addMarkers()' ng-true-value="1" ng-false-value="0">
-        Escuelas infantiles
-      </label>
-  </div>
-  <div class="checkbox">
-      <label>
-        <input ng-model="valor2" value="2" type="checkbox" name="actividades"
-             ng-change='usig.addMarkers()' ng-true-value="2" ng-false-value="0">
-        Centros de reciclado
-      </label>
-  </div>
-  <div class="checkbox">
-      <label>
-        <input ng-model="valor3" value="3" type="checkbox" name="actividades"
-             ng-change='usig.addMarkers()' ng-true-value="2" ng-false-value="0">
-        Puestos de recolección
-      </label>
+     <form id="mainForm" accept-charset="utf-8">
+      <label for="search">Buscar</label>
+      <input type="text" size="40" name="search" id="search" title="Lugar a buscar" class="text"/>
+      <div id="mapa"><p class="indicator">Cargando...</p></div>
+     </form>
+    </div>
   </div>
   <div id="mapa"></div>
-  <div id="mapa"></div>
-   </form>
-  </div>
-</div>
-<div id="mapa"><p class="indicator">Cargando...</p></div>
-
-
-
 </div>
 
 <ul id="isotopeContainer" ng-show="iconsActive"  ng-click="forceCloseDetail();$event.stopPropagation();" isotope-container="isotope-container" class="compromisos-container">
   
-  <li ng-repeat="d in data" isotope-item="isotope-item" class="compromiso-row {{d.slug}} {{d.cumplimiento}} {{d.porcentaje_completado}} {{d.area1.toLowerCase().split(' ').join('-')}} {{d.area2.toLowerCase().split(' ').join('-')}} {{d.area3.toLowerCase().split(' ').join('-')}}  {{d.titulo.toLowerCase().split(' ').join(' ')}}
+  <li ng-repeat="d in data" compromiso="{{d.numero}}" isotope-item="isotope-item" class="compromiso-row {{d.slug}} {{d.cumplimiento}} {{d.porcentaje_completado}} {{d.area1.toLowerCase().split(' ').join('-')}} {{d.area2.toLowerCase().split(' ').join('-')}} {{d.area3.toLowerCase().split(' ').join('-')}}  {{d.titulo.toLowerCase().split(' ').join(' ')}}
   {{d.area4.toLowerCase().split(' ').join('-')}} col-xs-3 item {{d.classPercent}} allFilters"
       ng-click="showCompromisoDetail(d,$event);$event.stopPropagation();">
       <img class="icon-svg-container compromiso-icon" ng-src="{{d.iconSVG}}">
