@@ -29,6 +29,7 @@ angular.module('compromisosSiteApp')
 
       $scope.loading = false;
       LoadSVGService.loadIcon($scope.currentCompromise.numero,function(iconLoaded){
+
         $('.icon-svg-container').html(iconLoaded.cloneNode(true));
       });
     });

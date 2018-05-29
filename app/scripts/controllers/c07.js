@@ -31,6 +31,7 @@ angular.module('compromisosSiteApp')
       $scope.loading = false;
       //console.log($scope.currentCompromise);;
       LoadSVGService.loadIcon($scope.currentCompromise.numero,function(iconLoaded){
+
         /*$(iconLoaded)
             .attr('width', 50)
             .attr('height', 50)

@@ -31,6 +31,7 @@ angular.module('compromisosSiteApp')
 
       $scope.loading = false;
       LoadSVGService.loadIcon($scope.currentCompromise.numero,function(iconLoaded){
+
         treeIcon = iconLoaded;
         $('.icon-svg-container').html(iconLoaded.cloneNode(true));
       });

@@ -27,6 +27,7 @@ angular.module('compromisosSiteApp')
       $scope.currentCompromise.secondColor = '#ccc';
       $scope.loading = false;
       LoadSVGService.loadIcon($scope.currentCompromise.numero,function(iconLoaded){
+
         treeIcon = iconLoaded;
         $(iconLoaded)
             .attr('width', '100%')

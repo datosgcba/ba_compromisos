@@ -104,6 +104,8 @@ angular
       .when('/c50', {templateUrl: 'views/c50.html',controller: 'Compromiso50Ctrl',controllerAs: 'c50'})
       .when('/c51', {templateUrl: 'views/c51.html',controller: 'Compromiso51Ctrl',controllerAs: 'c51'})
       .when('/c52', {templateUrl: 'views/c52.html',controller: 'Compromiso52Ctrl',controllerAs: 'c52'})
+      .when('/c53', {templateUrl: 'views/c53.html',controller: 'Compromiso53Ctrl',controllerAs: 'c53'})
+      .when('/c54', {templateUrl: 'views/c54.html',controller: 'Compromiso54Ctrl',controllerAs: 'c54'})
       .otherwise({
         redirectTo: '/'
       });
@@ -136,17 +138,24 @@ angular
     };
   })
   .service('GetSVGNameService', function () {
-    this.getUrl = function(name){
-      name = (name.length==1)?'0'+name:name;
-      var icon = 'images/iconos_v2/GCBA-compromisos-icons-'+name+'.svg';
-      return icon;
+    this.getUrl = function(name,param){
+      if(param){
+        name = (name.length==1)?'0'+name:name;
+        var icon = 'images/iconos_v2/GCBA-compromisos-icons-cumplido.svg';
+        return icon;
+      }else{
+        name = (name.length==1)?'0'+name:name;
+        var icon = 'images/iconos_v2/GCBA-compromisos-icons-'+name+'.svg';
+        return icon;
+      }
+
     };
   })
   .service('UrlService', function () {
       if(!window.COMPROMISOS_CONFIG){
         console.error('Archivo de configuración inexistente, utilizando configuración default de desarrollo.');
         window.COMPROMISOS_CONFIG = {
-          BASE_URL: 'http://csv-to-api-compromisos.herokuapp.com/',
+          BASE_URL: 'http://api.topranking.link/',
           HOME_CSV: 'https://goo.gl/w0wnOj',
           /*HOME_CSV: 'https://goo.gl/Nj6FZm'*/
           /*
