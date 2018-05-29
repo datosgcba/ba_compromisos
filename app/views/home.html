@@ -20,11 +20,24 @@
          </p>
       </div>
    </div>
+
+  <!--   <div class="row filters">
+       <p class="col-xs-12 col-sm-6">Filtrar por Comuna:</p>
+      <div class="homeAreaContainer">
+         <p id="form-ui-1">
+            <label id="checkboxButton" ng-repeat="c in comunas" on-finish-render="ngRepeatFinishedComunas" class="inactive" >
+            <input id="comunas" class="comunas checkMyCheck" type="checkbox" value=".{{c}}" /> {{c}}
+            </label>
+         </p>
+      </div>
+   </div>
+    -->
+
    <div class="row filters">
       <div id="homeTextContainer" class="col-xs-12 col-sm-4 filters" >
          <p>Buscar por palabra clave:</p>
          <!-- <input id="searchTextInput" type="text" ng-model="search.titulo" ng-click="setTextFilter()"> -->
-         <input id="searchTextInput" type="text" ng-model="search" ng-change="setTextFilter()">
+         <input id="searchTextInput" class="searchTextInput" type="text" ng-model="search" ng-change="setTextFilter()">
       </div>
       <div id="homeYearContainer" class="col-xs-12 col-sm-4 filters" >
          <p>Filtrar por año de cumplimiento:</p>
@@ -63,8 +76,7 @@
 <div id="page">
   <div id="buscador">
      <form id="mainForm" accept-charset="utf-8">
-      <label for="search">Buscar</label>
-      <input type="text" size="40" name="search" id="search" title="Lugar a buscar" class="text"/>
+      <input type="text" size="40" name="search" id="search" placeholder="Buscar Dirección" class="text searchTextInput"/>
     
      </form>
     </div>

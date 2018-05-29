@@ -848,14 +848,14 @@ label{
   flex-direction: column;
   width: 25%;
 }
-#searchTextInput {
+.searchTextInput {
   border: 1px solid lightgray;
-font-family: 'OpenSans';
+  font-family: 'OpenSans';
   background: url('/images/iconos_v2/search-icon.png') no-repeat scroll -15px 5px;
   background-size: 20px;
   background-position: 99%;
 }
-#searchTextInput:focus{
+.searchTextInput:focus{
   focus:none !important;
   box-shadow: none !important;
   border: 1px solid #CC105F !important;
@@ -1152,3 +1152,23 @@ text-align: right;
     margin-left: 10px;
 
 }
+#page{
+  position: relative;
+  z-index: 2000000;
+}
+#mainForm{
+  position: absolute;
+    z-index: 2000000;
+    margin-left: 60px;
+    margin-top: 20px;
+    background: #ffffffc2;
+
+}
+#mainForm .searchTextInput{
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-right: 19px;
+    font-size: 12px;
+}
+

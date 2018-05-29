@@ -76,7 +76,11 @@ angular.module('compromisosSiteApp')
           return (upA < upB) ? -1 : (upA > upB) ? 1 : 0;
         });
         var areas = []
-        var cumplimiento = []
+        var cumplimiento = [];
+        var comunas = [];
+        for (var i = 1; i <= 15; i++) {
+          comunas.push(i);     
+        }
         $scope.data.map(function(elem) {
           if (elem.porcentaje_completado <= 25) elem.classPercent = "very-low"
           if ((elem.porcentaje_completado > 25) && (elem.porcentaje_completado <= 50)) elem.classPercent = "low"
@@ -89,9 +93,10 @@ angular.module('compromisosSiteApp')
           if (elem.area2 != undefined) areas.push(elem.area2.toLowerCase().replace(/ /g, "-"))
           if (elem.area3 != undefined) areas.push(elem.area3.toLowerCase().replace(/ /g, "-"))
           if (elem.area4 != undefined) areas.push(elem.area4.toLowerCase().replace(/ /g, "-"))
-        })
+        });
         $scope.areas = Array.from(new Set(areas))
         $scope.cumplimiento = Array.from(new Set(cumplimiento))
+        $scope.comunas = comunas;
         $scope.loading = false;
         // $scope.executeIsotope()
         $scope.groupData();
@@ -715,6 +720,7 @@ $scope.usigLayers = {
 
           var mapOptions = {
             divId: 'mapa',
+              zoomBar: false,
               baseLayer: usig.App.config.baseLayer,
               initBounds: usig.App.config.initBounds,
               onReady: function() {
