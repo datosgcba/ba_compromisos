@@ -1161,7 +1161,7 @@ text-align: right;
     z-index: 2000000;
     margin-left: 60px;
     margin-top: 20px;
-    background: #ffffffc2;
+    background: rgba(255, 255, 255, 0.7607843137254902);
 
 }
 #mainForm .searchTextInput{
