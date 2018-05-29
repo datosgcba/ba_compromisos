@@ -29,8 +29,9 @@ Sólo requiere un servidor web que pueda servir los contenidos. La aplicación c
 1. Está en formato javascript.
 2. Dentro de la carpeta 'dist': Crear una copia de `config.js.example` y llamarla `config.js`.
 3. Modificar este nuevo archivo con los datos correspondientes:
-  3. BASE_URL: será la url del conector de la API ( utilizar `https://compromisos-csv.buenosaires.gob.ar` ).
-  3. HOME_CSV: url absoluta del archivo csv que alimenta la home, el buscador y las internas. (Si no se tiene aún, dejar los de ejemplo). `https://recursos-data.buenosaires.gob.ar/ckan2/compromisos/master_compromisos.csv`
+  1. BASE_URL: será la url del conector de la API ( utilizar `https://compromisos-csv.buenosaires.gob.ar` ).
+  2. HOME_CSV: url absoluta del archivo csv que alimenta la home, el buscador y las internas. (Si no se tiene aún, dejar los de ejemplo). `https://recursos-data.buenosaires.gob.ar/ckan2/compromisos/master_compromisos.csv`
+  3. OBRAS_CSV: url absoluta del archivo csv que alimenta el mapa de obras. (Si no se tiene aún, dejar los de ejemplo). `https://recursos-data.buenosaires.gob.ar/ckan2/compromisos/obras_compromisos.csv`
 
 4. Testear el correcto funcionamiento de todo ingresando a la URL creada, deberían verse unos botones amarillos y poder renderizar las páginas de ejemplo para ser luego embebidas.
 

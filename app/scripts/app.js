@@ -168,7 +168,8 @@ angular
       }
       this.baseUrl = window.COMPROMISOS_CONFIG.BASE_URL;
       this.urls = {
-        'home': this.baseUrl + '?source_format=csv&source='+window.COMPROMISOS_CONFIG.HOME_CSV
+        'home': this.baseUrl + '?source_format=csv&source='+window.COMPROMISOS_CONFIG.HOME_CSV,
+        'obras': this.baseUrl + '?source_format=csv&source='+window.COMPROMISOS_CONFIG.OBRAS_CSV
       };
       this.getUrlByPage = function(page) {
           return this.urls[page] + '&callback=JSON_CALLBACK';

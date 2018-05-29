@@ -59,9 +59,10 @@ angular.module('compromisosSiteApp')
          refreshGrid();
        },300)
     };
-    var url = UrlService.getUrlByPage('home');
+    var compromisosURL = UrlService.getUrlByPage('home');
+    var obrasURL = UrlService.getUrlByPage('obras');
 
-    $http.jsonp(url)
+    $http.jsonp(compromisosURL)
       .success(function(data) {
         $scope.data = data.map(function(c) {
           c.slug = c.slug.trim();
@@ -631,7 +632,9 @@ $scope.usigLayers = {
        var iconUrl = "images/punto.png"
        $scope.puntos = [];
 
-       d3.csv('obras.csv', function(csv){ console.log('data');
+        $http
+          .jsonp(obrasURL)
+          .success(function(csv){ console.log('data');
 
           $scope.usigCompromiso = csv;
           $scope.usigCompromiso.map(function(elem) {
