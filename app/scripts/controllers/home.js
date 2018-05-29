@@ -659,8 +659,8 @@ $scope.usigLayers = {
                       layer:  mapa.addVectorLayer(elem.numero, { 
                           symbolizer: {
                             externalGraphic: 'images/punto.png',
-                            graphicWidth: 20,
-                            graphicHeight: 36,
+                            graphicWidth: 10,
+                            graphicHeight: 18,
                             graphicXOffset: -4,
                             graphicYOffset: -34,
                             graphicZIndex: 10,
