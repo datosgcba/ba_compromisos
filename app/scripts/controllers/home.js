@@ -682,7 +682,7 @@ $scope.usigLayers = {
                 });
 
         refreshGrid();
-         mapa.zoomToMarkers();
+         // mapa.zoomToMarkers();
         $scope.loading = false;
 
 
