@@ -18,18 +18,46 @@ angular.module('compromisosSiteApp')
     $scope.data = [];
     $scope.loading = true;
     $scope.charts = {};
-
+    $scope.puntos =[];
     $scope.selectedGroup = 'home';
 
-    $scope.mapActive = true;
-    $scope.iconsActive = false;
+    $scope.mapActive = false;
+    $scope.iconsActive = true;
+    $scope.mapReady = false;
+
+    $scope.getCompromiso = function(numero){
+      var findC ={};
+      for (var i = 0; i < $scope.data.length; i++) {
+        var c = $scope.data[i];
+        if (c.numero === numero){
+          findC = c;
+           break;
+        }
+       
+
+      };
+      return findC;
+    };
+
+
     $scope.mostrarMapa = function(){
+      if (!$scope.mapReady){
+        $scope.usigLayers.startUsig();
+        $scope.mapReady = true;
+      }
+      refreshGrid();
+      $scope.closeDetail();
       $scope.iconsActive = false;
       $scope.mapActive = true;
     };
     $scope.mostrarIconos = function(){
+    
       $scope.iconsActive = true;
       $scope.mapActive = false;
+      $scope.closeDetail();
+      $timeout(function(){
+         refreshGrid();
+       },300)
     };
     var url = UrlService.getUrlByPage('home');
 
@@ -249,6 +277,21 @@ angular.module('compromisosSiteApp')
 
     };
 
+      $scope.closeObraDetail = function() {
+      //Agregamos opacity animation
+      // d3.selectAll('.menu_chart rect').transition().style('fill','rgba(255, 255, 255, 0)');
+
+
+      // deselectTitle();
+      // defaultChartColors();
+      if ($scope.currentObra) {
+
+        $scope.currentObra = null;
+      }
+
+    };
+
+    
     function renderDateChart() {
 
 
@@ -400,9 +443,27 @@ angular.module('compromisosSiteApp')
       //Filter Map.
       var filtered = $container.isotope('getFilteredItemElements')
       var currentCompromisos = filtered.map(function(e){return parseInt(e.attributes.compromiso.value);});
-      console.log(currentCompromisos);
-
-
+      
+        $scope.puntos.map(function(p){
+          var showMe = false;
+          for (var j = 0; j < currentCompromisos.length; j++) {
+            var cId = currentCompromisos[j] + '';
+           
+            if (p.numero === cId){
+              p.visible = true;
+              showMe = true;
+              break;
+            }
+          }
+          if (showMe){
+            p.layer.addFeatures(p.obras);
+          }
+          else {
+            p.layer.removeFeatures(p.obras);
+          }
+      });
+      
+          
 
 
     };
@@ -561,41 +622,72 @@ $scope.usigLayers = {
   
   removeLayers : function(){
     
-    mapa.removeMarker();
-    for (var i = 0; i < vector.length; i++) {
-      var cm = vector[i];
-      cm.data.compromiso
-    }
   },
   cargarLayers : function(){
     
       $scope.loading = true;
+      $scope.markers = [];
        var iconSize = new OpenLayers.Size(15, 16)
-            $http.get("compromisos.geojson")
-              .then(function(res) {
-                var iconUrl = "images/punto.png"
-                $scope.usigCompromiso = res.data
-                $scope.usigCompromiso.features.map(function(elem) {
+       var iconUrl = "images/punto.png"
+       $scope.puntos = [];
+
+       d3.csv('obras.csv', function(csv){ console.log('data');
+
+          $scope.usigCompromiso = csv;
+          $scope.usigCompromiso.map(function(elem) {
 
                   var destProj = new proj4.Proj("EPSG:221951");
                   var sourceProj= new proj4.Proj("EPSG:4326");
-                  elem.proj =  proj4(sourceProj,destProj,[elem.properties.longitude, elem.properties.latitude]);
+                  elem.proj =  proj4(sourceProj,destProj,[elem.longitude, elem.latitude]);
 
 
                   var lonLat = new OpenLayers.LonLat(elem.proj[0], elem.proj[1]);
-                  var customMarker = new OpenLayers.Marker(lonLat,new OpenLayers.Icon(iconUrl, iconSize));
-                  customMarker.data = elem;
+                  var point = new OpenLayers.Geometry.Point(elem.proj[0], elem.proj[1]);
 
-                  var markerId = mapa.addMarker(customMarker, true, function(ev, marker) {
-                      console.log(elem);
-                    }, { popup: false });
-
-                  vector.push(customMarker);
+                    var currentMarker = new OpenLayers.Feature.Vector(point, null, {
+                        externalGraphic: "images/punto.png",        graphicWidth: 32,
+                        graphicHeight: 32,
+                        fillOpacity: 1
+                    });
+                  
+                  if (!$scope.puntos[elem.numero]){
+                    $scope.puntos[elem.numero] = {
+                      numero: elem.numero,
+                      layer:  mapa.addVectorLayer(elem.numero, { 
+                          symbolizer: {
+                            externalGraphic: 'images/punto.png',
+                            graphicWidth: 20,
+                            graphicHeight: 36,
+                            graphicXOffset: -4,
+                            graphicYOffset: -34,
+                            graphicZIndex: 10,
+                            backgroundGraphicZIndex: 9
+                          },
+                          popup: false,
+                          onClick: function(ev, marker) {
+                             var $scope = angular.element(document.getElementById('compromisos-main')).scope();
+                             $scope.$apply(function(){
+                              $scope.currentObra = ev.feature.geometry.marker;
+                              $scope.currentObra.compromisoDetail = $scope.getCompromiso($scope.currentObra.numero);
+                             });
+                            }
+                          }),
+                      obras: []
+                    };
+                  }
+                  point.marker = elem;
+                  $scope.puntos[elem.numero].obras.push(currentMarker);
+                  $scope.markers.push(currentMarker);
 
                 });
-                mapa.zoomToMarkers();
-                $scope.loading = false;
-              })
+
+        refreshGrid();
+         mapa.zoomToMarkers();
+        $scope.loading = false;
+
+
+    });       
+        
 
   },
   stopPropagation : function (ev) {
@@ -628,10 +720,11 @@ $scope.usigLayers = {
           };
           mapa = new usig.MapaInteractivo(mapOptions.divId, mapOptions);
           window.mapa = mapa;
+
   }
 }
 
-$scope.usigLayers.startUsig()
+
 
 ////////////////////////////////////////////////////////////////////////////////
 /////////////////////////LAYERS METHOD ACTIVE///////////////////////////////////

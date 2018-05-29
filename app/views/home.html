@@ -52,7 +52,7 @@
 </div>
 <div id="menu-selector" class="row">
   <div class="col-xs-12 col-md-6 right"> 
-    <h2 ng-click="mostrarIconos()"> <a href="">Ver Iconos</a> </h2>
+    <h2 ng-click="mostrarIconos()" class="active"> <a href="">Ver Iconos</a> </h2>
   </div>
   <div class="col-xs-12 col-md-6 "> 
     <h2 ng-click="mostrarMapa()"> <a href="">Ver Mapa</a> </h2>
@@ -65,11 +65,11 @@
      <form id="mainForm" accept-charset="utf-8">
       <label for="search">Buscar</label>
       <input type="text" size="40" name="search" id="search" title="Lugar a buscar" class="text"/>
-      <div id="mapa"><p class="indicator">Cargando...</p></div>
+    
      </form>
     </div>
   </div>
-  <div id="mapa"></div>
+   <div id="mapa"><p class="indicator">Cargando...</p></div>
 </div>
 
 <ul id="isotopeContainer" ng-show="iconsActive"  ng-click="forceCloseDetail();$event.stopPropagation();" isotope-container="isotope-container" class="compromisos-container">
@@ -85,7 +85,61 @@
 <div ng-cloak ng-hide="loading">
    <div class="row">
    </div>
-   <div id="compromiso-detail" class="row well" ng-cloak ng-show="currentCompromise">
+   <div id="obra-detail" class="row well compromiso-detail obra-detail" ng-cloak ng-show="currentObra">
+      <div class="header">
+         <div class="row">
+            <div class="col-xs-8 label-text">
+               <img class="icon-svg-container compromiso-icon" ng-src="{{currentObra.compromisoDetail.iconSVG}}">
+               <h5>Detalle de la Obra</h5>
+            </div>
+            <div class="col-xs-4">
+               <h5 class="text-right close"><a class="" href="javascript:;" ng-click="closeObraDetail()">
+ <span class="glyphicon glyphicon-remove white"></span></a></h5>
+            </div>
+         </div>
+      </div>
+      <div class="col-sm-4 hidden-device photo-frame">
+         <img class="photo" ng-src="{{currentObra.compromisoDetail.imagen}}">
+      </div>
+      <div class="col-xs-12 col-sm-6">
+         <div class="row">
+            <div class="col-sm-12">
+               <h3><small>{{currentObra.compromisoDetail.categoria}}</small></h3>
+               <h3>{{currentObra.accion}}</h3>
+               <h4> {{currentObra.direccion}} </h4>
+               <p>{{currentObra.compromiso}}</p>
+            </div>
+            <div class="col-sm-12">
+               <p class="upper"><strong>Estado del Compromiso</strong></p>
+               <p ng-cloak ng-show="currentObra.compromiso.metrica"> ¿Cómo lo medimos? <strong>{{currentObra.compromisoDetail.metrica}}</strong></p>
+               <div class="progress">
+                  <div class="progress-bar bg-color-{{currentObra.compromisoDetail.slug}}"
+                     role="progressbar"
+                     ng-style="{ 'width': currentObra.compromisoDetail.porcentaje_completado + '%' }">
+                     <span class="progressbar-w" ng-hide="currentObra.compromisoDetail.porcentaje_completado<50">{{currentObra.compromisoDetail.porcentaje_completado}}% </span>
+                  </div>
+                  <div class="progress-w" ng-show="!currentObra.compromisoDetail.porcentaje_completado">
+                     <p>-</p>
+                  </div>
+                  <div class="progress-w second-progress" ng-show="currentObra.compromisoDetail.porcentaje_completado<50" ng-style="{ 'width': (100 - currentObra.compromisoDetail.porcentaje_completado) + '%' }">{{currentObra.compromisoDetail.porcentaje_completado}}% </div>
+               </div>
+            </div>
+
+                  <div class="col-xs-6 col-md-6">
+                     <p> </p>
+                  </div>
+                  <div class="col-xs-6 col-md-6">
+                     <p class="right"ng-cloak ng-show="currentCompromise.cumplimiento"> Fecha Finalización <strong>{{currentObra.compromisoDetail.cumplimiento}}</strong></p>
+                  </div>
+
+               <div class="col-xs-12">
+                  <a ng-href="{{currentObra.compromisoDetail.url_interna}}" target="_blank" ng-hide="currentObra.compromisoDetail.url_interna === undefined" class="btn full btn-xs upper bg-color-{{currentObra.compromisoDetail.slug}}  center-block" >Ver mas sobre el compromiso &#187;  </a>
+               </div>
+            </div>
+         </div>
+            
+      </div>
+   <div id="compromiso-detail" class="row well compromiso-detail" ng-cloak ng-show="currentCompromise">
       <div class="header">
          <div class="row">
             <div class="col-xs-8 label-text">
