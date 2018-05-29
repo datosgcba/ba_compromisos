@@ -648,9 +648,9 @@ $scope.usigLayers = {
                   var point = new OpenLayers.Geometry.Point(elem.proj[0], elem.proj[1]);
 
                     var currentMarker = new OpenLayers.Feature.Vector(point, null, {
-                        externalGraphic: "images/punto.png",        graphicWidth: 32,
-                        graphicHeight: 32,
-                        fillOpacity: 1
+                        externalGraphic: "images/punto.png",        graphicWidth: 20,
+                        graphicHeight: 20,
+                        fillOpacity: 0.8
                     });
                   
                   if (!$scope.puntos[elem.numero]){

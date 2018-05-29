@@ -89,7 +89,6 @@
       <div class="header">
          <div class="row">
             <div class="col-xs-8 label-text">
-               <img class="icon-svg-container compromiso-icon" ng-src="{{currentObra.compromisoDetail.iconSVG}}">
                <h5>Detalle de la Obra</h5>
             </div>
             <div class="col-xs-4">
@@ -106,8 +105,8 @@
             <div class="col-sm-12">
                <h3><small>{{currentObra.compromisoDetail.categoria}}</small></h3>
                <h3>{{currentObra.accion}}</h3>
-               <h4> {{currentObra.direccion}} </h4>
-               <p>{{currentObra.compromiso}}</p>
+               <h5> {{currentObra.direccion}} </h5>
+               <h4>  <img class="icon-svg-container compromiso-icon" ng-src="{{currentObra.compromisoDetail.iconSVG}}">{{currentObra.compromiso}}</h4>
             </div>
             <div class="col-sm-12">
                <p class="upper"><strong>Estado del Compromiso</strong></p>
