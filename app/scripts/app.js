@@ -157,6 +157,7 @@ angular
         window.COMPROMISOS_CONFIG = {
           BASE_URL: 'http://api.topranking.link/',
           HOME_CSV: 'https://goo.gl/w0wnOj',
+          OBRAS_CSV: 'https://goo.gl/YF8r9Y'
           /*HOME_CSV: 'https://goo.gl/Nj6FZm'*/
           /*
           BASE_URL: 'https://compromisos-csv.buenosaires.gob.ar',
