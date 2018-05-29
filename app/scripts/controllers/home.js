@@ -716,7 +716,7 @@ $scope.usigLayers = {
 
           // El div del mapa tiene que ocupar toda la ventana
           // $scope.usigLayers.redimensionarMapa();
-          $('#mapa').css('width', '100wh').css('height', '80vh');
+          $('#mapa').css('width', '100wh').css('height', '50vh');
 
           var mapOptions = {
             divId: 'mapa',
