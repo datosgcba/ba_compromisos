@@ -21,25 +21,14 @@
       </div>
    </div>
 
-  <!--   <div class="row filters">
-       <p class="col-xs-12 col-sm-6">Filtrar por Comuna:</p>
-      <div class="homeAreaContainer">
-         <p id="form-ui-1">
-            <label id="checkboxButton" ng-repeat="c in comunas" on-finish-render="ngRepeatFinishedComunas" class="inactive" >
-            <input id="comunas" class="comunas checkMyCheck" type="checkbox" value=".{{c}}" /> {{c}}
-            </label>
-         </p>
-      </div>
-   </div>
-    -->
 
    <div class="row filters">
-      <div id="homeTextContainer" class="col-xs-12 col-sm-4 filters" >
+      <div id="homeTextContainer" class="col-xs-12 col-sm-3 filters" >
          <p>Buscar por palabra clave:</p>
          <!-- <input id="searchTextInput" type="text" ng-model="search.titulo" ng-click="setTextFilter()"> -->
          <input id="searchTextInput" class="searchTextInput" type="text" ng-model="search" ng-change="setTextFilter()">
       </div>
-      <div id="homeYearContainer" class="col-xs-12 col-sm-4 filters" >
+      <div id="homeYearContainer" class="col-xs-12 col-sm-3 filters" >
          <p>Filtrar por año de cumplimiento:</p>
          <div class="">
 
@@ -49,7 +38,7 @@
 
          </div>
       </div>
-      <div id="homePercentContainer" class="col-xs-12 col-sm-4 filters">
+      <div id="homePercentContainer" class="col-xs-12 col-sm-3 filters">
          <p>Filtrar por avance:</p>
          <div >
             <label><input type="radio" class="percent" value=".very-low" name="percentage" />0%-25%</label>
@@ -59,6 +48,17 @@
 
 
          </div>
+         </div>
+         <div id="homeComunaContainer" class="col-xs-12 col-sm-3 filters">
+         <p>Filtrar por Comuna:</p>
+           <div>
+              <select ng-model="selectedComuna" ng-change="changeComunas()">
+                  <option class="comuna" ng-selected="{{c.selected}}"
+                          ng-repeat="c in comunas" value="{{c.number}}">
+                    {{c.name}}
+                  </option>
+              </select>
+           </div>
          </div>
    </div>
    <hr/>
@@ -86,7 +86,7 @@
 
 <ul id="isotopeContainer" ng-show="iconsActive"  ng-click="forceCloseDetail();$event.stopPropagation();" isotope-container="isotope-container" class="compromisos-container">
   
-  <li ng-repeat="d in data" compromiso="{{d.numero}}" isotope-item="isotope-item" class="compromiso-row {{d.slug}} {{d.cumplimiento}} {{d.porcentaje_completado}} {{d.area1.toLowerCase().split(' ').join('-')}} {{d.area2.toLowerCase().split(' ').join('-')}} {{d.area3.toLowerCase().split(' ').join('-')}}  {{d.titulo.toLowerCase().split(' ').join(' ')}}
+  <li ng-repeat="d in data" compromiso="{{d.numero}}" isotope-item="isotope-item" class="compromiso-row {{d.slug}} {{d.cumplimiento}} {{d.porcentaje_completado}} {{d.claseComunas}} {{d.area1.toLowerCase().split(' ').join('-')}} {{d.area2.toLowerCase().split(' ').join('-')}} {{d.area3.toLowerCase().split(' ').join('-')}}  {{d.titulo.toLowerCase().split(' ').join(' ')}}
   {{d.area4.toLowerCase().split(' ').join('-')}} col-xs-3 item {{d.classPercent}} allFilters"
       ng-click="showCompromisoDetail(d,$event);$event.stopPropagation();">
       <img class="icon-svg-container compromiso-icon" ng-src="{{d.iconSVG}}">

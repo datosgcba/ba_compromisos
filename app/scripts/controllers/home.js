@@ -68,6 +68,16 @@ angular.module('compromisosSiteApp')
           c.slug = c.slug.trim();
           c.categoria = c.categoria.trim();
           c.iconSVG = GetSVGNameService.getUrl(c.numero);
+          try{
+           c.comunas = c.comunas.split(',');
+           c.claseComunas = "";
+           for (var i = 0; i < c.comunas.length; i++) {
+             c.claseComunas += "com-" +c.comunas[i] + " ";
+           }
+          }
+          catch(e){
+            console.log('error en comunas compromiso' + c.numero);
+          }
           return c;
         });
         $scope.data = $scope.data.sort(function(a, b) {
@@ -78,8 +88,18 @@ angular.module('compromisosSiteApp')
         var areas = []
         var cumplimiento = [];
         var comunas = [];
+        comunas.push({
+            name: "(Todas las comunas)",
+            number: 0,
+            selected:true,
+          });
+
         for (var i = 1; i <= 15; i++) {
-          comunas.push(i);     
+          comunas.push({
+            name: "Comuna "+ i,
+            number: i,
+            selected: false
+          });     
         }
         $scope.data.map(function(elem) {
           if (elem.porcentaje_completado <= 25) elem.classPercent = "very-low"
@@ -97,6 +117,7 @@ angular.module('compromisosSiteApp')
         $scope.areas = Array.from(new Set(areas))
         $scope.cumplimiento = Array.from(new Set(cumplimiento))
         $scope.comunas = comunas;
+        $scope.selectedComuna = comunas[0];
         $scope.loading = false;
         // $scope.executeIsotope()
         $scope.groupData();
@@ -418,7 +439,9 @@ angular.module('compromisosSiteApp')
           inclusives.push(elem.value);
         }
       });
-
+      if ($scope.selectedComuna != 0){
+        exclusives.push('.com-' + $scope.selectedComuna);
+      }
       // combine exclusive and inclusive filters
 
       // first combine exclusives
@@ -502,6 +525,11 @@ angular.module('compromisosSiteApp')
       refreshGrid();
       $scope.closeDetail();
     };
+    $scope.changeComunas = function(){
+        refreshGrid();
+        $scope.closeDetail();
+        
+      };
     var $container, $output, $selects, $checkboxes, $years, $percent;
 
     $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
@@ -511,18 +539,22 @@ angular.module('compromisosSiteApp')
 
       $output = $('#output');
       // filter with selects and checkboxes
-      $selects = $('#form-ui select');
+      $selects = $('#form-ui select.me');
 
       $checkboxes = $('.homeAreaContainer .categories');
       $years = $('#homeYearContainer .years');
       $percent = $('#homePercentContainer .percent');
+      
       $years.add($checkboxes).add($percent).change(function() {
         refreshGrid();
         $scope.$apply(function() {
           $scope.closeDetail();
         });
       });
+      
+       $('.checkMyCheck').change(function() {
 
+       });
       $('.checkMyCheck').change(function() {
         if ($(this).parent().hasClass('active')) {
           $(this).parent().addClass('inactive');
@@ -716,7 +748,7 @@ $scope.usigLayers = {
 
           // El div del mapa tiene que ocupar toda la ventana
           // $scope.usigLayers.redimensionarMapa();
-          $('#mapa').css('width', '100wh').css('height', '50vh');
+          $('#mapa').css('width', '100wh').css('height', '60vh');
 
           var mapOptions = {
             divId: 'mapa',
