@@ -52,7 +52,8 @@
          <div id="homeComunaContainer" class="col-xs-12 col-sm-3 filters">
          <p>Filtrar por Comuna:</p>
            <div>
-              <select ng-model="selectedComuna" ng-change="changeComunas()">
+              <select ng-model="selectedComuna" ng-init="selectedComuna='0'" ng-change="changeComunas()">
+                 
                   <option class="comuna" ng-selected="{{c.selected}}"
                           ng-repeat="c in comunas" value="{{c.number}}">
                     {{c.name}}

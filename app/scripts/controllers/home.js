@@ -24,7 +24,14 @@ angular.module('compromisosSiteApp')
     $scope.mapActive = false;
     $scope.iconsActive = true;
     $scope.mapReady = false;
+    $scope.comunas = [];
 
+    $scope.comunas.push({
+        name: "(Todas las comunas)",
+        number: 0,
+        selected:true,
+      });
+    $scope.selectedComuna= 0;
     $scope.getCompromiso = function(numero){
       var findC ={};
       for (var i = 0; i < $scope.data.length; i++) {
@@ -87,15 +94,10 @@ angular.module('compromisosSiteApp')
         });
         var areas = []
         var cumplimiento = [];
-        var comunas = [];
-        comunas.push({
-            name: "(Todas las comunas)",
-            number: 0,
-            selected:true,
-          });
+        
 
         for (var i = 1; i <= 15; i++) {
-          comunas.push({
+          $scope.comunas.push({
             name: "Comuna "+ i,
             number: i,
             selected: false
@@ -116,8 +118,8 @@ angular.module('compromisosSiteApp')
         });
         $scope.areas = Array.from(new Set(areas))
         $scope.cumplimiento = Array.from(new Set(cumplimiento))
-        $scope.comunas = comunas;
-        $scope.selectedComuna = comunas[0];
+       
+        
         $scope.loading = false;
         // $scope.executeIsotope()
         $scope.groupData();
