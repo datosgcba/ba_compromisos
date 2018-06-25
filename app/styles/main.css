@@ -1179,3 +1179,7 @@ text-align: right;
 #homeComunaContainer select{
   width: 80%;
 }
+
+img.ilustracion{
+  max-width: 100%
+}

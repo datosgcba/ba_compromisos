@@ -1,0 +1,19 @@
+<p class="text-center" ng-show="loading">Cargando...</p>
+
+<div ng-hide="loading">
+	<div class="row">
+        <div class="col-md-12">
+            <div class="row" ng-repeat="ilus in currentIlustracion">
+                
+                <h4><small>{{ilus.viz}}</small></h4>
+                <h5>Compromiso > {{ilus.compromiso}}</h5>
+                <h2>{{ilus.titulo}}</h2>
+                <p> {{ilus.descripcion}} </p>
+            </div>
+        </div>
+		<div class="col-md-12">
+			<img class="ilustracion" src="images/ilustraciones/movilidad.svg">
+		</div>
+	</div>
+</div>
+
