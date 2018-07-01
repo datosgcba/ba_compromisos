@@ -8,25 +8,52 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('IlustracionMovilidadCtrl', function (UrlService,$rootScope, $scope, $http,SlugColorService,LoadSVGService,$sce,$templateRequest,$compile) {
+  .controller('IlustracionMovilidadCtrl', function (UrlService,$rootScope, $scope, $http,GetSVGNameService, SlugColorService,LoadSVGService,$sce,$templateRequest,$compile) {
 
   	var homeUrl = UrlService.getUrlByPage('home');
     var ilustracionUrl = UrlService.getUrlByPage('ilustraciones');
     var pymChild = new pym.Child({ polling: 1000 });
     pymChild.sendHeight();
     var _ = window._;
-    //para ir a otra url en el padre
-    //pymChild.navigateParentTo('https://github.com/nprapps/pym.js');
+    
 
     $scope.loading = true;
+    $scope.closeDetail = function(){
+      $scope.currentIlustracion = undefined;
+    };
+
+    $scope.showMe = function(ilu){
+      $scope.closeMobileDetail();
+      ilu.showDetail = true;
+    };
+
+    $scope.closeMobileDetail = function(){
+      $scope.ilustraciones.map(function(i){
+        i.showDetail= false;
+      })
+    };
+    $scope.showCompromiso = function(cId){
+      var currentIlu = _.find($scope.ilustraciones, function(d){ return parseInt(d.indicador) === parseInt(cId); });
+      $scope.currentIlustracion = currentIlu;
+    };
 
     $http.jsonp(homeUrl)
-    .success(function(data){
-      $scope.currentCompromise = $scope.data;
-
+    .success(function(dataCompromisos){
       
+      dataCompromisos.map(function(c) {
+          c.slug = c.slug.trim();
+          c.categoria = c.categoria.trim();
+          c.iconSVG = GetSVGNameService.getUrl(c.numero);
+      });
+      $scope.compromisos = dataCompromisos;
+
       $http.jsonp(ilustracionUrl).success(function(dataIlustracion){
-        $scope.currentIlustracion = dataIlustracion;
+        dataIlustracion =  dataIlustracion.filter(function(d){ return d.viz === "movilidad"; });
+        dataIlustracion.map(function(ilu){
+          ilu.detalleCompromiso = _.find($scope.compromisos, function(d){ return parseInt(d.numero) === parseInt(ilu.compromiso); });  
+        })
+        
+        $scope.ilustraciones = dataIlustracion;
         $scope.loading = false;
       });
     });
