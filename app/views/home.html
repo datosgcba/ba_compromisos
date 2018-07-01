@@ -66,7 +66,7 @@
 </div>
 <div id="menu-selector" class="row" ng-cloak ng-hide="loading">
   <div class="col-xs-12 col-md-6 right"> 
-    <h2 ng-click="mostrarIconos()" class="active"> <a href="">Ver Iconos</a> </h2>
+    <h2 ng-click="mostrarIconos()" class="active"> <a href="">Ver Listado</a> </h2>
   </div>
   <div class="col-xs-12 col-md-6 "> 
     <h2 ng-click="mostrarMapa()"> <a href="">Ver Mapa</a> </h2>
@@ -102,7 +102,7 @@
       <div class="header">
          <div class="row">
             <div class="col-xs-8 label-text">
-               <h5>Detalle de la Obra</h5>
+               <h5>{{currentObra.compromisoDetail.categoria}}</h5>
             </div>
             <div class="col-xs-4">
                <h5 class="text-right close"><a class="" href="javascript:;" ng-click="closeObraDetail()">
@@ -117,10 +117,11 @@
          <div class="row">
             <div class="col-sm-12">
                <h3><small>{{currentObra.compromisoDetail.categoria}}</small></h3>
-               <h3>{{currentObra.accion}}</h3>
+               <h3>{{currentObra.compromiso}}</h3>
                <h5> {{currentObra.direccion}} </h5>
-               <h4><small>COMPROMISO</small></h4>
-               <h4>  <img class="icon-svg-container compromiso-icon" ng-src="{{currentObra.compromisoDetail.iconSVG}}">{{currentObra.compromiso}}</h4>
+               <h4><small>OBRA</small></h4>
+               <h4>  <img class="icon-svg-container compromiso-icon" ng-src="{{currentObra.compromisoDetail.iconSVG}}">{{currentObra.accion}}</h4>
+               <p ng-show="currentObra.detalle">{{currentObra.detalle}}</p>
             </div>
             <div class="col-sm-12">
                <p class="upper"><strong>Estado del Compromiso</strong></p>

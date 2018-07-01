@@ -610,7 +610,7 @@ angular.module('compromisosSiteApp')
       addMarkers: function() {
         $scope.usig.removeMarkers()
         var sValue = "";
-        var iconSize = new OpenLayers.Size(41, 41)
+        var iconSize = new OpenLayers.Size(21, 21)
         var iconUrl = "images/punto.png";
         actividades.each(function() {
           if ($(this).is(':checked')) {
@@ -667,7 +667,7 @@ $scope.usigLayers = {
     
       $scope.loading = true;
       $scope.markers = [];
-       var iconSize = new OpenLayers.Size(15, 16)
+       var iconSize = new OpenLayers.Size(7, 8)
        var iconUrl = "images/punto.png"
        $scope.puntos = [];
 
@@ -687,8 +687,8 @@ $scope.usigLayers = {
                   var point = new OpenLayers.Geometry.Point(elem.proj[0], elem.proj[1]);
 
                     var currentMarker = new OpenLayers.Feature.Vector(point, null, {
-                        externalGraphic: "images/punto.png",        graphicWidth: 16,
-                        graphicHeight: 16,
+                        externalGraphic: "images/punto.png",        graphicWidth: 8,
+                        graphicHeight: 8,
                         fillOpacity: 0.8
                     });
                   
@@ -698,8 +698,8 @@ $scope.usigLayers = {
                       layer:  mapa.addVectorLayer(elem.numero, { 
                           symbolizer: {
                             externalGraphic: 'images/punto.png',
-                            graphicWidth: 10,
-                            graphicHeight: 18,
+                            graphicWidth: 5,
+                            graphicHeight: 9,
                             graphicXOffset: -4,
                             graphicYOffset: -34,
                             graphicZIndex: 10,
