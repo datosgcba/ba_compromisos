@@ -106,6 +106,8 @@ angular
       .when('/c52', {templateUrl: 'views/c52.html',controller: 'Compromiso52Ctrl',controllerAs: 'c52'})
       .when('/c53', {templateUrl: 'views/c53.html',controller: 'Compromiso53Ctrl',controllerAs: 'c53'})
       .when('/c54', {templateUrl: 'views/c54.html',controller: 'Compromiso54Ctrl',controllerAs: 'c54'})
+      .when('/iMovilidad', {templateUrl: 'views/i-movilidad.html',controller: 'IlustracionMovilidadCtrl',controllerAs: 'iMovilidad'})
+      
       .otherwise({
         redirectTo: '/'
       });
@@ -157,7 +159,8 @@ angular
         window.COMPROMISOS_CONFIG = {
           BASE_URL: 'http://api.topranking.link/',
           HOME_CSV: 'https://goo.gl/w0wnOj',
-          OBRAS_CSV: 'https://goo.gl/YF8r9Y'
+          OBRAS_CSV: 'https://goo.gl/YF8r9Y',
+          ILUSTRACIONES_CSV: 'https://goo.gl/fU5jee',
           /*HOME_CSV: 'https://goo.gl/Nj6FZm'*/
           /*
           BASE_URL: 'https://compromisos-csv.buenosaires.gob.ar',
@@ -170,7 +173,8 @@ angular
       this.baseUrl = window.COMPROMISOS_CONFIG.BASE_URL;
       this.urls = {
         'home': this.baseUrl + '?source_format=csv&source='+window.COMPROMISOS_CONFIG.HOME_CSV,
-        'obras': this.baseUrl + '?source_format=csv&source='+window.COMPROMISOS_CONFIG.OBRAS_CSV
+        'obras': this.baseUrl + '?source_format=csv&source='+window.COMPROMISOS_CONFIG.OBRAS_CSV,
+        'ilustraciones': this.baseUrl + '?source_format=csv&source='+window.COMPROMISOS_CONFIG.ILUSTRACIONES_CSV
       };
       this.getUrlByPage = function(page) {
           return this.urls[page] + '&callback=JSON_CALLBACK';
