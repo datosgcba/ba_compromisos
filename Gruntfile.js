@@ -398,7 +398,7 @@ module.exports = function (grunt) {
         },
         {
           expand: true,
-          cwd: 'bower_components/BAstrap/bastrap3/fonts',
+          cwd: 'bower_components/BAstrap/fonts',
           src: '*',
           dest: '<%= yeoman.dist %>/styles/fonts'
         },
