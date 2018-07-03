@@ -383,6 +383,10 @@ div#category_chart {
   background-color: #CC105F;
 }
 
+.bg-color-obra{
+  background: #5f5d60;
+}
+
 .c-option-selected h3{
   color: white;
 }

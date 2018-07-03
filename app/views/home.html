@@ -116,7 +116,6 @@
       <div class="col-xs-12 col-sm-6">
          <div class="row">
             <div class="col-sm-12">
-               <h3><small>{{currentObra.compromisoDetail.categoria}}</small></h3>
                <h3>{{currentObra.compromiso}}</h3>
                <h5> {{currentObra.direccion}} </h5>
                <h4><small>OBRA</small></h4>
@@ -143,11 +142,11 @@
                      <p> </p>
                   </div>
                   <div class="col-xs-6 col-md-6">
-                     <p class="right"ng-cloak ng-show="currentCompromise.cumplimiento"> Fecha Finalización <strong>{{currentObra.compromisoDetail.cumplimiento}}</strong></p>
+                     <p class="right" ng-cloak ng-show="currentCompromise.cumplimiento"> Fecha Finalización <strong>{{currentObra.compromisoDetail.cumplimiento}}</strong></p>
                   </div>
 
                <div class="col-xs-12">
-                  <a ng-href="{{currentObra.compromisoDetail.url_interna}}" target="_blank" ng-hide="currentObra.compromisoDetail.url_interna === undefined" class="btn full btn-xs upper bg-color-{{currentObra.compromisoDetail.slug}}  center-block" >Ver mas sobre el compromiso &#187;  </a>
+                  <a ng-href="{{currentObra.compromisoDetail.url_interna}}" target="_blank" ng-hide="currentObra.compromisoDetail.url_interna === undefined" class="btn full btn-xs upper bg-color-{{currentObra.compromisoDetail.slug}} bg-color-obra  center-block" >Ver mas sobre el compromiso &#187;  </a>
                </div>
             </div>
          </div>

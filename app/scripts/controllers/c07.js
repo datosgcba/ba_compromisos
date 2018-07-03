@@ -57,7 +57,6 @@ angular.module('compromisosSiteApp')
         d.linea_d_sec = toSeconds(d.linea_d);
         d.linea_e_sec = toSeconds(d.linea_e);
         d.linea_h_sec = toSeconds(d.linea_h);
-         d.total_sec = toSeconds(d.total);
       });
       return data;
     };
@@ -66,7 +65,7 @@ angular.module('compromisosSiteApp')
       return angular.merge(config,{
         data:{
           keys: {
-              value: ['linea_a_sec','linea_b_sec','linea_c_sec','linea_d_sec','linea_e_sec','linea_h_sec','total_sec'],
+              value: ['linea_a_sec','linea_b_sec','linea_c_sec','linea_d_sec','linea_e_sec','linea_h_sec'],
               x: 'mes_date'
           },
           names:{
@@ -76,7 +75,6 @@ angular.module('compromisosSiteApp')
             'linea_d_sec':'Línea D',
             'linea_e_sec':'Línea E',
             'linea_h_sec':'Línea H',
-            'total_sec':'Total'
           },
           type: 'spline',
           colors: {
