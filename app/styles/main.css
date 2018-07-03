@@ -1327,3 +1327,19 @@ text-align: right;
   max-height: 60px;
   max-width: 60px;
 }
+
+.detalle-ilustracion .progress-bar.bg-color,.detalle-ilustracion .bg-color {
+    background-color: #00B9A7;
+}
+.detalle-ilustracion.mobile{
+  transition: all 0.5s linear;
+}
+
+
+.ng-hide {
+  height: 0;
+  width: 0;
+  background-color: transparent;
+  top:-200px;
+  left: 200px;
+}

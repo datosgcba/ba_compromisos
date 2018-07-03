@@ -16,7 +16,7 @@
                 <a href=""  ng-hide="ilu.showDetail" ng-click="showMe(ilu)"><img class="plus" src="images/cerrar.svg"></a>  
                 <a href=""  ng-show="ilu.showDetail" ng-click="closeMobileDetail()"><img class="plus" src="images/cerrar.svg"></a>  
               </div>  
-              <div class="col-xs-12 detalle-ilustracion" ng-show="ilu.showDetail">
+              <div class="col-xs-12 detalle-ilustracion mobile" ng-cloak ng-show="ilu.showDetail">
               
                           <div class="row">
                               <div class="col-xs-12">
@@ -35,7 +35,7 @@
                                       </div>
                                   </div>
                                    <div class="progress">
-                                        <div class="progress-bar bg-color-{{currentIlustracion.detalleCompromiso.slug}}"
+                                        <div class="progress-bar bg-color"
                                            role="progressbar"
                                            ng-style="{ 'width': ilu.detalleCompromiso.porcentaje_completado + '%' }">
                                            <span class="progressbar-w" ng-hide="ilu.detalleCompromiso.porcentaje_completado<50">{{ilu.detalleCompromiso.porcentaje_completado}}% </span>
@@ -49,7 +49,7 @@
                           </div>
                           <div class="row">
                               <div class="col-xs-12">
-                                <a ng-href="{{ilu.detalleCompromiso.url_interna}}" target="_blank" ng-hide="ilu.detalleCompromiso.url_interna === undefined" class="btn full btn-xs upper bg-color-{{ilu.detalleCompromiso.slug}}  center-block" >Ver mas sobre el compromiso &#187;  </a>
+                                <a ng-href="{{ilu.detalleCompromiso.url_interna}}" target="_blank" ng-hide="ilu.detalleCompromiso.url_interna === undefined" class="btn full btn-xs upper bg-color  center-block" >Ver mas sobre el compromiso &#187;  </a>
                              </div>
                           </div>
 
@@ -79,7 +79,7 @@
                         </div>
                     </div>
                      <div class="progress">
-                          <div class="progress-bar bg-color-{{currentIlustracion.detalleCompromiso.slug}}"
+                          <div class="progress-bar bg-color"
                              role="progressbar"
                              ng-style="{ 'width': currentIlustracion.detalleCompromiso.porcentaje_completado + '%' }">
                              <span class="progressbar-w" ng-hide="currentIlustracion.detalleCompromiso.porcentaje_completado<50">{{currentIlustracion.detalleCompromiso.porcentaje_completado}}% </span>
@@ -93,7 +93,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                  <a ng-href="{{currentIlustracion.detalleCompromiso.url_interna}}" target="_blank" ng-hide="currentIlustracion.detalleCompromiso.url_interna === undefined" class="btn full btn-xs upper bg-color-{{currentIlustracion.detalleCompromiso.slug}}  center-block" >Ver mas sobre el compromiso &#187;  </a>
+                  <a ng-href="{{currentIlustracion.detalleCompromiso.url_interna}}" target="_blank" ng-hide="currentIlustracion.detalleCompromiso.url_interna === undefined" class="btn full btn-xs upper bg-color center-block" >Ver mas sobre el compromiso &#187;  </a>
                </div>
             </div>
 
