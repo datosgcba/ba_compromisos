@@ -1237,7 +1237,7 @@ text-align: right;
 .inner {
     padding:3em;
     z-index: 100000000;
-    background: #ffffffcf;
+    background: rgba(255, 255, 255, 0.8117647058823529);
     color: black;
     width: 532px;
     border: 3px solid #00B9A7;
