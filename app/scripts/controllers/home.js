@@ -537,7 +537,8 @@ angular.module('compromisosSiteApp')
     $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
     $container = $('#isotopeContainer');
     $container.isotope({
-        itemSelector: '.item'
+        itemSelector: '.item',
+        masonry: { columnWidth: $container.width() / 8 }
       });
 
       $output = $('#output');

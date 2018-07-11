@@ -673,6 +673,8 @@ div#category_chart {
   }
   .item{
     /*left: auto !important;*/
+    width: 120px;
+    height: 120px;
   }
   #selectsContainer{
     display: none;
@@ -906,8 +908,8 @@ hr.lineShadow {
 }
 
 .item{
-  height: 150px !important;
-  width:150px !important;
+  height: 120px ;
+  width: 120px ;
 }
 h4{
   font-size: 12.5px;
@@ -1011,7 +1013,7 @@ hr {
 
 
 .item {
-  width: 150px;
+  width: 120px;
   height: auto;
   min-height: 150px;
   max-height: 150px;
