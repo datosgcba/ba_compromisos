@@ -672,7 +672,7 @@ div#category_chart {
     justify-content: center;
   }
   .item{
-    left: auto !important;
+    /*left: auto !important;*/
   }
   #selectsContainer{
     display: none;
@@ -1329,12 +1329,16 @@ text-align: right;
     padding-bottom: 8px;
 }
 
-.detalle-ilustracion .progress-bar.bg-color,.detalle-ilustracion .bg-color {
+.detalle-ilustracion .progress-bar.bg-color {
     background-color: #00B9A7;
 }
 .detalle-ilustracion.mobile{
   transition: all 0.5s linear;
 }
+.detalle-ilustracion .bg-color {
+    background-color: #5b5b5b;
+}
+
 
 
 .ng-hide {
@@ -1344,3 +1348,5 @@ text-align: right;
   top:-200px;
   left: 200px;
 }
+
+

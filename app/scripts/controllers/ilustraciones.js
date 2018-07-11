@@ -8,8 +8,8 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('IlustracionMovilidadCtrl', function (UrlService,$rootScope, $scope, $http,GetSVGNameService, SlugColorService,LoadSVGService,$sce,$templateRequest,$compile) {
-
+  .controller('IlustracionesCtrl', function (UrlService,$rootScope, $routeParams, $scope, $http,GetSVGNameService, SlugColorService,LoadSVGService,$sce,$templateRequest,$compile) {
+    $scope.vizName = $routeParams.name;
   	var homeUrl = UrlService.getUrlByPage('home');
     var ilustracionUrl = UrlService.getUrlByPage('ilustraciones');
     var pymChild = new pym.Child({ polling: 1000 });
@@ -48,7 +48,7 @@ angular.module('compromisosSiteApp')
       $scope.compromisos = dataCompromisos;
 
       $http.jsonp(ilustracionUrl).success(function(dataIlustracion){
-        dataIlustracion =  dataIlustracion.filter(function(d){ return d.viz === "movilidad"; });
+        dataIlustracion =  dataIlustracion.filter(function(d){ return d.viz === $scope.vizName; });
         dataIlustracion.map(function(ilu){
           ilu.detalleCompromiso = _.find($scope.compromisos, function(d){ return parseInt(d.numero) === parseInt(ilu.compromiso); });  
         })

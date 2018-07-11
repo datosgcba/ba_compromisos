@@ -535,7 +535,8 @@ angular.module('compromisosSiteApp')
     var $container, $output, $selects, $checkboxes, $years, $percent;
 
     $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
-      $container = $('#isotopeContainer').isotope({
+    $container = $('#isotopeContainer');
+    $container.isotope({
         itemSelector: '.item'
       });
 
