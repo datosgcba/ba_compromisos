@@ -615,6 +615,15 @@ div#category_chart {
 
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 992px) {
+  .item {
+    width: 150px;
+    height: auto;
+    min-height: 150px;
+    max-height: 150px;
+    margin: 3px;
+    float: left;
+    text-align: center;
+  }
   .hidden-desktop{
     display: none;
   }
@@ -671,11 +680,15 @@ div#category_chart {
     display: flex;
     justify-content: center;
   }
-  .item{
-    /*left: auto !important;*/
-    width: 120px;
-    height: 120px;
-  }
+  .item {
+  width: 100px;
+  height: auto;
+  min-height: 150px;
+  max-height: 150px;
+  margin: 3px;
+  float: left;
+  text-align: center;
+}
   #selectsContainer{
     display: none;
   }
@@ -907,9 +920,14 @@ hr.lineShadow {
   display: none;
 }
 
-.item{
-  height: 120px ;
-  width: 120px ;
+.item {
+  width: 100px;
+  height: auto;
+  min-height: 150px;
+  max-height: 150px;
+  margin: 3px;
+  float: left;
+  text-align: center;
 }
 h4{
   font-size: 12.5px;
@@ -1012,15 +1030,7 @@ hr {
 }
 
 
-.item {
-  width: 120px;
-  height: auto;
-  min-height: 150px;
-  max-height: 150px;
-  margin: 3px;
-  float: left;
-  text-align: center;
-}
+
 ul {
   margin-left: 0 !important;
 }
@@ -1042,7 +1052,7 @@ border-radius: 35px;
 #isotopeContainer {
 
     margin: auto 0;
-    width: 95%;
+    width: 100%;
 
 }
 

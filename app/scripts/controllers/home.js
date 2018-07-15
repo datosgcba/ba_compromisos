@@ -267,16 +267,30 @@ angular.module('compromisosSiteApp')
         .style('top', pos + 'px');
 
 
+      setTimeout(function(){
+        var containerHeight = $(".container-fluid").height();
+        var detailH = parseInt($("#compromiso-detail").height());
+        var filler = pos+detailH - containerHeight;
+        if (filler > 0) {
+          d3.select('#filler').style('height', filler + 'px');
+        } else {
+          d3.select('#filler').style('height', 0 + 'px');
+        }
 
-      var someElement = angular.element(document.getElementById('compromiso-detail'));
-      var filler = pos + popupH - docH + fillerH;
-      if (filler > 0) {
-        d3.select('#filler').style('height', filler + 'px');
-      } else {
-        d3.select('#filler').style('height', 0 + 'px');
-      }
+
+        $scope.pymChild.sendHeight();
+      },500)
+        var containerHeight = $(".container-fluid").height();
+        var detailH = parseInt($("#compromiso-detail").height());
+        var filler = (pos - containerHeight) *2 ;
+        if (filler > 0) {
+          d3.select('#filler').style('height', filler + 'px');
+        } else {
+          d3.select('#filler').style('height', 0 + 'px');
+        }
 
 
+        $scope.pymChild.sendHeight();
 
 
     }
@@ -469,7 +483,8 @@ angular.module('compromisosSiteApp')
           }
           var buttonResult = filterValue ? $this.is(filterValue) : true;
           return searchResult && buttonResult;
-        }
+        },
+        masonry: { columnWidth: $container.width() / 10 }
       });
       //Filter Map.
       var filtered = $container.isotope('getFilteredItemElements')
@@ -538,7 +553,7 @@ angular.module('compromisosSiteApp')
     $container = $('#isotopeContainer');
     $container.isotope({
         itemSelector: '.item',
-        masonry: { columnWidth: $container.width() / 8 }
+        masonry: { columnWidth: $container.width() / 10 }
       });
 
       $output = $('#output');
