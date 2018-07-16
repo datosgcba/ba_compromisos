@@ -469,6 +469,15 @@ div#category_chart {
   margin: 10px 0px;
 }
 
+.item {
+  width: 100px;
+  height: auto;
+  min-height: 150px;
+  max-height: 150px;
+  margin: 3px;
+  float: left;
+  text-align: center;
+}
 
 .c3 svg {
   font-family: "CHANEWEI", Helvetica, Arial, sans-serif;
@@ -614,13 +623,13 @@ div#category_chart {
 }
 
 /* Medium Devices, Desktops */
-@media only screen and (max-width : 992px) {
+@media only screen and (min-width : 992px) {
   .item {
-    width: 150px;
+    width: 130px;
     height: auto;
-    min-height: 150px;
-    max-height: 150px;
-    margin: 3px;
+    min-height: 130px;
+    max-height: 130px;
+    margin: 6px;
     float: left;
     text-align: center;
   }
@@ -920,15 +929,7 @@ hr.lineShadow {
   display: none;
 }
 
-.item {
-  width: 100px;
-  height: auto;
-  min-height: 150px;
-  max-height: 150px;
-  margin: 3px;
-  float: left;
-  text-align: center;
-}
+
 h4{
   font-size: 12.5px;
 }
@@ -1347,7 +1348,7 @@ text-align: right;
 .detalle-ilustracion.mobile{
   transition: all 0.5s linear;
 }
-.detalle-ilustracion .bg-color {
+.detalle-ilustracion .bg-color, .bg-color {
     background-color: #5b5b5b;
 }
 
