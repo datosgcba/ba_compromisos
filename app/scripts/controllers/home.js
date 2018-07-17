@@ -261,7 +261,7 @@ angular.module('compromisosSiteApp')
       var finalTop = eTop - $(window).scrollTop(); //position of the ele w.r.t window
       var mouseOffset = Math.floor((localEvent.clientY - eTop) / menu_chartRowSize) * menu_chartRowSize;
 
-      var pos = mouseOffset + eTop; // + 150;
+       var pos = mouseOffset + eTop + 150;
       d3.select('#compromiso-detail')
         .transition()
         .style('top', pos + 'px');
