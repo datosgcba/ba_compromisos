@@ -227,10 +227,8 @@ angular
 
         if (filler > 0) {
           filler += 30;
-          console.log("-nuevo filler!", filler);
           d3.select("#filler").style("height", filler + "px");
         } else {
-          console.log("-quito filler!", filler);
           d3.select("#filler").style("height", 0 + "px");
         }
 
