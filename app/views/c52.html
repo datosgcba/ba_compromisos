@@ -19,17 +19,39 @@
             descripcion="data.detalle_1_descripcion"
             ></smart-content>
         </div>
+        <div ng-if="data.detalle_2" class="col-md-6 text-center">
+          <smart-content
+            url="data.detalle_2"
+            source="data.detalle_2"
+            titulo="data.detalle_2_nombre"
+            simple-load-callback="dataLoaded"
+            nota="data.detalle_2_nota"
+            fuente="data.detalle_2_fuente"
+            descripcion="data.detalle_2_descripcion"
+          ></smart-content>
+        </div>
 </div>
 <div class="row">
-  <div ng-if="data.detalle_2" class="col-md-6 text-center">
+  <div ng-if="data.detalle_3" class="col-md-6 text-center">
     <smart-content
-      url="data.detalle_2"
-      source="data.detalle_2"
-      titulo="data.detalle_2_nombre"
+      url="data.detalle_3"
+      source="data.detalle_3"
       simple-load-callback="dataLoaded"
-      nota="data.detalle_2_nota"
-      fuente="data.detalle_2_fuente"
-      descripcion="data.detalle_2_descripcion"
+      titulo="data.detalle_3_nombre"
+      nota="data.detalle_3_nota"
+      fuente="data.detalle_3_fuente"
+      descripcion="data.detalle_3_descripcion"
+    ></smart-content>
+  </div>
+  <div ng-if="data.detalle_4" class="col-md-6 text-center">
+    <smart-content
+      url="data.detalle_4"
+      source="data.detalle_4"
+      simple-load-callback="dataLoaded"
+      titulo="data.detalle_4_nombre"
+      nota="data.detalle_4_nota"
+      fuente="data.detalle_4_fuente"
+      descripcion="data.detalle_4_descripcion"
     ></smart-content>
   </div>
 </div>
