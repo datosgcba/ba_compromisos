@@ -64,8 +64,8 @@ angular.module('compromisosSiteApp')
         },
         axis: {
           x: {
-   
-              show:true
+              type: 'category',
+              show:true,
           },
           y: {
               show:true
@@ -81,108 +81,62 @@ angular.module('compromisosSiteApp')
 
     };
 
+
     //detalle 2
     $scope.prepareData2 = function(data){
-      $scope.labels = _.keys(data[0]);
-      _.remove($scope.labels, function (d) {
-        return _.indexOf(['anio','CV'], d) !== -1;
-      });
-      $scope.origLabels = angular.copy($scope.labels);
-      $scope.colors = {};
-      $scope.labels.forEach(function(d){
-        $scope.colors[d] = "#e6e6e6";
-      });
-      $scope.selectedProv = $scope.labels[0];
+      console.log(data);
+
       return data;
     };
 
-    $scope.selectedColorPalette = function(){
-      var colors = angular.copy($scope.colors);
-      if($scope.selectedProv){
-        colors[$scope.selectedProv] = $scope.currentCompromise.color;
-      }
-      return colors;
-    };
 
-    $scope.completeConfig2 = function(config){
-      $scope.selectOptions = $scope.origLabels;
-      $scope.dataConfig = {
-        keys: {
-              value: $scope.selectOptions,
-              x: 'anio'
+     $scope.completeConfig2 = function(config){
+      return angular.merge(config,{
+        data:{
+          types: {
+            proyectado: 'line',
+            avance_real: 'line',
           },
-          type: 'spline',
-          colors: $scope.selectedColorPalette()
-        };
-      return angular.merge(config,{ 
-        data:$scope.dataConfig,
+          keys: {
+              value: ['proyectado','avance_real'],
+              x:'anio'
+          },
+          names: {
+            avance_real: 'Avance',
+            proyectado: 'Proyectado',
+          },
+          colors: {'proyectado':$scope.currentCompromise.secondColor,
+                    'avance_real': $scope.currentCompromise.color}
+        },
         size: {
             height: 300,
         },
-        point: {
-            show: false
-        },
         padding: {
             top: 0,
-            right: 40,
+            right: 20,
             bottom: 10,
-            left: 30,
+            left: 40,
         },
-        axis: {
+         axis: {
           x: {
-              show:true
+              type: 'category',
+              show:true,
+
           },
           y: {
-              show:true
+              show:true,
+              min: 0,
+              padding: 5,
+
           }
         },
         legend: {
-            show: false
+            show: true
         }
       });
     };
 
-    $scope.chartReady2 = function(chart,id){
-      $scope.classesLabels = {};
-      $scope.labels.forEach(function(e,i){
-        $scope.classesLabels[$scope.origLabels[i]] = e.replace(/[\s?!@#$%^&*()_=+,.<>'":;\[\]\/|~`{}\\]/g, '-');
-      });
+  	    $scope.chartReady2 = function(){
 
-      var slug = $scope.classesLabels[$scope.selectedProv];
-      $('.c3-lines path').css('stroke-width','1px');
-      $('.c3-lines-'+slug+' path').css('stroke-width','5px');
-
-      chart2 = chart;
-
-      $( "<div id='selector-container'></div>" ).insertAfter( "#"+id );
-      var templateUrl = $sce.getTrustedResourceUrl('views/includes/selectorProvincias.html');
-      $templateRequest(templateUrl).then(function(template) {
-        $compile($('#selector-container').html(template).contents())($scope);
-      }, function() {
-        // An error has occurred
-      });
     };
-
-    $scope.changeOption = function(){
-      chart2.load(
-        angular.merge($scope.dataConfig,{
-          colors: $scope.selectedColorPalette()
-        })
-      );
-      var slug = $scope.classesLabels[$scope.selectedProv];
-      $('.c3-lines path').css('stroke-width','1px');
-      $('.c3-lines-'+slug+' path').css('stroke-width','5px');
-    };
-
-    var id;
-    $(window).resize(function() {
-        clearTimeout(id);
-        id = setTimeout(function(){
-          // if(chart1){
-          //   createCustomChart1();
-          // }          
-        }, 500);
-    });
-
-  	
   });

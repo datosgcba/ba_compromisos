@@ -38,30 +38,24 @@ angular.module('compromisosSiteApp')
       return data;
     };
 
-    $scope.completeConfig1 = function(config){
+
+     $scope.completeConfig1 = function(config){
       return angular.merge(config,{
         data:{
           types: {
-            'Meta G2': 'area',
-            'Desempeno G2'  : 'line',
-            'Meta G3' : 'area',
-            'Desempeno G3': 'line'
+            proyectado: 'line',
+            avance_real: 'line',
           },
           keys: {
-              value: ['Meta G2','Desempeno G2', 'Meta G3','Desempeno G3'],
-              x: 'anio'
+              value: ['proyectado','avance_real'],
+              x:'anio'
           },
-          names:{
-            'Desempeno G2': 'Desempeño G2',
-            'Desempeno G3': 'Desempeño G3',
+          names: {
+            avance_real: 'Avance',
+            proyectado: 'Proyectado',
           },
-          order: 'asc',
-          colors: {
-                'Meta G2': $scope.currentCompromise.secondColor,
-                'Desempeno G2'  : '#3cb8b0',
-                'Meta G3' : $scope.currentCompromise.secondColor,
-                'Desempeno G3': '#f98f41',
-              }
+          colors: {'proyectado':$scope.currentCompromise.secondColor,
+                    'avance_real': $scope.currentCompromise.color}
         },
         size: {
             height: 300,
@@ -69,41 +63,27 @@ angular.module('compromisosSiteApp')
         padding: {
             top: 0,
             right: 20,
-            bottom: 20,
+            bottom: 10,
             left: 40,
         },
-        axis: {
+         axis: {
           x: {
-              type: 'indexed',
+              type: 'category',
               show:true,
-              padding: {
-                left: 0.1,
-                right: 0.1,
-              }
+
           },
           y: {
-            show:true,
-            min: 0,
-            tick:{
-                format:function(y){
-                  return y+'%';
-                }
-            }
+              show:true,
+              min: 0,
+              padding: 5,
 
           }
         },
         legend: {
-            show: true,
-            item: {
-                      tile: {
-                          width: 5,
-                          height: 10
-                      },
-          },
+            show: true
         }
       });
-    };
-
+    };  
     $scope.chartReady1 = function(chart){
 
     };

@@ -74,26 +74,21 @@ angular.module('compromisosSiteApp')
     };
 
 
-    $scope.prepareData2 = function(data){
-      return data;
-    };
-
     $scope.completeConfig2 = function(config){
       return angular.merge(config,{
         data:{
-          xFormat: '%Y',
-          types: {
-            cantidad_consultas : 'line'
+          xFormat: '%Y-%m',
+          type: 'bar',
+          keys: {
+              value: ['cantidad','acumulado'],
+              x: 'fecha'
           },
           names: {
-            cantidad_consultas: 'Cantidad de consultas',
+            cantidad: 'Nuevos',
+            acumulado: 'Acumulado '
           },
-          keys: {
-              value: ['cantidad_consultas'],
-              x: 'anio'
-          },
-          colors: {
-                'cantidad_consultas': $scope.currentCompromise.color}
+          colors: {'acumulado':$scope.currentCompromise.secondColor,
+                    'cantidad': $scope.currentCompromise.color}
         },
         size: {
             height: 300,
@@ -102,24 +97,21 @@ angular.module('compromisosSiteApp')
             top: 0,
             right: 20,
             bottom: 10,
-            left: 40,
+            left: 80,
         },
         axis: {
-          x: {
+           x: {
               type: 'timeseries',
               show:true,
               tick: {
-                  format: '%Y'
+                  fit: true,
+                  format: $rootScope.d3Locale_ES.timeFormat("%b-%y"),
               }
           },
           y: {
-            show:true,
-            min: 500,
-            count:4,
-            tick: {
-                  min: 0,
-                  fit: true
-            }
+              show:true,
+              min: 0,
+              padding: {top:0, bottom:0}
           }
         },
         legend: {
@@ -127,6 +119,11 @@ angular.module('compromisosSiteApp')
         }
       });
     };
+    $scope.prepareData2 = function(data){
+      return data;
+    };
+
+
 
     $scope.chartReady2 = function(chart){
 

@@ -45,22 +45,16 @@ angular.module('compromisosSiteApp')
  $scope.completeConfig = function(config){
       return angular.merge(config,{
         data:{
-           xFormat: '%Y-%m',
-           types: {
-            meta: 'area',
-            nuevas_rampas_construidas: 'line',
-          },
+          type: 'bar',
           keys: {
-              value: ['nuevas_rampas_construidas','meta'],
-              x:'fecha'
+              value: ['avance'],
+              x:'comuna'
           },
           names: {
-            meta: 'Meta',
-            nuevas_rampas_construidas: 'Nuevas rampas construídas'
+            avance: 'Avance',
           },
-          colors: {
-            'nuevas_rampas_construidas':$scope.currentCompromise.color,
-            'meta':$scope.currentCompromise.secondColor}
+          colors: 
+          {'avance':$scope.currentCompromise.color}
         },
         size: {
             height: 300,
@@ -69,28 +63,17 @@ angular.module('compromisosSiteApp')
             top: 0,
             right: 20,
             bottom: 10,
-            left: 80,
+            left: 40,
         },
         axis: {
-           x: {
-              type: 'timeseries',
-              show:true,
-              tick: {
-                  fit: true,
-                  format: $rootScope.d3Locale_ES.timeFormat("%b-%y"),
-                  count:5
-              }
+          x: {
+              type: 'category',
+              show:true
           },
           y: {
               show:true,
-              min: 0,
-              max:100,
-              padding: 5,
-              tick:{
-                format:function(y){
-                  return y+'%';
-                }
-              }
+              min:0,
+              max:100
           }
         },
         legend: {
@@ -98,6 +81,7 @@ angular.module('compromisosSiteApp')
         }
       });
     };
+
 
 
     $scope.chartReady = function(chart){

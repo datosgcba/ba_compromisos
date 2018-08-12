@@ -191,7 +191,7 @@ angular.module('compromisosSiteApp')
           y: {
               show:true,
               min: 0,
-              max:100,
+              max:50,
               padding: 5,
               tick:{
                 format:function(y){

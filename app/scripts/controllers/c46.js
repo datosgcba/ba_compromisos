@@ -43,27 +43,23 @@ angular.module('compromisosSiteApp')
       return data;
     };
 
-    $scope.completeConfig = function(config){
-
+     $scope.completeConfig1 = function(config){
       return angular.merge(config,{
         data:{
           types: {
             meta: 'area',
-            avance : 'line'
+            nuevos: 'line',
           },
           keys: {
-              value: ['meta', 'avance'],
-              x: 'trimestre'
+              value: ['meta','nuevos'],
+              x:'trimestre'
           },
           names: {
-            avance: 'Avance',
-            meta: 'Meta'
+            nuevos: 'Nuevos',
+            meta: 'Meta',
           },
-          colors: {
-                //'meta':$scope.currentCompromise.secondColor,
-                'meta':'#ccc',
-                'avance': $scope.currentCompromise.color
-          }
+          colors: {'meta':$scope.currentCompromise.secondColor,
+                    'nuevos': $scope.currentCompromise.color}
         },
         size: {
             height: 300,
@@ -74,15 +70,17 @@ angular.module('compromisosSiteApp')
             bottom: 10,
             left: 40,
         },
-        axis: {
+         axis: {
           x: {
               type: 'category',
               show:true,
 
           },
           y: {
-            show:true,
-            max:10000
+              show:true,
+              min: 0,
+              padding: 5,
+
           }
         },
         legend: {
@@ -92,6 +90,46 @@ angular.module('compromisosSiteApp')
     };
 
     $scope.chartReady = function(chart){
+
+    };
+
+  $scope.prepareData2 = function(data){
+      return data;
+    };
+
+       //detalle 2
+    $scope.dataLoaded2 = function(id,data){
+
+      $scope.bubbleId = id;
+      $scope.bubbleConfig = {
+        color: $scope.currentCompromise.color
+      };
+
+      var total = d3.sum(data,function(d){return parseInt(d.cantidad)});
+
+      $scope.bubbleData = {
+                    name:"total",
+                    children:[]
+                  };
+
+
+      _.each(data,function(d){
+        $scope.bubbleData.children.push({
+          name: d.tipo,
+          data: Math.round((parseInt(d.cantidad)*100)/total) + '%',
+          value: parseInt(d.cantidad),
+          children : []
+        });
+      });
+
+      var templateUrl = $sce.getTrustedResourceUrl('views/includes/bubble.html');
+      $templateRequest(templateUrl).then(function(template) {
+          $compile($('#'+id).html(template).contents())($scope);
+      });
+
+    };
+
+    $scope.chartReady2 = function(chart){
 
     };
 

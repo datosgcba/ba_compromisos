@@ -43,27 +43,23 @@ angular.module('compromisosSiteApp')
       return data;
     };
 
-    $scope.completeConfig = function(config){
-
+  $scope.completeConfig = function(config){
       return angular.merge(config,{
         data:{
           types: {
             meta: 'area',
-            avance : 'line'
+            avance: 'line',
           },
           keys: {
-              value: ['meta', 'avance'],
-              x: 'trimestre'
+              value: ['meta','avance'],
+              x:'trimestre'
           },
           names: {
-            avance: 'Obra Hidráulica',
-            meta: 'Meta'
+            avance: 'Avance',
+            meta: 'Meta',
           },
-          colors: {
-                //'meta':$scope.currentCompromise.secondColor,
-                'meta':'#ccc',
-                'avance': $scope.currentCompromise.color
-          }
+          colors: {'meta':$scope.currentCompromise.secondColor,
+                    'avance': $scope.currentCompromise.color}
         },
         size: {
             height: 300,
@@ -74,15 +70,17 @@ angular.module('compromisosSiteApp')
             bottom: 10,
             left: 40,
         },
-        axis: {
+         axis: {
           x: {
               type: 'category',
               show:true,
 
           },
           y: {
-            show:true,
-            max:23800
+              show:true,
+              min: 0,
+              padding: 5,
+
           }
         },
         legend: {

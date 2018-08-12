@@ -103,21 +103,17 @@ angular.module('compromisosSiteApp')
     $scope.completeConfig2 = function(config){
       return angular.merge(config,{
         data:{
-          type: 'bar',
+           xFormat: '%Y-%m',
+           types: {
+            stock: 'line',
+          },
           keys: {
-              value: ['pendientes','en_proceso', 'resueltos'],
-              x: 'comuna'
+              value: ['stock'],
+              x:'fecha'
           },
           names: {
-            pendientes: 'Pendientes',
-            en_proceso:'En Proceso',
-            resueltos: 'Resueltos',
+            stock: 'Stock',
           },
-          colors: {
-            pendientes: $scope.currentCompromise.secondColor,
-            en_proceso: $scope.currentCompromise.secondColor,
-            resueltos: $scope.currentCompromise.color
-          }
         },
         size: {
             height: 300,
@@ -130,14 +126,19 @@ angular.module('compromisosSiteApp')
         },
         axis: {
            x: {
-              type: 'category',
-              show:false,
-
+              type: 'timeseries',
+              show:true,
+              tick: {
+                  fit: true,
+                  format: $rootScope.d3Locale_ES.timeFormat("%b-%y"),
+                  count:5
+              }
           },
           y: {
               show:true,
               min: 0,
-              padding: {top:0, bottom:0}
+              padding: 5,
+
           }
         },
         legend: {

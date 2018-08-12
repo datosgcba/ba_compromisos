@@ -52,12 +52,11 @@ angular.module('compromisosSiteApp')
             acumulado: 'line',
           },
           keys: {
-              value: ['meta','nuevos_usuarios','acumulado'],
+              value: ['meta','acumulado'],
               x:'fecha'
           },
           names: {
             meta: 'Meta',
-            nuevos_usuarios: 'Nuevos Usuarios',
             jovenes_capacitados: 'Jovenes Capacitados',
             acumulado: 'Acumulado',
 
@@ -100,6 +99,68 @@ angular.module('compromisosSiteApp')
 
 
     $scope.chartReady = function(chart){
+
+    };
+     $scope.prepareData2 = function(data){
+      return data;
+    };
+ $scope.completeConfig2 = function(config){
+      return angular.merge(config,{
+        data:{
+           xFormat: '%Y-%m',
+           types: {
+            meta: 'area',
+            nuevos_usuarios: 'line',
+            acumulado: 'line',
+          },
+          keys: {
+              value: ['meta','nuevos_usuarios'],
+              x:'fecha'
+          },
+          names: {
+            meta: 'Meta',
+            nuevos_usuarios: 'Nuevos Usuarios',
+            jovenes_capacitados: 'Jovenes Capacitados'
+
+          },
+          colors: {
+            'meta':$scope.currentCompromise.secondColor,
+            'nuevos_usuarios':$scope.currentCompromise.color}
+        },
+        size: {
+            height: 300,
+        },
+        padding: {
+            top: 0,
+            right: 20,
+            bottom: 10,
+            left: 80,
+        },
+        axis: {
+           x: {
+              type: 'timeseries',
+              show:true,
+              tick: {
+                  fit: true,
+                  format: $rootScope.d3Locale_ES.timeFormat("%b-%y"),
+                  count:5
+              }
+          },
+          y: {
+              show:true,
+              min: 0,
+              padding: 5,
+
+          }
+        },
+        legend: {
+            show: true
+        }
+      });
+    };
+
+
+    $scope.chartReady2 = function(chart){
 
     };
 
