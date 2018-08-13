@@ -6,12 +6,12 @@
     "bootstrap": "^3.2.0",
     "angular-route": "1.5.7",
     "angular-sanitize": "1.5.7",
-    "BAstrap":
-      "https://github.com/gcba/BAstrap.git#aee93cf71a4bbc6c731eed606f6cf620703f2579",
+    "BAstrap": "https://github.com/gcba/BAstrap.git#aee93cf71a4bbc6c731eed606f6cf620703f2579",
     "pym.js": "^0.4.5",
     "c3": "^0.4.11",
     "lodash": "^4.13.1",
-    "angular-scroll": "~1.0.0"
+    "angular-scroll": "~1.0.0",
+    "proj4": "^2.4.4"
   },
   "appPath": "app",
   "moduleName": "compromisosSiteApp",

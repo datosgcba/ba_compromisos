@@ -30,6 +30,7 @@ module.exports = function(config) {
       'bower_components/c3/c3.js',
       'bower_components/lodash/lodash.js',
       'bower_components/angular-scroll/angular-scroll.js',
+      'bower_components/proj4/dist/proj4.js',
       // endbower
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
