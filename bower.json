@@ -31,6 +31,17 @@
       "main": [
         "bastrap.css"
       ]
+    },
+    "isotope-layout": {
+      "main": [
+        "dist/isotope.pkgd.min.js"
+      ]
+    },
+    "outlayer": {
+      "main": [
+        "item.js",
+        "outlayer.js"
+      ]
     }
   }
 }

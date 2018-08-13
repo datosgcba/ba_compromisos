@@ -28,6 +28,7 @@ angular
 
     $scope.data = [];
     $scope.loading = true;
+    $scope.loadingMapa = false;
     $scope.charts = {};
     $scope.puntos = [];
     $scope.selectedGroup = "home";
@@ -255,58 +256,44 @@ angular
     };
 
     function showDetail(c, localEvent, mouseEvent) {
-      var menu_chartRowSize = 150;
+      var menu_chartRowSize = 156;
       $scope.currentCompromise = c;
 
-      var popupH = parseInt(
-        d3
-          .select("#compromiso-detail")
-          .style("height")
-          .replace("px", "")
-      );
-      var fillerH = parseInt(
-        d3
-          .select("#filler")
-          .style("height")
-          .replace("px", "")
-      );
+      d3.select("#filler").style("height", 0 + "px");
 
       var docH = parseInt($(window).height());
       var yOffset = parseInt(localEvent.clientY);
-      var eTop = $("#form-ui").offset().top; //get the offset top of the element
+      var eTop = $("#form-ui").offset().top + 41; //get the offset top of the element
       var finalTop = eTop - $(window).scrollTop(); //position of the ele w.r.t window
       var mouseOffset =
-        Math.floor((localEvent.clientY - eTop) / menu_chartRowSize) *
-        menu_chartRowSize;
+        Math.floor((yOffset - eTop) / menu_chartRowSize) * menu_chartRowSize;
 
-      var pos = mouseOffset + eTop + 150;
+      var pos = mouseOffset + eTop + menu_chartRowSize;
+
+      //Set tooltip position
       d3
         .select("#compromiso-detail")
         .transition()
         .style("top", pos + "px");
 
-      setTimeout(function() {
-        var containerHeight = $(".container-fluid").height();
-        var detailH = parseInt($("#compromiso-detail").height());
-        var filler = pos + detailH - containerHeight;
+      $timeout(function() {
+        var docH = parseInt($(window).height());
+        var popupH = $("#compromiso-detail").height();
+
+        if (isNaN(popupH)) {
+          popupH = 0;
+        }
+        var filler = pos + popupH - docH;
+
         if (filler > 0) {
+          filler += 30;
           d3.select("#filler").style("height", filler + "px");
         } else {
           d3.select("#filler").style("height", 0 + "px");
         }
 
         $scope.pymChild.sendHeight();
-      }, 500);
-      var containerHeight = $(".container-fluid").height();
-      var detailH = parseInt($("#compromiso-detail").height());
-      var filler = (pos - containerHeight) * 2;
-      if (filler > 0) {
-        d3.select("#filler").style("height", filler + "px");
-      } else {
-        d3.select("#filler").style("height", 0 + "px");
-      }
-
-      $scope.pymChild.sendHeight();
+      }, 1000);
     }
 
     $scope.redirectParent = function(url) {
@@ -453,7 +440,7 @@ angular
       }
 
       //Filter Grid.
-      $container.isotope({
+      $isotope.arrange({
         filter: function() {
           var $this = $(this);
           var searchResult = true;
@@ -467,10 +454,11 @@ angular
           var buttonResult = filterValue ? $this.is(filterValue) : true;
           return searchResult && buttonResult;
         },
-        masonry: { columnWidth: $container.width() / 10 }
+        masonry: { columnWidth: columnWidth }
       });
+
       //Filter Map.
-      var filtered = $container.isotope("getFilteredItemElements");
+      var filtered = $isotope.getFilteredItemElements();
       var currentCompromisos = filtered.map(function(e) {
         return parseInt(e.attributes.compromiso.value);
       });
@@ -534,14 +522,20 @@ angular
       refreshGrid();
       $scope.closeDetail();
     };
-    var $container, $output, $selects, $checkboxes, $years, $percent;
+    var container, $isotope, $output, $selects, $checkboxes, $years, $percent;
+
+    var columnWidth = 150;
 
     $scope.$on("ngRepeatFinished", function(ngRepeatFinishedEvent) {
-      $container = $("#isotopeContainer");
-      $container.isotope({
+      container = document.querySelector("#isotopeContainer");
+
+      $isotope = new Isotope(container, {
         itemSelector: ".item",
-        masonry: { columnWidth: $container.width() / 10 }
+        masonry: { columnWidth: columnWidth },
+        layoutMode: "fitRows"
       });
+
+      $isotope.on("arrangeComplete", function(filteredItems) {});
 
       $output = $("#output");
       // filter with selects and checkboxes
@@ -694,74 +688,90 @@ angular
 
       removeLayers: function() {},
       cargarLayers: function() {
-        $scope.loading = true;
+        $scope.loadingMapa = true;
         $scope.markers = [];
         var iconSize = new OpenLayers.Size(7, 8);
         var iconUrl = "images/punto.png";
         $scope.puntos = [];
 
         $http.jsonp(obrasURL).success(function(csv) {
-          console.log("data");
-
           $scope.usigCompromiso = csv;
-          $scope.usigCompromiso.map(function(elem) {
-            var destProj = new proj4.Proj("EPSG:221951");
-            var sourceProj = new proj4.Proj("EPSG:4326");
-            elem.proj = proj4(sourceProj, destProj, [
-              elem.longitude,
-              elem.latitude
-            ]);
+          $scope.usigCompromiso
+            .filter(function(elem) {
+              if (
+                isNaN(elem.longitude) ||
+                isNaN(elem.latitude) ||
+                parseFloat(elem.longitude) < -90 ||
+                parseFloat(elem.latitude) < -60
+              ) {
+                console.error("Se ignora por coordenadas inválidas -> ", elem);
+                return false;
+              }
+              return true;
+            })
+            .map(function(elem) {
+              var destProj = new proj4.Proj("EPSG:221951");
+              var sourceProj = new proj4.Proj("EPSG:4326");
+              elem.proj = proj4(sourceProj, destProj, [
+                parseFloat(elem.longitude),
+                parseFloat(elem.latitude)
+              ]);
 
-            var lonLat = new OpenLayers.LonLat(elem.proj[0], elem.proj[1]);
-            var point = new OpenLayers.Geometry.Point(
-              elem.proj[0],
-              elem.proj[1]
-            );
+              var lonLat = new OpenLayers.LonLat(elem.proj[0], elem.proj[1]);
+              var point = new OpenLayers.Geometry.Point(
+                elem.proj[0],
+                elem.proj[1]
+              );
 
-            var currentMarker = new OpenLayers.Feature.Vector(point, null, {
-              externalGraphic: "images/punto.png",
-              graphicWidth: 8,
-              graphicHeight: 8,
-              fillOpacity: 0.8
+              var currentMarker = new OpenLayers.Feature.Vector(point, null, {
+                externalGraphic: "images/punto.png",
+                graphicWidth: 8,
+                graphicHeight: 8,
+                fillOpacity: 0.8
+              });
+
+              if (!$scope.puntos[elem.numero]) {
+                $scope.puntos[elem.numero] = {
+                  numero: elem.numero,
+                  layer: mapa.addVectorLayer(elem.numero, {
+                    symbolizer: {
+                      externalGraphic: "images/punto.png",
+                      graphicWidth: 5,
+                      graphicHeight: 9,
+                      graphicXOffset: -4,
+                      graphicYOffset: -34,
+                      graphicZIndex: 10,
+                      backgroundGraphicZIndex: 9
+                    },
+                    popup: false,
+                    onClick: function(ev, marker) {
+                      var $scope = angular
+                        .element(document.getElementById("compromisos-main"))
+                        .scope();
+                      $scope.$apply(function() {
+                        $scope.currentObra = ev.feature.geometry.marker;
+                        $scope.currentObra.compromisoDetail = $scope.getCompromiso(
+                          $scope.currentObra.numero
+                        );
+                      });
+                      var eTop = $("#form-ui").height() + 150;
+                      console.log(eTop);
+                      d3
+                        .select("#obra-detail")
+                        .transition()
+                        .style("top", eTop + "px");
+                    }
+                  }),
+                  obras: []
+                };
+              }
+              point.marker = elem;
+              $scope.puntos[elem.numero].obras.push(currentMarker);
+              $scope.markers.push(currentMarker);
             });
 
-            if (!$scope.puntos[elem.numero]) {
-              $scope.puntos[elem.numero] = {
-                numero: elem.numero,
-                layer: mapa.addVectorLayer(elem.numero, {
-                  symbolizer: {
-                    externalGraphic: "images/punto.png",
-                    graphicWidth: 5,
-                    graphicHeight: 9,
-                    graphicXOffset: -4,
-                    graphicYOffset: -34,
-                    graphicZIndex: 10,
-                    backgroundGraphicZIndex: 9
-                  },
-                  popup: false,
-                  onClick: function(ev, marker) {
-                    var $scope = angular
-                      .element(document.getElementById("compromisos-main"))
-                      .scope();
-                    $scope.$apply(function() {
-                      $scope.currentObra = ev.feature.geometry.marker;
-                      $scope.currentObra.compromisoDetail = $scope.getCompromiso(
-                        $scope.currentObra.numero
-                      );
-                    });
-                  }
-                }),
-                obras: []
-              };
-            }
-            point.marker = elem;
-            $scope.puntos[elem.numero].obras.push(currentMarker);
-            $scope.markers.push(currentMarker);
-          });
-
           refreshGrid();
-          // mapa.zoomToMarkers();
-          $scope.loading = false;
+          $scope.loadingMapa = false;
         });
       },
       stopPropagation: function(ev) {
@@ -780,9 +790,9 @@ angular
 
         // El div del mapa tiene que ocupar toda la ventana
         // $scope.usigLayers.redimensionarMapa();
-        $("#mapa")
+        /*$("#mapa")
           .css("width", "100wh")
-          .css("height", "60vh");
+          .css("height", "60vh");*/
 
         var mapOptions = {
           divId: "mapa",
