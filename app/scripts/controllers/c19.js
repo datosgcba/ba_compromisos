@@ -8,7 +8,7 @@
  * Controller of the compromisosSiteApp
  */
 angular.module('compromisosSiteApp')
-  .controller('Compromiso19Ctrl',  function (UrlService, $scope, $http,SlugColorService,LoadSVGService,$sce,$templateRequest,$compile) {
+  .controller('Compromiso19Ctrl',  function (UrlService,$rootScope, $scope, $http,SlugColorService,LoadSVGService,$sce,$templateRequest,$compile) {
 
   	var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({ polling: 1000 });
@@ -73,6 +73,8 @@ angular.module('compromisosSiteApp')
       });
     };
 
+
+  
 
     $scope.completeConfig2 = function(config){
       return angular.merge(config,{
