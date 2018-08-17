@@ -93,6 +93,51 @@ angular.module('compromisosSiteApp')
 
     };
 
+      $scope.completeConfig2 = function(config){
+      return angular.merge(config,{
+        data:{
+          types: {
+            meta: 'area',
+            avance: 'line',
+          },
+          keys: {
+              value: ['meta','avance'],
+              x:'trimestre'
+          },
+          names: {
+            avance: 'Avance',
+            meta: 'Meta',
+          },
+          colors: {'meta':$scope.currentCompromise.secondColor,
+                    'avance': $scope.currentCompromise.color}
+        },
+        size: {
+            height: 300,
+        },
+        padding: {
+            top: 0,
+            right: 20,
+            bottom: 10,
+            left: 40,
+        },
+         axis: {
+          x: {
+              type: 'category',
+              show:true,
+
+          },
+          y: {
+              show:true,
+              min: 0,
+              padding: 5,
+
+          }
+        },
+        legend: {
+            show: true
+        }
+      });
+    };
 
     var id;
     $(window).resize(function() {

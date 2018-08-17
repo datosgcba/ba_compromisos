@@ -72,8 +72,9 @@ angular.module('compromisosSiteApp')
           },
           y: {
               show:true,
-              min:0,
-              max:100
+              min: 0,
+              max:100,
+              padding: 5,
           }
         },
         legend: {
