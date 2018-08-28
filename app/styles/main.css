@@ -162,7 +162,11 @@ p {
 .popover {
   z-index: 100;
 }
-
+.popover-title{
+  font-family: 'Open Sans';
+    line-height: 20px;
+    font-size: 0.9em;
+}
 .detalle-frame .detalle-frame-title {
   font-size: 14pt;
   font-weight: 600;
