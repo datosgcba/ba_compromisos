@@ -145,17 +145,15 @@
             </div>
             <div class="progress-w second-progress" ng-show="currentObra.compromisoDetail.cumplimiento_2_porcentaje_completado<50" ng-style="{ 'width': (100 - currentObra.compromisoDetail.cumplimiento_2_porcentaje_completado) + '%' }">{{currentObra.compromisoDetail.cumplimiento_2_porcentaje_completado}}%</div>
           </div>
-        </div>
         <div class="col-xs-6 col-md-6">
-           <p></p>
-        </div>
-        <div class="col-xs-6 col-md-6">
-           <p class="right" ng-cloak ng-show="currentCompromise.cumplimiento"> Fecha Finalización <strong>{{currentObra.compromisoDetail.cumplimiento}}</strong></p>
+           <p class="" ng-cloak ng-show="currentCompromise.cumplimiento"> Fecha Finalización <strong>{{currentObra.compromisoDetail.cumplimiento}}</strong></p>
         </div>
 
         <div class="col-xs-12">
           <a ng-href="{{currentObra.compromisoDetail.url_interna}}" target="_blank" ng-hide="currentObra.compromisoDetail.url_interna === undefined" class="btn full btn-xs upper bg-color bg-color-obra  center-block" >Ver mas sobre el compromiso &#187;  </a>
+        </div>`
         </div>
+        
       </div>
     </div>       
   </div><!-- obra detail -->
@@ -166,7 +164,7 @@
   <div class="header">
     <div class="row">
       <div class="col-xs-8 label-text">
-        <h5>{{currentCompromise.categoria}}</h5>
+        <h5>{{currentCompromise.titulo}}</h5>
 
       </div>
       <div class="col-xs-4">
@@ -217,17 +215,14 @@
             <div class="progress-w second-progress" ng-show="currentCompromise.cumplimiento_2_porcentaje_completado<50" ng-style="{ 'width': (100 - currentCompromise.cumplimiento_2_porcentaje_completado) + '%' }">{{currentCompromise.cumplimiento_2_porcentaje_completado}}%</div>
           </div>
         </div>
-      </div>
 
       <div class="col-xs-6 col-md-6">
-         <p> </p>
-      </div>
-      <div class="col-xs-6 col-md-6">
-         <p class="right" ng-cloak ng-show="currentCompromise.cumplimiento"> Fecha Finalización <strong>{{currentCompromise.cumplimiento}}</strong></p>
+         <p class="" ng-cloak ng-show="currentCompromise.cumplimiento"> Fecha Finalización <strong>{{currentCompromise.cumplimiento}}</strong></p>
       </div>
 
       <div class="col-xs-12">
         <a ng-href="{{currentCompromise.url_interna}}" target="_blank" ng-hide="currentCompromise.url_interna === undefined" class="btn full btn-xs upper bg-color  center-block" >Ver mas sobre el compromiso &#187;  </a>
+      </div>
       </div>
     </div>
   

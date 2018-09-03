@@ -700,14 +700,14 @@ div#category_chart {
 /* Medium Devices, Desktops */
 @media only screen and (min-width: 992px) {
   .item {
-    width: 130px;
-    height: auto;
-    min-height: 130px;
-    max-height: 130px;
-    margin: 6px;
-    float: left;
-    text-align: center;
-  }
+  width: 150px;
+  height: auto;
+  min-height: 150px;
+  max-height: 150px;
+  margin: 3px;
+  text-align: center;
+  background: #fff;
+}
   .hidden-desktop {
     display: none;
   }
@@ -1051,14 +1051,15 @@ head ul {
   margin-left: 0 !important;
 }
 .item {
-  width: 150px;
-  height: auto;
-  min-height: 150px;
-  max-height: 150px;
-  margin: 3px;
-  text-align: center;
-  background: #fff;
+    width: 130px;
+    height: auto;
+    min-height: 130px;
+    max-height: 130px;
+    margin: 2px;
+    text-align: center;
+    background: #fff;
 }
+
 
 .item.next {
   width: 60px;
