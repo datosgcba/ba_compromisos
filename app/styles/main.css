@@ -779,7 +779,7 @@ div#category_chart {
     height: auto;
     min-height: 140px;
     max-height: 140px;
-    margin: 3px;
+    margin: 4px;
     float: left;
     text-align: center;
   }
@@ -788,8 +788,9 @@ div#category_chart {
   }
 }
 
+
 /* Custom, iPhone Retina */
-@media only screen and (max-width: 320px) {
+@media screen and (device-aspect-ratio: 40/71) {
   .hidden-desktop {
     display: block;
   }
@@ -805,8 +806,16 @@ div#category_chart {
   .c-option {
     min-height: auto;
   }
+  .item {
+    width: 120px;
+    height: auto;
+    min-height: 120px;
+    max-height: 120px;
+    margin: 2px;
+    float: left;
+    text-align: center;
+  }
 }
-
 .display {
   display: block;
 }
