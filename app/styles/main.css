@@ -12,6 +12,7 @@ html {
 .ng-cloak {
   display: none;
 }
+
 .closeButton {
   background: lightgray;
   border: none;
@@ -43,15 +44,18 @@ html {
 
 body {
   background-color: #fff;
-  font-family: "CHANEWEI", Helvetica, Arial, sans-serif;
+  font-family: "CHANEWEI", Helvetica, Arial, sans-serif !important;
 }
 
 h4 {
-  font-family: "CHANEWEI", Helvetica, Arial, sans-serif;
+ font-family: "Open Sans", Helvetica, Arial, sans-serif !important;
+ font-weight: 100;
 }
 
 p {
-  font-family: "CHANEWEI", Helvetica, Arial, sans-serif;
+  
+  font-family: "Open Sans", Helvetica, Arial, sans-serif !important;
+  font-weight: 100;
 }
 
 .right {
@@ -162,7 +166,11 @@ p {
 .popover {
   z-index: 100;
 }
-
+.popover-title{
+  font-family: 'Open Sans';
+    line-height: 20px;
+    font-size: 0.9em;
+}
 .detalle-frame .detalle-frame-title {
   font-size: 14pt;
   font-weight: 600;
@@ -268,7 +276,7 @@ p {
   font-size: 14px;
 }
 
-.compromiso-detail img.compromiso-icon {
+.obra-detail img.compromiso-icon, .compromiso-detail img.compromiso-icon {
   max-width: 60px;
   max-height: 60px;
   filter: brightness(0) invert(100%);
@@ -515,7 +523,9 @@ div#category_chart {
 .btn.full:focus {
   background: #cc105f;
 }
-
+.btn.full:focus, .btn.full:hover {
+    background: #CC105F;
+}
 /*groups*/
 .group-btn {
   background-color: rgba(255, 255, 255, 0.5);
@@ -612,7 +622,15 @@ div#category_chart {
 .display-device {
   display: none;
 }
-
+.item {
+    width: 130px;
+    height: auto;
+    min-height: 130px;
+    max-height: 130px;
+    margin: 2px;
+    text-align: center;
+    background: #fff;
+}
 .vertical-bar-event {
 }
 .vertical-bar-event:hover {
@@ -675,6 +693,15 @@ div#category_chart {
 
 /* Large Devices, Wide Screens */
 @media only screen and (max-width: 1200px) {
+  .item {
+  width: 150px;
+  height: auto;
+  min-height: 150px;
+  max-height: 150px;
+  margin: 8px;
+  text-align: center;
+  background: #fff;
+}
   /* The max width is dependant on the container (more info below) */
   .popover {
     max-width: 200px; /* Max Width of the popover (depending on the container!) */
@@ -695,15 +722,7 @@ div#category_chart {
 
 /* Medium Devices, Desktops */
 @media only screen and (min-width: 992px) {
-  .item {
-    width: 130px;
-    height: auto;
-    min-height: 130px;
-    max-height: 130px;
-    margin: 6px;
-    float: left;
-    text-align: center;
-  }
+  
   .hidden-desktop {
     display: none;
   }
@@ -720,6 +739,7 @@ div#category_chart {
 
 /* Small Devices, Tablets */
 @media only screen and (max-width: 768px) {
+
   .hidden-desktop {
     display: block;
   }
@@ -758,11 +778,11 @@ div#category_chart {
     margin-top: 0 !important;
   }
   .item {
-    width: 100px;
+    width: 140px;
     height: auto;
-    min-height: 150px;
-    max-height: 150px;
-    margin: 3px;
+    min-height: 140px;
+    max-height: 140px;
+    margin: 4px;
     float: left;
     text-align: center;
   }
@@ -771,8 +791,9 @@ div#category_chart {
   }
 }
 
+
 /* Custom, iPhone Retina */
-@media only screen and (max-width: 320px) {
+@media screen and (device-aspect-ratio: 40/71) {
   .hidden-desktop {
     display: block;
   }
@@ -788,8 +809,16 @@ div#category_chart {
   .c-option {
     min-height: auto;
   }
+  .item {
+    width: 120px;
+    height: auto;
+    min-height: 120px;
+    max-height: 120px;
+    margin: 2px;
+    float: left;
+    text-align: center;
+  }
 }
-
 .display {
   display: block;
 }
@@ -1046,15 +1075,8 @@ hr {
 head ul {
   margin-left: 0 !important;
 }
-.item {
-  width: 150px;
-  height: auto;
-  min-height: 150px;
-  max-height: 150px;
-  margin: 3px;
-  text-align: center;
-  background: #fff;
-}
+
+
 
 .item.next {
   width: 60px;
@@ -1193,13 +1215,7 @@ head ul {
   z-index: 30000;
 }
 
-.compromiso-detail.obra-detail img.compromiso-icon {
-  max-width: 40px;
-  max-height: 40px;
-  filter: none;
-  margin-right: 10px;
-  margin-left: 8px;
-}
+
 
 .compromiso-detail.obra-detail .header h5 {
   margin-left: 10px;

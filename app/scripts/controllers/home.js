@@ -82,6 +82,9 @@ angular
         c.slug = c.slug.trim();
         c.categoria = c.categoria.trim();
         c.iconSVG = GetSVGNameService.getUrl(c.numero);
+        if (c.porcentaje_completado == "100"){
+            c.iconSVG = GetSVGNameService.getUrl(c.numero, "z");
+          }
         try {
           c.comunas = c.comunas.split(",");
           c.claseComunas = "";

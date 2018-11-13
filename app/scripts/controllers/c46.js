@@ -28,6 +28,8 @@ angular.module('compromisosSiteApp')
       $scope.currentCompromise.porcentaje_completado = parseInt($scope.currentCompromise.porcentaje_completado);
       $scope.currentCompromise.color = SlugColorService.getColorBySlug($scope.currentCompromise.slug);
       $scope.currentCompromise.secondColor = '#bdbec2';
+      $scope.currentCompromise.thridColor = '#51fbec';
+      $scope.currentCompromise.fourthColor = '#4e948e';
       $scope.loading = false;
       LoadSVGService.loadIcon($scope.currentCompromise.numero,function(iconLoaded){
 
@@ -43,23 +45,27 @@ angular.module('compromisosSiteApp')
       return data;
     };
 
-     $scope.completeConfig1 = function(config){
+    $scope.completeConfig = function(config){
       return angular.merge(config,{
         data:{
-          types: {
-            meta: 'area',
-            nuevos: 'line',
-          },
+          xFormat: '%Y-%m',
+          type: 'bar',
           keys: {
-              value: ['meta','nuevos'],
-              x:'trimestre'
+              value: ['subte', 'colectivo', 'via_publica' ,'total'],
+              x:'mes'
           },
           names: {
-            nuevos: 'Nuevos',
-            meta: 'Meta',
+            'subte': 'Subte', 
+            'colectivo': 'Colectivo',
+            'via_publica': "Via Pública",
+            'total': "Total"
           },
-          colors: {'meta':$scope.currentCompromise.secondColor,
-                    'nuevos': $scope.currentCompromise.color}
+          colors: {
+            'subte': $scope.currentCompromise.color, 
+            'colectivo': $scope.currentCompromise.secondColor,
+            'via_publica': $scope.currentCompromise.thridColor,
+            'total': $scope.currentCompromise.fourthColor
+          }
         },
         size: {
             height: 300,
@@ -68,19 +74,21 @@ angular.module('compromisosSiteApp')
             top: 0,
             right: 20,
             bottom: 10,
-            left: 40,
+            left: 80,
         },
-         axis: {
+        axis: {
           x: {
-              type: 'category',
+              type: 'timeseries',
               show:true,
-
+              tick: {
+                  fit: true,
+                  format: $rootScope.d3Locale_ES.timeFormat("%b-%y"),
+              }
           },
           y: {
               show:true,
               min: 0,
-              padding: 5,
-
+              padding: {top:0, bottom:0}
           }
         },
         legend: {
@@ -92,6 +100,7 @@ angular.module('compromisosSiteApp')
     $scope.chartReady = function(chart){
 
     };
+
 
   $scope.prepareData2 = function(data){
       return data;

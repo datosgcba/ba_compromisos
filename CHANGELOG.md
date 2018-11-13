@@ -3,6 +3,19 @@ Todos los cambios notables del proyecto a partir de la version 0.1.0 seran docum
 
 El formato esta basado en [Keep a Changelog](http://keepachangelog.com/) y este proyecto se adhiere a  [Semantic Versioning](http://semver.org/).
 
+## v1.8.2RC1
+- El mapa ahora funciona en https.
+
+## v1.8.1RC6
+- Correcion de ícono de Compromiso Terminado.
+- Se pasa fuente menor a Open Sans.
+
+## v1.8.1RC5
+- Se agregan ilustraciones.
+- En home se agrega el mapa.
+- Actualizamos BAstrap a última versión.
+- Se corrigen varios fixes de internas compromisos.
+
 ## v1.7.8RC1
 - Se corrigen bugs de titulos en c52.
 

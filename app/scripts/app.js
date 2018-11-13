@@ -60,6 +60,11 @@ angular
         controller: "HomeCtrl",
         controllerAs: "home"
       })
+      .when("/map", {
+        templateUrl: "views/map.html",
+        controller: "HomeCtrl",
+        controllerAs: "home"
+      })
       .when("/c01", {
         templateUrl: "views/c01.html",
         controller: "Compromiso01Ctrl",
