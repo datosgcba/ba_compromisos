@@ -388,7 +388,7 @@ angular
         "Archivo de configuración inexistente, utilizando configuración default de desarrollo."
       );
       window.COMPROMISOS_CONFIG = {
-        BASE_URL: "http://api.topranking.link/",
+        BASE_URL: "https://csv-to-api-compromisos.herokuapp.com/",
         HOME_CSV: "https://goo.gl/w0wnOj",
         OBRAS_CSV: "https://goo.gl/YF8r9Y",
         ILUSTRACIONES_CSV: "https://goo.gl/fU5jee"
