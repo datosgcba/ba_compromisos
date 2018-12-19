@@ -279,7 +279,7 @@ p {
 .obra-detail img.compromiso-icon, .compromiso-detail img.compromiso-icon {
   max-width: 60px;
   max-height: 60px;
-  filter: brightness(0) invert(100%);
+  /*filter: brightness(0) invert(100%);*/
   margin-right: 10px;
   margin-left: 8px;
 }
