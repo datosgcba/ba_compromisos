@@ -157,7 +157,9 @@ angular
         // $scope.executeIsotope()
         $scope.groupData();
         $scope.renderCharts();
-        $scope.usigMaps($);
+        if ($scope.onlyMap){
+          $scope.mostrarMapa();
+        }
       });
     });
 
@@ -837,7 +839,6 @@ angular
     ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////
 
-    $scope.usigMaps = function($) {};
   })
   .filter("trustAsResourceUrl", [
     "$sce",

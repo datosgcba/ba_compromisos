@@ -1,6 +1,6 @@
-<p class="indicator"><span ng-show="loading">Cargando...</span></p>
+<p class="indicator" ng-init="onlyMap=true"><span ng-show="loading">Cargando...</span></p>
 <div id="form-ui" class="row" ng-cloak ng-hide="loading" ng-click="forceCloseDetail()">
-  
+
   <div class="row filters padding">
     <h3>Explorador de compromisos</h3>
     <div id="selectsContainer" class="col-xs-12 col-sm-6 col-sm-push-6">
@@ -9,7 +9,7 @@
     </div>
     <p class="col-xs-12 col-sm-6 col-sm-pull-6" >Filtrar por área:</p>
   </div>
-  
+
   <div class="row filters">
     <div class="homeAreaContainer">
       <p id="form-ui-1">
@@ -58,12 +58,6 @@
   <hr/>
 </div>
 
-<div id="menu-selector" class="row" ng-cloak ng-hide="true">
-  <div class="col-xs-12 col-xs-6"> 
-    <h2 id="ver-mapa" ng-click="mostrarMapa()" ng-class="{'active':mapActive }"> <a href="">Ver Mapa</a></h2>
-  </div>
-</div>
-
 <div class="usig-map">
   <div id="page">
     <div id="buscador">
@@ -77,7 +71,7 @@
 </div>
 
 <div id="isotopeContainer" ng-show="false"  ng-click="forceCloseDetail();$event.stopPropagation();" isotope-container="isotope-container" class="compromisos-container">
-  
+
   <div ng-repeat="d in data" compromiso="{{d.numero}}" isotope-item="isotope-item" class="compromiso-row {{d.slug}} {{d.cumplimiento}} {{d.porcentaje_completado}} {{d.claseComunas}} {{d.area1.toLowerCase().split(' ').join('-')}} {{d.area2.toLowerCase().split(' ').join('-')}} {{d.area3.toLowerCase().split(' ').join('-')}}  {{d.titulo.toLowerCase().split(' ').join(' ')}}
   {{d.area4.toLowerCase().split(' ').join('-')}}  item {{d.classPercent}} allFilters"
       ng-click="showCompromisoDetail(d,$event);$event.stopPropagation();">
@@ -106,8 +100,8 @@
       <div class="row">
         <div class="col-sm-12">
           <h3>{{currentObra.compromiso}}</h3>
-          <h5> {{currentObra.direccion}} </h5>  
-          <h4><img class="icon-svg-container compromiso-icon" ng-src="{{currentObra.compromisoDetail.iconSVG}}">{{currentObra.accion}}</h4>
+          <h5> {{currentObra.direccion}} </h5>
+          <h4>{{currentObra.accion}}</h4>
           <p ng-show="currentObra.detalle">{{currentObra.detalle}}</p>
         </div>
         <div class="col-sm-12">
@@ -150,9 +144,9 @@
           <a ng-href="{{currentObra.compromisoDetail.url_interna}}" target="_blank" ng-hide="currentObra.compromisoDetail.url_interna === undefined" class="btn full btn-xs upper bg-color  center-block" >Ver mas sobre el compromiso &#187;  </a>
         </div>`
         </div>
-        
+
       </div>
-    </div>       
+    </div>
   </div><!-- obra detail -->
 </div><!-- hide loading -->
 
@@ -197,7 +191,7 @@
           </div>
           </div>
         <div class="col-sm-12">
-        
+
 
         <p ng-show="currentCompromise.cumplimiento_2_label" class=""> <strong class="ng-binding">{{currentCompromise.cumplimiento_2_label}}</strong></p>
           <div class="progress" ng-show="currentCompromise.cumplimiento_2_porcentaje_completado">
@@ -222,7 +216,7 @@
       </div>
       </div>
     </div>
-  
+
   <div class="col-xs-12 label-text header-map" ng-if="currentCompromise.embed_map_titulo" >
     <h6>{{currentCompromise.embed_map_titulo}}</h6>
   </div>
