@@ -57,6 +57,7 @@ angular
     };
 
     $scope.mostrarMapa = function() {
+      //$scope.removeAllFilters();
       if (!$scope.mapReady) {
         $scope.usigLayers.startUsig();
         $scope.mapReady = true;
@@ -67,6 +68,7 @@ angular
       $scope.mapActive = true;
     };
     $scope.mostrarIconos = function() {
+      //$scope.removeAllFilters();
       $scope.iconsActive = true;
       $scope.mapActive = false;
       $scope.closeDetail();
@@ -74,71 +76,89 @@ angular
         refreshGrid();
       }, 300);
     };
+
+    $scope.getComunas = function (compromisoId, extra_comunas) {
+      var extra_comunas = extra_comunas.split(",").map(function (d) {
+        return parseInt(d);
+      });
+      var filteredComunas = $scope.usigCompromiso.filter(function(uc){
+        return parseInt(uc.numero) === parseInt(compromisoId);
+      }).map(function(d){
+        return parseInt(d.Comuna);
+      });
+
+      return _.uniq(_.concat(extra_comunas,filteredComunas));
+    };
+
     var compromisosURL = UrlService.getUrlByPage("home");
     var obrasURL = UrlService.getUrlByPage("obras");
 
     $http.jsonp(compromisosURL).success(function(data) {
-      $scope.data = data.map(function(c) {
-        c.slug = c.slug.trim();
-        c.categoria = c.categoria.trim();
-        c.iconSVG = GetSVGNameService.getUrl(c.numero);
-        if (c.porcentaje_completado == "100"){
-            c.iconSVG = GetSVGNameService.getUrl(c.numero, "z");
-          }
-        try {
-          c.comunas = c.comunas.split(",");
-          c.claseComunas = "";
-          for (var i = 0; i < c.comunas.length; i++) {
-            c.claseComunas += "com-" + c.comunas[i] + " ";
-          }
-        } catch (e) {
-          console.log("error en comunas compromiso" + c.numero);
-        }
-        return c;
-      });
-      $scope.data = $scope.data.sort(function(a, b) {
-        var upA = a.titulo.toUpperCase();
-        var upB = b.titulo.toUpperCase();
-        return upA < upB ? -1 : upA > upB ? 1 : 0;
-      });
-      var areas = [];
-      var cumplimiento = [];
+      $http.jsonp(obrasURL).success(function (csv) {
+        $scope.usigCompromiso = csv;
 
-      for (var i = 1; i <= 15; i++) {
-        $scope.comunas.push({
-          name: "Comuna " + i,
-          number: i,
-          selected: false
+        $scope.data = data.map(function(c) {
+          c.slug = c.slug.trim();
+          c.categoria = c.categoria.trim();
+          c.iconSVG = GetSVGNameService.getUrl(c.numero);
+          if (c.porcentaje_completado == "100"){
+              c.iconSVG = GetSVGNameService.getUrl(c.numero, "z");
+            }
+          try {
+            c.comunas = $scope.getComunas(c.numero, c.comunas);
+            c.claseComunas = "";
+            for (var i = 0; i < c.comunas.length; i++) {
+              c.claseComunas += "com-" + c.comunas[i] + " ";
+            }
+          } catch (e) {
+            console.error("error en comunas compromiso" + c.numero);
+          }
+          return c;
         });
-      }
-      $scope.data.map(function(elem) {
-        if (elem.porcentaje_completado <= 25) elem.classPercent = "very-low";
-        if (elem.porcentaje_completado > 25 && elem.porcentaje_completado <= 50)
-          elem.classPercent = "low";
-        if (elem.porcentaje_completado > 50 && elem.porcentaje_completado <= 75)
-          elem.classPercent = "high";
-        if (elem.porcentaje_completado > 75) elem.classPercent = "very-high";
+        $scope.data = $scope.data.sort(function(a, b) {
+          var upA = a.titulo.toUpperCase();
+          var upB = b.titulo.toUpperCase();
+          return upA < upB ? -1 : upA > upB ? 1 : 0;
+        });
+        var areas = [];
+        var cumplimiento = [];
 
-        if (elem.cumplimiento != undefined)
-          cumplimiento.push(elem.cumplimiento);
+        for (var i = 1; i <= 15; i++) {
+          $scope.comunas.push({
+            name: "Comuna " + i,
+            number: i,
+            selected: false
+          });
+        }
+        $scope.data.map(function(elem) {
+          if (elem.porcentaje_completado <= 25) elem.classPercent = "very-low";
+          if (elem.porcentaje_completado > 25 && elem.porcentaje_completado <= 50)
+            elem.classPercent = "low";
+          if (elem.porcentaje_completado > 50 && elem.porcentaje_completado <= 75)
+            elem.classPercent = "high";
+          if (elem.porcentaje_completado > 75) elem.classPercent = "very-high";
 
-        if (elem.area1 != undefined)
-          areas.push(elem.area1.toLowerCase().replace(/ /g, "-"));
-        if (elem.area2 != undefined)
-          areas.push(elem.area2.toLowerCase().replace(/ /g, "-"));
-        if (elem.area3 != undefined)
-          areas.push(elem.area3.toLowerCase().replace(/ /g, "-"));
-        if (elem.area4 != undefined)
-          areas.push(elem.area4.toLowerCase().replace(/ /g, "-"));
+          if (elem.cumplimiento != undefined)
+            cumplimiento.push(elem.cumplimiento);
+
+          if (elem.area1 != undefined)
+            areas.push(elem.area1.toLowerCase().replace(/ /g, "-"));
+          if (elem.area2 != undefined)
+            areas.push(elem.area2.toLowerCase().replace(/ /g, "-"));
+          if (elem.area3 != undefined)
+            areas.push(elem.area3.toLowerCase().replace(/ /g, "-"));
+          if (elem.area4 != undefined)
+            areas.push(elem.area4.toLowerCase().replace(/ /g, "-"));
+        });
+        $scope.areas = Array.from(new Set(areas));
+        $scope.cumplimiento = Array.from(new Set(cumplimiento));
+
+        $scope.loading = false;
+        // $scope.executeIsotope()
+        $scope.groupData();
+        $scope.renderCharts();
+        $scope.usigMaps($);
       });
-      $scope.areas = Array.from(new Set(areas));
-      $scope.cumplimiento = Array.from(new Set(cumplimiento));
-
-      $scope.loading = false;
-      // $scope.executeIsotope()
-      $scope.groupData();
-      $scope.renderCharts();
-      $scope.usigMaps($);
     });
 
     $scope.groupData = function() {
@@ -467,20 +487,14 @@ angular
       });
 
       $scope.puntos.map(function(p) {
-        var showMe = false;
-        for (var j = 0; j < currentCompromisos.length; j++) {
-          var cId = currentCompromisos[j] + "";
-
-          if (p.numero === cId) {
-            p.visible = true;
-            showMe = true;
-            break;
-          }
-        }
-        if (showMe) {
-          p.layer.addFeatures(p.obras);
+        p.layer.removeFeatures(p.obras);
+        if (currentCompromisos.indexOf(parseInt(p.numero))>-1){
+          p.visible = true;
+          p.layer.addFeatures(p.obras.filter(function(o){
+            return parseInt($scope.selectedComuna)==0 || ( parseInt(o.attributes.Comuna) === parseInt($scope.selectedComuna) );
+          }));
         } else {
-          p.layer.removeFeatures(p.obras);
+          p.visible = false;
         }
       });
     };
@@ -489,6 +503,7 @@ angular
     };
 
     $scope.setAllFilters = function() {
+      $scope.selectedComuna = 0;
       $(".checkMyCheck").each(function() {
         $(this)
           .parent()
@@ -505,6 +520,7 @@ angular
       $scope.closeDetail();
     };
     $scope.removeAllFilters = function() {
+      $scope.selectedComuna = 0;
       $("#searchTextInput").val("");
       $(".checkMyCheck").each(function() {
         $(this)
@@ -697,42 +713,43 @@ angular
         var iconUrl = "images/punto.png";
         $scope.puntos = [];
 
-        $http.jsonp(obrasURL).success(function(csv) {
-          $scope.usigCompromiso = csv;
-          $scope.usigCompromiso
-            .filter(function(elem) {
-              if (
-                isNaN(elem.longitude) ||
-                isNaN(elem.latitude) ||
-                parseFloat(elem.longitude) < -90 ||
-                parseFloat(elem.latitude) < -60
-              ) {
-                console.error("Se ignora por coordenadas inválidas -> ", elem);
-                return false;
-              }
-              return true;
-            })
-            .map(function(elem) {
-              var destProj = new proj4.Proj("EPSG:221951");
-              var sourceProj = new proj4.Proj("EPSG:4326");
-              elem.proj = proj4(sourceProj, destProj, [
-                parseFloat(elem.longitude),
-                parseFloat(elem.latitude)
-              ]);
+        $scope.usigCompromiso
+          .filter(function(elem) {
+            if (
+              isNaN(elem.longitude) ||
+              isNaN(elem.latitude) ||
+              parseFloat(elem.longitude) < -90 ||
+              parseFloat(elem.latitude) < -60
+            ) {
+              console.error("Se ignora por coordenadas inválidas -> ", elem);
+              return false;
+            }
+            return true;
+          })
+          .map(function(elem) {
+            var destProj = new proj4.Proj("EPSG:221951");
+            var sourceProj = new proj4.Proj("EPSG:4326");
+            elem.proj = proj4(sourceProj, destProj, [
+              parseFloat(elem.longitude),
+              parseFloat(elem.latitude)
+            ]);
 
-              var lonLat = new OpenLayers.LonLat(elem.proj[0], elem.proj[1]);
-              var point = new OpenLayers.Geometry.Point(
-                elem.proj[0],
-                elem.proj[1]
-              );
+            var lonLat = new OpenLayers.LonLat(elem.proj[0], elem.proj[1]);
+            var point = new OpenLayers.Geometry.Point(
+              elem.proj[0],
+              elem.proj[1]
+            );
 
-              var currentMarker = new OpenLayers.Feature.Vector(point, null, {
-                externalGraphic: "images/punto.png",
-                graphicWidth: 8,
-                graphicHeight: 8,
-                fillOpacity: 0.8
-              });
+            var currentMarker = new OpenLayers.Feature.Vector(point, null, {
+              externalGraphic: "images/punto.png",
+              graphicWidth: 8,
+              graphicHeight: 8,
+              fillOpacity: 0.8
+            });
 
+            currentMarker.attributes = elem;
+
+            if (elem.numero){
               if (!$scope.puntos[elem.numero]) {
                 $scope.puntos[elem.numero] = {
                   numero: elem.numero,
@@ -758,7 +775,6 @@ angular
                         );
                       });
                       var eTop = $("#form-ui").height() + 150;
-                      console.log(eTop);
                       d3
                         .select("#obra-detail")
                         .transition()
@@ -768,14 +784,17 @@ angular
                   obras: []
                 };
               }
-              point.marker = elem;
-              $scope.puntos[elem.numero].obras.push(currentMarker);
-              $scope.markers.push(currentMarker);
-            });
 
-          refreshGrid();
-          $scope.loadingMapa = false;
-        });
+              $scope.puntos[elem.numero].obras.push(currentMarker);
+              point.marker = elem;
+              $scope.markers.push(currentMarker);
+            }
+            return elem;
+          });
+
+        refreshGrid();
+        $scope.loadingMapa = false;
+
       },
       stopPropagation: function(ev) {
         if (ev.stopPropagation) {
@@ -810,6 +829,8 @@ angular
         window.mapa = mapa;
       }
     };
+
+
 
     ////////////////////////////////////////////////////////////////////////////////
     /////////////////////////LAYERS METHOD ACTIVE///////////////////////////////////
