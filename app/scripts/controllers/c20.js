@@ -29,7 +29,6 @@ angular.module('compromisosSiteApp')
       $scope.currentCompromise.porcentaje_completado = parseInt($scope.currentCompromise.porcentaje_completado);
       $scope.loading = false;
       LoadSVGService.loadIcon($scope.currentCompromise.numero,function(iconLoaded){
-
         treeIcon = iconLoaded;
         $('.icon-svg-container').html(iconLoaded.cloneNode(true));
       });
@@ -177,13 +176,16 @@ angular.module('compromisosSiteApp')
         color: $scope.currentCompromise.color
       };
 
+      data = data.filter(function(d){
+        return d.area;
+      });
+
       var total = d3.sum(data,function(d){return parseInt(d.cantidad_proyectos)});
 
       $scope.bubbleData = {
                     name:"total",
                     children:[]
                   };
-
 
       _.each(data,function(d){
         $scope.bubbleData.children.push({
