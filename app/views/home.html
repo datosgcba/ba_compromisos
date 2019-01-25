@@ -1,61 +1,62 @@
+<div>
 <p class="indicator"><span ng-show="loading">Cargando...</span></p>
 <div id="form-ui" class="row" ng-cloak ng-hide="loading" ng-click="forceCloseDetail()">
 
   <div class="row filters padding">
     <h3>Explorador de compromisos</h3>
     <div id="selectsContainer" class="col-xs-12 col-sm-6 col-sm-push-6">
-      <a class="action" ng-click="setAllFilters()">Seleccionar todos  - </a>
-      <a class="action" ng-click="removeAllFilters()">Deseleccionar todos  </a>
+      <a class="action" ng-click="setAllFilters()">Seleccionar todos - </a>
+      <a class="action" ng-click="removeAllFilters()">Deseleccionar todos </a>
     </div>
-    <p class="col-xs-12 col-sm-6 col-sm-pull-6" >Filtrar por área:</p>
+    <p class="col-xs-12 col-sm-6 col-sm-pull-6">Filtrar por área:</p>
   </div>
 
   <div class="row filters">
     <div class="homeAreaContainer">
       <p id="form-ui-1">
-        <label id="checkboxButton" ng-repeat="area in areas" on-finish-render="ngRepeatFinished" class="inactive" >
-        <input id="categories" class="categories checkMyCheck" type="checkbox" value=".{{area}}" /> {{area.toLowerCase().split('-').join(' ')}}
+        <label id="checkboxButton" ng-repeat="area in areas" on-finish-render="ngRepeatFinished" class="inactive">
+          <input id="categories" class="categories checkMyCheck" type="checkbox" value=".{{area}}" />
+          {{area.toLowerCase().split('-').join(' ')}}
         </label>
       </p>
     </div>
   </div>
 
   <div class="row filters">
-      <div id="homeTextContainer" class="col-xs-12 col-sm-3 filters" >
-        <p>Buscar por palabra clave:</p>
-        <!-- <input id="searchTextInput" type="text" ng-model="search.titulo" ng-click="setTextFilter()"> -->
-        <input id="searchTextInput" class="searchTextInput" type="text" ng-model="search" ng-change="setTextFilter()">
-      </div>
-      <div id="homeYearContainer" class="col-xs-12 col-sm-3 filters" >
-        <p>Filtrar por año de cumplimiento:</p>
-        <div class="">
-          <label ng-repeat="cump in cumplimiento | orderBy: cump">
+    <div id="homeTextContainer" class="col-xs-12 col-sm-3 filters">
+      <p>Buscar por palabra clave:</p>
+      <!-- <input id="searchTextInput" type="text" ng-model="search.titulo" ng-click="setTextFilter()"> -->
+      <input id="searchTextInput" class="searchTextInput" type="text" ng-model="search" ng-change="setTextFilter()">
+    </div>
+    <div id="homeYearContainer" class="col-xs-12 col-sm-3 filters">
+      <p>Filtrar por año de cumplimiento:</p>
+      <div class="">
+        <label ng-repeat="cump in cumplimiento | orderBy: cump">
           <input type="radio" class="years" value=".{{cump}}" name=".years" />
           {{cump}}</label>
-        </div>
       </div>
-      <div id="homePercentContainer" class="col-xs-12 col-sm-3 filters">
-        <p>Filtrar por avance:</p>
-        <div >
-          <label><input type="radio" class="percent" value=".very-low" name="percentage" />0%-25%</label>
-          <label><input type="radio" class="percent" value=".low" name="percentage" />25%-50%</label>
-          <label><input type="radio" class="percent" value=".high" name="percentage" />50%-75%</label>
-          <label><input type="radio" class="percent" value=".very-high" name="percentage" />75%-100%</label>
-        </div>
+    </div>
+    <div id="homePercentContainer" class="col-xs-12 col-sm-3 filters">
+      <p>Filtrar por avance:</p>
+      <div>
+        <label><input type="radio" class="percent" value=".very-low" name="percentage" />0%-25%</label>
+        <label><input type="radio" class="percent" value=".low" name="percentage" />25%-50%</label>
+        <label><input type="radio" class="percent" value=".high" name="percentage" />50%-75%</label>
+        <label><input type="radio" class="percent" value=".very-high" name="percentage" />75%-100%</label>
       </div>
-      <div id="homeComunaContainer" class="col-xs-12 col-sm-3 filters">
-        <p>Filtrar por comuna:</p>
-        <div>
-          <select ng-model="selectedComuna" ng-init="selectedComuna='0'" ng-change="changeComunas()">
-              <option class="comuna" ng-selected="{{c.selected}}"
-                      ng-repeat="c in comunas" value="{{c.number}}">
-                {{c.name}}
-              </option>
-          </select>
-        </div>
+    </div>
+    <div id="homeComunaContainer" class="col-xs-12 col-sm-3 filters">
+      <p>Filtrar por comuna:</p>
+      <div>
+        <select ng-model="selectedComuna" ng-init="selectedComuna='0'" ng-change="changeComunas()">
+          <option class="comuna" ng-selected="{{c.selected}}" ng-repeat="c in comunas" value="{{c.number}}">
+            {{c.name}}
+          </option>
+        </select>
       </div>
+    </div>
   </div>
-  <hr/>
+  <hr />
 </div>
 
 <div id="menu-selector" class="row" ng-cloak ng-hide="loading">
@@ -67,26 +68,27 @@
   </div>
 </div>
 
-<div class="usig-map" ng-show="mapActive" >
+<div class="usig-map" ng-show="mapActive">
   <div id="page">
     <div id="buscador">
-       <form id="mainForm" accept-charset="utf-8">
-        <input type="text" size="40" name="search" id="search" placeholder="Buscar Dirección" class="text searchTextInput"/>
-       </form>
+      <form id="mainForm" accept-charset="utf-8">
+        <input type="text" size="40" name="search" id="search" placeholder="Buscar Dirección" class="text searchTextInput" />
+      </form>
     </div>
   </div>
   <p class="indicator"><span ng-show="loadingMapa">Cargando...</span></p>
   <div id="mapa"></div>
 </div>
 
-<div id="isotopeContainer" ng-show="iconsActive"  ng-click="forceCloseDetail();$event.stopPropagation();" isotope-container="isotope-container" class="compromisos-container">
+<div id="isotopeContainer" ng-show="iconsActive" ng-click="forceCloseDetail();$event.stopPropagation();"
+  isotope-container="isotope-container" class="compromisos-container">
 
   <div ng-repeat="d in data" compromiso="{{d.numero}}" isotope-item="isotope-item" class="compromiso-row {{d.slug}} {{d.cumplimiento}} {{d.porcentaje_completado}} {{d.claseComunas}} {{d.area1.toLowerCase().split(' ').join('-')}} {{d.area2.toLowerCase().split(' ').join('-')}} {{d.area3.toLowerCase().split(' ').join('-')}}  {{d.titulo.toLowerCase().split(' ').join(' ')}}
   {{d.area4.toLowerCase().split(' ').join('-')}}  item {{d.classPercent}} allFilters"
-      ng-click="showCompromisoDetail(d,$event);$event.stopPropagation();">
-      <img class="icon-svg-container compromiso-icon" ng-src="{{d.iconSVG}}">
-      <h4 class="titulo">{{d.titulo}}</h4>
-   </div>
+    ng-click="showCompromisoDetail(d,$event);$event.stopPropagation();">
+    <img class="icon-svg-container compromiso-icon" ng-src="{{d.iconSVG}}">
+    <h4 class="titulo">{{d.titulo}}</h4>
+  </div>
 </div>
 
 <div ng-cloak ng-hide="loading || loadingMapa">
@@ -94,13 +96,13 @@
     <div class="header">
       <div class="row">
         <div class="col-xs-8 label-text">
-         <img class="icon-svg-container compromiso-icon" ng-src="{{currentObra.compromisoDetail.iconSVG}}">
-        <h5>{{currentObra.compromisoDetail.titulo}}</h5>
+          <img class="icon-svg-container compromiso-icon" ng-src="{{currentObra.compromisoDetail.iconSVG}}">
+          <h5>{{currentObra.compromisoDetail.titulo}}</h5>
 
-      </div>
+        </div>
         <div class="col-xs-4">
           <h5 class="text-right close"><a class="" href="javascript:;" ng-click="closeObraDetail()">
-          <span class="glyphicon glyphicon-remove white"></span></a></h5>
+              <span class="glyphicon glyphicon-remove white"></span></a></h5>
         </div>
       </div>
     </div>
@@ -122,38 +124,39 @@
           <p ng-show="currentObra.compromisoDetail.cumplimiento_label"> <strong>{{currentObra.compromisoDetail.cumplimiento_label}}</strong>
           </p>
           <div class="progress">
-            <div class="progress-bar bg-color-{{currentObra.compromisoDetail.slug}}"
-                 role="progressbar"
-                 ng-style="{ 'width': currentObra.compromisoDetail.porcentaje_completado + '%' }">
-                 <span class="progressbar-w" ng-hide="currentObra.compromisoDetail.porcentaje_completado<50">{{currentObra.compromisoDetail.porcentaje_completado}}% </span>
+            <div class="progress-bar bg-color-{{currentObra.compromisoDetail.slug}}" role="progressbar" ng-style="{ 'width': currentObra.compromisoDetail.porcentaje_completado + '%' }">
+              <span class="progressbar-w" ng-hide="currentObra.compromisoDetail.porcentaje_completado<50">{{currentObra.compromisoDetail.porcentaje_completado}}%
+              </span>
             </div>
             <div class="progress-w" ng-show="!currentObra.compromisoDetail.porcentaje_completado">
               <p>-</p>
             </div>
-            <div class="progress-w second-progress" ng-show="currentObra.compromisoDetail.porcentaje_completado<50" ng-style="{ 'width': (100 - currentObra.compromisoDetail.porcentaje_completado) + '%' }">{{currentObra.compromisoDetail.porcentaje_completado}}%</div>
+            <div class="progress-w second-progress" ng-show="currentObra.compromisoDetail.porcentaje_completado<50"
+              ng-style="{ 'width': (100 - currentObra.compromisoDetail.porcentaje_completado) + '%' }">{{currentObra.compromisoDetail.porcentaje_completado}}%</div>
           </div>
         </div>
 
         <div class="col-sm-12">
-          <p ng-show="currentObra.compromisoDetail.cumplimiento_2_label" class=""> <strong class="ng-binding">{{currentObra.compromisoDetail.cumplimiento_2_label}}</strong></>
+          <p ng-show="currentObra.compromisoDetail.cumplimiento_2_label" class=""> <strong class="ng-binding">{{currentObra.compromisoDetail.cumplimiento_2_label}}</strong><p/>
           <div class="progress">
-            <div class="progress-bar bg-color-{{currentObra.compromisoDetail.slug}}"
-                 role="progressbar"
-                 ng-style="{ 'width': currentObra.compromisoDetail.cumplimiento_2_porcentaje_completado + '%' }">
-              <span class="progressbar-w" ng-hide="currentObra.compromisoDetail.cumplimiento_2_porcentaje_completado<50">{{currentObra.compromisoDetail.cumplimiento_2_porcentaje_completado}}% </span>
+            <div class="progress-bar bg-color-{{currentObra.compromisoDetail.slug}}" role="progressbar" ng-style="{ 'width': currentObra.compromisoDetail.cumplimiento_2_porcentaje_completado + '%' }">
+              <span class="progressbar-w" ng-hide="currentObra.compromisoDetail.cumplimiento_2_porcentaje_completado<50">{{currentObra.compromisoDetail.cumplimiento_2_porcentaje_completado}}%
+              </span>
             </div>
             <div class="progress-w" ng-show="!currentObra.compromisoDetail.cumplimiento_2_porcentaje_completado">
               <p>-</p>
             </div>
-            <div class="progress-w second-progress" ng-show="currentObra.compromisoDetail.cumplimiento_2_porcentaje_completado<50" ng-style="{ 'width': (100 - currentObra.compromisoDetail.cumplimiento_2_porcentaje_completado) + '%' }">{{currentObra.compromisoDetail.cumplimiento_2_porcentaje_completado}}%</div>
+            <div class="progress-w second-progress" ng-show="currentObra.compromisoDetail.cumplimiento_2_porcentaje_completado<50"
+              ng-style="{ 'width': (100 - currentObra.compromisoDetail.cumplimiento_2_porcentaje_completado) + '%' }">{{currentObra.compromisoDetail.cumplimiento_2_porcentaje_completado}}%</div>
           </div>
         </div>
         <div class="col-xs-12 col-md-12 right">
-           <p class="" ng-cloak ng-show="currentCompromise.cumplimiento"> Fecha Finalización <strong>{{currentObra.compromisoDetail.cumplimiento}}</strong></p>
+          <p class="" ng-cloak ng-show="currentCompromise.cumplimiento"> Fecha Finalización <strong>{{currentObra.compromisoDetail.cumplimiento}}</strong></p>
         </div>
 
         <div class="col-xs-12">
-          <a ng-href="{{currentObra.compromisoDetail.url_interna}}" target="_blank" ng-hide="currentObra.compromisoDetail.url_interna === undefined" class="btn full btn-xs upper bg-color  center-block" >Ver mas sobre el compromiso &#187;  </a>
+          <a ng-href="{{currentObra.compromisoDetail.url_interna}}" target="_blank" ng-hide="currentObra.compromisoDetail.url_interna === undefined"
+            class="btn full btn-xs upper bg-color  center-block">Ver mas sobre el compromiso &#187; </a>
         </div>
       </div>
     </div>
@@ -165,13 +168,13 @@
   <div class="header">
     <div class="row">
       <div class="col-xs-8 label-text">
-         <img class="icon-svg-container compromiso-icon" ng-src="{{currentCompromise.iconSVG}}">
+        <img class="icon-svg-container compromiso-icon" ng-src="{{currentCompromise.iconSVG}}">
         <h5>{{currentCompromise.titulo}}</h5>
 
       </div>
       <div class="col-xs-4">
         <h5 class="text-right close"><a class="" href="javascript:;" ng-click="closeDetail()">
-        <span class="glyphicon glyphicon-remove white"></span></a></h5>
+            <span class="glyphicon glyphicon-remove white"></span></a></h5>
       </div>
     </div>
   </div>
@@ -190,30 +193,29 @@
         <p ng-cloak ng-show="currentCompromise.metrica"> ¿Cómo lo medimos? <strong>{{currentCompromise.metrica}}</strong></p>
         <p ng-show="currentCompromise.cumplimiento_label"> <strong>{{currentCompromise.cumplimiento_label}}</strong></p>
         <div class="progress">
-            <div class="progress-bar bg-color-{{currentCompromise.slug}}"
-                 role="progressbar"
-                 ng-style="{ 'width': currentCompromise.porcentaje_completado + '%' }">
-                 <span class="progressbar-w" ng-hide="currentCompromise.porcentaje_completado<50">{{currentCompromise.porcentaje_completado}}% </span>
-            </div>
-            <div class="progress-w" ng-show="!currentCompromise.porcentaje_completado">
-              <p>-</p>
-            </div>
-            <div class="progress-w second-progress" ng-show="currentCompromise.porcentaje_completado<50" ng-style="{ 'width': (100 - currentCompromise.porcentaje_completado) + '%' }">{{currentCompromise.porcentaje_completado}}%</div>
+          <div class="progress-bar bg-color-{{currentCompromise.slug}}" role="progressbar" ng-style="{ 'width': currentCompromise.porcentaje_completado + '%' }">
+            <span class="progressbar-w" ng-hide="currentCompromise.porcentaje_completado<50">{{currentCompromise.porcentaje_completado}}%
+            </span>
+          </div>
+          <div class="progress-w" ng-show="!currentCompromise.porcentaje_completado">
+            <p>-</p>
+          </div>
+          <div class="progress-w second-progress" ng-show="currentCompromise.porcentaje_completado<50" ng-style="{ 'width': (100 - currentCompromise.porcentaje_completado) + '%' }">{{currentCompromise.porcentaje_completado}}%</div>
         </div>
       </div>
 
       <div class="col-sm-12">
         <p ng-show="currentCompromise.cumplimiento_2_label" class=""> <strong class="ng-binding">{{currentCompromise.cumplimiento_2_label}}</strong></p>
-          <div class="progress" ng-show="currentCompromise.cumplimiento_2_porcentaje_completado">
-            <div class="progress-bar bg-color-{{currentCompromise.slug}}"
-                  role="progressbar"
-                  ng-style="{ 'width': currentCompromise.cumplimiento_2_porcentaje_completado + '%' }">
-                  <span class="progressbar-w" ng-hide="currentCompromise.cumplimiento_2_porcentaje_completado<50">{{currentCompromise.cumplimiento_2_porcentaje_completado}}% </span>
-            </div>
-            <div class="progress-w" ng-show="!currentCompromise.cumplimiento_2_porcentaje_completado">
-              <p>-</p>
-            </div>
-            <div class="progress-w second-progress" ng-show="currentCompromise.cumplimiento_2_porcentaje_completado<50" ng-style="{ 'width': (100 - currentCompromise.cumplimiento_2_porcentaje_completado) + '%' }">{{currentCompromise.cumplimiento_2_porcentaje_completado}}%</div>
+        <div class="progress" ng-show="currentCompromise.cumplimiento_2_porcentaje_completado">
+          <div class="progress-bar bg-color-{{currentCompromise.slug}}" role="progressbar" ng-style="{ 'width': currentCompromise.cumplimiento_2_porcentaje_completado + '%' }">
+            <span class="progressbar-w" ng-hide="currentCompromise.cumplimiento_2_porcentaje_completado<50">{{currentCompromise.cumplimiento_2_porcentaje_completado}}%
+            </span>
+          </div>
+          <div class="progress-w" ng-show="!currentCompromise.cumplimiento_2_porcentaje_completado">
+            <p>-</p>
+          </div>
+          <div class="progress-w second-progress" ng-show="currentCompromise.cumplimiento_2_porcentaje_completado<50"
+            ng-style="{ 'width': (100 - currentCompromise.cumplimiento_2_porcentaje_completado) + '%' }">{{currentCompromise.cumplimiento_2_porcentaje_completado}}%</div>
         </div>
       </div>
 
@@ -222,17 +224,19 @@
       </div>
 
       <div class="col-xs-12">
-        <a ng-href="{{currentCompromise.url_interna}}" target="_blank" ng-hide="currentCompromise.url_interna === undefined" class="btn full btn-xs upper bg-color center-block" >Ver mas sobre el compromiso &#187;  </a>
-      </div>
+        <a ng-href="{{currentCompromise.url_interna}}" target="_blank" ng-hide="currentCompromise.url_interna === undefined"
+          class="btn full btn-xs upper bg-color center-block">Ver mas sobre el compromiso &#187; </a>
       </div>
     </div>
+  </div>
 
-  <div class="col-xs-12 label-text header-map" ng-if="currentCompromise.embed_map_titulo" >
+  <div class="col-xs-12 label-text header-map" ng-if="currentCompromise.embed_map_titulo">
     <h6>{{currentCompromise.embed_map_titulo}}</h6>
   </div>
   <div ng-if="currentCompromise.embed_map_url" class="col-xs-12 map-container">
-    <iframe width="100%" height="385"  ng-src="{{currentCompromise.embed_map_url | trustAsResourceUrl}}"  frameborder="0"></iframe>
+    <iframe width="100%" height="385" ng-src="{{currentCompromise.embed_map_url | trustAsResourceUrl}}" frameborder="0"></iframe>
   </div>
 </div>
 
 <div id="filler"></div>
+</div>
