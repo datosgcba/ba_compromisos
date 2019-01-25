@@ -3,6 +3,12 @@ Todos los cambios notables del proyecto a partir de la version 0.1.0 seran docum
 
 El formato esta basado en [Keep a Changelog](http://keepachangelog.com/) y este proyecto se adhiere a  [Semantic Versioning](http://semver.org/).
 
+## v1.8.3RC1
+- Se arregló el filtro por comuna para mapa y cartas en home y mapa.
+- Ahora se muestra el teléfono de los CIM en compromiso 35.
+- Se eliminan valores vacíos en el bubble chart en compromiso 20.
+- Se corrigen detalles visuales del tooltip.
+
 ## v1.8.2RC6
 - Actualización en la documentación y archivo config de ejemplo para ayudar el deploy.
 
@@ -40,7 +46,7 @@ El formato esta basado en [Keep a Changelog](http://keepachangelog.com/) y este 
 - Las compromisos con dos barras muestran su porcentaje.
 
 ## v1.7.2
-- Se corrige tamaño automatico de pantalla iframe 
+- Se corrige tamaño automatico de pantalla iframe
 - Se agrega de nuevo la segunda barra de comprosmisos
 - Los compromisos con 100% cambian su icono a la medalla.
 - Se mejora performance de codigo removiendo console.log.
@@ -55,7 +61,7 @@ El formato esta basado en [Keep a Changelog](http://keepachangelog.com/) y este 
 - Se corrigen fuentes en el detalle de compromisos en la grilla principal.
 
 ## v1.5.0.0
-### Added 
+### Added
 - c42 Corregimos la descripcion del gráfico.
 - c43 Reordenamos la grilla de contenidos
 - Home nueva grilla home con filtros y mapas.
