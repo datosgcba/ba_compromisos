@@ -65,6 +65,11 @@ angular
         controller: "HomeCtrl",
         controllerAs: "home"
       })
+      .when("/avances", {
+        templateUrl: "views/avances.html",
+        controller: "AvancesCtrl",
+        controllerAs: "avances"
+      })
       .when("/c01", {
         templateUrl: "views/c01.html",
         controller: "Compromiso01Ctrl",

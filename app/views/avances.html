@@ -1,0 +1,150 @@
+<p class="text-center" ng-show="loading">Cargando...</p>
+<div ng-hide="loading">
+
+  <div id="avances" class="container-fluid">
+
+    <div class="header-avances">
+      <div class="bg"></div>
+      <div class="content">
+        <div class="intro">
+          <div class="row">
+            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+            <div class="col-xs-10 col-sm-10 col-md-10">
+              <div class="title">
+                <h1>Cómo avanzan los Compromisos</h1>
+                <h2>2016-2019</h2>
+              </div>
+              <div class="graphs">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-2 hide-mobile">
+                    <h3>{{ totalProgress }}%</h3>
+                    <p>Avance de Compromisos</p>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-3">
+                    <div class="pie-wrapper-outer">
+                      <div class="pie-wrapper-inner">
+                        <div class="pie" style="--segment1: {{ totalProgress }};"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-2 hide-desktop">
+                    <h3>{{ totalProgress }}%</h3>
+                    <p>Avance de Compromisos</p>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-3">
+                    <div class="pie-wrapper-outer">
+                      <div class="pie-wrapper-inner">
+                        <div class="pie" style="--segment1: {{ pcMandato }};"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-2">
+                    <h3>{{ pcMandato}}%</h3>
+                    <p>Mandato transcurrido 2016-2019</p>
+                  </div>
+                </div>
+              </div>
+              <div class="description">
+                <br>
+                <p>A {{ currentMonth }} de 2019, y con el {{ pcMandato }}% del período 2016-2019 transcurrido, el avance promedio de los Compromisos de Gobierno es del {{ totalProgress }}%.</p>
+              </div>
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+          </div>
+        </div>
+        <div class="summary">
+          <div class="row">
+            <div class="col-xs-1 col-sm-1 col-md-1 hide-mobile"></div>
+            <div class="col-xs-12 col-sm-12 col-md-2">
+              <div class="summarizer">
+                <h3>{{ totalCompromisos }}</h3>
+                <p>Compromisos asumidos</p>
+              </div>
+              <div class="summarizer">
+                <h3>{{ totalAccionesSinTerminar }}</h3>
+                <p>Acciones en curso para cumplir</p>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-2">
+              <div class="summarizer">
+                <h3>{{ totalCumplidos }}</h3>
+                <p>Compromisos cumplidos</p>
+              </div>
+              <div class="summarizer">
+                <h3>{{ totalZonaSur }}</h3>
+                <p>Acciones en zona sur</p>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-2">
+              <div class="summarizer">
+                <h3>{{ totalCumplidos70 }}</h3>
+                <p>Compromisos con más del 70% de avance</p>
+              </div>
+              <div class="summarizer">
+                <h3>{{ totalZonaCentro }}</h3>
+                <p>Acciones en zona centro</p>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-2">
+              <div class="summarizer">
+                <h3>{{ totalCumplidos50 }}</h3>
+                <p>Compromisos entre 50% y 70% de avance</p>
+              </div>
+              <div class="summarizer">
+                <h3>{{ totalZonaNorte }}</h3>
+                <p>Compromisos en zona norte</p>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-2">
+              <div class="summarizer-big">
+                <img src="../images/avances/hands.svg" alt="">
+                <p>Los Compromisos de Gobierno son objetivos específicos y medibles enunciados por el Jefe de Gobierno, Horacio Rodríguez Larreta, a cumplirse entre 2016 y 2019 y sobre los que rendimos cuenta permanentemente a los vecinos. </p>
+              </div>
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 hide-mobile"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row avances-list">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+
+      <div class="avance" ng-class="{open: area.open}" ng-repeat="(key, area) in dataAvances">
+        <div class="avance-header">
+          <div class="row">
+            <div class="col-md-5">
+              <h4>{{ area.area }}</h4>
+              <p>{{ area.compromisos.length }} Compromiso{{ area.compromisos.length > 1 ? 's' : '' }}</p>
+            </div>
+            <div class="col-md-4">
+              <h4>{{ area.progress }}%</h4>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="{{ area.progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ area.progress }}%;"></div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="opener" ng-click="area.open = !area.open"> <span> > </span> </div>
+            </div>
+          </div>
+        </div>
+        <div class="avance-content">
+          <p>{{ area.intro }}</p>
+          <div class="avances-details">
+            <ul>
+              <li ng-repeat="(key2, compromiso) in area.compromisos" ng-class="{complete: compromiso.porcentaje_completado == '100'}">
+                <a href="{{ buildIFrameURL(compromiso.numero) }}">{{ compromiso.titulo }}</a> <div class="badge">Compromiso cumplido</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+
+  </div>
+
+</div>

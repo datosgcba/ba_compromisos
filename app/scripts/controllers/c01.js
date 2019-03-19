@@ -10,7 +10,7 @@
 angular.module('compromisosSiteApp')
   .controller('Compromiso01Ctrl', function (UrlService,$rootScope, $scope, $http,SlugColorService,LoadSVGService,$sce,$templateRequest,$compile) {
 
-  	var url = UrlService.getUrlByPage('home');
+    var url = UrlService.getUrlByPage('home');
     var pymChild = new pym.Child({ polling: 1000 });
     pymChild.sendHeight();
     var _ = window._;
