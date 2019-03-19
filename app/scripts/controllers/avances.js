@@ -27,7 +27,7 @@ angular.module('compromisosSiteApp')
       .success(function(dataCompromisos){
         //console.log(dataCompromisos)
           dataCompromisos.map(function(compromiso) {
-            let pos = $scope.posInArray(compromiso.area1, $scope.dataAvances);
+            var pos = $scope.posInArray(compromiso.area1, $scope.dataAvances);
             if ( pos === - 1) {
               $scope.dataAvances.push({
                 area: compromiso.area1,
@@ -74,7 +74,7 @@ angular.module('compromisosSiteApp')
     ];
 
     $scope.getIntro = function ( title ) {
-      let texto = $scope.textos.find ( function (texto) {
+      var texto = $scope.textos.find ( function (texto) {
         return title.toLowerCase() === texto.title.toLowerCase();
       });
       return texto.text;
@@ -96,7 +96,7 @@ angular.module('compromisosSiteApp')
     $scope.processObras = function () {
 
       // En proceso
-      let totalAccionesSinTerminar = 0;
+      var totalAccionesSinTerminar = 0;
       $scope.dataCompromisos.map( function (compromiso) {
         if ( parseInt( compromiso.porcentaje_completado ) < 100 ) {
           $scope.dataObras.map ( function (obra)  {
@@ -109,11 +109,11 @@ angular.module('compromisosSiteApp')
       $scope.totalAccionesSinTerminar = totalAccionesSinTerminar;
 
       // Zonificacion
-      let totalZonaNorte = 0;
-      let totalZonaSur = 0;
-      let totalZonaCentro = 0;
+      var totalZonaNorte = 0;
+      var totalZonaSur = 0;
+      var totalZonaCentro = 0;
       $scope.dataObras.map ( function (obra) {
-        let comuna = parseInt ( obra.Comuna );
+        var comuna = parseInt ( obra.Comuna );
         if ( $scope.zonaNorte.includes(comuna) ) {
           totalZonaNorte++;
         } else if ( $scope.zonaSur.includes(comuna) ) {
@@ -130,17 +130,17 @@ angular.module('compromisosSiteApp')
     $scope.processCompromisos = function () {
 
       // Compromisos por cada area
-      let totalProgress = 0;
-      let totalCompromisos = 0;
-      let totalCumplidos = 0;
-      let totalCumplidos70 = 0;
-      let totalCumplidos50 = 0;
+      var totalProgress = 0;
+      var totalCompromisos = 0;
+      var totalCumplidos = 0;
+      var totalCumplidos70 = 0;
+      var totalCumplidos50 = 0;
 
 
       $scope.dataAvances.map ( function (area) {
-        let progress = 0;
+        var progress = 0;
         area.compromisos.map ( function (compromiso) {
-          let pc = parseInt(compromiso.porcentaje_completado);
+          var pc = parseInt(compromiso.porcentaje_completado);
           progress += pc;
           totalProgress += pc;
           if ( pc === 100 ) {
@@ -163,7 +163,7 @@ angular.module('compromisosSiteApp')
     };
 
     $scope.posInArray = function(key, ay) {
-      for ( let i = 0; i < ay.length; i++ ) {
+      for ( var i = 0; i < ay.length; i++ ) {
         if ( ay[i].area === key ) {
           return i;
         }
@@ -172,11 +172,11 @@ angular.module('compromisosSiteApp')
     };
 
     $scope.buildIFrameURL = function(compromiso) {
-      let appHtml = '/app.html';
-      let compromisoAnchor = '#c' + (parseInt(compromiso) < 10 ? '0' + compromiso : compromiso);
-      let childId = 'childId=pym-container';
-      let initialWidth = 'initialWidth=1140';
-      let parentUrl = 'parentUrl=' + $location.$$absUrl;
+      var appHtml = '/app.html';
+      var compromisoAnchor = '#c' + (parseInt(compromiso) < 10 ? '0' + compromiso : compromiso);
+      var childId = 'childId=pym-container';
+      var initialWidth = 'initialWidth=1140';
+      var parentUrl = 'parentUrl=' + $location.$$absUrl;
       return appHtml + '?' + initialWidth + '&' + childId + '&' + parentUrl + compromisoAnchor;
     };
 
