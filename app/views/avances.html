@@ -139,6 +139,7 @@
           <div class="avances-details">
             <ul>
               <li ng-repeat="(key2, compromiso) in area.compromisos" ng-class="{complete: compromiso.porcentaje_completado == '100'}">
+                {{ buildIFrameURL(compromiso.numero) }}
                 <a href="{{ buildIFrameURL(compromiso.numero) }}">{{ compromiso.titulo }}</a> <div class="badge">Compromiso cumplido</div>
               </li>
             </ul>
