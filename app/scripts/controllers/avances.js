@@ -172,17 +172,16 @@ angular.module('compromisosSiteApp')
     };
 
     $scope.buildIFrameURL = function(compromiso) {
-      // https://sociopublico.github.io/compromisos-ba/dist/app.html?initialWidth=1140&childId=pym-container&parentUrl=https%3A%2F%2Fsociopublico.github.io%2Fcompromisos-ba%2Fdist%2F%23avances#c01
-      // https://sociopublico.github.io/app.html?initialWidth=1140&childId=pym-container&parentUrl=https://sociopublico.github.io:443//avances#c02
-      return $scope.parseAppPath();
-      return JSON.stringify($location);
-      var appHtml = '/app.html';
+      var appHtml = 'app.html';
       var compromisoAnchor = '#c' + (parseInt(compromiso) < 10 ? '0' + compromiso : compromiso);
       var childId = 'childId=pym-container';
       var initialWidth = 'initialWidth=1140';
-      var parentUrl = $location.$$protocol + '://' + $location.$$host + (($location.$$port !== 80 && $location.$$port !== 443)? ':' + $location.$$port : '') + '/' + $location.$$path
+      var baseUrl = $location.$$protocol + '://' + $location.$$host + (($location.$$port !== 80 && $location.$$port !== 443)? ':' + $location.$$port : '');
+      var parentUrl = baseUrl + $location.$$path
       var queryUrl = 'parentUrl='+ encodeURI(parentUrl);
-      return appHtml + '?' + initialWidth + '&' + childId + '&' + queryUrl + compromisoAnchor;
+      var appPath = $scope.parseAppPath();
+      // console.log(baseUrl + appPath + '/' + appHtml + '?' + initialWidth + '&' + childId + '&' + queryUrl + compromisoAnchor);
+      return baseUrl + appPath + '/' + appHtml + '?' + initialWidth + '&' + childId + '&' + queryUrl + compromisoAnchor;
     };
 
     $scope.parseAppPath = function ( ) {
@@ -193,8 +192,7 @@ angular.module('compromisosSiteApp')
       var baseUrl = protocol + '://' + host + ((port !== 80 && port !== 443) ? ':' + port : '') + '/';
       var relativeUrl = absUrl.replace(baseUrl, '');
       var parts = relativeUrl.split('app.html');
-      return parts[0];
-      console.log(parts);
+      return parts.length && parts[0] !== '' && parts[0].indexOf('?') === -1 ? parts[0] : '';
     };
 
   });
