@@ -176,8 +176,9 @@ angular.module('compromisosSiteApp')
       var compromisoAnchor = '#c' + (parseInt(compromiso) < 10 ? '0' + compromiso : compromiso);
       var childId = 'childId=pym-container';
       var initialWidth = 'initialWidth=1140';
-      var parentUrl = 'parentUrl=' + $location.$$absUrl;
-      return appHtml + '?' + initialWidth + '&' + childId + '&' + parentUrl + compromisoAnchor;
+      var parentUrl = $location.$$protocol + '://' + $location.$$host + ($location.$$port ? ':' + $location.$$port : '') + '/' + $location.$$path
+      var queryUrl = 'parentUrl='+ encodeURI(parentUrl);
+      return appHtml + '?' + initialWidth + '&' + childId + '&' + queryUrl + compromisoAnchor;
     };
 
   });

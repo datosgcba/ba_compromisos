@@ -23,7 +23,9 @@
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <div class="pie-wrapper-outer">
                       <div class="pie-wrapper-inner">
-                        <div class="pie" style="--segment1: {{ totalProgress }};"></div>
+                        <div class="pie">
+                          <div class="pie__segment" style="--offset: 0; --value: {{ totalProgress }}; --bg: #FFD865; --over50: {{ totalProgress > 50 ? 1 : 0 }};"></div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -34,7 +36,9 @@
                   <div class="col-xs-12 col-sm-12 col-md-3">
                     <div class="pie-wrapper-outer">
                       <div class="pie-wrapper-inner">
-                        <div class="pie" style="--segment1: {{ pcMandato }};"></div>
+                        <div class="pie">
+                          <div class="pie__segment" style="--offset: 0; --value: {{ pcMandato }}; --bg: #FFD865; --over50: {{ pcMandato > 50 ? 1 : 0 }};"></div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -97,7 +101,6 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-2">
               <div class="summarizer-big">
-                <img src="../images/avances/hands.svg" alt="">
                 <p>Los Compromisos de Gobierno son objetivos específicos y medibles enunciados por el Jefe de Gobierno, Horacio Rodríguez Larreta, a cumplirse entre 2016 y 2019 y sobre los que rendimos cuenta permanentemente a los vecinos. </p>
               </div>
             </div>
