@@ -174,6 +174,7 @@ angular.module('compromisosSiteApp')
     $scope.buildIFrameURL = function(compromiso) {
       // https://sociopublico.github.io/compromisos-ba/dist/app.html?initialWidth=1140&childId=pym-container&parentUrl=https%3A%2F%2Fsociopublico.github.io%2Fcompromisos-ba%2Fdist%2F%23avances#c01
       // https://sociopublico.github.io/app.html?initialWidth=1140&childId=pym-container&parentUrl=https://sociopublico.github.io:443//avances#c02
+      return $scope.parseAppPath();
       return JSON.stringify($location);
       var appHtml = '/app.html';
       var compromisoAnchor = '#c' + (parseInt(compromiso) < 10 ? '0' + compromiso : compromiso);
@@ -182,6 +183,18 @@ angular.module('compromisosSiteApp')
       var parentUrl = $location.$$protocol + '://' + $location.$$host + (($location.$$port !== 80 && $location.$$port !== 443)? ':' + $location.$$port : '') + '/' + $location.$$path
       var queryUrl = 'parentUrl='+ encodeURI(parentUrl);
       return appHtml + '?' + initialWidth + '&' + childId + '&' + queryUrl + compromisoAnchor;
+    };
+
+    $scope.parseAppPath = function ( ) {
+      var absUrl = $location.$$absUrl;
+      var protocol = $location.$$protocol;
+      var host = $location.$$host;
+      var port = $location.$$port;
+      var baseUrl = protocol + '://' + host + ((port !== 80 && port !== 443) ? ':' + port : '') + '/';
+      var relativeUrl = absUrl.replace(baseUrl, '');
+      var parts = relativeUrl.split('app.html');
+      return parts[0];
+      console.log(parts);
     };
 
   });
