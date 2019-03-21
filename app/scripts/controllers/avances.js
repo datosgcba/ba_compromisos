@@ -177,11 +177,11 @@ angular.module('compromisosSiteApp')
       var childId = 'childId=pym-container';
       var initialWidth = 'initialWidth=1140';
       var baseUrl = $location.$$protocol + '://' + $location.$$host + (($location.$$port !== 80 && $location.$$port !== 443)? ':' + $location.$$port : '');
-      var parentUrl = baseUrl + $location.$$path
+      var parentUrl = baseUrl + $location.$$path;
       var queryUrl = 'parentUrl='+ encodeURI(parentUrl);
       var appPath = $scope.parseAppPath();
       // console.log(baseUrl + appPath + '/' + appHtml + '?' + initialWidth + '&' + childId + '&' + queryUrl + compromisoAnchor);
-      return baseUrl + appPath + '/' + appHtml + '?' + initialWidth + '&' + childId + '&' + queryUrl + compromisoAnchor;
+      return baseUrl + '/' + appPath + '/' + appHtml + '?' + initialWidth + '&' + childId + '&' + queryUrl + compromisoAnchor;
     };
 
     $scope.parseAppPath = function ( ) {
