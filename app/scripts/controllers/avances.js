@@ -174,7 +174,7 @@ angular.module('compromisosSiteApp')
     $scope.buildIFrameURL = function(compromiso) {
       // https://sociopublico.github.io/compromisos-ba/dist/app.html?initialWidth=1140&childId=pym-container&parentUrl=https%3A%2F%2Fsociopublico.github.io%2Fcompromisos-ba%2Fdist%2F%23avances#c01
       // https://sociopublico.github.io/app.html?initialWidth=1140&childId=pym-container&parentUrl=https://sociopublico.github.io:443//avances#c02
-      return $location;
+      return JSON.stringify($location);
       var appHtml = '/app.html';
       var compromisoAnchor = '#c' + (parseInt(compromiso) < 10 ? '0' + compromiso : compromiso);
       var childId = 'childId=pym-container';
