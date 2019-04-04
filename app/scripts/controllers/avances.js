@@ -27,25 +27,37 @@ angular.module('compromisosSiteApp')
       .success(function(dataCompromisos){
         //console.log(dataCompromisos)
           dataCompromisos.map(function(compromiso) {
-            var pos = $scope.posInArray(compromiso.area1, $scope.dataAvances);
-            if ( pos === - 1) {
-              $scope.dataAvances.push({
-                area: compromiso.area1,
-                open: false,
-                progress: 0,
-                intro: $scope.getIntro(compromiso.area1),
-                compromisos: [
-                  compromiso
-                ]
-              });
-            } else {
-              $scope.dataAvances[pos].compromisos.push(compromiso);
+            for(var i = 1; i <= 5; i++) {
+              var areaId = 'area' + i;
+              if ( compromiso[areaId] ) {
+                var pos = $scope.posInArray(compromiso[areaId], $scope.dataAvances);
+
+                var compromisoCopy = JSON.parse(JSON.stringify(compromiso));
+                compromisoCopy.sort_order = $scope.getOrderCompromiso( compromiso[areaId], compromiso.numero );
+                compromisoCopy.isDuplicate = i > 1;
+
+                if ( pos === - 1) {
+                  $scope.dataAvances.push({
+                    area: compromisoCopy[areaId],
+                    open: false,
+                    progress: 0,
+                    intro: $scope.getIntro(compromisoCopy[areaId]),
+                    sort_order: $scope.getOrderArea(compromisoCopy[areaId]),
+                    compromisos: [
+                      compromisoCopy
+                    ]
+                  });
+                } else {
+                  $scope.dataAvances[pos].compromisos.push(compromisoCopy);
+                }
+              }
             }
           });
           $scope.dataCompromisos = dataCompromisos;
           $scope.processCompromisos();
           $scope.mandato();
 
+          $scope.sortDataAvances();
           //console.log($scope.dataAvances);
 
           $http.jsonp(obrasUrl)
@@ -72,6 +84,49 @@ angular.module('compromisosSiteApp')
       { title: 'Desarrollo humano y Salud', text: 'Nos comprometimos a promover la integración social, la igualdad de oportunidades y el acceso a un sistema de salud de calidad en la Ciudad. Estamos construyendo nuevos y modernizados Centros de Salud con más equipos médicos, impulsando el desarrollo e integración de zonas históricamente relegadas, y facilitando el acceso a la vivienda para todos los vecinos.' },
       { title: 'Género', text: 'Queremos una Ciudad en donde todos tengamos los mismos derechos y las mismas oportunidades. Trabajamos para que las mujeres puedan transitar y disfrutar el espacio público seguras y sin violencia, para que puedan desarrollar su máximo potencial y que sean aún más protagonistas del crecimiento y desarrollo de la Ciudad.' }
     ];
+    $scope.dataOrder = [
+      { area: 'Grandes obras públicas', orderCompromisos: [42, 38, 50, 34, 51, 48, 9, 49, 8, 24] },
+      { area: 'Transformación educativa', orderCompromisos: [11, 12, 51, 50, 10, 29, 22, 24, 47, 13] },
+      { area: 'Seguridad', orderCompromisos: [45, 14, 15, 46, 27, 44, 4, 35] },
+      { area: 'Más espacio público y verde de calidad', orderCompromisos: [37, 16, 40, 5, 46, 27, 39, 25, 42, 31, 21, 32, 36, 2] },
+      { area: 'Transporte público seguro y de calidad', orderCompromisos: [33, 34, 6, 7, 9, 43, 44, 46, 4, 31, 1] },
+      { area: 'Creatividad y Cultura', orderCompromisos: [29, 3, 11, 41, 47, 16, 28, 54, 53, 30, 20] },
+      { area: 'Género', orderCompromisos: [35, 45, 46, 27, 15, 44, 22, 12, 11, 47] },
+      { area: 'Desarrollo humano y Salud', orderCompromisos: [35, 52, 48, 8, 18, 17, 24, 23, 49, 19, 26] }
+    ];
+
+    $scope.sortDataAvances = function() {
+      $scope.dataAvances.sort(function (a, b) {
+        return a.sort_order > b.sort_order ? 1 : -1;
+      });
+      $scope.dataAvances.map (function( area ) {
+        area.compromisos.sort(function( a, b) {
+          return a.sort_order > b.sort_order ? 1 : -1;
+        });
+      });
+    };
+
+    $scope.getOrderArea = function ( title ) {
+      for(var i = 0; i < $scope.dataOrder.length; i++) {
+        if ( $scope.dataOrder[i].area === title ) {
+          return i;
+        }
+      }
+      return 99;
+    };
+
+    $scope.getOrderCompromiso = function ( area, compromiso ) {
+      for(var i = 0; i < $scope.dataOrder.length; i++) {
+        if ( $scope.dataOrder[i].area === area ) {
+          for(var j = 0; j < $scope.dataOrder[i].orderCompromisos.length; j++ ) {
+            if ( parseInt($scope.dataOrder[i].orderCompromisos[j]) === parseInt(compromiso) ) {
+              return j;
+            }
+          }
+        }
+      }
+      return 99;
+    };
 
     $scope.getIntro = function ( title ) {
       var texto = $scope.textos.find ( function (texto) {
@@ -135,6 +190,7 @@ angular.module('compromisosSiteApp')
       var totalCumplidos = 0;
       var totalCumplidos70 = 0;
       var totalCumplidos50 = 0;
+      var progressCounter = 0;
 
 
       $scope.dataAvances.map ( function (area) {
@@ -143,19 +199,22 @@ angular.module('compromisosSiteApp')
           var pc = parseInt(compromiso.porcentaje_completado);
           progress += pc;
           totalProgress += pc;
-          if ( pc === 100 ) {
-            totalCumplidos++;
-          } else if ( pc >= 70 ) {
-            totalCumplidos70++;
-          } else if ( pc >= 50 && pc < 70 ) {
-            totalCumplidos50++;
+          if ( !compromiso.isDuplicate ) {
+            if ( pc === 100 ) {
+              totalCumplidos++;
+            } else if ( pc >= 70 ) {
+              totalCumplidos70++;
+            } else if ( pc >= 50 && pc < 70 ) {
+              totalCumplidos50++;
+            }
+            totalCompromisos++;
           }
-          totalCompromisos++;
+          progressCounter++;
         });
         area.progress = Math.round(progress / area.compromisos.length);
       });
 
-      $scope.totalProgress = Math.round(totalProgress / totalCompromisos);
+      $scope.totalProgress = Math.round(totalProgress / progressCounter);
       $scope.totalCompromisos = totalCompromisos;
       $scope.totalCumplidos = totalCumplidos;
       $scope.totalCumplidos70 = totalCumplidos70;
