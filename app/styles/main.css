@@ -1249,44 +1249,6 @@ head ul {
   width: 80%;
 }
 
-.ilustration svg {
-  margin-left: -20px;
-  max-width: 104%;
-  max-height: 100%;
-  height: auto;
-  width: 104%;
-}
-.ilustration svg g#items image {
-  transition: transform 0.2s; /* Animation */
-  cursor: pointer;
-}
-
-.ilustration svg g#items image:hover {
-  transform: scale(1.5);
-}
-.detalle-ilustracion .close {
-  transition: transform 0.2s;
-  width: 24px;
-  opacity: 1;
-}
-.detalle-ilustracion .close:hover {
-  transform: scale(1.2) rotate(180deg);
-}
-.detalle-ilustracion {
-  font-family: "CHANEWEI" !important;
-  padding-bottom: 1em;
-}
-.detalle-ilustracion.full {
-  padding: 0;
-  overflow: hidden;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center; /*centers items on the line (the x-axis by default)*/
-  align-items: center; /*centers items on the cross-axis (y by default)*/
-  top: 0;
-}
 .inner {
   padding: 3em;
   z-index: 100000000;
@@ -1296,103 +1258,8 @@ head ul {
   border: 3px solid #00b9a7;
 }
 
-.detalle-ilustracion p {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  margin: 0;
-}
-.detalle-ilustracion h4 {
-  font-size: 18px;
-  font-family: "CHANEWEI", Helvetica, Arial, sans-serif;
-}
-
-.detalle-ilustracion img.compromiso-icon {
-  max-width: 90px;
-  max-height: 90px;
-}
-
-.detalle-ilustracion .progress-main {
-  padding-top: 0;
-}
-.detalle-ilustracion p.end-date {
-  padding-bottom: 14px;
-  border-right: 4px dotted #00b9a7;
-  padding-top: 3px;
-}
-.detalle-ilustracion p.end-date span {
-  border: 3px solid #00b9a7;
-  margin-top: 1px;
-  background: none;
-  border-right: none;
-  font-size: 18px;
-  color: #00b9a7;
-  padding-left: 4px;
-  padding-right: 6px;
-}
-.detalle-ilustracion .progress {
-  border-radius: 0px;
-  background-image: none;
-  background-color: #a1a1a1;
-  text-align: center;
-  box-shadow: none;
-  height: 43px;
-  margin-bottom: 8px;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-.detalle-ilustracion .progress-bar {
-  color: #fff;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  font-weight: 700;
-
-  font-weight: normal;
-  font-size: 22px;
-  line-height: 40px;
-}
-
-.detalle-ilustracion .progress .progress-w {
-  text-align: center;
-  position: relative;
-  color: #fff;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  font-weight: 700;
-
-  font-weight: normal;
-  font-size: 22px;
-  line-height: 40px;
-}
 .plus {
   width: 30px;
-}
-
-.row.ilustracion {
-  padding-top: 10px;
-  /*overflow: hidden;*/
-  background: white;
-  border: 1.5px solid #00b9a7;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-  color: black;
-}
-.row.ilustracion p {
-  max-width: 100%;
-  width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.row.ilustracion img.compromiso-icon {
-  max-height: 50px;
-  max-width: 50px;
-  padding-bottom: 8px;
-}
-
-.detalle-ilustracion .progress-bar.bg-color {
-  background-color: #00b9a7;
-}
-.detalle-ilustracion.mobile {
-  transition: all 0.5s linear;
-}
-.detalle-ilustracion .bg-color,
-.bg-color {
-  background-color: #5b5b5b;
 }
 
 .ng-hide {
