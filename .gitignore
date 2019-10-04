@@ -20,3 +20,4 @@ node_modules
 /app/config.js
 /dist/config.js
 .idea
+.~*.csv#
