@@ -1,36 +1,19 @@
-# compromisos-site
+# [BA Compromisos](https://www.buenosaires.gob.ar/compromisos)
 
-Dashboard de progreso de Compromisos de Gobierno.
+Proyecto de visualización y análisis de los compromisos del Gobierno de la Ciudad de Buenos Aires.
 
-## Documentación
+## Acerca de BA Compromisos 
 
-* Deploy: ver INSTALL.MD y UPGRADE.MD
-* Changelog: ver CHANGELOG.MD 
+BA Compromisos es un sitio web que busca informar a la ciudadanía acerca del avance de todos las compromisos de la ciudad.
+El sistema es una aplicación frontend que toma información de un csv y crea visualizaciones de datos sobre el 
+cumplimiento de los compromisos. Se genera una vista para cada compromiso y una vista general donde pueden verse todos. 
+La misma tiene la capacidad de ser embebida dentro otras páginas correspondientes a organismos relacionados.
 
-## Probar el proyecto de manera standalone
-* Clonar el proyecto
-* Archivo de configuración: En /dist duplicar el archivo config.js.example con el nombre config.js.
-* Instalar NodeJS: [Node Js Oficial](http://nodejs.org)
-* Instalar http-server
-`npm install http-server -g`
-* Ir a Directorio /dist y ejecutar servidor
-`cd dist`
-`http-server ./`
-* Abrir navegador 
-Dirección: `http://localhost:8080`
+El proyecto original puede verse en [compromisos-site.buenosaires.gob.ar](https://compromisos-site.buenosaires.gob.ar/).
+Mientras que el proyecto embebido dentro de la pagina del Gobierno de la Ciudad de Buenos Aires puede verse en [buenosaires.gob.ar/compromisos](https://www.buenosaires.gob.ar/compromisos)
 
-## Para desarrolladores
-* Archivo de configuración: En /app duplicar el archivo config.js.example con el nombre config.js.
-* Correr la aplicación desde /app -> Hacer los cambios en /app y con live reloading se actualizará en http://localhost:10000
-`grunt server`
-* Compilar
-`grunt build`
+Se trata de una aplicación enteramente de frontend (todos archivos estáticos), con diferentes vistas. 
+Todos los datos son obtenidos desde dos archivos CSV estáticos. 
+No tiene submits a backend con información ni acceso a base de datos.
+Está construído como Single Page Application basado en Angular JS.
 
-## Probar los compilados. 
-* Levanta la aplicación en http://localhost:10000 desde /dist
-`grunt server:dist`
-
-## Instalar en producción
-* Hacer clone y/o pull del proyecto 
-* Apuntar la configuración del web server a la carpera /dist
-* En /dist duplicar el archivo config.js.example con el nombre config.js.
