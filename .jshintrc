@@ -16,6 +16,7 @@
     "$":false,
     "d3":false,
     "pym":false,
-    "d3plus":false
+    "d3plus":false,
+    "Papa":false
   }
 }

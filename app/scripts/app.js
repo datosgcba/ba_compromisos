@@ -107,38 +107,9 @@ angular
       }
     };
   })
-  .service("UrlService", function() {
-    if (!window.COMPROMISOS_CONFIG) {
-      console.error(
-        "Archivo de configuración inexistente, utilizando configuración default de desarrollo."
-      );
-      window.COMPROMISOS_CONFIG = {
-        BASE_URL: "https://csv-to-api-compromisos.herokuapp.com/",
-        HOME_CSV: "https://goo.gl/w0wnOj",
-        OBRAS_CSV: "https://goo.gl/YF8r9Y",
-      };
-    }
-    this.baseUrl = window.COMPROMISOS_CONFIG.BASE_URL;
-    this.urls = {
-      home:
-        this.baseUrl +
-        "?source_format=csv&source=" +
-        window.COMPROMISOS_CONFIG.HOME_CSV,
-      obras:
-        this.baseUrl +
-        "?source_format=csv&source=" +
-        window.COMPROMISOS_CONFIG.OBRAS_CSV
-    };
-    this.getUrlByPage = function(page) {
-      return this.urls[page] + "&callback=JSON_CALLBACK";
-    };
-    this.getUrlByCsv = function(csv) {
-      return (
-        this.baseUrl +
-        "?source_format=csv&source=" +
-        csv +
-        "&callback=JSON_CALLBACK"
-      );
+  .service("DataService", function($http, $q, $sce) {
+    this.loadData = function () {
+      return loadData($sce, $q, $http);
     };
   })
   .run(function($rootScope, $interval) {

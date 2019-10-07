@@ -15,11 +15,9 @@ angular
     $document,
     $http,
     $filter,
-    UrlService,
+    DataService,
     GetSVGNameService,
     SlugColorService,
-    LoadSVGService,
-    $sce
   ) {
     $scope.pymChild = new pym.Child({
       polling: 1000
@@ -90,77 +88,74 @@ angular
       return _.uniq(_.concat(extra_comunas,filteredComunas));
     };
 
-    var compromisosURL = UrlService.getUrlByPage("home");
-    var obrasURL = UrlService.getUrlByPage("obras");
+    DataService.loadData().then(function (result) {
+      var data = result.data;
+      $scope.usigCompromiso = result.mapa;
 
-    $http.jsonp(compromisosURL).success(function(data) {
-      $http.jsonp(obrasURL).success(function (csv) {
-        $scope.usigCompromiso = csv;
-
-        $scope.data = data.map(function(c) {
-          c.slug = c.slug.trim();
-          c.categoria = c.categoria.trim();
-          c.iconSVG = GetSVGNameService.getUrl(c.numero);
-          if (c.porcentaje_completado == "100"){
-              c.iconSVG = GetSVGNameService.getUrl(c.numero, "z");
-            }
-          try {
-            c.comunas = $scope.getComunas(c.numero, c.comunas);
-            c.claseComunas = "";
-            for (var i = 0; i < c.comunas.length; i++) {
-              c.claseComunas += "com-" + c.comunas[i] + " ";
-            }
-          } catch (e) {
-            console.error("error en comunas compromiso" + c.numero);
+      $scope.data = data.map(function(c) {
+        c.slug = c.slug.trim();
+        c.categoria = c.categoria.trim();
+        c.iconSVG = GetSVGNameService.getUrl(c.numero);
+        if (c.porcentaje_completado == "100"){
+          c.iconSVG = GetSVGNameService.getUrl(c.numero, "z");
+        }
+        try {
+          c.comunas = $scope.getComunas(c.numero, c.comunas);
+          c.claseComunas = "";
+          for (var i = 0; i < c.comunas.length; i++) {
+            c.claseComunas += "com-" + c.comunas[i] + " ";
           }
-          return c;
-        });
-        $scope.data = $scope.data.sort(function(a, b) {
-          var upA = a.titulo.toUpperCase();
-          var upB = b.titulo.toUpperCase();
-          return upA < upB ? -1 : upA > upB ? 1 : 0;
-        });
-        var areas = [];
-        var cumplimiento = [];
-
-        for (var i = 1; i <= 15; i++) {
-          $scope.comunas.push({
-            name: "Comuna " + i,
-            number: i,
-            selected: false
-          });
+        } catch (e) {
+          console.error("error en comunas compromiso" + c.numero);
         }
-        $scope.data.map(function(elem) {
-          if (elem.porcentaje_completado <= 25) elem.classPercent = "very-low";
-          if (elem.porcentaje_completado > 25 && elem.porcentaje_completado <= 50)
-            elem.classPercent = "low";
-          if (elem.porcentaje_completado > 50 && elem.porcentaje_completado <= 75)
-            elem.classPercent = "high";
-          if (elem.porcentaje_completado > 75) elem.classPercent = "very-high";
-
-          if (elem.cumplimiento != undefined)
-            cumplimiento.push(elem.cumplimiento);
-
-          if (elem.area1 != undefined)
-            areas.push(elem.area1.toLowerCase().replace(/ /g, "-"));
-          if (elem.area2 != undefined)
-            areas.push(elem.area2.toLowerCase().replace(/ /g, "-"));
-          if (elem.area3 != undefined)
-            areas.push(elem.area3.toLowerCase().replace(/ /g, "-"));
-          if (elem.area4 != undefined)
-            areas.push(elem.area4.toLowerCase().replace(/ /g, "-"));
-        });
-        $scope.areas = Array.from(new Set(areas));
-        $scope.cumplimiento = Array.from(new Set(cumplimiento));
-
-        $scope.loading = false;
-        // $scope.executeIsotope()
-        $scope.groupData();
-        $scope.renderCharts();
-        if ($scope.onlyMap){
-          $scope.mostrarMapa();
-        }
+        return c;
       });
+      $scope.data = $scope.data.sort(function(a, b) {
+        var upA = a.titulo.toUpperCase();
+        var upB = b.titulo.toUpperCase();
+        return upA < upB ? -1 : upA > upB ? 1 : 0;
+      });
+      var areas = [];
+      var cumplimiento = [];
+
+      for (var i = 1; i <= 15; i++) {
+        $scope.comunas.push({
+          name: "Comuna " + i,
+          number: i,
+          selected: false
+        });
+      }
+      $scope.data.map(function(elem) {
+        if (elem.porcentaje_completado <= 25) elem.classPercent = "very-low";
+        if (elem.porcentaje_completado > 25 && elem.porcentaje_completado <= 50)
+          elem.classPercent = "low";
+        if (elem.porcentaje_completado > 50 && elem.porcentaje_completado <= 75)
+          elem.classPercent = "high";
+        if (elem.porcentaje_completado > 75) elem.classPercent = "very-high";
+
+        if (elem.cumplimiento != undefined)
+          cumplimiento.push(elem.cumplimiento);
+
+        if (elem.area1 != undefined)
+          areas.push(elem.area1.toLowerCase().replace(/ /g, "-"));
+        if (elem.area2 != undefined)
+          areas.push(elem.area2.toLowerCase().replace(/ /g, "-"));
+        if (elem.area3 != undefined)
+          areas.push(elem.area3.toLowerCase().replace(/ /g, "-"));
+        if (elem.area4 != undefined)
+          areas.push(elem.area4.toLowerCase().replace(/ /g, "-"));
+      });
+      $scope.areas = Array.from(new Set(areas));
+      $scope.cumplimiento = Array.from(new Set(cumplimiento));
+
+      $scope.loading = false;
+      // $scope.executeIsotope()
+      $scope.groupData();
+      $scope.renderCharts();
+      if ($scope.onlyMap){
+        $scope.mostrarMapa();
+      }
+
     });
 
     $scope.groupData = function() {
