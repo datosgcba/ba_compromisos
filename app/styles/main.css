@@ -388,49 +388,6 @@ div#category_chart {
   cursor: pointer;
 }
 
-.bubble-container text {
-  font-size: 12px;
-  font-family: "CHANEWEI", Helvetica, Arial, sans-serif;
-  font-weight: bolder;
-}
-
-.bubble-container .label-group {
-  fill: #000;
-}
-.bubble-container .categories > circle {
-  fill-opacity: 0;
-  fill: transparent;
-  stroke-width: 0px;
-}
-
-.bubble-container circle {
-  stroke: #ccc;
-  stroke-width: 0px;
-  fill: #fff;
-}
-
-.bubble-container .leaf circle {
-  fill: #ff7f0e;
-  fill-opacity: 1;
-  stroke-width: 0px;
-}
-
-.bubble-chart-text-title {
-  text-anchor: middle;
-  fill: white;
-  stroke-width: 1px;
-  stroke-linecap: butt;
-  stroke-linejoin: miter;
-  stroke-opacity: 1;
-  paint-order: stroke;
-}
-
-.bubble-chart-text-subtitle {
-  text-anchor: middle;
-  fill: white;
-  font-size: 10px;
-}
-
 /*Menú de arriba*/
 .c-option {
   border-top: 5px solid;
