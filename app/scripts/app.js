@@ -50,7 +50,6 @@ angular
     "ngRoute",
     "duScroll",
     "ngSanitize",
-    "ngYoutubeEmbed",
     "hljs"
   ])
   .config(function($routeProvider) {

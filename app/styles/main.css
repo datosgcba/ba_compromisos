@@ -601,17 +601,6 @@ div#category_chart {
   fill: #fff;
 }
 
-/*YouTube*/
-.yt-switch {
-  background-position: center center;
-  min-height: 300px;
-  background-size: cover;
-  display: block;
-}
-
-.yt-switch img {
-}
-
 /*icon chart*/
 .icon-chart-svg-container-icon {
   width: 100%;
