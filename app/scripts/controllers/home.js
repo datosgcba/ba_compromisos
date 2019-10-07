@@ -136,13 +136,13 @@ angular
         if (elem.cumplimiento != undefined)
           cumplimiento.push(elem.cumplimiento);
 
-        if (elem.area1 != undefined)
+        if (elem.area1)
           areas.push(elem.area1.toLowerCase().replace(/ /g, "-"));
-        if (elem.area2 != undefined)
+        if (elem.area2)
           areas.push(elem.area2.toLowerCase().replace(/ /g, "-"));
-        if (elem.area3 != undefined)
+        if (elem.area3)
           areas.push(elem.area3.toLowerCase().replace(/ /g, "-"));
-        if (elem.area4 != undefined)
+        if (elem.area4)
           areas.push(elem.area4.toLowerCase().replace(/ /g, "-"));
       });
       $scope.areas = Array.from(new Set(areas));
