@@ -17,3 +17,17 @@ Todos los datos son obtenidos desde dos archivos CSV estáticos.
 No tiene submits a backend con información ni acceso a base de datos.
 Está construído como Single Page Application basado en Angular JS.
 
+## Instrucciones para desarrolladores
+
+Para realizar modificaciones al sitio actual, realizar los siguientes pasos
+
+* Clonar el proyecto usando git
+* Instalar NodeJS. Recomendamos usar [nvm](https://github.com/creationix/nvm). Una vez instalado `nvm` ejecutar 
+`nvm use` en la carpeta raiz del proyecto para asegurarse de usar la misma version de node.
+* Instalar las dependencias de npm via `npm install` en la carpeta raiz del proyecto 
+* Instalar el cli de bower via `npm install -g bower`
+* Instalar las dependencias de bower via `bower install` en la carpeta raiz del proyecto
+* Ubicar los archivos de datos: `data.csv` y `mapa.csv` dentro de la carpeta `app`
+* Levantar el servidor de desarrollo via `grunt serve` en la carpeta raiz del proyecto
+* Hacer los cambios en /app y con live reloading se actualizará en http://localhost:10000
+* Una vez que se cuenta con los cambios deseados, compilar assets via `grunt build` en la carpeta raiz del proyecto
