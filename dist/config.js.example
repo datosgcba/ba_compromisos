@@ -1,6 +1,0 @@
-window.COMPROMISOS_CONFIG = {
-  BASE_URL: 'https://compromisos-csv.buenosaires.gob.ar',
-  HOME_CSV: 'http://recursos-data.buenosaires.gob.ar/ckan2/compromisos/master_compromisos.csv',
-  OBRAS_CSV: 'https://recursos-data.buenosaires.gob.ar/ckan2/compromisos/deploy/mapa_compromisos.csv',
-  ILUSTRACIONES_CSV: 'https://recursos-data.buenosaires.gob.ar/ckan2/compromisos/deploy/visualizaciones_compromisos.csv'
-};
