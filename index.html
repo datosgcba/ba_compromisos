@@ -1,11 +1,75 @@
 <html>
 <head>
 	<title>Compromisos BA</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #yellow-ribbon {
+      background: #fcda59;
+      height: 20px;
+    }
+
+    #logo-container {
+      background: white;
+    }
+
+    #logo-bounds {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 10px 20px;
+    }
+    #logo-bounds img {
+      height: 40px;
+    }
+
+    #jumbotron {
+      background-image: url('https://www.buenosaires.gob.ar/sites/gcaba/files/12417790_10154172387381019_5372783064739971872_n_3.jpg');
+      background-size: cover;
+      background-position: center center;
+    }
+
+    #jumbotron h1 {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      font-size: 64px;
+      font-family: sans-serif;
+      color: white;
+    }
+
+    #jumbotron-veil {
+      padding: 50px 20px 100px 20px;
+      background: #00000044;
+    }
+
+    #iframe-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+  </style>
 </head>
 	<body>
-	Redirecting...
-	<script>
-		window.location = window.location.href + 'dist';
-	</script>
+	<header>
+    <div id="yellow-ribbon"></div>
+    <div id="logo-container">
+      <div id="logo-bounds">
+        <img src="https://www.buenosaires.gob.ar/sites/gcaba/themes/gcbaV4/xgcaba/css/BA2016.png"  alt="Compromisos Buenos Aires"/>
+      </div>
+    </div>
+    <div id="jumbotron">
+      <div id="jumbotron-veil">
+        <h1>Compromisos de Gobierno</h1>
+      </div>
+    </div>
+  </header>
+  <div id="iframe-container">
+    <iframe
+      src="./dist/app.html?initialWidth=1140&amp;childId=pym-container&amp;#home"
+      width="100%" scrolling="no" marginheight="0" frameborder="0" height="1892px"></iframe>
+  </div>
 	</body>
 </html>
