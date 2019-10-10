@@ -1,76 +1,8 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/BAstrap/bastrap.css" />
-    <link rel="stylesheet" href="bower_components/c3/c3.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/avances.css">
-    <!-- endbuild -->
-    <style type="text/css">
-
-        textarea{resize: none;}
+<!doctype html> <html> <head> <meta charset="utf-8"> <title></title> <meta name="description" content=""> <meta name="viewport" content="width=device-width"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel="stylesheet" href="styles/vendor.04fdfaa8.css"> <link rel="stylesheet" href="styles/main.40ac3f9d.css"> <style type="text/css">textarea{resize: none;}
         .row-preview{background-color: #dadada;display: none;}
-        .row-selectores{display: none;}
-    </style>
-  </head>
-  <body>
-    <!--[if lte IE 8]>
+        .row-selectores{display: none;}</style> </head> <body> <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
-    <!-- CONTENIDO -->
-    <div class="container">
-        <h1 id="loading" class="text-center">Cargando...</h1>
-        <div class="row row-selectores">
-          <div class="col-md-12">
-              <h1>¡Hola, Buenos Aires!</h1>
-              <p>Esta es la página de prueba para visualizar los compromisos de GCBA</p>
-          </div>
-          <div class="col-md-4">
-              <a class="btn btn-primary btn-block" href="#home">Home
-              </a>
-            </div>
-           <div class="col-md-4">
-              <a class="btn btn-primary btn-block" href="#map">Mapa</a>
-            </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <h3>Ejemplo de iframe con <span class="selected"></span>:</h3>
-            <hr>
-            <div id="pym-container"></div>
-          </div>
-        </div>
-    </div>
-
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-sanitize.min.js"></script>
-    <script src="bower_components/pym.js/dist/pym.js"></script>
-    <script src="bower_components/d3/d3.js"></script>
-    <script src="bower_components/c3/c3.js"></script>
-    <script src="bower_components/lodash/lodash.js"></script>
-    <script src="bower_components/angular-scroll/angular-scroll.js"></script>
-    <script src="bower_components/proj4/dist/proj4.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
-    <script>
-        var pymParent;
+    <![endif]--> <!-- CONTENIDO --> <div class="container"> <h1 id="loading" class="text-center">Cargando...</h1> <div class="row row-selectores"> <div class="col-md-12"> <h1>¡Hola, Buenos Aires!</h1> <p>Esta es la página de prueba para visualizar los compromisos de GCBA</p> </div> <div class="col-md-4"> <a class="btn btn-primary btn-block" href="#home">Home </a> </div> <div class="col-md-4"> <a class="btn btn-primary btn-block" href="#map">Mapa</a> </div> </div> <div class="row"> <div class="col-xs-12"> <h3>Ejemplo de iframe con <span class="selected"></span>:</h3> <hr> <div id="pym-container"></div> </div> </div> </div> <script src="scripts/vendor.a60f2054.js"></script> <script>var pymParent;
         var $container,$selected,$rows,$textarea;
         $(document).ready(function(){
             var embed = $('#template').val();
@@ -89,9 +21,4 @@
                 var url = server +'app.html'+$(this).attr('href');
                 pymParent = new pym.Parent('pym-container', url, {});
             });
-        });
-    </script>
-
-
-</body>
-</html>
+        });</script> </body> </html>

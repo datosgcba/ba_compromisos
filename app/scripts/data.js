@@ -24,7 +24,7 @@ function loadData ($sce, $q, $http) {
   return $q.when(dataPromise).then(function (data) {
     var mapPromise = getFile($sce, $q, $http, 'mapa.csv');
     return $q.when(mapPromise).then(function (mapa) {
-      mapa.map(point => {
+      mapa.map(function(point) {
         point.latitude = parseFloat(point.latitude);
         point.longitude = parseFloat(point.longitude);
       });

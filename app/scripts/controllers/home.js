@@ -18,6 +18,8 @@ angular
     DataService,
     GetSVGNameService,
     SlugColorService,
+    LoadSVGService,
+    $sce
   ) {
     $scope.pymChild = new pym.Child({
       polling: 1000
