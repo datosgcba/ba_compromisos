@@ -127,4 +127,5 @@ finales y compilados.
 
 Una vez levantado el sitio, se podrá insertar dentro de páginas institucionales haciendo uso de iframes. Para insertar
 el sitio principal el iframe deberá apuntar a `app.html#home` y para la vista de mapa se deberá apuntar a
-`app.html#map`. Ver el archivo `index.html` en la carpeta raiz del proyecto para tener un ejemplo de dichos iframes 
+`app.html#map`. Ver el archivo `index.html` en la carpeta raiz del proyecto para tener un ejemplo de dichos iframes o 
+visitar [el sitio de ejemplo del proyecto](https://datosgcba.github.io/ba_compromisos/). 
