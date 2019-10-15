@@ -32,9 +32,28 @@ A continuación se detalla la estructura que deben tener los archivos para el co
 
 ### data.csv
 
-| Nombre de la columna          | Tipo de dato      | Detalle                                              |
-| ----------------------------- | ----------------- | ---------------------------------------------------- |
-| `nombre`                      | Texto             | Nombre con el cual se identifica al compromiso       |
+| Nombre de la columna                   | Tipo de dato      | Detalle                                              |
+| -------------------------------------- | ----------------- | ---------------------------------------------------- |
+| `numero`                               | Numerico          | Numero identificador del compromiso                  |
+| `compromiso`                           | Texto             | Descripción del compromiso                           |
+| `titulo`                               | Texto             | Titulo del compromiso                                |
+| `desc`                                 | Texto             | Descripción del compromiso                           |
+| `categoria`                            | Texto             | Categoria del compromiso                             |
+| `slug`                                 | Texto             | Categoria de uso interno del compromiso              |
+| `area1`                                | Texto             | Area gubernamental del compromiso                    |
+| `area2`                                | Texto             | Area gubernamental del compromiso                    |
+| `area3`                                | Texto             | Area gubernamental del compromiso                    |
+| `area4`                                | Texto             | Area gubernamental del compromiso                    |
+| `embed_map_titulo`                     | Texto             | Titulo del mapa a embeber en el detalle del compromiso (opcional) |
+| `embed_map_url`                        | Texto (url)       | Url del mapa a embeber (opcional)                    |
+| `imagen`                               | Texto (url)       | Url de la imagen del compromiso                      |
+| `cumplimiento`                         | Numerico          | Año del cumplimiento del compromiso                  |
+| `cumplimiento_label`                   | Texto             | Detalle del año del cumplimiento                     |
+| `porcentaje_completado`                | Numerico          | Porcentaje cumplido del compromiso                   |
+| `cumplimiento_2`                       | Numerico          | Año del cumplimiento de la segunda fase del compromiso |
+| `cumplimiento_2_label`                 | Texto             | Detalle del complimiento de la segunda fase          |
+| `cumplimiento_2_porcentaje_completado` | Numerico          | Porcentaje complico de la segunda fase del complimiento |
+| `url_interna`                          | Texto (url)       | Url externa para conocer mas sobre el compromiso     |
 
 ### mapa.csv
 
