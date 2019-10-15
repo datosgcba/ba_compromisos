@@ -45,16 +45,6 @@
         <label><input type="radio" class="percent" value=".very-high" name="percentage" />75%-100%</label>
       </div>
     </div>
-    <div id="homeComunaContainer" class="col-xs-12 col-sm-3 filters hidden">
-      <p>Filtrar por comuna:</p>
-      <div>
-        <select ng-model="selectedComuna" ng-init="selectedComuna='0'" ng-change="changeComunas()">
-          <option class="comuna" ng-selected="{{c.selected}}" ng-repeat="c in comunas" value="{{c.number}}">
-            {{c.name}}
-          </option>
-        </select>
-      </div>
-    </div>
   </div>
   <hr />
 </div>
@@ -83,7 +73,7 @@
 <div id="isotopeContainer" ng-show="iconsActive" ng-click="forceCloseDetail();$event.stopPropagation();"
   isotope-container="isotope-container" class="compromisos-container">
 
-  <div ng-repeat="d in data" compromiso="{{d.numero}}" isotope-item="isotope-item" class="compromiso-row {{d.slug}} {{d.cumplimiento}} {{d.porcentaje_completado}} {{d.claseComunas}} {{d.area1.toLowerCase().split(' ').join('-')}} {{d.area2.toLowerCase().split(' ').join('-')}} {{d.area3.toLowerCase().split(' ').join('-')}}  {{d.titulo.toLowerCase().split(' ').join(' ')}}
+  <div ng-repeat="d in data" compromiso="{{d.numero}}" isotope-item="isotope-item" class="compromiso-row {{d.slug}} {{d.cumplimiento}} {{d.porcentaje_completado}} {{d.area1.toLowerCase().split(' ').join('-')}} {{d.area2.toLowerCase().split(' ').join('-')}} {{d.area3.toLowerCase().split(' ').join('-')}}  {{d.titulo.toLowerCase().split(' ').join(' ')}}
   {{d.area4.toLowerCase().split(' ').join('-')}}  item {{d.classPercent}} allFilters"
     ng-click="showCompromisoDetail(d,$event);$event.stopPropagation();">
     <img class="icon-svg-container compromiso-icon" ng-src="{{d.iconSVG}}">

@@ -36,14 +36,7 @@ angular
     $scope.mapActive = false;
     $scope.iconsActive = true;
     $scope.mapReady = false;
-    $scope.comunas = [];
 
-    $scope.comunas.push({
-      name: "(Todas las comunas)",
-      number: 0,
-      selected: true
-    });
-    $scope.selectedComuna = 0;
     $scope.getCompromiso = function(numero) {
       var findC = {};
       for (var i = 0; i < $scope.data.length; i++) {
@@ -77,18 +70,6 @@ angular
       }, 300);
     };
 
-    $scope.getComunas = function (compromisoId, extra_comunas) {
-      var extra_comunas = extra_comunas.split(",").map(function (d) {
-        return parseInt(d);
-      });
-      var filteredComunas = $scope.usigCompromiso.filter(function(uc){
-        return parseInt(uc.numero) === parseInt(compromisoId);
-      }).map(function(d){
-        return parseInt(d.Comuna);
-      });
-
-      return _.uniq(_.concat(extra_comunas,filteredComunas));
-    };
 
     DataService.loadData().then(function (result) {
       var data = result.data;
@@ -101,15 +82,6 @@ angular
         if (c.porcentaje_completado == "100"){
           c.iconSVG = GetSVGNameService.getUrl(c.numero, "z");
         }
-        try {
-          c.comunas = $scope.getComunas(c.numero, c.comunas);
-          c.claseComunas = "";
-          for (var i = 0; i < c.comunas.length; i++) {
-            c.claseComunas += "com-" + c.comunas[i] + " ";
-          }
-        } catch (e) {
-          console.error("error en comunas compromiso" + c.numero);
-        }
         return c;
       });
       $scope.data = $scope.data.sort(function(a, b) {
@@ -120,13 +92,6 @@ angular
       var areas = [];
       var cumplimiento = [];
 
-      for (var i = 1; i <= 15; i++) {
-        $scope.comunas.push({
-          name: "Comuna " + i,
-          number: i,
-          selected: false
-        });
-      }
       $scope.data.map(function(elem) {
         if (elem.porcentaje_completado <= 25) elem.classPercent = "very-low";
         if (elem.porcentaje_completado > 25 && elem.porcentaje_completado <= 50)
@@ -443,9 +408,6 @@ angular
           inclusives.push(elem.value);
         }
       });
-      if ($scope.selectedComuna != 0) {
-        exclusives.push(".com-" + $scope.selectedComuna);
-      }
       // combine exclusive and inclusive filters
 
       // first combine exclusives
@@ -489,9 +451,7 @@ angular
         p.layer.removeFeatures(p.obras);
         if (currentCompromisos.indexOf(parseInt(p.numero))>-1){
           p.visible = true;
-          p.layer.addFeatures(p.obras.filter(function(o){
-            return parseInt($scope.selectedComuna)==0 || ( parseInt(o.attributes.Comuna) === parseInt($scope.selectedComuna) );
-          }));
+          p.layer.addFeatures(p.obras);
         } else {
           p.visible = false;
         }
@@ -502,7 +462,6 @@ angular
     };
 
     $scope.setAllFilters = function() {
-      $scope.selectedComuna = 0;
       $(".checkMyCheck").each(function() {
         $(this)
           .parent()
@@ -519,7 +478,6 @@ angular
       $scope.closeDetail();
     };
     $scope.removeAllFilters = function() {
-      $scope.selectedComuna = 0;
       $("#searchTextInput").val("");
       $(".checkMyCheck").each(function() {
         $(this)
@@ -533,10 +491,6 @@ angular
       $years.add($percent).each(function() {
         $(this).prop("checked", false);
       });
-      refreshGrid();
-      $scope.closeDetail();
-    };
-    $scope.changeComunas = function() {
       refreshGrid();
       $scope.closeDetail();
     };
