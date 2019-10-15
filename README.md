@@ -66,6 +66,12 @@ A continuación se detalla la estructura que deben tener los archivos para el co
 | `compromiso`                  | Texto             | Descripción del compromiso                           |
 | `accion`                      | Texto             | Descripción de la acción asociada al compromiso      |
 
+### Iconos de compromisos
+
+Cada compromiso tiene iconos asociados en la carpeta `app/images/iconos_v2`. Cada icono tiene formato de nombre de 
+archivo `GCBA-compromisos-icons-NUMERO.svg` reemplazando `NUMERO` por el numero de cada compromiso. Luego de tener el
+archivo `data.csv` con la informacion correcta de los compromisos, se debera agregar los iconos necesarios en dicha
+carpeta.
 
 ## Instrucciones para modificar el sitio
 
@@ -116,3 +122,9 @@ La aplicación contiene su código y las librerías que necesita, ya compiladas 
 finales y compilados.
 4. Embeber el sitio dentro de una pagina pre existente via un iframe. Ver ejemplo en 
 [buenosaires.gob.ar/compromisos](https://www.buenosaires.gob.ar/compromisos)
+
+## Insertar el sitio en una página institucional
+
+Una vez levantado el sitio, se podrá insertar dentro de páginas institucionales haciendo uso de iframes. Para insertar
+el sitio principal el iframe deberá apuntar a `app.html#home` y para la vista de mapa se deberá apuntar a
+`app.html#map`. Ver el archivo `index.html` en la carpeta raiz del proyecto para tener un ejemplo de dichos iframes 
