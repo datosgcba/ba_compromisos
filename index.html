@@ -32,17 +32,21 @@
       background-position: center center;
     }
 
-    #jumbotron h1 {
+    #jumbotron-content {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 0 20px;
-      font-size: 64px;
-      font-family: sans-serif;
+      padding: 40px 20px 20px 20px;
       color: white;
+      font-family: sans-serif;
+    }
+
+    #jumbotron h1 {
+      margin: 0 0 80px 0;
+      font-size: 64px;
     }
 
     #jumbotron-veil {
-      padding: 50px 20px 100px 20px;
+      padding: 0 20px;
       background: #00000044;
     }
 
@@ -50,9 +54,35 @@
       max-width: 1100px;
       margin: 0 auto;
     }
+
+    input[name="iframe-switch"] {
+      display: none;
+    }
+
+    input[id="switch-home"]:checked ~ #iframe-container > #map-iframe,
+    input[id="switch-map"]:checked ~ #iframe-container > #home-iframe {
+      display: none;
+    }
+
+    #switch-map-label, #switch-home-label {
+      padding: 20px;
+      color: #ccc;
+    }
+
+    #switch-map-label:hover, #switch-home-label:hover {
+      color: white;
+      cursor: pointer;
+    }
+
+    input[id="switch-home"]:checked ~ header > #switch-home-label,
+    input[id="switch-map"]:checked ~ header > #switch-map-label {
+      color: white;
+    }
   </style>
 </head>
 	<body>
+  <input type="radio" name="iframe-switch" id="switch-home" checked />
+  <input type="radio" name="iframe-switch" id="switch-map" />
 	<header>
     <div id="yellow-ribbon"></div>
     <div id="logo-container">
@@ -62,13 +92,22 @@
     </div>
     <div id="jumbotron">
       <div id="jumbotron-veil">
-        <h1>Compromisos de Gobierno</h1>
+        <div id="jumbotron-content">
+          <h1>Compromisos de Gobierno</h1>
+          <label for="switch-home" id="switch-home-label">Compromisos</label>
+          <label for="switch-map" id="switch-map-label">Mapa</label>
+        </div>
       </div>
     </div>
   </header>
   <div id="iframe-container">
     <iframe
+      id="home-iframe"
       src="./dist/app.html?initialWidth=1140&amp;childId=pym-container&amp;#home"
+      width="100%" scrolling="no" marginheight="0" frameborder="0" height="1892px"></iframe>
+    <iframe
+      id="map-iframe"
+      src="./dist/app.html?initialWidth=1140&amp;childId=pym-container&amp;#map"
       width="100%" scrolling="no" marginheight="0" frameborder="0" height="1892px"></iframe>
   </div>
 	</body>
