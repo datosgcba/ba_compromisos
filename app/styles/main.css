@@ -115,8 +115,8 @@ p {
 }
 
 #compromiso-interna .compromiso-icon svg {
-  max-width: 60px;
-  max-height: 60px;
+  width: 60px;
+  height: 60px;
 }
 
 #compromiso-interna h4 {
@@ -278,8 +278,8 @@ p {
 
 .obra-detail img.compromiso-icon,
 .compromiso-detail img.compromiso-icon {
-  max-width: 50px;
-  max-height: 50px;
+  width: 50px;
+  height: 50px;
   /*filter: brightness(0) invert(100%);*/
   margin-right: 10px;
   margin-left: 0px;
@@ -817,8 +817,8 @@ g.c3-chart-lines .c3-line {
 }
 
 img.compromiso-icon {
-  max-width: 60px;
-  max-height: 60px;
+  width: 60px;
+  height: 60px;
 }
 ul {
   margin-right: 0 !important;
