@@ -57,8 +57,6 @@ A continuación se detalla la estructura que deben tener los archivos para el co
 
 ### mapa.csv
 
-direccion	latitude	longitude	numero	compromiso	accion	eje	Comuna
-
 | Nombre de la columna          | Tipo de dato      | Detalle                                              |
 | ----------------------------- | ----------------- | ---------------------------------------------------- |
 | `direccion`                   | Texto             | Dirección del compromiso                             |
