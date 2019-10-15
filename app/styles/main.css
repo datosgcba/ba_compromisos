@@ -1233,3 +1233,8 @@ head ul {
 
 #filler {
 }
+
+.compromiso-action-button {
+  background-color: #CC105F;
+  color: white;
+}
