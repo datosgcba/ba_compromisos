@@ -4,7 +4,7 @@ function getFile ($sce, $q, $http, url) {
   var data;
 
   var onSuccess = function (result) {
-    data = Papa.parse(result.data, { header:true }).data;
+    data = Papa.parse(result.data, { header:true, skipEmptyLines: true }).data;
     deferred.resolve(data);
   };
 
