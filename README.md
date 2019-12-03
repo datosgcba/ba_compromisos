@@ -115,9 +115,9 @@ La aplicación contiene su código y las librerías que necesita, ya compiladas 
 ### Instalación por primera vez
 
 1. Crear un dominio o definir la url donde vivirá la aplicación, podría ser: 
-`https://obras-site.buenosaires.gob.ar/`.
+`https://compromisos-site.buenosaires.gob.ar/`.
 2. Definir un servidor con nginx o apache y clonar el proyecto usando 
-`git clone https://github.com/datosgcba/ba_obras.git`.
+`git clone https://github.com/datosgcba/ba_compromisos.git`.
 3. Apuntar las configuraciones del web server y subdominio a la carpeta `dist`, donde se encuentran los archivos 
 finales y compilados.
 4. Embeber el sitio dentro de una pagina pre existente via un iframe. Ver ejemplo en 
